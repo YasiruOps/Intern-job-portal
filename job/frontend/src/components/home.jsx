@@ -5,7 +5,7 @@ export default function home() {
   return (
     <div>
         <Header/>
-        home
+        hello
     </div>
   )
 }
