@@ -10,14 +10,16 @@ import {
 
 import Home from "./components/home";
 import Rbuilder from "./components/Rbuilder";
+import Login from './components/login'
 
 function App() {
   return (
     <div>
       <Router>
-        <Routes >
-        <Route path="/" element={<Home />}/>
+        <Routes >       
         <Route path="/Rbuilder" element={<Rbuilder />}/>
+        <Route path="/Login" element={<Login/>}/>
+        <Route path="/" element={<Home />}/>
         </Routes >
       </Router>
     </div>
