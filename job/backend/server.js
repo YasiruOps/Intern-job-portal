@@ -5,10 +5,6 @@ const cors = require('cors');
 
 const app = express();
 
-//app midleware
-app.use(bodyParser.json());
-app.use(cors());
-
 const PORT = 8000;
 // const DB_URL = 'mongodb+srv://user:user@busapp.1dmsk.mongodb.net/bus?retryWrites=true&w=majority';
 const DB_URL = 'mongodb+srv://yasi:yasi123@cluster0.ppwhecz.mongodb.net/?retryWrites=true&w=majority';
@@ -27,3 +23,13 @@ mongoose.connect(DB_URL,{
 app.listen(PORT, ()=>{
     console.log(`App is running on port ${PORT}`)
 });
+
+
+//import Routes
+const auth = require('./routes/auth');
+
+//app midleware
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/auth", auth);

@@ -1,11 +1,11 @@
-const RegisterIntern = require("../models/registerIntern");
+const Auth = require("../models/internAuth");
 
-export default function RegisterIntern(request, response) {
+function Register(request, response) {
   //ADD
   const email = request.body.email;
   const password = request.body.password;
 
-  const intern = new RegisterIntern({
+  const intern = new Auth({
     Email: email,
     Password: password,
   });
@@ -21,3 +21,5 @@ export default function RegisterIntern(request, response) {
     });
   });
 }
+
+module.exports = Register;

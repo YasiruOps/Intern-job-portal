@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router()
 
-import LoginHandler from '../handlers/LoginHandler'
-import RegisterIntern from '../handlers/RegisterHandler'
+
+const LoginHandler = require('../handlers/LoginHandler');
+const RegisterIntern = require('../handlers/RegisterHandler');
 
 //register
-router.route('./register').post((request, response) => {RegisterIntern(request, response); });
+router.route('/register').post((request, response) => {RegisterIntern(request, response); });
 
 //login
-router.route('./login').post((request, response) => {LoginHandler(request, response); });
+router.route('/login').post((request, response) => {LoginHandler(request, response); });
+
+module.exports = router;
