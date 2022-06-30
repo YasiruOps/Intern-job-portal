@@ -23,6 +23,9 @@ export default function header() {
             <li className="item">
               <Link to="/Login">Login</Link>
             </li>
+            <li className="item">
+              <Link to="/Mcq">mcq</Link>
+            </li>
           </ul>
         </div>
       </nav>

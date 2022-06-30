@@ -1,7 +1,6 @@
 .top-layer {
   position: relative;
   max-height: fit-content;
-  background-color: aqua;
   max-width: 100%;
   max-height: fit-content;
 }

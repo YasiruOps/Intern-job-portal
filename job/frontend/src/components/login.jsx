@@ -6,8 +6,12 @@ import Header from "../components/header";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+
+  const navigate = useNavigate();
+
   const initialValues = {
     email: "",
     password: "",
@@ -29,7 +33,7 @@ export default function Login() {
     axios
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
-        props.history.push("/profile");
+        navigate('/');
         console.log(response);
       })
       .catch((err) => {});
