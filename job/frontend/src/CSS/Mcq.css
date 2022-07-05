@@ -11,7 +11,7 @@
   }
 
 .top-layer .quiz-name{
-    margin-left: 3%;
+    margin-left: 4%;
     margin-top: 10px;
     font-size: 32px;
     color: #21618C ;
@@ -33,7 +33,7 @@
     height: max-content;
     width: fit-content;
     margin-bottom: 10px;
-    margin-left: 1.7%;
+    margin-left: 2.5%;
     margin-top: 50px;
     font-weight: bold;
     color: #154360;
@@ -49,7 +49,8 @@
   }
 
   .mid-layer .mcq{
-    padding: 10px;
+    padding: 20px;
+    padding-bottom: 70px;
     border-radius: 5px;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -83,19 +84,9 @@
   .answer .form-check-label{
     margin-left: 10px;
   }
-
-  .mid-layer .qnum{
-    text-align: center;
-  }
-
-
-.qnum .quiz-nav{
-
-}
-
 .mcq .flag_btn{
     border: 0;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 10px;
     border-radius: 20px;
     padding: 0px 20px;
@@ -112,3 +103,63 @@
     background-color: red;
     color: white;
 }
+
+.next_back{
+  display: flex;
+  justify-content: center ;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.next_back .navbtns{
+margin-left: 5px;
+margin-right: 5px;
+  width: 100px;
+  border: 0px;
+  border-radius: 50px;
+  background-color: #21618C;
+  color: white;
+}
+
+.navbtns:hover{
+  background-color: #21618cb2;
+}
+
+
+.mid-layer .qnum{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  min-width: 150px;
+  max-width: 300px;
+}
+
+
+.qnum .quiz-nav{
+
+}
+
+
+.qnum-block {
+  width: 70%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.qnum-block .q_number{
+  display: inline;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 30px;
+  height: 40px;
+  background-color: lightgrey;
+
+}
+
+.leftside{
+}
+
+
