@@ -5,9 +5,14 @@ const cors = require('cors');
 
 const app = express();
 
+const fs = require('fs');
+
+let rawdata = fs.readFileSync('env.json');
+let env = JSON.parse(rawdata);
+
 const PORT = 8000;
 // const DB_URL = 'mongodb+srv://user:user@busapp.1dmsk.mongodb.net/bus?retryWrites=true&w=majority';
-const DB_URL = 'mongodb+srv://yasi:yasi123@cluster0.ppwhecz.mongodb.net/?retryWrites=true&w=majority';
+const DB_URL = env.url;
 
 mongoose.connect(DB_URL,{
     useNewUrlParser :true,
