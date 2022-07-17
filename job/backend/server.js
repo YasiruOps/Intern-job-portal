@@ -32,9 +32,11 @@ app.listen(PORT, ()=>{
 
 //import Routes
 const auth = require('./routes/auth');
+const mcqRoutes = require('./routes/mcq')
 
 //app midleware
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);

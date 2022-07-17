@@ -18,6 +18,7 @@ const example = {
 };
 
 const example1 = {
+  id:2,
   question: "is an example of _____",
   options: [
     "An operating system",
@@ -29,6 +30,7 @@ const example1 = {
 };
 
 const example2 = {
+  id:3,
   question: " of _____",
   options: [
     "An operating system",
@@ -44,6 +46,29 @@ export default function Mcq() {
   const [answer,setanswer] = useState({});
   const [number,setnumber] = useState(0);
 
+function navigation(index){
+  setnumber(index);
+
+}
+
+
+  function submit(){
+
+    let correct=0;
+
+    questions.forEach(question=>{
+      const id=question.id
+      const ans = question.answer
+      if (answer[id] && answer[id]===ans){
+        correct++
+      } 
+    })
+    console.log("correct",correct)
+  }
+
+function select(ans){
+  setanswer({...answer,...ans})
+}
 
   function back(){
     if (number>=1){
@@ -65,9 +90,10 @@ export default function Mcq() {
   }
 
   return (
+
     <div>
 
-{console.log("number",number)}
+{console.log("number",number,answer)}
 
       <Header />
       <div className="outer-container">
@@ -103,18 +129,20 @@ export default function Mcq() {
                           <input
                             className="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault1"
+                            name={number}
+                        
+                            autocomplete="off"
+                            onClick={()=>select({
+                              [questions[number].id]:index+1
+                            })}
                           />
-                          <label
-                            className="form-check-label"
-                            for="flexRadioDefault1"
-                          >
+                          <label>
                             {option}
                           </label>
-                          <br />
+                          <br/>
                         </div>
                       </div>
+                      
                       )
                     })}
 
@@ -131,19 +159,19 @@ export default function Mcq() {
 
               <div className="next_back">
                 <button className="navbtns" onClick={back}>Back</button>
-                <button className="navbtns" onClick={front}>Next</button>
+                {number!=questions.length-1?<button className="navbtns" onClick={front}>Next</button>:<button className="navbtns" onClick={submit}>Submit</button>}
+               { console.log("number adn question",number,questions.length-1)}
               </div>
             </div>
 
             <div className="qnum col-lg-3">
               ---------------------------------
               <p className="quiz-nav">Quiz Navigation</p>
+
               <div className="qnum-block">
-                <span className="q_number">1</span>
-                <span className="q_number">1</span>
-                <span className="q_number">1</span>
-                <span className="q_number">1</span>
-                <span className="q_number">1</span>
+                {questions.map((item,index)=>{
+                  return(<span className="q_number" onClick={()=>navigation(index)}>{index+1}</span>)
+                })}
               </div>
             </div>
           </div>
