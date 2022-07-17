@@ -1,6 +1,6 @@
 import React from "react";
 import "../CSS/Mcq.css";
-import Header from "../components/header";
+import Header from "../components/header";b
 import FlagIcon from "@mui/icons-material/Flag";
 
 export default function mcq() {
