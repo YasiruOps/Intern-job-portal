@@ -1,11 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Mcq.css";
-import Header from "../components/header";b
+import Header from "../components/header";
 import FlagIcon from "@mui/icons-material/Flag";
 
-export default function mcq() {
+const symbols = ["A", "B", "C", "D"];
+
+const example = {
+  id:1,
+  question: "MS-Word is an example of _____",
+  options: [
+    "An operating system",
+    "A processing device",
+    "Application software",
+    "An input device",
+  ],
+  answer:3
+};
+
+const example1 = {
+  question: "is an example of _____",
+  options: [
+    "An operating system",
+    "A processing device",
+    "Application software",
+    "An input device",
+  ],
+  answer:3
+};
+
+const example2 = {
+  question: " of _____",
+  options: [
+    "An operating system",
+    "A processing device",
+    "Application software",
+    "An input device",
+  ],
+  answer:3
+};
+
+export default function Mcq() {
+  const [questions, setquestion] = useState([example,example1,example2]);
+  const [answer,setanswer] = useState({});
+  const [number,setnumber] = useState(0);
+
+
+  function back(){
+    if (number>=1){
+    setnumber(
+      number-1
+    )
+    console.log("ssssssssssssssssssssssssssssssssssssssssssssssssssss",number)
+  }
+  }
+
+  function front(){
+    if (number<questions.length-1){
+    setnumber(
+      number+1
+    )
+    console.log("next",number)
+    
+  }
+  }
+
   return (
     <div>
+
+{console.log("number",number)}
+
       <Header />
       <div className="outer-container">
         <div className="top-layer">
@@ -22,109 +85,53 @@ export default function mcq() {
           </div>
         </div>
 
-        <h4 className="q-number">Question 1</h4>
+        <h4 className="q-number">Question {number+1}</h4>
 
         <div className="mid-layer">
           <div className="row">
             <div className="leftside col-lg-9">
-              <div className="mcq">
-                <p className="question">
-                  Ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, nostrud ipsum consectetur sed do, quis
-                  nostrud exercitation{" "}
-                </p>
-                <div className="choices">
-                  <p className="options">A</p>
-                  <div className="answer">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label className="form-check-label" for="flexRadioDefault1">
-                      {" "}
-                      ipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      do{" "}
-                    </label>{" "}
-                    <br />
-                  </div>
-                </div>
+              {/*sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */}
+              
+                  <div className="mcq">
+                    <p className="question">{questions[number].question}</p>
 
-                <div className="choices">
-                  <p className="options">B</p>
-                  <div className="answer">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label className="form-check-label" for="flexRadioDefault1">
-                      {" "}
-                      ipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      do{" "}
-                    </label>{" "}
-                    <br />
-                  </div>
-                </div>
+                    {questions[number].options.map((option, index) => {
+                      return (
+                      <div className="choices">
+                        <p className="options">{symbols[index]}</p>
+                        <div className="answer">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                          />
+                          <label
+                            className="form-check-label"
+                            for="flexRadioDefault1"
+                          >
+                            {option}
+                          </label>
+                          <br />
+                        </div>
+                      </div>
+                      )
+                    })}
 
-                <div className="choices">
-                  <p className="options">C</p>
-                  <div className="answer">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label className="form-check-label" for="flexRadioDefault1">
-                      {" "}
-                      ipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      do{" "}
-                    </label>{" "}
-                    <br />
+                    <button type="button" className="flag_btn">
+                      Flag question
+                      <span className="btn_gap">
+                        <FlagIcon />
+                      </span>
+                    </button>
                   </div>
-                </div>
-
-                <div className="choices">
-                  <p className="options">D</p>
-                  <div className="answer">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label className="form-check-label" for="flexRadioDefault1">
-                      {" "}
-                      ipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      doipsum dolor sit amet, consectetur adipiscing elit, sed
-                      do{" "}
-                    </label>{" "}
-                    <br />
-                  </div>
-                </div>
-
-                <button type="button" className="flag_btn">
-                  Flag question
-                  <span className="btn_gap">
-                    <FlagIcon />
-                  </span>
-                </button>
-              </div>
+                
+            
+              {/*sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */}
 
               <div className="next_back">
-                <button className="navbtns">Back</button>
-                <button className="navbtns">Next</button>
+                <button className="navbtns" onClick={back}>Back</button>
+                <button className="navbtns" onClick={front}>Next</button>
               </div>
             </div>
 
