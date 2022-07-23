@@ -38,7 +38,7 @@ export default function () {
 
           <div className="quiz-cards">
 
-          <div className="card">
+          <div className="card mcq_card">
               <div className="row no-gutters">
                 <div className="card-left">
                   <img
@@ -62,7 +62,7 @@ export default function () {
               </div>
             </div>
 
-            <div className="card">
+            <div className="card mcq_card">
               <div className="row no-gutters">
                 <div className="card-left">
                   <img
