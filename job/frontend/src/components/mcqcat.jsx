@@ -5,13 +5,14 @@ import "../JS/mcqcat";
 import $ from "jquery";
 import Quiz_img from "../images/quiz_option1.png";
 import "@fontsource/poppins";
+import Trophypic from "../images/trophy.jpg"
 
 export default function () {
   return (
     <div>
       <Header />
       <div className="outer-main row">
-        <div className="mainleft col-lg-6">
+        <div className="mainleft col-lg-8">
           <div className="headbox">
             <p className="quizhead">Skills Quiz</p>
             <p className="tag1">
@@ -93,7 +94,22 @@ export default function () {
         <div className="col-lg-1"></div>
 
         {/* right side */}
-        <div className="mainrgt col-lg-4">nice</div>
+        <div className="mainrgt col-lg-2">
+          <p className="head1">Your Assesment</p>
+          
+          <div className="center-piece1 row">
+            <div className="center-left col-6">
+            <p className="center_values">1</p>
+            <p className="center_titles">Badges Earned</p>
+            </div>
+            <div className="center-right col-6">
+            <p className="center_values">5</p>
+            <p className="center_titles">Badges Earned</p>
+            </div>
+          </div>
+          <img src={Trophypic} className="trophy-img" />
+        
+        </div>
       </div>
     </div>
   );

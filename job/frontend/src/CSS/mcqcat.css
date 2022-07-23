@@ -7,7 +7,14 @@
    margin-right: auto;
 }
 
+@media only screen and (max-width: 1350px) {
+  .mainleft {
+    width: 100%;
+  }
+}
+
 .outer-main .mainleft{
+  border-radius: 6px;
     height: max-content;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -157,9 +164,53 @@ select:-moz-focusring {
 }
 /* ------------------- */
 
+@media only screen and (max-width: 1350px) {
+  .mainrgt {
+    display: none;
+  }
+}
 
 .outer-main .mainrgt{
-  background-color: bisque;
+  min-width: 300px;
+  text-align: center;
   height: fit-content;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
 
+
+
+.head1{
+  margin-top: 20px;
+  font-size: 24px;
+  font-family: 'Poppins';
+  
+}
+
+.center-piece1{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #0275B1;
+}
+
+
+.center-right{
+  border-left:1px solid #000;
+  height:fit-content;
+}
+
+
+.center_values{
+  font-size: 36px;
+}
+
+.center-titles{
+  font-size: 16px;
+}
+
+.trophy-img{
+  height: 100px;
+  width: 100px;
+  float: right;
 }
