@@ -12,16 +12,19 @@ import Home from "./components/home";
 import Rbuilder from "./components/Rbuilder";
 import Login from './components/login'
 import Mcq from "./components/mcq"
+import McqCat from "./components/mcqcat"
 
 function App() {
   return (
     <div>
       <Router>
-        <Routes >       
+        <Routes >   
+        <Route path="/McqCat" element={<McqCat/>}/>    
         <Route path="/Mcq" element={<Mcq/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>
         <Route path="/Login" element={<Login/>}/>
         <Route path="/" element={<Home/>}/>
+        
         </Routes >
       </Router>
     </div>

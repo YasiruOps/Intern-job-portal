@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.outer-main{
+    margin-top: 20px;
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.outer-main .mainleft{
+    height: max-content;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.mainleft .headbox{
+ 
+}
+
+.headbox .quizhead{
+  font-family: 'Lato', sans-serif;
+  margin-top: 20px;
+    font-size: 32px;
+    font-weight:900;
+}
+
+.headbox .tag1{
+  font-family: 'Poppins';
+}
+
+.mainleft .catbox{
+    font-family: 'Poppins';
+    padding-bottom: 20px;
+    
+}
+.catbox p{
+  font-weight: bold;
+}
+
+.catbox .category-selector{
+
+  width: 400px;
+  margin-left: 0;
+
+}
+
+.category-selector .category-nametag{
+font-size: 18px;
+}
+
+.quiz-cards{
+  overflow-y:scroll;
+  overflow-x: hidden;
+  height: 600px;
+}
+
+
+.card{
+  margin-right: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+.quiz-cards .quiz_img{
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  object-fit:scale-down;
+}
+
+.card-left{
+  width: 170px;
+}
+
+.card-body{
+  
+}
+
+.start-quiz-btn{
+  width: 120px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 25px;
+  text-align: center;
+  float: right;
+  text-decoration: none;
+}
+
+/* test csss*/
+select {
+
+  /* styling */
+ 
+  background-color: white;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+  
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+/* arrows */
+select.minimal {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+select.minimal:focus {
+  background-image:
+    linear-gradient(45deg, rgb(0, 88, 202) 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, rgb(0, 88, 202)  50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: rgb(0, 88, 202) ;
+  outline: 0;
+}
+
+select.minimal:hover{
+  cursor: pointer;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+/* ------------------- */
+
+
+.outer-main .mainrgt{
+  background-color: bisque;
+  height: fit-content;
+
+}

@@ -1,63 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/Mcq.css";
 import Header from "../components/header";
 import FlagIcon from "@mui/icons-material/Flag";
+import axios from 'axios';
 
 const symbols = ["A", "B", "C", "D"];
 
-const example = {
-  id:1,
-  question: "MS-Word is an example of _____",
-  options: [
-    "An operating system",
-    "A processing device",
-    "Application software",
-    "An input device",
-  ],
-  answer:3
-};
-
-const example1 = {
-  id:2,
-  question: "is an example of _____",
-  options: [
-    "An operating system",
-    "A processing device",
-    "Application software",
-    "An input device",
-  ],
-  answer:3
-};
-
-const example2 = {
-  id:3,
-  question: " of _____",
-  options: [
-    "An operating system",
-    "A processing device",
-    "Application software",
-    "An input device",
-  ],
-  answer:3
-};
-
 export default function Mcq() {
-  const [questions, setquestion] = useState([example,example1,example2]);
+  const [questions, setquestion] = useState([]);
   const [answer,setanswer] = useState({});
   const [number,setnumber] = useState(0);
 
+
+
+  useEffect(() => {
+        axios.get("http://localhost:8000/mcq?type=it&name=quiz1").then((res) => {
+            setquestion(res.data);           
+        }).catch((err) => {
+            alert(err.message)
+        })
+}, [])
+
+
 function navigation(index){
   setnumber(index);
-
 }
-
 
   function submit(){
 
     let correct=0;
 
     questions.forEach(question=>{
-      const id=question.id
+      const id=question._id
       const ans = question.answer
       if (answer[id] && answer[id]===ans){
         correct++
@@ -111,6 +85,8 @@ function select(ans){
           </div>
         </div>
 
+{questions.length>0?
+<div >
         <h4 className="q-number">Question {number+1}</h4>
 
         <div className="mid-layer">
@@ -133,7 +109,7 @@ function select(ans){
                         
                             autocomplete="off"
                             onClick={()=>select({
-                              [questions[number].id]:index+1
+                              [questions[number]._id]:index+1
                             })}
                           />
                           <label>
@@ -176,6 +152,11 @@ function select(ans){
             </div>
           </div>
         </div>
+
+        </div>
+
+:<div><h1>Sorry empty quiz</h1></div>}
+
       </div>
     </div>
   );
