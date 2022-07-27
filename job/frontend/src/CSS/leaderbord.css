@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;1,100&display=swap");
+
+.Lout {
+  min-width: fit-content;
+}
+
+.maincontainer2 {
+  font-family: "Lato", sans-serif;
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  height: max-content;
+  margin-bottom: 20px;
+}
+
+.topbar2 {
+  display: flex;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topbar2 .topbar2-left {
+  
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.topbar2 .topbar2-rgt {
+ 
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.topbar2 .topbar2-left .header3 {
+  font-size: 28px;
+}
+
+.topbar2 .topbar2-left .header-hr {
+  width: 110px;
+  border-radius: 25px;
+  height: 4px;
+  opacity: 100;
+  margin-top: -15px;
+  color: #ffb800;
+}
+
+.score2-cat{
+    display: flex;
+    width: fit-content;
+     border: 1px solid black;
+}
+
+.activityimg{
+    font-size: 20px !important;
+    color: #10375C;
+    border: 1px solid #10375C;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.vertical-line2 {
+    border-left: 1px solid black;
+    border-radius: 25px;
+    height: 30px;
+    margin-top: 7px;
+    opacity: 100%;
+  }
+  
+  .minimal2{
+    float: left;
+   background-color: white;
+    border: 0px;
+}
+
+select.minimal2 {
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgb(0, 0, 0) 50%),
+      linear-gradient(135deg, rgb(0, 0, 0) 50%, transparent 50%);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+  }
+
+  select.minimal2:focus {
+    background-image:
+      linear-gradient(45deg, rgba(0, 0, 0, 0.295) 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.377)  50%);
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: white ;
+    outline: 0;
+  }
+
+
+
+.centermain2 {
+  margin-top: 3%;
+ 
+  width: 90%;
+  min-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.score-cat .minimal2 {
+  width: fit-content;
+  border-color: white;
+}
+select.minimal2:focus {
+  border-color: white;
+}
+
+.season-box {
+  float: right;
+  display: flex;
+  height: 42px;
+}
+
+.season {
+  margin-top: 10px;
+  float: left;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.season-tag {
+  margin-top: 10px;
+  position: relative;
+  font-size: 18px;
+}
+
+.topcenter-hr {
+  border-radius: 25px;
+  color: black;
+  opacity: 100;
+  height: 1px;
+}
+
+.scorebord{
+   margin-top: 20px;
+}
+
+.scorebord-left {
+
+}
+
+.scoreform {
+    margin-right: 10px;
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.200);
+  
+  
+}
+
+.user_place {
+ 
+  float: left;
+  margin-right: 10px;
+  font-size: 36px;
+  margin-top: auto;
+  margin-bottom: auto;
+  opacity: 100;
+}
+
+.user_place3{  
+    float: left;
+    margin-right: 80px;
+    font-size: 36px;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 100;
+}
+
+.userplace_img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.vertical-line {
+  float: left;
+  border-left: 2px solid black;
+  border-radius: 25px;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+  opacity: 30%;
+}
+
+.userpic {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+}
+
+.username {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.userscore {
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: auto;
+  right: 0;
+}
+
+.userscore_tag {
+  margin-right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 18px;
+}
+
+.burger_icon {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .user_place {
+  
+    float: left;
+    margin-right: 10px;
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 100;
+  }
+
+  .user_place3{  
+    float: left;
+    margin-right: 50px;
+    font-size: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 100;
+}
+
+  .userplace_img {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .vertical-line {
+    float: left;
+    border-left: 2px solid black;
+    border-radius: 25px;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 20px;
+    opacity: 30%;
+  }
+
+  .userpic {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  .username {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .userscore {
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: auto;
+    right: 0;
+  }
+
+  .userscore_tag {
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16px;
+  }
+
+  .burger_icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 695px) {
+  .userpic {
+    display: none;
+  }
+  .userplace_img {
+    display: none;
+  }
+
+  .user_place3{  
+    margin-right: 10px;
+}
+
+  .burger_icon {
+    display: none !important;
+  }
+  .vertical-line {
+    display: none;
+  }
+}
+
+.Lscroll {    
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 550px;
+}
+
+.scorebord-rgt {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 7px;
+    width: 30%;
+    height: fit-content;
+    padding-top:30px ;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.Lpoints{
+    display: flex;
+}
+
+.Lstar{
+    color: #ffb800;
+    margin-right: 5px;
+}
+

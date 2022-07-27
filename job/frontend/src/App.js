@@ -1,6 +1,7 @@
 import "../src/CSS/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 import {
   BrowserRouter as Router,
   Route,
@@ -13,12 +14,14 @@ import Rbuilder from "./components/Rbuilder";
 import Login from './components/login'
 import Mcq from "./components/mcq"
 import McqCat from "./components/mcqcat"
+import Leaderbord from "./components/leaderbord";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >   
+        <Route path="/Leader-bord" element={<Leaderbord/>}/> 
         <Route path="/McqCat" element={<McqCat/>}/>    
         <Route path="/Mcq" element={<Mcq/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>

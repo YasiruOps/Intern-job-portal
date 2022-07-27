@@ -29,6 +29,9 @@ export default function header() {
             <li className="item">
               <Link to="/McqCat">mcq categories</Link>
             </li>
+            <li className="item">
+              <Link to="/Leader-bord">Lbord</Link>
+            </li>
           </ul>
         </div>
       </nav>
