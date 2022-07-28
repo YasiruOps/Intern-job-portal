@@ -1,13 +1,4 @@
-
-
-.container{
-    height: max-content;
-    margin-top: 5%;
-    width: 60%;
-    min-width: 400px;
-  }
-  
-  .empteg-title{
+ .empteg-title{
     font-size: 26px;
     font-weight: 600;
   }
@@ -105,11 +96,11 @@
   }
   
   /* ------------------------------------- */
-  .group        { 
+   .group100        { 
     position:relative; 
-    margin-bottom:45px; 
-  }
-  input         {
+    margin-bottom:45px;   
+  } 
+  .empReg-input{
     font-size:18px;
     padding:10px 10px 10px 5px;
     display:block;
@@ -117,10 +108,10 @@
     border:none;
     border:1px solid #757575;
   }
-  input:focus     { outline:none; }
+  .empReg-input:focus     { outline:none; }
   
   /* LABEL ======================================= */
-  label          {
+  .empReg-label         {
     color:#999; 
     font-size:18px;
     font-weight:normal;
@@ -131,15 +122,15 @@
     transition:0.2s ease all; 
     -moz-transition:0.2s ease all; 
     -webkit-transition:0.2s ease all;
-  }
+  } 
   
   /* active state */
-  input:focus ~ label, input:valid ~ label    {
+  .empReg-input:focus ~ label, .empReg-input:valid ~ label   {
     top:-20px;
     font-size:14px;
     color:#5264AE;
   }
-  
+ 
   /* HIGHLIGHTER ================================== */
   .highlight {
     position:absolute;
@@ -151,12 +142,12 @@
     opacity:0.5;
   }
   
-  /* active state */
-  input:focus ~ .highlight {
+
+   .empReg-input:focus ~ .highlight {
     -webkit-animation:inputHighlighter 0.3s ease;
     -moz-animation:inputHighlighter 0.3s ease;
     animation:inputHighlighter 0.3s ease;
-  }
+  } 
   
   /* ANIMATIONS ================ */
   @-webkit-keyframes inputHighlighter {

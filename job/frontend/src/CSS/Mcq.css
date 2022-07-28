@@ -81,6 +81,10 @@
     display: inline;
   }
 
+  .label-set{
+    margin-left: 10px;
+  }
+
   .answer .form-check-label{
     margin-left: 10px;
   }

@@ -18,12 +18,14 @@ import Leaderbord from "./components/leaderbord";
 import EmployerLogin from "./components/employerlogin";
 import EmployerReg from "./components/empReg/employerReg";
 import EmployerReg2 from "./components/empReg/employerReg2";
+import EmployerReg3 from "./components/empReg/employerReg3";
 
 function App() {
   return (
     <div>
       <Router>
-        <Routes >   
+        <Routes > 
+        <Route path="/Employer-Reg3" element={<EmployerReg3/>}/>   
         <Route path="/Employer-Reg2" element={<EmployerReg2/>}/> 
         <Route path="/Employer-Reg" element={<EmployerReg/>}/> 
         <Route path="/EmployerLogin" element={<EmployerLogin/>}/> 

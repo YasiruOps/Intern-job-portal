@@ -14,7 +14,7 @@ export default function Employer() {
   }
 
   const RedirectForward=()=>{
-    navigate('/Employer-Reg2');
+    navigate('/Employer-Reg3');
   }
 
   return (
@@ -49,39 +49,39 @@ export default function Employer() {
 
           <div className="inputs1">
             <div className="row1 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Registration ID<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
 
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Company Name<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
             </div>
             <div className="row2 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Contact<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
 
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Address<span style={{ color: "red" }}>*</span>
                 </label>
               </div>

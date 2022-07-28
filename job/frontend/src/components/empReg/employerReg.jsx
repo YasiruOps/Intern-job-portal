@@ -44,39 +44,39 @@ export default function Employer() {
 
           <div className="inputs1">
             <div className="row1 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Email<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
 
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Display Name<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
             </div>
             <div className="row2 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Password<span style={{ color: "red" }}>*</span>
                 </label>
               </div>
 
-              <div className="group col-xl-6 ">
-                <input type="text" required />
+              <div className="group100 col-xl-6 ">
+                <input className="empReg-input" type="text" required />
                 <span className="highlight"></span>
                 <span className="bar"></span>
-                <label>
+                <label className="empReg-label">
                   Confirm Password<span style={{ color: "red" }}>*</span>
                 </label>
               </div>

@@ -1,17 +1,28 @@
-import React from "react";
-import "../../CSS/employerReg2.css";
+import React, { useState, useEffect } from "react";
+import "../../CSS/employerReg3.css";
 import Header from "../header";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useNavigate } from 'react-router-dom';
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useNavigate } from "react-router-dom";
 
 export default function Employer() {
-
   const navigate = useNavigate();
 
-  const RedirectBack=()=>{
-    navigate('/Employer-Reg2');
-  }
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [checked, setChecked] = useState(false);
+
+  const dataSubmit = () => {
+    return checked ? setIsDisabled(true) : setIsDisabled(false);
+  };
+
+  const onCheckboxClick = () => {
+    setChecked(!checked);
+    return dataSubmit();
+  };
+
+  const RedirectBack = () => {
+    navigate("/Employer-Reg2");
+  };
 
   return (
     <div>
@@ -38,61 +49,84 @@ export default function Employer() {
           <div className="emp-reg-progbar">
             <p className="step1">1</p>
             <p className="step02">2</p>
-            <p className="step3">3</p>
+            <p className="step03">3</p>
           </div>
 
           <hr className="proghr" />
 
-          <div className="inputs1">
-            <div className="row1 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>
-                  Registration ID<span style={{ color: "red" }}>*</span>
-                </label>
-              </div>
-
-              <div className="group col-xl-6 ">
-                <input type="text" required />
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>
-                  Company Name<span style={{ color: "red" }}>*</span>
-                </label>
-              </div>
+          <div className="termsandcon col-12">
+            <p className="terms-tag">Terms & conditions</p>
+            <hr className="terms-hr" />
+            <div className="regscroll">
+              <p className="terms-note">
+                sike simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. It has survived
+                not only five centuries, but also the leap into electronic
+                typesetting, remaining essentially unchanged. It was popularised
+                in the 1960s with the release of Letraset sheets containing
+                Lorem Ipsum passages, popularised in the 1960s with the release
+                of Letraset sheets containing Lorem Ipsum passages, . It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages,
+                . It was popularised in the 1960s with the release of Letraset
+                sheets containing Lorem Ipsum passages, popularised in the 1960s
+                with the release of Letraset sheets containing Lorem Ipsum
+                passages,sike simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages,
+                . It was popularised in the 1960s with the release of Letraset
+                sheets containing Lorem Ipsum passages, popularised in the 1960s
+                with the release of Letraset sheets containing Lorem Ipsum
+                passages, . It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, popularised in
+                the 1960s with the release of Letraset sheets containing Lorem
+                Ipsum passages,{" "}
+              </p>
             </div>
-            <div className="row2 row">
-              <div className="group col-xl-6 ">
-                <input type="text" required />
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>
-                  Contact<span style={{ color: "red" }}>*</span>
-                </label>
-              </div>
-
-              <div className="group col-xl-6 ">
-                <input type="text" required />
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>
-                  Address<span style={{ color: "red" }}>*</span>
-                </label>
-              </div>
+            <hr className="terms-hr" />
+            <div className="termsundestandbox">
+              <label
+                className="form-check-label termsundestandbox-label"
+                for="flexCheckDefault"
+              >
+                I accept the terms & conditions and I have read the privacy
+                policy
+              </label>
+              <input
+                onClick={onCheckboxClick}
+                className="form-check-input termsundestandbox-box"
+                type="checkbox"
+              />
             </div>
           </div>
-          <button type="button" className="btn btn-primary empcontinue">
-            Register
+
+          <button
+            disabled={isDisabled}
+            type="button"
+            className="btn btn-primary empcontinue"
+          >
+            Create Account
           </button>
 
-          <button onClick={RedirectBack} type="button" className="btn btn-primary empback">
-           <ArrowBackIosNewIcon className="arrowbackicon" />
-            Back        
+          <button
+            onClick={() => {
+              RedirectBack();
+            }}
+            type="button"
+            className="btn btn-primary empback"
+          >
+            <ArrowBackIosNewIcon className="arrowbackicon" />
+            Back
           </button>
-
-
         </div>
       </div>
     </div>
