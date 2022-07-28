@@ -15,12 +15,18 @@ import Login from './components/login'
 import Mcq from "./components/mcq"
 import McqCat from "./components/mcqcat"
 import Leaderbord from "./components/leaderbord";
+import EmployerLogin from "./components/employerlogin";
+import EmployerReg from "./components/empReg/employerReg";
+import EmployerReg2 from "./components/empReg/employerReg2";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >   
+        <Route path="/Employer-Reg2" element={<EmployerReg2/>}/> 
+        <Route path="/Employer-Reg" element={<EmployerReg/>}/> 
+        <Route path="/EmployerLogin" element={<EmployerLogin/>}/> 
         <Route path="/Leader-bord" element={<Leaderbord/>}/> 
         <Route path="/McqCat" element={<McqCat/>}/>    
         <Route path="/Mcq" element={<Mcq/>}/>

@@ -32,6 +32,11 @@ export default function header() {
             <li className="item">
               <Link to="/Leader-bord">Lbord</Link>
             </li>
+            <li className="item">
+              <Link to="/EmployerLogin">Emp log</Link>
+            </li>
+            
+
           </ul>
         </div>
       </nav>

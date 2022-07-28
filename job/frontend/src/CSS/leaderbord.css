@@ -73,6 +73,7 @@
   }
   
   .minimal2{
+    font-size: 18px;
     float: left;
    background-color: white;
     border: 0px;
@@ -254,7 +255,6 @@ select.minimal2:focus {
 @media only screen and (max-width: 800px) {
 
   .user_place {
-  
     float: left;
     margin-right: 10px;
     font-size: 24px;

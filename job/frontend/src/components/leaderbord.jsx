@@ -44,9 +44,8 @@ export default function leaderbord() {
             <div className="score-cat">
               <select className="minimal minimal2">
                 <option>Select Category</option>
-                <option>Computer science fundamentals</option>
-                <option>Netwoking</option>
-                <option>Cyber Security</option>
+                <option>CS</option>
+                <option>IT</option>
               </select>
             </div>
           </div>

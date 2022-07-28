@@ -33,6 +33,7 @@ app.listen(PORT, ()=>{
 //import Routes
 const auth = require('./routes/auth');
 const mcqRoutes = require('./routes/mcq')
+const mcqcategory = require('./routes/mcqcategory')
 
 //app midleware
 app.use(bodyParser.json());
@@ -40,3 +41,4 @@ app.use(cors());
 
 app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);
+app.use("/category", mcqcategory);

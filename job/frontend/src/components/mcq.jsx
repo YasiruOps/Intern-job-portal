@@ -3,6 +3,8 @@ import "../CSS/Mcq.css";
 import Header from "../components/header";
 import FlagIcon from "@mui/icons-material/Flag";
 import axios from 'axios';
+import {useLocation} from 'react-router-dom';
+
 
 const symbols = ["A", "B", "C", "D"];
 
@@ -10,11 +12,10 @@ export default function Mcq() {
   const [questions, setquestion] = useState([]);
   const [answer,setanswer] = useState({});
   const [number,setnumber] = useState(0);
-
-
+  const location = useLocation();
 
   useEffect(() => {
-        axios.get("http://localhost:8000/mcq?type=it&name=quiz1").then((res) => {
+        axios.get(`http://localhost:8000/mcq?type=${location.state.selectType}&name=${location.state.name}`).then((res) => {
             setquestion(res.data);           
         }).catch((err) => {
             alert(err.message)

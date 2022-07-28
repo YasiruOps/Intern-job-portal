@@ -1,0 +1,122 @@
+.outer_container {
+  display: block;
+  position: relative;
+  border-radius: 5px;
+  height: max-content;
+  width: 450px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.first_layer{
+  margin-left: 20px;
+  display: flex;
+}
+
+.outer_container .imag2{
+  float: left;
+  width: 40px;
+  height: fit-content;
+  margin-right: 25px;
+  margin-top: auto;
+margin-bottom: auto;
+object-fit: fill;
+}
+
+.outer_container .header1 {
+margin-top: auto;
+margin-bottom: auto;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.outer_container .header_hr {
+  width: 100px;
+  height: 5px;
+  opacity: 100;
+  margin-top: 5px;
+  margin-left: 35px;
+  border-radius: 20px;
+  background-color: #003169;
+}
+
+.outer_container .second_layer {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: max-content;
+  margin-left: 0px;
+}
+
+.second_layer .sign_tag {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.input-group-text {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.third_layer {
+  display: flex;
+  justify-content: end;
+  position: relative;
+}
+
+.third_layer .forgot_tag {
+  margin-right: 20px;
+  color: #0162bb;
+}
+
+.third_layer .forgot_tag:hover {
+  cursor: pointer;
+  color: #3b24cf;
+}
+
+.fourth_layer .btn_login {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  height: min-content;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fourth_layer .hr2 {
+    border-radius: 20px;
+  width: 80%;
+  height: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fourth_layer .sign_up{
+    font-weight: 500;
+    text-align: center;
+}
+
+.fourth_layer .btn_signup {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  height: min-content;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 25;
+  background: #0c77f8;
+}
+
+.fourth_layer .btn_signup:hover {
+  background: #0053b1;
+}
