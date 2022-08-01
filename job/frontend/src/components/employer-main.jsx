@@ -1,56 +1,51 @@
-import React, {useState} from 'react'
-import "../CSS/employer-main.css"
+import React, { useState } from "react";
+import "../CSS/employer-main.css";
+import CalCok from "../images/calendar-clock-icon.png";
+import SearchIcon from "@mui/icons-material/Search";
+import { GoSearch } from "react-icons/go";
 
-export default function Employer_main() {
-
-  const [xxx, setXxx] = useState('220px')
-
-  function changesize(){
-      setXxx(prev => prev === "220px" ? "95px" : "220px");
-  }
-
+export default function employer_main() {
   return (
-    <div className='lol'>
-    <button style={{marginLeft:"400px"}} type="button" class="btn btn-primary" onClick={changesize}>Primary</button>
+    <div>
+      <div className="dashtopcontainer">
+        <div className="outer-main3">
+          <p className="dashbord-tag">Dashbord</p>
+          <div className="activity-selector">
+            <img src={CalCok} className="calclockimg" />
+            <p className="activitytag">Activity</p>
+            <div className="vertical-line3" />
+            <select className="minimal3 ">
+              <option>Today</option>
+              <option>1 week</option>
+              <option>2 weeks</option>
+              <option>This month</option>
+            </select>
+          </div>
+        </div>
 
-    <div className="name2" style={{marginLeft: `${xxx}`} } >
+        <div className="searchbox">
+          <GoSearch className="searchicon" />
+          <input type="text" className="searchin" placeholder="search" />
+        </div>
+      </div>
 
-    <form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</form>
+      <div className="dashcentercontainer">
+        <p className="dashjobdetailstag">Jobs</p>
 
-</div>
+        <div className="detailcomponenthead col-4">
+          <div className="detailscomponent row">
+            <div className="col-10">
+              <p className="8">8</p>
+              <p className="jobsposted">jobs posted</p>
+            </div>
+            <div className="col-2">
+              <GoSearch />
+            </div>
+          </div>
+        </div>
 
 
+      </div>
     </div>
-
-  )
+  );
 }
-// 
