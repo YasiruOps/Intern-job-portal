@@ -1,14 +1,17 @@
+
+
 .dashtopcontainer{
     width: 100%;
-    height: fit-content;
-    margin-bottom: 100px;
+    height: fit-content;;  
+    margin-bottom: 40px;
+    
 }
 
 .outer-main3{
     padding: 5px;
-    margin-left: 210px;
+    margin-left: 220px;
     max-width: 100%;
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .dashbord-tag{
@@ -138,10 +141,19 @@ margin-bottom: 20px;
     margin-right: 5px;
 }
 
+.dashcentercontainer-outer{
+ 
+    margin-bottom: 40px;
+}
+
 .dashcentercontainer{
-   margin-right: 3%;
+    height: max-content;
+   margin-right: 7%;
+   justify-content: space-between;
+   padding-right: 50px;
+   padding-left: 50px;
     float: right;
-    width: 80%;
+    width: 75%;
     border-radius: 5px;
     height: fit-content;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
@@ -152,6 +164,9 @@ margin-bottom: 20px;
     .dashcentercontainer{   
         margin-right: 1%;
     }
+    .dashlowercontainer{
+        margin-right: 1% !important;
+    }
 }
 
 
@@ -159,11 +174,29 @@ margin-bottom: 20px;
     .dashcentercontainer{
         width: 70%;
     }
+    .dashlowercontainer{
+        width: 70% !important;
+    }
+    .deatilcomponentimg{
+        display: none;
+    }
+    
+
 }
 
 @media all and (max-width: 900px) {
     .dashcentercontainer{
         width: 55%;
+    }
+    .dashlowercontainer{
+        width: 55% !important;
+    }
+
+}
+
+@media all and  (max-width:992px){
+    .blocksecondhlaf{
+        display: none;
     }
 }
 
@@ -175,11 +208,112 @@ margin-bottom: 20px;
 }
 
 .detailcomponenthead{
+    min-width: 150px;
     padding: 20px;
+   
 }
 
 .detailscomponent{ 
+   
     text-align: center;
    margin-left: 0px;
-    border: 1px solid black;
+   border-radius: 5px;
+   -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); 
+   box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
+}
+
+.jobcount{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.jobsposted{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.deatilcomponentimg-cover{
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-bottom: 5px;
+    
+
+}
+
+.deatilcomponentimg{
+    
+    width: 60px;
+    height: 60px;
+}
+
+.dashlowercontainer{
+
+    height: max-content;
+   margin-right: 7%;
+   justify-content: space-between;
+   padding-right: 50px;
+   padding-left: 50px;
+    float: right;
+    width: 75%;
+    border-radius: 5px;
+    height: fit-content;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.lowfirstsec{
+    background-color: pink;
+}
+
+.applicationrev-tag{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: -10px;
+    margin-top: 10px;
+}
+
+.blockdetails{
+   
+    width: 60%;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    border-radius: 5px;
+    padding-right: 15px;
+    margin-bottom:20px;
+}
+
+.applicaitonsconter{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.applicationsname-tag{
+    font-size: 18;
+    font-weight: 500;
+}
+
+.blockfirsthalf{
+   
+text-align: center;
+}
+
+.blocksecondhlaf{
+margin-top: auto;
+margin-bottom: auto;
+
+
+}
+
+.applcationsicon{
+
+    width: 40px;
+    height: 40px;
+
+}
+
+.lowsecondsec{
+    background-color: palevioletred;
 }

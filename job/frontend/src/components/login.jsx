@@ -45,9 +45,9 @@ export default function Login() {
       <div className="outer_container">
         <div className="first_layer row">
           <div className="col-2">
-            <img className="img1" src={InternImg1} />
+            <img className="internimg1" src={InternImg1} />
           </div>
-          <div className="header1 col-6 ">For Interns</div>
+          <div className="internheader1 col-6 ">For Interns</div>
         </div>
         <div className="row">
           <hr className="header_hr" />
