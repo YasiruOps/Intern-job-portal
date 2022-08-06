@@ -36,7 +36,7 @@ export default function Internquestionsmain() {
             </div>
   
 
-      <div className="searchbox ">
+      <div className="searchbox test657 ">
           <GoSearch className="searchicon" />
           <input type="text" className="searchin" placeholder="search" />
         </div>

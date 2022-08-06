@@ -43,7 +43,7 @@ export default function Jobpostingmain() {
         </div>
 
         <div className="searchbox-layer">
-          <div className="searchbox ">
+          <div className="searchbox test657">
             <GoSearch className="searchicon" />
             <input type="text" className="searchin" placeholder="search" />
           </div>

@@ -14,7 +14,7 @@ import Chart from "./employerdashchart"
 export default function employer_main() {
   return (
     <div className="dashmainouter row">
-      <div className="dashtopcontainer col-12">
+      <div className="dashtopcontainer ">
         <div className="outer-main3">
           <p className="dashbord-tag">Dashbord</p>
           <div className="activity-selector">
@@ -32,7 +32,7 @@ export default function employer_main() {
 
         <div className="searchbox">
           <GoSearch className="searchicon" />
-          <input type="text" className="searchin" placeholder="search" />
+          <input type="text" className="searchin" placeholder="Search" />
         </div>
       </div>
 
