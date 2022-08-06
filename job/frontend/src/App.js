@@ -11,9 +11,9 @@ import {
 
 import Home from "./components/home";
 import Rbuilder from "./components/Rbuilder";
-import Login from './components/login'
-import Mcq from "./components/mcq"
-import McqCat from "./components/mcqcat"
+import Login from './components/login';
+import Mcq from "./components/mcq";
+import McqCat from "./components/mcqcat";
 import Leaderbord from "./components/leaderbord";
 import EmployerLogin from "./components/employerlogin";
 import EmployerReg from "./components/empReg/employerReg";
@@ -21,6 +21,9 @@ import EmployerReg2 from "./components/empReg/employerReg2";
 import EmployerReg3 from "./components/empReg/employerReg3";
 import EmployerDash from "./components/employerdash"
 import Cussupport from "./components/customersupport";
+import Internquestions from "./components/internquestions-dash";
+import Jobposting from "./components/jobposting-dash";
+import Applications_dash from "./components/applications-dash";
 
 
 function App() {
@@ -28,7 +31,9 @@ function App() {
     <div>
       <Router>
         <Routes >
-   
+        <Route path="/ApplicationsDash" element={<Applications_dash/>}/>  
+        <Route path="/Jobposting" element={<Jobposting/>}/>  
+        <Route path="/Iquestions" element={<Internquestions/>}/>  
         <Route path="/Cus-sup" element={<Cussupport/>}/>   
         <Route path="/Employer-Dash" element={<EmployerDash/>}/>   
         <Route path="/Employer-Reg3" element={<EmployerReg3/>}/>   

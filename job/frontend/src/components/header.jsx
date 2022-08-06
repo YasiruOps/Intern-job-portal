@@ -42,6 +42,7 @@ export default function header() {
             <li className="item">
               <Link to="/Cus-sup">Customer support</Link>
             </li>
+ 
           </ul>
         </div>
       </nav>

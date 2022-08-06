@@ -1,0 +1,69 @@
+.application_popup_outerframe{
+    width: 500px;
+    height: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btnviewresume{
+    
+    width: 150px;
+    height: 25px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 10px;
+    padding-top: -10px ;
+    position: absolute;
+    margin-top: -60px;
+    margin-left: 200px;
+}
+
+.viewbtniconresume{
+    margin-right: -15px;
+    margin-left: 20px;
+    margin-top: -2px;
+    font-size: 16px;
+}
+
+.personaldetailsviepopup{
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.titlestagpops{
+    font-weight: 500;
+}
+
+.answerl2{
+    font-size: 14px;
+    margin-top: -20px;
+    opacity: 80%;
+}
+
+.lineheightoff{
+    margin-top: -10px;
+    line-height: 1;
+}
+
+.popupseparator{
+    color: #FF7A00;
+    opacity: 80%;
+}
+
+.btnapplicationpopupview{
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+.applicaitonbtnsetviewpopup{
+    display: flex;
+    justify-content:space-around;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.btnapplicationpopupview{
+    color: white;
+}

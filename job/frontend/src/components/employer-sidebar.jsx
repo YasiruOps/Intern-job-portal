@@ -1,6 +1,7 @@
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
 import "../CSS/employer-sidebar.css"
+import "../SCSS/employer-sidebar.sass"
 
 //import react pro sidebar components
 import {
@@ -21,16 +22,24 @@ import { AiOutlineFileText } from "react-icons/ai";
 import { AiOutlineFileProtect } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
+import {RiQuestionMark} from "react-icons/ri";
+import { Link } from "react-router-dom";
+
 
 
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
 
 
+
+
+
+
 const Header = () => {
   
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(false)
+
 
     //create a custom function that will change menucollapse state from false to true and true to false
   const menuIconClick = () => {
@@ -58,12 +67,13 @@ const Header = () => {
             </div>
           </SidebarHeader>
           <SidebarContent>
-            <Menu iconShape="square">
-              <MenuItem  icon={<FiHome />}>Home</MenuItem>
-              <MenuItem  active={true} icon={<AiOutlineFileProtect active={true}/>}>Job Posting</MenuItem>
-              <MenuItem icon={<AiOutlineFileText />}>Applications</MenuItem>
-              <MenuItem icon={<FiUser />}>Profile</MenuItem>
-              <MenuItem icon={<BiCog />}>Settings</MenuItem>             
+            <Menu iconShape="square">            
+              <MenuItem className="fa grow" active={true} icon={<FiHome />}><Link style={{color:"white", opacity:"100%"}} to="/Employer-Dash">Home </Link></MenuItem>             
+              <MenuItem className="fa grow" icon={<AiOutlineFileProtect />}><Link style={{color:"white", opacity:"100%"}} to="/Jobposting">Job Posting</Link></MenuItem>
+              <MenuItem  className="fa grow" icon={<AiOutlineFileText />}><Link style={{color:"white", opacity:"100%"}} to="/ApplicationsDash">Applications</Link></MenuItem>
+              <MenuItem className="fa grow" icon={<FiUser />}>Profile</MenuItem>
+              <MenuItem className="fa grow" icon={<RiQuestionMark />}><Link style={{color:"white", opacity:"100%"}} to="/Iquestions">Inter Q's</Link></MenuItem>              
+              <MenuItem className="fa grow" icon={<BiCog />}>Settings</MenuItem>             
             </Menu>
           </SidebarContent>
           <SidebarFooter>
@@ -72,6 +82,8 @@ const Header = () => {
             </Menu>
           </SidebarFooter>
         </ProSidebar>
+
+     
       </div>
     </>
   );

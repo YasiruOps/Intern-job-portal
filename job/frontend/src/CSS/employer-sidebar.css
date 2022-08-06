@@ -6,8 +6,7 @@
 
   }
   #header .pro-sidebar {
-
-    height:90vh;
+    height:92vh;
   }
 
   #header .closemenu {
@@ -49,12 +48,14 @@
     padding: 0 5px;
   }
 
+
   #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
     color: white;
     margin: 10px 0px;
     font-weight: bold;
   }
 
+ 
 
   #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
     background-color: rgba(255, 255, 255, 0);
@@ -66,6 +67,7 @@
     color: white;
   }
 
+ 
   #header .pro-sidebar-inner .pro-sidebar-layout .active {
     margin-left: 5px;
     margin-right: 5px;
@@ -86,5 +88,4 @@
       overflow: hidden;
     }
   }
- 
  
