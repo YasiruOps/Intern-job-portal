@@ -9,9 +9,11 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useState } from "react";
 import Replyform from "./replyform";
 import Popup from "./popup";
+import Popup2 from "./popup2";
 import { AiFillEdit } from "react-icons/ai";
 import { MdLaunch } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
+import Addjobform from "./addjobform_popup"
 
 export default function Jobpostingmain() {
   const [openPopup, setOpenPopup] = useState(false);
@@ -51,7 +53,7 @@ export default function Jobpostingmain() {
       </div>
 
       <div className="addjobpostbtn-layer">
-        <button type="button" className="btn btn-success addjobpostbtn">
+        <button type="button" className="btn btn-success addjobpostbtn" onClick={() => openInPopup2(true)}>
           <MdLibraryAdd className="addjobpostbtnicon"/>
           Add Offer
         </button>
@@ -90,7 +92,7 @@ export default function Jobpostingmain() {
               &nbsp; &nbsp;
               <button
                 className="btn btn-warning"
-                onClick={() => openInPopup2(true)}
+                
                 style={{ color: "white" }}
               >
                 Edit
@@ -114,13 +116,14 @@ export default function Jobpostingmain() {
         <Replyform />
       </Popup>
 
-      <Popup
-        title="MAru bn"
+      <Popup2
+       
+        title="ADD NEW JOB"
         openPopup={openPopup2}
         setOpenPopup={setOpenPopup2}
       >
-        <Replyform />
-      </Popup>
+        <Addjobform />
+      </Popup2>
     </div>
   );
 }
