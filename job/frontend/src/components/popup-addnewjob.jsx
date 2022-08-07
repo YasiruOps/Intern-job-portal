@@ -42,9 +42,9 @@ export default function popup(props) {
                             </button>
                     </div>
                 </DialogTitle>
-                <p className="add-sign" style={{backgroundColor:"#0E7C5D", padding:"0px 12px 0px 12px", marginLeft:"20px", marginTop:"", borderRadius:"25px", color:"white", fontSize:"12px", marginTop:"-15px", width:"fit-content" }}>ADD</p> 
+                <p className="add-sign" style={{backgroundColor:"#0E7C5D", padding:"0px 12px 0px 12px", marginLeft:"20px", marginTop:"", borderRadius:"25px", color:"white", fontSize:"12px", marginTop:"-15px", width:"fit-content" }}>Add offer</p> 
 
-                <hr className='dividerpopup' style={{color:"#0E7C5D"}}/>
+                <hr className='dividerpopup' style={{color:"#0E7C5D", marginBottom:"-5px"}}/>
                 <DialogContent>
                         {children}
                 </DialogContent>

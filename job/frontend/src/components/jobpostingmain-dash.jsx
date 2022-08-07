@@ -8,7 +8,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useState } from "react";
 import Replyform from "./replyform";
-import Popup from "./jobformview_popup";
+import Popup from "./popup";
 import Popup2 from "./popup-addnewjob";
 import Popup3 from "./popup-editjob";
 import { AiFillEdit } from "react-icons/ai";
@@ -16,6 +16,7 @@ import { MdLaunch } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
 import Addjobform from "./addjobform_popup"
 import Editjobform from "./editjobform_popup"
+import Jobviewform from "./jobformview_popup"
 
 export default function Jobpostingmain() {
   const [openPopup, setOpenPopup] = useState(false);
@@ -120,7 +121,7 @@ export default function Jobpostingmain() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <Replyform />
+        <Jobviewform />
       </Popup>
 
       <Popup2      

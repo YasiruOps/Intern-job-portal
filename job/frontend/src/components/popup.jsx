@@ -38,7 +38,7 @@ export default function popup(props) {
                             </button>
                     </div>
                 </DialogTitle>
-                <hr className='dividerpopup'/>
+                <hr className='dividerpopup' style={{marginBottom:"-5px"}}/>
                 <DialogContent>
                         {children}
                 </DialogContent>

@@ -44,7 +44,7 @@ export default function popup(props) {
                 </DialogTitle>
                 <p className="add-sign" style={{backgroundColor:"#FFB800", padding:"0px 12px 0px 12px", marginLeft:"20px", marginTop:"", borderRadius:"25px", color:"white", fontSize:"12px", marginTop:"-15px", width:"fit-content" }}>Edit offer</p> 
 
-                <hr className='dividerpopup' style={{color:"#FF7A00", opacity:"50%"}}/>
+                <hr className='dividerpopup' style={{color:"#FF7A00", opacity:"50%", marginBottom:"-5px"}}/>
                 <DialogContent>
                         {children}
                 </DialogContent>
