@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+.jobdetailmain {
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  font-family: "Lato", sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.topsector {
+
+}
+
+.searchjobtag {
+  font-size: 22px;
+  margin-bottom: -10px;
+  font-weight: bold;
+}
+
+.midsectorjob {
+  
+}
+
+.searchboxjob {
+  float: right;
+  width: 500px;
+  margin-right: 3.4%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  outline: 1px solid rgba(0, 0, 0, 0.226);
+}
+
+.searchboxjob:hover {
+  outline: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.searchinjob {
+  width: 70%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  border: 0;
+  padding-left: 10px;
+}
+
+.searchinjob::placeholder {
+  text-align: center;
+}
+
+.searchinjob:focus {
+  border-color: black;
+  outline: 0;
+}
+
+.searchiconjob {
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 5px;
+}
+
+.advancedsearhjob {
+  width: 23%;
+  border-radius: 25px;
+}
+
+@media only screen and (max-width: 850px) {
+  .advancedsearhjob {
+    display: none;
+  }
+  .searchboxjob {
+    width: 300px;
+  }
+  .searchinjob {
+    width: 85%;
+  }
+}
+
+.jobdetailshr {
+  width: 100%;
+  border-radius: 25px;
+  opacity: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jobtitle-line {
+  display: flex;
+}
+
+.jobtitle {
+  font-size: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: bold;
+}
+
+.verifiedsign {
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #0c77f8;
+}
+
+.jobtitle-line2 {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.postdate {
+  font-weight: bold;
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.postedon {
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.company {
+  margin-right: 5px;
+  color: #0c77f8;
+  text-decoration: underline;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.linkicon {
+  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@media all and (max-width: 600px) {
+  .jobtitle-line2 {
+    font-size: 13px;
+  }
+}
+
+.jobinfobox {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.jobinfobox .jobdetailssimp {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gapsetter{
+    margin-bottom: 25px;
+        padding-left: 30px;
+        padding-right: 30px;
+}
+
+.detailitem {
+  display: flex;
+}
+
+.detailicon{
+    color: #001A72;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.detaillevel{ 
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    opacity: 70%;
+}
+
+.requirments{
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.jobreqtag{
+    color: #001A72;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.detadetails{
+
+}
+
+.headerlightjob{
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.headerlightjob2{
+    font-weight: bold;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
+.reqdetails{
+
+}
+
+.butnspace{
+    display: flex;   
+    justify-content: space-evenly;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.jobdetailsbtns4{
+    width: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+@media all and (max-width: 800px) {
+    .butnspace{
+        display: block;
+    }
+    .jobdetailsbtns4{
+
+    }
+  }
+
+  .righydiv{
+    float: right;
+    margin-right: -10px;
+    width: 55%;
+    min-width: 250px;
+    border:1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;    
+  }
+
+.righydivhr{
+    width: 95%;
+    margin-top: 5px;
+}
+
+.smalltag123{
+    margin-top: auto;
+    margin-bottom: auto;
+   
+}
+
+.righydivcions1{
+    color:#FF0000;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+
+}
+.righydivcions2{
+    color:#FF8A00;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+  
+}
+.righydivcions3{
+    color: #0C77F8;    
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+
+}

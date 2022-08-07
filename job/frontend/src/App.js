@@ -1,7 +1,6 @@
 import "../src/CSS/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 import {
   BrowserRouter as Router,
   Route,
@@ -24,13 +23,14 @@ import Cussupport from "./components/customersupport";
 import Internquestions from "./components/internquestions-dash";
 import Jobposting from "./components/jobposting-dash";
 import Applications_dash from "./components/applications-dash";
-
+import Jobdetails from "./components/jobdetails";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >
+        <Route path="/Job-details" element={<Jobdetails/>}/> 
         <Route path="/ApplicationsDash" element={<Applications_dash/>}/>  
         <Route path="/Jobposting" element={<Jobposting/>}/>  
         <Route path="/Iquestions" element={<Internquestions/>}/>  
