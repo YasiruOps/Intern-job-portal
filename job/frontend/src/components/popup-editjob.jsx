@@ -2,7 +2,7 @@ import React from 'react';
 import {Dialog, DialogTitle, DialogContent, makeStyles, Typography} from'@material-ui/core';
 import { borderRadius, height } from '@mui/system';
 import "../CSS/popup.css"
-import { MdOutlinePostAdd } from 'react-icons/md';
+import { AiFillEdit } from 'react-icons/ai';
 
 
 export default function popup(props) {
@@ -23,7 +23,7 @@ export default function popup(props) {
                             {title}
                         </Typography>
 
-                        <MdOutlinePostAdd style={{marginRight:"310px", fontSize:"24px", color:"#0E7C5D"}}/>
+                        <AiFillEdit style={{marginRight:"310px",marginTop:"2px", fontSize:"24px", color:"#FFB800"}}/>
 
                         <button type="button" className="btn btn-danger" aria-label="Close" 
                         style={{ borderRadius: '100%', height:"25px", width:"25px", marginTop:"-10px", marginRight:"-15px"}}
@@ -42,9 +42,9 @@ export default function popup(props) {
                             </button>
                     </div>
                 </DialogTitle>
-                <p className="add-sign" style={{backgroundColor:"#0E7C5D", padding:"1px 12px 1px 12px", marginLeft:"20px", borderRadius:"25px", color:"white", fontSize:"12px", width:"fit-content" }}>ADD</p> 
+                <p className="add-sign" style={{backgroundColor:"#FFB800", padding:"0px 12px 0px 12px", marginLeft:"20px", marginTop:"", borderRadius:"25px", color:"white", fontSize:"12px", marginTop:"-15px", width:"fit-content" }}>Edit offer</p> 
 
-                <hr className='dividerpopup' style={{color:"#0E7C5D"}}/>
+                <hr className='dividerpopup' style={{color:"#FF7A00", opacity:"50%"}}/>
                 <DialogContent>
                         {children}
                 </DialogContent>

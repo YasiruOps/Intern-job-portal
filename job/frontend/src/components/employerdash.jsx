@@ -9,8 +9,7 @@ export default function employerdash() {
     <div className='maincomponentdash'>
        <Header/>
        <Sidebar/>
-       <Empmain/>
-      
+       <Empmain/>     
     </div>
   )
 }

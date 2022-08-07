@@ -8,16 +8,19 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useState } from "react";
 import Replyform from "./replyform";
-import Popup from "./popup";
-import Popup2 from "./popup2";
+import Popup from "./jobformview_popup";
+import Popup2 from "./popup-addnewjob";
+import Popup3 from "./popup-editjob";
 import { AiFillEdit } from "react-icons/ai";
 import { MdLaunch } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
 import Addjobform from "./addjobform_popup"
+import Editjobform from "./editjobform_popup"
 
 export default function Jobpostingmain() {
   const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
+  const [openPopup3, setOpenPopup3] = useState(false);
 
   const openInPopup = () => {
     setOpenPopup(true);
@@ -25,6 +28,10 @@ export default function Jobpostingmain() {
 
   const openInPopup2 = () => {
     setOpenPopup2(true);
+  };
+
+  const openInPopup3 = () => {
+    setOpenPopup3(true);
   };
 
   return (
@@ -92,7 +99,7 @@ export default function Jobpostingmain() {
               &nbsp; &nbsp;
               <button
                 className="btn btn-warning"
-                
+                onClick={() => openInPopup3()}
                 style={{ color: "white" }}
               >
                 Edit
@@ -109,21 +116,28 @@ export default function Jobpostingmain() {
       </table>
 
       <Popup
-        title="Reply Message"
+        title="Junior developer 1"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
         <Replyform />
       </Popup>
 
-      <Popup2
-       
+      <Popup2      
         title="ADD NEW JOB"
         openPopup={openPopup2}
         setOpenPopup={setOpenPopup2}
       >
         <Addjobform />
       </Popup2>
+
+      <Popup3     
+        title="Junior developer 1"
+        openPopup={openPopup3}
+        setOpenPopup={setOpenPopup3}
+      >
+        <Editjobform />
+      </Popup3>
     </div>
   );
 }
