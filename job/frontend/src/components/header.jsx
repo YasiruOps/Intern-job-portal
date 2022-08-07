@@ -40,7 +40,12 @@ export default function header() {
             <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
             </li>
-
+            <li className="item">
+              <Link to="/Cus-sup">Customer support</Link>
+            </li>
+            <li className="item">
+              <Link to="/Job-details">Jobba</Link>
+            </li>
 
           </ul>
         </div>
