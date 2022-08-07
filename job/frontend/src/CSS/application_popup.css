@@ -5,8 +5,7 @@
     padding-right: 10px;
 }
 
-.btnviewresume{
-    
+.btnviewresume{ 
     width: 150px;
     height: 25px;
     font-size: 14px;
@@ -14,7 +13,7 @@
     line-height: 10px;
     padding-top: -10px ;
     position: absolute;
-    margin-top: -60px;
+    margin-top: -40px;
     margin-left: 200px;
 }
 
