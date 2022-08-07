@@ -9,37 +9,40 @@ export default function header() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="logo">
-            <img className="img1" src={logo} width = "160" height = "auto" /></div>
+            <img className="img1" src={logo} /></div>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="item">
-              <Link to="/" className="listed" > Home</Link>         
+                    <Link to="/"> Home</Link>         
             </li>
             <li className="item">
-              <Link to="/Rbuilder" className="listed" >Resume builder</Link>
+              <Link to="/Rbuilder">Rbuilder</Link>
             </li>
             <li className="item">
-              <Link to="/Mcq" className="listed" >MCQ</Link>
             </li>
             <li className="item">
-              <Link to="/McqCat" className="listed">Game Portal</Link>
+              <Link to="/Login">Login</Link>
             </li>
             <li className="item">
-              <Link to="/Leader-bord" className="listed">Leaderboard</Link>
+              <Link to="/Mcq">mcq</Link>
             </li>
             <li className="item">
-              <Link to="/EmployerLogin" className="listed">Employer Login</Link>
+              <Link to="/McqCat">mcq categories</Link>
             </li>
             <li className="item">
-              <Link to="/Employer-Dash" className="listed">Employer Dashboard</Link>
+              <Link to="/Leader-bord">Lbord</Link>
             </li>
             <li className="item">
-              <Link to="/Cus-sup" className="listed">Customer Support</Link>
+              <Link to="/EmployerLogin">Emp log</Link>
             </li>
             <li className="item">
-              <Link to="/Login" className="sign">Sign In</Link>
+              <Link to="/Employer-Dash">Emp Dash</Link>
             </li>
+            <li className="item">
+              <Link to="/Cus-sup">Customer support</Link>
+            </li>
+ 
           </ul>
         </div>
       </nav>
