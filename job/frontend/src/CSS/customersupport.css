@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 .cutomer-outer-main {
-    overflow: auto;
-  width: 100%;
+
   height: max-content;
+  overflow-y: hidden;
 }
 
 .customer-main {

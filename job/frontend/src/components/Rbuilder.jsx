@@ -8,7 +8,7 @@ import Cloud from "../images/cloud.jpg";
 import Step1 from "../images/Rbuilder_step1.jpg"
 import Step2 from "../images/Rbuilder_step2.webp"
 import Step3 from "../images/Rbuilder_step3.jpg"
-
+import { Link } from "react-router-dom"; 
 
 export default function Rbuilder() {
   return (
@@ -25,9 +25,12 @@ export default function Rbuilder() {
           Builder
         </p>
 
-        <button type="button" className="builder_btn1  btn btn-primary">
-          Create Resume
-        </button>
+        <Link to="/ResumeForm"> 
+          <button type="button" className="builder_btn1  btn btn-primary">
+            Create Resume
+          </button>
+        </Link>     
+
         <img
           src={Resume_img1}
           className="builder_img1 img-fluid d-block"

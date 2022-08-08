@@ -3,6 +3,7 @@
 .homepage-outermain{
     font-family: "Lato", sans-serif;
     font-weight:600;
+    overflow-x: hidden;
 }
 
 .head{
