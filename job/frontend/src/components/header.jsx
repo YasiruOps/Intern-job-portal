@@ -22,9 +22,6 @@ export default function header() {
               <Link to="/Rbuilder" className="listed" >Resume builder</Link>
             </li>
             <li className="item">
-              <Link to="/Mcq" className="listed" >MCQ</Link>
-            </li>
-            <li className="item">
               <Link to="/McqCat" className="listed">Game Portal</Link>
             </li>
             <li className="item">
