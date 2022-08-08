@@ -38,16 +38,16 @@ export default function header() {
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
             </li>
             <li className="item">
+              <Link to="/Cus-sup"  className="listed" >Customer support</Link>
+            </li>
+            <li className="item">
+              <Link to="/Job-details"  className="listed">Jobba</Link>
+            </li>
+            <li className="item">
+              <Link to="/Job-Search"  className="listed">Search Page</Link>
+            </li>
+            <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
-            </li>
-            <li className="item">
-              <Link to="/Cus-sup">Customer support</Link>
-            </li>
-            <li className="item">
-              <Link to="/Job-details">Jobba</Link>
-            </li>
-            <li className="item">
-              <Link to="/Job-Search">Search Page</Link>
             </li>
 
             

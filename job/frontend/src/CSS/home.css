@@ -73,3 +73,13 @@ h3{
     margin-top: 15px;
     margin-bottom: 55px;
 }
+
+.instructions{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.cardgroup{
+    width: 100%;
+}
