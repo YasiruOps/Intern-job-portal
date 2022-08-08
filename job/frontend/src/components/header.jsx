@@ -41,7 +41,7 @@ export default function header() {
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
             </li>
             <li className="item">
-              <Link to="/Job-details"  className="listed">Jobba</Link>
+              <Link to="/Job-details"  className="listed">Job Posts</Link>
             </li>
             <li className="item">
               <Link to="/Job-Search"  className="listed">Search Page</Link>
