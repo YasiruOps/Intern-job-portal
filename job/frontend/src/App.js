@@ -27,6 +27,8 @@ import Jobdetails from "./components/jobdetails";
 import ResumeBuilderForm from "./components/Resumebuilderform"
 import Jobsearchpage from "./components/jobsearchpage"
 import ResumeForm from "./components/Resumebuilderform"
+import EmpApp1 from "./components/employement-app1";
+import EmpApp2 from "./components/employment-app2";
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
     <div>
       <Router>
         <Routes >     
+        <Route path="/EmpApp2" element={<EmpApp2/>}/> 
+        <Route path="/EmpApp1" element={<EmpApp1/>}/> 
         <Route path="/ResumeForm" element={<ResumeForm/>}/> 
         <Route path="/Job-Search" element={<Jobsearchpage/>}/> 
         <Route path="/ResumeBuilderForm" element={<ResumeBuilderForm/>}/> 

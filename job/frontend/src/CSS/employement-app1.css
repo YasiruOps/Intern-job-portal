@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins&display=swap");
+.employement-appform {
+  margin-top: 2%;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 400px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.timehire-tag {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+}
+
+.timehire-hr {
+  width: 10%;
+  height: 4px !important;
+  border-radius: 25px;
+  opacity: 100;
+  color: #10375c;
+  margin-top: -15px;
+}
+
+.empform1 {
+  margin-top: 50px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formlname {
+  margin-bottom: 20px;
+}
+
+.empacc {
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.empform1btnline {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addapplicaiton1btn {
+  width: 200px;
+  background-color: #0275b1;
+  color: white;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 25px;
+}
+
+.addapplicaiton1btn:hover {
+    transition: .5s;
+  color: white;
+  opacity: 80%;
+}
+
+.publishbtn {
+    transition: .5s;
+  width: 200px;
+  border-radius: 25px;
+  background-color: #0f1b2d;
+  color: white;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+}
+
+.publishbtn:hover {
+    transition: .5s;
+  color: white;
+  opacity: 80%;
+}
+
+@media only screen and (max-width: 960px) {
+  .empform1btnline {
+    display: block;
+    position: relative;
+  }
+
+  .addapplicaiton1btn {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .publishbtn {
+    transition: .5s;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+}

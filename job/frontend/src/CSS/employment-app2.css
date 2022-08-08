@@ -1,0 +1,15 @@
+.empapp2img{
+    width: 100%;
+    height:400px;
+    object-fit:cover;
+    filter:brightness(0.3);
+    object-position: 0px 20%;
+}
+
+.floatheader{
+    position: absolute;
+    top: 250px;
+    background-color: white;
+    opacity: 50%;
+
+}
