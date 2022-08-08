@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;1,100&display=swap");
+
 .homepage-outermain{
     font-family: "Lato", sans-serif;
     font-weight:600;
@@ -72,4 +73,14 @@ h3{
 .testimonial{
     margin-top: 15px;
     margin-bottom: 55px;
+}
+
+.instructions{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.cardgroup{
+    width: 100%;
 }
