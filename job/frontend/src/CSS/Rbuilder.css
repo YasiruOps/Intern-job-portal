@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+.outerframerRbuilder{
+  overflow-x: hidden;
+}
+
 .top-layer {
   position: relative;
   max-height: fit-content;
@@ -21,7 +25,7 @@
   position: absolute;
   width: max-content;
   color: white;
-  top: 0;
+  top: 10px;
   left: 20px;
 }
 
@@ -33,7 +37,7 @@
   border-radius: 20px;
   color: #ffb800;
   width: 130px;
-  top: 50px;
+  top: 60px;
   left: 20px;
 }
 
@@ -43,7 +47,7 @@
   position: absolute;
   width: 100%;
   height: max-content; 
-  top: 75px;
+  top: 85px;
   left: 20px;
  
 }

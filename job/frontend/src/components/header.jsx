@@ -6,7 +6,7 @@ import '../CSS/header.css'
 
 export default function header() {
   return (
-    <div>
+    <div style={{width:"100%"}}>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="logo">
             <img className="img1" src={logo} width = "160" height = "auto" /></div>
