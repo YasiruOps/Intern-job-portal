@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import { GoSearch } from "react-icons/go";
 import { Accordion, Container, Col, Image, Button, Row } from "react-bootstrap";
 import "../CSS/home.css";
 import pic1 from "../images/frm1.png";
@@ -23,9 +24,20 @@ export default function home() {
           <Accordion>
             <h2>Find a Job</h2>
             <h3>Search from over 200+ Job Postings</h3>
+            <div className="searchboxjobs">
+              <GoSearch className="searchiconjobs" />
+              <input type="text" className="searchinjobs" />
+              <button type="button" class="btn btn-light advancedsearhjobs">
+                Advanced
+              </button>
+              <button type="button" class="btn btn-light advancedsearhjobs">
+                Browse
+              </button>
+            </div>
             <Link to="/">
               <Button className="homepagebtn1">SEARCH</Button>
             </Link>
+
 
           </Accordion>
         </Container>
@@ -70,8 +82,8 @@ export default function home() {
           <h1 className="system-center"> HOW TO USE OUR SYSTEM </h1>
         </div>
 
-      <CardGroup className="cardgroup">
-      <Card>
+      <CardGroup>
+      <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd1}/>
         <Card.Body>
           <Card.Title>Card title</Card.Title>
@@ -80,11 +92,8 @@ export default function home() {
             to additional content. This content is a little bit longer.
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
-      <Card>
+      <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd2} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
@@ -93,11 +102,8 @@ export default function home() {
             additional content.{' '}
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
-      <Card>
+      <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd3} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
@@ -107,11 +113,8 @@ export default function home() {
             first to show that equal height action.
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
-      <Card>
+      <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd4} />
         <Card.Body>
           <Card.Title>Card title</Card.Title>
@@ -121,9 +124,6 @@ export default function home() {
             first to show that equal height action.
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
       </Card>
     </CardGroup>
       </Row>
