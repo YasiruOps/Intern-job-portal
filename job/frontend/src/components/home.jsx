@@ -19,7 +19,6 @@ export default function home() {
     <div className="homepage-outermain">
       <div className="head">
         <Header />
-
         <Container>
           <Accordion>
             <h2>Find a Job</h2>

@@ -9,7 +9,8 @@ export default function header() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="logo">
-            <img className="img1" src={logo} width = "160" height = "auto" /></div>
+            <img className="img1" src={logo} width = "160" height = "auto" />
+            </div>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -36,9 +37,6 @@ export default function header() {
             </li>
             <li className="item">
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
-            </li>
-            <li className="item">
-              <Link to="/Cus-sup"  className="listed" >Customer support</Link>
             </li>
             <li className="item">
               <Link to="/Job-details"  className="listed">Jobba</Link>
