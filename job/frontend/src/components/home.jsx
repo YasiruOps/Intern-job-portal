@@ -50,28 +50,25 @@ export default function home() {
 
           <Col xs={12} sm={4} className="person-wrapper">
             <Image src={pic1} circle className="profile-pic" />
-            <h3>Amani</h3>
+            <h3>Job Search</h3>
             <p>
-              “ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia. “
+              Our state of the art Job Search Engine will ensure that you will find your dream job
             </p>
           </Col>
 
           <Col xs={12} sm={4} className="person-wrapper">
             <Image src={pic2} circle className="profile-pic" />
-            <h3>Ben</h3>
+            <h3>Resume Builder</h3>
             <p>
-              “ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia. “
+             New to the industry ? </p><p>Build your own Resume using Matrix
             </p>
           </Col>
 
           <Col xs={12} sm={4} className="person-wrapper">
             <Image src={pic3} circle className="profile-pic" />
-            <h3>Silly L.</h3>
+            <h3>Boost Your Resume</h3>
             <p>
-              “ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia. “{" "}
+              Boost Your current Resume using our various Gamification Techniques
             </p>
           </Col>
         </Row>
@@ -86,42 +83,36 @@ export default function home() {
       <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd1}/>
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Find Your Desired Job</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Search through our libraries and find your desired job post in the desired company
           </Card.Text>
         </Card.Body>
       </Card>
       <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd2} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Check Job Requirements</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{' '}
+            Check the requirements that the company has requested 
           </Card.Text>
         </Card.Body>
       </Card>
       <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd3} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Apply for the Job Post</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+            Click on your desired job post and apply through the Application Interface
           </Card.Text>
         </Card.Body>
       </Card>
       <Card className="cardgroup" border="light">
         <Card.Img className="instructions" variant="top" src={bd4} />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Card.Title>Check Your Application Status</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+            Visit your profile and check the status of your Application
           </Card.Text>
         </Card.Body>
       </Card>
