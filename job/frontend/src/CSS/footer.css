@@ -53,3 +53,10 @@ h6{
 .iconsfooter{
   color:white;
 }
+
+.social{
+text-decoration: none;
+color:white;
+margin: 30px;
+margin-left: -5px;
+}

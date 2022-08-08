@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import logo1 from '../images/logo.png';
 import {Col,Row}  from 'react-bootstrap';
 import '../CSS/footer.css'
+import { TiSocialFacebookCircular } from "react-icons/ti";
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { TiSocialInstagramCircular } from "react-icons/ti";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon,MDBBtn} from 'mdb-react-ui-kit';
 
 
@@ -22,31 +26,23 @@ export default function footer() {
           <MDBCol md="3" lg="4" xl="3" className='footer-desc mx-auto mb-4'>
           <img className="img2" src={logo1} width = "220" height = "auto" />
             <p>
-              Matrix is a company with a goal of making the process of finding a job, a more desirable experience. </p>
+              Matrix is a company with a goal of making the process of finding a job, a more desirable experience.</p>
+            <a href="https://www.facebook.com/">
+              <TiSocialFacebookCircular className='social'size = '36'/>        
+            </a> 
+            <a href="https://www.twitter.com/">
+            <AiFillTwitterCircle className='social' size = '32'/>         
+            </a> 
+            <a href="https://www.instagram.com/">
+            <TiSocialInstagramCircular  className='social' size = '32'/>        
+            </a> 
+            <a href="https://www.linkedin.com/">
+            <TiSocialLinkedinCircular className='social' size = '36'/>     
+            </a> 
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='facebook-f' />
-          </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='twitter' />
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='google' />
-          </MDBBtn>
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='instagram' />
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='linkedin-in' />
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='github' />
-          </MDBBtn>
           </MDBCol>
+          
           
           <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
             <h6 className='linkref text-uppercase fw-bold mb-4'>Services</h6>
