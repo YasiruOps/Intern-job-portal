@@ -46,7 +46,11 @@ export default function header() {
             <li className="item">
               <Link to="/Job-details">Jobba</Link>
             </li>
+            <li className="item">
+              <Link to="/Job-Search">Search Page</Link>
+            </li>
 
+            
           </ul>
         </div>
       </nav>

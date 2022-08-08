@@ -24,12 +24,16 @@ import Internquestions from "./components/internquestions-dash";
 import Jobposting from "./components/jobposting-dash";
 import Applications_dash from "./components/applications-dash";
 import Jobdetails from "./components/jobdetails";
+import ResumeBuilderForm from "./components/Resumebuilderform"
+import Jobsearchpage from "./components/jobsearchpage"
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >
+        <Route path="/Job-Search" element={<Jobsearchpage/>}/> 
+        <Route path="/ResumeBuilderForm" element={<ResumeBuilderForm/>}/> 
         <Route path="/Job-details" element={<Jobdetails/>}/> 
         <Route path="/ApplicationsDash" element={<Applications_dash/>}/>  
         <Route path="/Jobposting" element={<Jobposting/>}/>  
