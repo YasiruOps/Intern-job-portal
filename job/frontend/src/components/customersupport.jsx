@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/header";
 import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
+import Footer from "./footer";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../CSS/customersupport.css";
@@ -176,6 +177,7 @@ export default function Customersupport() {
           </button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

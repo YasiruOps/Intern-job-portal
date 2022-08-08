@@ -6,6 +6,7 @@ import Place1 from "../images/Place1.png";
 import Place2 from "../images/Place2.png";
 import Place3 from "../images/Place3.png";
 import Profile88 from "../images/sample_profile.png";
+import Footer from "./footer";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import StarIcon from "@mui/icons-material/Star";
@@ -147,6 +148,7 @@ export default function leaderbord() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

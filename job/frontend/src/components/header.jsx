@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import '../CSS/header.css'
 
@@ -21,14 +22,12 @@ export default function header() {
               <Link to="/Rbuilder" className="listed" >Resume builder</Link>
             </li>
             <li className="item">
-              <Link to="/Mcq" className="listed" >MCQ</Link>
-            </li>
-            <li className="item">
               <Link to="/McqCat" className="listed">Game Portal</Link>
             </li>
             <li className="item">
               <Link to="/Leader-bord" className="listed">Leaderboard</Link>
             </li>
+            
             <li className="item">
               <Link to="/EmployerLogin" className="listed">Employer Login</Link>
             </li>
@@ -39,7 +38,7 @@ export default function header() {
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
             </li>
             <li className="item">
-              <Link to="/Job-details"  className="listed">Jobba</Link>
+              <Link to="/Job-details"  className="listed">Job Posts</Link>
             </li>
             <li className="item">
               <Link to="/Job-Search"  className="listed">Search Page</Link>

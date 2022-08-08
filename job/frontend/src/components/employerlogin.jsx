@@ -5,6 +5,8 @@ import Header from "../components/header";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import Button from 'react-bootstrap/Button';
+import Footer from "./footer";
+
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
@@ -64,6 +66,7 @@ export default function Login() {
         </div>
 
       </div>
+      <Footer />
     </div>
   );
 }

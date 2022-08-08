@@ -4,7 +4,7 @@ import "../CSS/jobdetails.css";
 import { GoSearch } from "react-icons/go";
 import { MdVerified } from "react-icons/md";
 import { AiOutlineLink } from "react-icons/ai";
-
+import Footer from "./footer";
 import { MdLocationOn } from "react-icons/md";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { MdPeopleAlt } from "react-icons/md";
@@ -208,6 +208,7 @@ export default function jobdetails() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

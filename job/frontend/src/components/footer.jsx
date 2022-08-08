@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import logo1 from '../images/logo.png';
 import {Col,Row}  from 'react-bootstrap';
 import '../CSS/footer.css'
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
+import { TiSocialFacebookCircular } from "react-icons/ti";
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { TiSocialInstagramCircular } from "react-icons/ti";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
+import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon,MDBBtn} from 'mdb-react-ui-kit';
 
 
 export default function footer() {
@@ -22,79 +26,82 @@ export default function footer() {
           <MDBCol md="3" lg="4" xl="3" className='footer-desc mx-auto mb-4'>
           <img className="img2" src={logo1} width = "220" height = "auto" />
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit.
-            </p>
+              Matrix is a company with a goal of making the process of finding a job, a more desirable experience.</p>
+            <a href="https://www.facebook.com/">
+              <TiSocialFacebookCircular className='social'size = '36'/>        
+            </a> 
+            <a href="https://www.twitter.com/">
+            <AiFillTwitterCircle className='social' size = '32'/>         
+            </a> 
+            <a href="https://www.instagram.com/">
+            <TiSocialInstagramCircular  className='social' size = '32'/>        
+            </a> 
+            <a href="https://www.linkedin.com/">
+            <TiSocialLinkedinCircular className='social' size = '36'/>     
+            </a> 
+
+
           </MDBCol>
           
+          
           <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-            <h6 className='linkref text-uppercase fw-bold mb-4'>Products</h6>
+            <h6 className='linkref text-uppercase fw-bold mb-4'>Services</h6>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Angular
+                Post a Job
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                React
+                Search Your Job
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Vue
+                Build Your Resume
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Laravel
+                Boost Your Resume
               </a>
             </p>
           </MDBCol>
 
           <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-            <h6 className='linkref text-uppercase fw-bold mb-4'>Products</h6>
+            <h6 className='linkref text-uppercase fw-bold mb-4'>Features</h6>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Angular
+                CV Manager
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                React
+                Apply for Job Post
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Vue
-              </a>
-            </p>
-            <p>
-              <a href='#!' className='linkref text-reset'>
-                Laravel
+                Search Job by Category
               </a>
             </p>
           </MDBCol>
 
           <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-            <h6 className='linkref text-uppercase fw-bold mb-4'>Products</h6>
+            <h6 className='linkref text-uppercase fw-bold mb-4'>Links</h6>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Angular
+                Sign in
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                React
+                Game Portal
               </a>
             </p>
             <p>
               <a href='#!' className='linkref text-reset'>
-                Vue
-              </a>
-            </p>
-            <p>
-              <a href='#!' className='linkref text-reset'>
-                Laravel
+                Customer Support
               </a>
             </p>
           </MDBCol>
@@ -104,7 +111,7 @@ export default function footer() {
     </section>
 
     <div className='footer-bottom p-4 border-top'>
-      © 2021 Matrix.  All Rights Reserved
+      © 2022 Matrix.  All Rights Reserved
     </div>
   </MDBFooter>
     
