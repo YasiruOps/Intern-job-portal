@@ -88,3 +88,54 @@ h3{
     margin-left:20px;
     margin-right:20px;
 }
+
+.searchboxjobs {
+    font-weight:600;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0;
+    padding-bottom: 3px;
+    margin-top: 10px;
+    border-radius: 23px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.226);
+  }
+  
+  .searchboxjobs:hover {
+    outline: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .searchinjobs {
+    font-weight:600;
+    width: 66%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    border: 0;
+    padding-left: 10px;
+  }
+
+  .searchinjobs:focus {
+    border-color: black;
+    outline: 0;
+  }
+  
+  .searchiconjobs {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
+  }
+  
+  .advancedsearhjobs {
+    font-weight:600;
+    width: 15%;
+    border-radius: 30px;
+    background-color:#c5cedf;
+  }
+  

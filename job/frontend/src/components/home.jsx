@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import { GoSearch } from "react-icons/go";
 import { Accordion, Container, Col, Image, Button, Row } from "react-bootstrap";
 import "../CSS/home.css";
 import pic1 from "../images/frm1.png";
@@ -23,9 +24,20 @@ export default function home() {
           <Accordion>
             <h2>Find a Job</h2>
             <h3>Search from over 200+ Job Postings</h3>
+            <div className="searchboxjobs">
+              <GoSearch className="searchiconjobs" />
+              <input type="text" className="searchinjobs" />
+              <button type="button" class="btn btn-light advancedsearhjobs">
+                Advanced
+              </button>
+              <button type="button" class="btn btn-light advancedsearhjobs">
+                Browse
+              </button>
+            </div>
             <Link to="/">
               <Button className="homepagebtn1">SEARCH</Button>
             </Link>
+
 
           </Accordion>
         </Container>

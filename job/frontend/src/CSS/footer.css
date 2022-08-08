@@ -36,13 +36,13 @@ h6{
   margin:0;
 }
 
-.linkref{
-  margin-left: 500px;
-  margin-top: -85px;
-}
-
-
 .footertopic{
   margin-left: 30px;
   margin-top: 20px;
+}
+
+.linkref{
+  padding: 20px;
+  margin-top: -150px;
+  margin-left: 200px;
 }
