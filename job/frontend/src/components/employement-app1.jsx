@@ -1,6 +1,7 @@
 import React from "react";
 import "../CSS/employement-app1.css";
 import Header from "./header";
+import Footer from "./footer";
 
 export default function employement_app1() {
   return (
@@ -30,6 +31,7 @@ export default function employement_app1() {
                 <button type="button" class="btn publishbtn">Publish</button>
              </div>
         </div>
+        <Footer />
     </div>
   );
 }
