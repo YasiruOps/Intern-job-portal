@@ -1,18 +1,29 @@
 import React from "react";
 import "../CSS/jobsearchpage.css";
 import Header1 from "./header";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import { GoSearch } from "react-icons/go";
 import { BsFilter } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
+import { GrAdd } from "react-icons/gr";
 
 import Dropdown from "./dropdown";
+import Multiselect from "multiselect-react-dropdown";
 
-export default function jobsearchpage() {
+export default function Jobsearchpage() {
+
+  
+  const navigate = useNavigate();
+
+  const Redirect=()=>{
+    navigate('/Job-details');
+  }
 
   return (
     <div>
-      <Header1/>
+      <Header1 />
       <div className="jobsearch col-9">
         <p className="searchjobtag2">Search Jobs</p>
 
@@ -55,13 +66,47 @@ export default function jobsearchpage() {
               <p className="filter-tag">Filter</p>
             </div>
 
-         
+            <div className="seltest">
+              <p className="loc">Location</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Date posted</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Salary</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Work hours</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Job type</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Job source</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Level of Education & training</p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Years of experience </p>
+              <GrAdd className="locimg" />
+            </div>
+            <div className="seltest">
+              <p className="loc">Benefits </p>
+              <GrAdd className="locimg" />
+            </div>
           </div>
 
-
-
-          <div className="serachmidrgtside col-9">           
-            <div className="job-detaboxouter row">
+          <div className="serachmidrgtside col-9">
+          
+            <div className="job-detaboxouter row" onClick={Redirect} >
               <div className="job-detaboxouter-left col-lg-8">
                 <p className="posname">Junior software developer</p>
                 <p className="compname">Rocket science .tec</p>
@@ -77,11 +122,11 @@ export default function jobsearchpage() {
 
                 <button type="button" className="btn addwishbtn">
                   <p className="wishbtntext">Add to wishlist</p>
-                  <AiOutlineHeart className="wishbtnicon"/>               
+                  <AiOutlineHeart className="wishbtnicon" />
                 </button>
               </div>
             </div>
-
+            
           </div>
         </div>
       </div>

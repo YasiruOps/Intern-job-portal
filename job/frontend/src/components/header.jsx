@@ -7,7 +7,7 @@ import '../CSS/header.css'
 
 export default function header() {
   return (
-    <div style={{width:"100%"}}>
+    <div >
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="logo">
             <img className="img1" src={logo} width = "160" height = "auto" />
@@ -36,9 +36,6 @@ export default function header() {
             </li>
             <li className="item">
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
-            </li>
-            <li className="item">
-              <Link to="/Job-details"  className="listed">Job Posts</Link>
             </li>
             <li className="item">
               <Link to="/Job-Search"  className="listed">Search Page</Link>

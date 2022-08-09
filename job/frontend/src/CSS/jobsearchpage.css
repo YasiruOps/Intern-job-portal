@@ -37,8 +37,10 @@
 }
 
 .serachmidleftside{
+    min-width:100px;
     margin-left: 0px;
     color: white;
+
 }
 
 .filterbox{
@@ -59,6 +61,49 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+
+.seltest{
+    margin-top:20px ;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.loc{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.loc:hover{
+    cursor: pointer;
+}
+
+.locimg{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.locimg:hover{
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width:900px) {
+    .loc{
+        font-size: 12px;
+    }
+    .locimg{
+        font-size: 12px;
+    }
+}
+
 
 .serachmidrgtside{
     border-left: 1px solid black;
@@ -91,16 +136,18 @@
 }
 
 .job-detaboxouter-right{
- 
+    
 }
 
 .date{
+
     text-align: end;
     width: 100%;
     margin-bottom: 0px;
 }
 
 .date2{   
+    text-decoration: none;
     text-align: end;
     width: 100%;
     margin-bottom: 0px;
