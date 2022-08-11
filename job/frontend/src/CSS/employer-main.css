@@ -253,7 +253,7 @@ select.minimal3:focus {
 }
 
 .lowfirstsec {
-  background-color: pink;
+  /* background-color: pink; */
 }
 
 .applicationrev-tag {
@@ -299,5 +299,5 @@ select.minimal3:focus {
 }
 
 .lowsecondsec {
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
 }

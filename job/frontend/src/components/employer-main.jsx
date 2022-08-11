@@ -118,7 +118,7 @@ export default function employer_main() {
           </div>
           
           <div className="lowsecondsec col-xl-8">
-            chart here
+            {/* graph here */}
           </div>
 
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../components/header";
+import Header from "./header";
 import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
 import Footer from "./footer";
@@ -116,7 +116,7 @@ export default function Customersupport() {
                 for="fname"
                 id="placeholder-fname"
               >
-                <div className="supporttext">Name</div>
+                <div className="supporttext">Question</div>
               </label>
             </div>
 
@@ -134,7 +134,7 @@ export default function Customersupport() {
                 for="fname"
                 id="placeholder-fname"
               >
-                <div className="supporttext">Email</div>
+                <div className="supporttext">Name</div>
               </label>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Customersupport() {
             </div>
             <div className="col-lg-6">
               <label className="dateoccured-tag" htmlFor="datepricker123">
-                Date Occured
+                Date 
               </label>
               <DatePicker
                 className="datepricker123"
