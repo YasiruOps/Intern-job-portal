@@ -4,6 +4,7 @@ import "../CSS/employment-app2.css";
 import Empapp2img from "../images/empapp2.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Footer from "./footer";
 
 export default function Employment_app2() {
   useEffect(() => {
@@ -421,6 +422,7 @@ export default function Employment_app2() {
         <div className="row"><button type="button" className="btn empapp2savetbn">Save</button></div>
         
       </div>
+      <Footer />
     </div>
   );
 }
