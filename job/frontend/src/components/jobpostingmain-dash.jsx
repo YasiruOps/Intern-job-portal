@@ -11,17 +11,21 @@ import Replyform from "./replyform";
 import Popup from "./popup";
 import Popup2 from "./popup-addnewjob";
 import Popup3 from "./popup-editjob";
+import Popup4 from "./popup-remove"
 import { AiFillEdit } from "react-icons/ai";
 import { MdLaunch } from "react-icons/md";
 import { MdLibraryAdd } from "react-icons/md";
-import Addjobform from "./addjobform_popup"
-import Editjobform from "./editjobform_popup"
-import Jobviewform from "./jobformview_popup"
+import Addjobform from "./addjobform_popup";
+import Editjobform from "./editjobform_popup";
+import Jobviewform from "./jobformview_popup";
+import Removeform from "./removepopup-job-form";
+
 
 export default function Jobpostingmain() {
   const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
   const [openPopup3, setOpenPopup3] = useState(false);
+  const [openPopup4, setOpenPopup4] = useState(false);
 
   const openInPopup = () => {
     setOpenPopup(true);
@@ -33,6 +37,10 @@ export default function Jobpostingmain() {
 
   const openInPopup3 = () => {
     setOpenPopup3(true);
+  };
+
+  const openInPopup4 = () => {
+    setOpenPopup4(true);
   };
 
   return (
@@ -107,8 +115,8 @@ export default function Jobpostingmain() {
                 <AiFillEdit className="btniconsiq2" />
               </button>
               &nbsp; &nbsp;
-              <button className="btn btn-danger" href="/add">
-                Remove
+              <button className="btn btn-danger" href="/add" onClick={() => openInPopup4()}>
+                Remove               
                 <DeleteOutlineIcon className="btniconsiq2" />
               </button>
             </td>
@@ -139,6 +147,14 @@ export default function Jobpostingmain() {
       >
         <Editjobform />
       </Popup3>
+
+      <Popup4     
+        title="Junior developer 1"
+        openPopup={openPopup4}
+        setOpenPopup={setOpenPopup4}
+      >
+        <Removeform/>
+      </Popup4>
     </div>
   );
 }

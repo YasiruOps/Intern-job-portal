@@ -43,6 +43,9 @@ export default function header() {
             <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
             </li>
+            <li className="item">
+              <Link to="/Forum" className="sign">Forum</Link>
+            </li>
             {/* <li className="item">
               <Link to="/EmpApp1" className="listed">APP!</Link>
             </li>

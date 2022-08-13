@@ -93,8 +93,8 @@ export default function Applicationsmain_dash() {
     setOpenPopup={setOpenPopup}       
   >
     <Applicationform/>
-  
   </Popup>
+
 </div>
     </div>
   )

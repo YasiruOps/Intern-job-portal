@@ -7,14 +7,17 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useState } from "react"
 import Replyform from "./replyform"
+import Removeform from "./removepopup-internq-from";
 import Popup from "./popup"
+import Popup2 from "./popup-remove"
 
 export default function Internquestionsmain() {
 
 	const [openPopup, setOpenPopup] = useState(false);
+  const [openPopup2, setOpenPopup2] = useState(false);
 
-  const openInPopup = () => {
-    setOpenPopup(true);
+  const openInPopup2 = () => {
+    setOpenPopup2(true);
   };
 
   return (
@@ -77,6 +80,7 @@ export default function Internquestionsmain() {
   
                 <button
                   className="btn btn-danger"
+                  onClick={() => openInPopup2(true)}
                   href="/add">
                   Remove
                   <DeleteOutlineIcon className='btniconsiq'/>                 
@@ -93,8 +97,15 @@ export default function Internquestionsmain() {
         setOpenPopup={setOpenPopup}       
       >
         <Replyform/>
-      
       </Popup>
+
+      <Popup2     
+        title="Hello World"  
+        openPopup={openPopup2}
+        setOpenPopup={setOpenPopup2}
+      >
+        <Removeform/>
+      </Popup2>
 
     </div>
   )

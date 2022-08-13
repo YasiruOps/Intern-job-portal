@@ -18,7 +18,7 @@ import EmployerLogin from "./components/employerlogin";
 import EmployerReg from "./components/empReg/employerReg";
 import EmployerReg2 from "./components/empReg/employerReg2";
 import EmployerReg3 from "./components/empReg/employerReg3";
-import EmployerDash from "./components/employerdash"
+import EmployerDash from "./components/employerdash";
 import Cussupport from "./components/customersupport";
 import Internquestions from "./components/internquestions-dash";
 import Jobposting from "./components/jobposting-dash";
@@ -29,13 +29,15 @@ import Jobsearchpage from "./components/jobsearchpage"
 import ResumeForm from "./components/Resumebuilderform"
 import EmpApp1 from "./components/employement-app1";
 import EmpApp2 from "./components/employment-app2";
+import Forum from "./components/forumpage"
 
 
 function App() {
   return (
     <div>
       <Router>
-        <Routes >     
+        <Routes >
+        <Route path="/Forum" element={<Forum/>}/>      
         <Route path="/EmpApp2" element={<EmpApp2/>}/> 
         <Route path="/EmpApp1" element={<EmpApp1/>}/> 
         <Route path="/ResumeForm" element={<ResumeForm/>}/> 
