@@ -1,5 +1,337 @@
-.testclass{
-    width: 100px;
-    height: 100px;
-    background-color: pink;
+.sorterbar {
+  width: 70%;
+  padding: 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sorterbarcontent {
+  display: flex;
+  transition: 0.2s;
+}
+.sorterbarcontentend {
+  display: flex;
+  transition: 0.2s;
+}
+
+.soterbarnewcat-icon {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 5px;
+  color: #001a72;
+  transition: 0.2s;
+}
+
+.sorterbarcontent:hover {
+  cursor: pointer;
+}
+
+.soterbarnewcat {
+  margin-top: auto;
+  margin-bottom: auto;
+  transition: 0.2s;
+}
+
+@media only screen and (max-width: 900px) {
+  .sorterbar {
+    width: 80%;
+  }
+
+  .soterbarnewcat-icon {
+    display: none;
+  }
+  .sorterbarcontent {
+    border-radius: 5px;
+    border-right: 2px solid rgba(255, 255, 255, 1);
+    margin-right: 0px;
+    background-color: #1a5276;
+    color: white;
+    font-size: 15px;
+  }
+  .sorterbarcontent:hover {
+    background-color: #1a5376e0;
+  }
+
+  .activity-selector-forumpage {
+    height: max-content !important;
+    margin-right: -5px !important;
+  }
+
+  .minimal-forumpage {
+    font-size: 12px !important;
+    float: left;
+    background-color: white;
+    border: 0px;
+  }
+}
+
+.activity-selector-forumpage {
+  transition: 0.2s;
+  margin-right: -10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: 500;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.endsetterselect {
+  transition: 0.2s;
+  justify-content: end;
+}
+
+.minimal-forumpage {
+  transition: 0.2s;
+  font-size: 16px;
+  float: left;
+  background-color: white;
+  border: 0px;
+}
+
+select.minimal-forumpage {
+  transition: 0.2s;
+  background-image: linear-gradient(45deg, transparent 50%, rgb(0, 0, 0) 50%),
+    linear-gradient(135deg, rgb(0, 0, 0) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+select.minimal-forumpage:focus {
+  transition: 0.2s;
+  background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.295) 50%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.295) 50%);
+  background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: white;
+  outline: 0;
+}
+
+.forum-main {
+  padding: 10px;
+}
+
+.forum-left {
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.qraised {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.picarea {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.picarea .profilepic {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.qmidtitle {
+  margin-bottom: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.qmidq {
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.qmiddate {
+  margin-bottom: 40px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.qintractsect {
+  width: 70%;
+  transition: .2s;
+}
+
+.qintractsect-c1 {
+  display: flex;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+@media only screen and (max-width: 1200px) {
+  .qintractsect-c1 {
+    font-size: 15px !important;
+  }
+
+  .qintractsect-c1-icons {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  
+  .qupvote {
+    width: 100% !important;
+    justify-content: end !important;
+    margin-bottom: 10px;
+    background-color: white !important;
+  }
+  .qupvotebar {
+    margin-top: 20px;
+    display: absolute !important;
+    margin-bottom: -200px;
+  }
+  
+  .upcountq {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .countericons{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .qintractsect {
+      width: 80%;
+    }
+  }
+
+.qintractsect-c1:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.qintractsect-c1-icons {
+  width: 20px;
+  height: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.qintractsect-c1-tag {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.qupvote {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px 0px 0px 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.qupvotebar {
+  margin-left: 0px;
+  text-align: center;
+}
+
+.upcountq {
+  margin-top: 2px;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 1);
+}
+
+.countericons {
+  color: rgba(0, 0, 0, 0.6);
+  transition: 0.2s;
+}
+
+.hovupvote:hover {
+  color: rgba(0, 0, 255, 0.5);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 100%;
+  outline: none;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 255, 0.5);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 255, 0.5);
+}
+
+.hovdownvote:hover {
+  color: rgba(255, 0, 0, 0.5);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(255, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 2px rgba(255, 0, 0, 0.5);
+}
+
+/* right side small card */
+.forum-right {
+  margin-top: 10px;
+  padding: 20px;
+  padding: 10px;
+  padding: 10px;
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.toqhead {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+.dotlinehr {
+  border-top: 2px dashed rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 100;
+  margin-bottom: 0;
+}
+
+.toppers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lefttoppers {
+  margin-bottom: -10px;
+}
+
+.lefttoppers .titlelftop {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.lefttoppers .countans {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.rgttoppers {
+  font-weight: 500;
+  margin-bottom: -10px;
+}
+
+.rgttoppers .vcount {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.rgttoppers .vtag {
 }

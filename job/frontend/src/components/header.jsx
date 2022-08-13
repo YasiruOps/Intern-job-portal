@@ -26,33 +26,26 @@ export default function header() {
             </li>
             <li className="item">
               <Link to="/Leader-bord" className="listed">Leaderboard</Link>
-            </li>
-            
-            <li className="item">
-              <Link to="/EmployerLogin" className="listed">Employer Login</Link>
-            </li>
-          
+            </li>      
             <li className="item">
               <Link to="/Cus-sup" className="listed">Customer Support</Link>
             </li>
             <li className="item">
               <Link to="/Job-Search"  className="listed">Search Page</Link>
             </li>
-            <li className="item">
-              <Link to="/EmpApp1" className="listed">Employer Application</Link>
-            </li>
-            <li className="item">
-              <Link to="/EmpApp2" className="listed">Employment</Link>
-            </li>
-            <li className="item">
-
-              <Link to="/Forum" className="sign">Forum</Link>
-            </li>         
+            <li className="item">     
               <Link to="/Employer-Dash" className="listed">Employer Dashboard</Link>
             </li>
             <li className="item">
+              <Link to="/EmployerLogin" className="listed">Employer Login</Link>
+            </li>
+          
+            <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
             </li>
+            <li className="item">
+              <Link to="/Forum" className="sign">Forum</Link>
+            </li>    
 
           </ul>
         </div>
