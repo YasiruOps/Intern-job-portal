@@ -43,9 +43,6 @@ export default function header() {
               <Link to="/Forum" className="listed">Forum</Link>
             </li>                
             <li className="item">
-              <Link to="/Fullathal" className="listed">Click me!</Link>
-            </li>    
-            <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
             </li>
 
