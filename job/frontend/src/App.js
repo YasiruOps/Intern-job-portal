@@ -31,12 +31,14 @@ import EmpApp1 from "./components/employement-app1";
 import EmpApp2 from "./components/employment-app2";
 import Forum from "./components/forumpage"
 import ForumComm from "./components/forum_compage"
+import FullAthal from "./components/fullathal"
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >
+        <Route path="/Fullathal" element={<FullAthal/>}/>      
         <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      
         <Route path="/EmpApp2" element={<EmpApp2/>}/> 

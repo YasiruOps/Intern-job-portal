@@ -19,7 +19,7 @@ export default function Forumpage() {
   const navigate = useNavigate();
 
   const Redirect = () => {
-    navigate("/Job-details");
+    navigate("/Forum-comment");
   };
 
   return (
@@ -94,7 +94,7 @@ export default function Forumpage() {
                 </div>
 
                 <div className="row qintractsect">
-                  <div className="col-5 qintractsect-c1">
+                  <div className="col-5 qintractsect-c1" onClick={Redirect}>
                     <CgComment className="qintractsect-c1-icons" />
                     <p className="qintractsect-c1-tag">
                       <span>2 </span>comments
