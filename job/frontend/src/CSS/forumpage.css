@@ -11,6 +11,12 @@
   display: flex;
   transition: 0.2s;
 }
+
+.sorterbarcontent:hover {
+   opacity: 60%;
+   color: #1a5276;
+  }
+
 .sorterbarcontentend {
   display: flex;
   transition: 0.2s;
@@ -134,17 +140,19 @@ select.minimal-forumpage:focus {
   border-radius: 5px;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
 }
 
 .picarea {
   margin-top: auto;
   margin-bottom: auto;
+  transition: .2s;
 }
 
 .picarea .profilepic {
+  object-fit: fill ;
   width: 100px;
   height: 100px;
-  padding: 20px;
   border-radius: 100%;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
@@ -194,6 +202,7 @@ select.minimal-forumpage:focus {
     justify-content: end !important;
     margin-bottom: 10px;
     background-color: white !important;
+    z-index: 1;
   }
   .qupvotebar {
     margin-top: 20px;
@@ -210,6 +219,9 @@ select.minimal-forumpage:focus {
   .countericons{
     margin-top: auto;
     margin-bottom: auto;
+  }
+  .picarea {
+    margin-bottom: 15px;
   }
 
 }
@@ -287,6 +299,7 @@ select.minimal-forumpage:focus {
   padding: 10px;
   padding: 10px;
   transition: 0.2s;
+  height: 300px;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
 }

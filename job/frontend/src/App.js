@@ -30,13 +30,14 @@ import ResumeForm from "./components/Resumebuilderform"
 import EmpApp1 from "./components/employement-app1";
 import EmpApp2 from "./components/employment-app2";
 import Forum from "./components/forumpage"
-
+import ForumComm from "./components/forum_compage"
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >
+        <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      
         <Route path="/EmpApp2" element={<EmpApp2/>}/> 
         <Route path="/EmpApp1" element={<EmpApp1/>}/> 
