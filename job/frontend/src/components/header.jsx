@@ -45,8 +45,10 @@ export default function header() {
             <li className="item">
               <Link to="/Login" className="sign">Sign In</Link>
             </li>
-
-
+            <li className="item">
+              <Link to="/Quiz-score" className="sign">Quiz score</Link>
+            </li>
+            
           </ul>
         </div>
       </nav>

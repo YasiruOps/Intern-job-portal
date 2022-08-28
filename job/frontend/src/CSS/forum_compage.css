@@ -86,14 +86,14 @@
 
 }
 
-.thumbsupicon:hover{
+.deleteicon{
     font-size: 17px;
-    color: blue;
-    cursor: pointer;
+    transition: .2s;
 }
 
-.thumbsdownicon:hover{
-    font-size: 17px;
+
+.deleteicon:hover{
+    font-size: 18px;
     color: red;
     cursor: pointer;
 }

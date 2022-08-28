@@ -14,6 +14,7 @@ import { BsArrowUpCircle } from "react-icons/bs";
 import { BsArrowDownCircle } from "react-icons/bs";
 import { FiThumbsDown } from "react-icons/fi";
 import { FiThumbsUp } from "react-icons/fi";
+import { AiFillDelete } from "react-icons/ai";
 
 import Profpic from "../images/forum_img.png";
 
@@ -126,7 +127,7 @@ export default function forum_compage() {
               <div className="commentsarea col-10">
                 <p className="commentstag">Comments</p>
                 <hr className="commentstaghr" />
-                <div className="commentbox row">
+                <div className="commentbox row" >
                   <div className="commmentbox-left d-none d-xxl-block col-1">
                     <img
                       src={Profpic}
@@ -134,16 +135,15 @@ export default function forum_compage() {
                       className="commenterprofpic"
                     />
                   </div>
-                  <div className="commentboxmid col-10">
+                  <div className="commentboxmid col-10 " style={{backgroundColor:"pink"}}>
                     <p className="commentatornametag">Jhone Doe</p>
                     <p className="comment">
                       Just be yourself dont think about it much youll pass
                     </p>
+                   
                   </div>
                   <div className="commnetboxrgt col-1">
-                    <FiThumbsUp className="thumbsupicon" />
-                    <p className="counter">12</p>
-                    <FiThumbsDown className="thumbsdownicon" />
+                    <AiFillDelete className="deleteicon" />
                   </div>
                 </div>
               </div>
