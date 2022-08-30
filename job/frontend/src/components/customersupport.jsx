@@ -3,6 +3,7 @@ import Header from "./header";
 import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
 import Footer from "./footer";
+import axios from "axios";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../CSS/customersupport.css";
@@ -10,14 +11,57 @@ import "../CSS/customersupport.css";
 export default function Customersupport() {
   const [message, setMessage] = useState("");
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
+ // const [startDate, setStartDate] = useState(new Date());
+  // 
+  // const [type, setType] = useState("");
+  const [question, setQuestion] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState("");
+  const [reacts, setReacts] = useState("");
+
+  //selector eka//////////////
+ 
+
+  const options = [
+    {value: '', text: '--Select type--'},
+    {value: 'technical', text: 'technical'},
+    {value: 'network', text: 'network'},
+    {value: 'responsiveness', text: 'responsiveness'},
+  ];
+
+  const [type, setType] = useState(options[0].value);
+
+  ////////////////////////////////////////
+
+  function sendData() {
+    const newForumQuestion = {
+      id: "0",
+      type,
+      question,
+      description,
+      date,
+      time,
+      reacts,
+    };
+  axios
+  .post("http://localhost:8000/forumQuestion/add", newForumQuestion)
+  .then(() => {
+    window.location.reload(false);
+  })
+  .catch((err) => {
+    alert(err);
+  });
+};
+
+  const handleSubmit = (e) => {
+    sendData();
   };
 
-  const [startDate, setStartDate] = useState(new Date());
+console.log("tttttttttt",date);
 
   return (
-    <div className="customer-outer-main row">
+    <div className="customer-outer-main">
       <Header />
       <div className="customer-main col-6">
         <p className="support-tag">Customer Support</p>
@@ -42,9 +86,9 @@ export default function Customersupport() {
                 id="fname"
                 className="supportinput"
                 autocomplete="off"
-                value={message}
-                onChange={handleChange}
+                value={""}
                 aria-labelledby="placeholder-fname"
+               
               />
               <label
                 className="placeholder-text"
@@ -108,8 +152,8 @@ export default function Customersupport() {
                 id="fname"
                 className="supportinput"
                 autocomplete="off"
-                value=""
                 aria-labelledby="placeholder-fname"
+                Value={question} onChange={(e) => {  setQuestion(e.target.value); }} 
               />
               <label
                 className="placeholder-text"
@@ -120,44 +164,30 @@ export default function Customersupport() {
               </label>
             </div>
 
-            <div className="supportinput-container col-6">
-              <input
-                type="text"
-                id="fname"
-                className="supportinput"
-                autocomplete="off"
-                value=""
-                aria-labelledby="placeholder-fname"
-              />
-              <label
-                className="placeholder-text"
-                for="fname"
-                id="placeholder-fname"
-              >
-                <div className="supporttext">Name</div>
-              </label>
-            </div>
-          </div>
-
-          <div className="row">
             <div className="col-lg-6">
               <div className="empselector-sup2">
-                <select className="minimal3 ">
-                  <option>Type of Issue</option>
-                  <option>Texhnical</option>
-                  <option>Account</option>
-                  <option>Issues</option>
+                <select className="minimal3 " Value={type} onChange={(e) => {setType(e.target.value); }}>
+                {options.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                ))}
                 </select>
               </div>
             </div>
+
+          </div>
+
+          <div className="row">
+            
             <div className="col-lg-6">
               <label className="dateoccured-tag" htmlFor="datepricker123">
                 Date 
               </label>
               <DatePicker
                 className="datepricker123"
-                selected={startDate}
-                onChange={(date: Date) => setStartDate(date)}
+                selected={date}
+                onChange={(date: Date) => setDate(date)}
               />
             </div>
           </div>
@@ -170,9 +200,10 @@ export default function Customersupport() {
             className="form-control yourquestioninput"
             id="exampleFormControlTextarea1"
             rows="3"
-          ></textarea>
+            Value={description} onChange={(e) => {setDescription(e.target.value); }}
+          />
 
-          <button type="button" className="submitcussupbtn btn btn-primary">
+          <button type="button" className="submitcussupbtn btn btn-primary" onClick={(e) => { handleSubmit(e);}}>
             Submit
           </button>
         </div>

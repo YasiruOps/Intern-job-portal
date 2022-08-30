@@ -68,11 +68,11 @@ const Header = () => {
           </SidebarHeader>
           <SidebarContent>
             <Menu iconShape="square">            
-              <MenuItem className="fa grow" active={true} icon={<FiHome />}><Link style={{color:"white", opacity:"100%"}} to="/Employer-Dash">Home </Link></MenuItem>             
+              <MenuItem className="fa grow" icon={<FiHome />}><Link style={{color:"white", opacity:"100%"}} to="/Employer-Dash">Home </Link></MenuItem>             
               <MenuItem className="fa grow" icon={<AiOutlineFileProtect />}><Link style={{color:"white", opacity:"100%"}} to="/Jobposting">Job Posting</Link></MenuItem>
-              <MenuItem  className="fa grow" icon={<AiOutlineFileText />}><Link style={{color:"white", opacity:"100%"}} to="/ApplicationsDash">Applications</Link></MenuItem>
-              <MenuItem className="fa grow" icon={<FiUser />}>Profile</MenuItem>
-              <MenuItem className="fa grow" icon={<RiQuestionMark />}><Link style={{color:"white", opacity:"100%"}} to="/Iquestions">Inter Q's</Link></MenuItem>              
+              <MenuItem  className="fa grow" icon={<AiOutlineFileText />}><Link style={{color:"white", opacity:"100%"}} to="/ApplicationsDash">Applications</Link></MenuItem>         
+              <MenuItem className="fa grow" icon={<RiQuestionMark />}><Link style={{color:"white", opacity:"100%"}} to="/Iquestions">Inter Q's</Link></MenuItem>       
+              <MenuItem className="fa grow" icon={<FiUser />}><Link style={{color:"white", opacity:"100%"}} to="/Employer-profile">Profile</Link></MenuItem>       
               <MenuItem className="fa grow" icon={<BiCog />}>Settings</MenuItem>             
             </Menu>
           </SidebarContent>

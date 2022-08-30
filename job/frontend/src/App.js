@@ -32,12 +32,14 @@ import EmpApp2 from "./components/employment-app2";
 import Forum from "./components/forumpage"
 import ForumComm from "./components/forum_compage"
 import Quizscore from "./components/quizscore-page";
+import Employerprofile from "./components/employerprofile";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes >
+        <Route path="/Employer-profile" element={<Employerprofile/>}/>  
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
         <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      

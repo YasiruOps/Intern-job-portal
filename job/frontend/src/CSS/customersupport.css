@@ -1,180 +1,177 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+.customer-outer-main {
+}
 
 .cutomer-outer-main {
-
   height: max-content;
-  overflow-y: hidden;
 }
 
 .customer-main {
-    margin-top: 30px;
-margin-right: auto;
-margin-left: auto;
-
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.customer-main .support-tag{
-    font-size: 24px;
-    font-weight: 500;
-    font-family: 'Lato', sans-serif;
-    margin-bottom: -15px;
+.customer-main .support-tag {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: "Lato", sans-serif;
+  margin-bottom: -15px;
 }
 
-.customer-main .support-tag-hr{
-    width: 10%;
-    opacity: 100;
-    border-radius: 25px;
-    height: 4px;
-    color: #FFB800;
- 
+.customer-main .support-tag-hr {
+  width: 10%;
+  opacity: 100;
+  border-radius: 25px;
+  height: 4px;
+  color: #ffb800;
 }
 .customer-main .contactemp-form {
-    border-radius: 5px;
-    min-width: 390px;
-    padding: 20px 20px 55px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    font-family: 'Lato', sans-serif;
+  border-radius: 5px;
+  min-width: 390px;
+  padding: 20px 20px 55px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-family: "Lato", sans-serif;
 }
 
-.customer-main .contactemp-form .contactemp-tag{
-    color: #0C4EF8;
-    font-size: 20px;   
-   
+.customer-main .contactemp-form .contactemp-tag {
+  color: #0c4ef8;
+  font-size: 20px;
 }
 
-.customer-main .contactemp-form .empselector-sup{
-    font-weight: 500;
-    height: 40px;
-    font-size: 16px;
-    display: flex;
-    width: fit-content;
-     border: 1px solid hsla(0, 0%, 0%, 0.397);
+.customer-main .contactemp-form .empselector-sup {
+  font-weight: 500;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  width: fit-content;
+  border: 1px solid hsla(0, 0%, 0%, 0.397);
 }
 
-
-.contactemp-form .supportsinputcontainer1{
-    justify-content:space-between;   
-    margin-bottom: 50px;
+.contactemp-form .supportsinputcontainer1 {
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 /* input text */
 
-.supportinput-container{
-    margin-left: 12px;
-    margin-right: auto;
-    width: 350px;
-    margin-top: 20px;
-    position: relative;
-    font-family: 'Lato', sans-serif;
-    border: 1px solid black;
+.supportinput-container {
+  margin-left: 12px;
+  margin-right: auto;
+  width: 350px;
+  margin-top: 20px;
+  position: relative;
+  font-family: "Lato", sans-serif;
+  border: 1px solid black;
 }
-.supportinput{
-    height: 2.5rem;
-    width: 100%;
-    border: 1px;
+.supportinput {
+  height: 2.5rem;
+  width: 100%;
+  border: 1px;
 }
-.supportinput:focus{
-    outline: none;
-    border-color:#0C4EF8;
+.supportinput:focus {
+  outline: none;
+  border-color: #0c4ef8;
 }
-.supportinput:focus + .placeholder-text .supporttext, :not(input[value=""]) + .placeholder-text .supporttext{
-    background-color: rgb(255, 255, 255);
-    font-size: 14px;
-    color: black;
-    transform: translate(-10%, -100%);
+.supportinput:focus + .placeholder-text .supporttext,
+:not(input[value=""]) + .placeholder-text .supporttext {
+  background-color: rgb(255, 255, 255);
+  font-size: 14px;
+  color: black;
+  transform: translate(-10%, -100%);
 }
-.supportinput:focus + .placeholder-text .supporttext{
-    color: #0C4EF8;
+.supportinput:focus + .placeholder-text .supporttext {
+  color: #0c4ef8;
 }
-.placeholder-text{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 1px solid transparent;
-    background-color: transparent;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
+.placeholder-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid transparent;
+  background-color: transparent;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
 }
-.supporttext{
-    font-size: 18px;
-    padding: 0 0.5rem;
-    background-color: transparent;
-    transform: translate(0);
-    color: black;
-    transition: transform 0.15s ease-out, font-size 0.15s ease-out, background-color 0.2s ease-out, color 0.15s ease-out;
+.supporttext {
+  font-size: 18px;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  transform: translate(0);
+  color: black;
+  transition: transform 0.15s ease-out, font-size 0.15s ease-out,
+    background-color 0.2s ease-out, color 0.15s ease-out;
 }
-.supportinput, .placeholder-text{
-    font-size: 18px;
-    padding-left: 10px;
+.supportinput,
+.placeholder-text {
+  font-size: 18px;
+  padding-left: 10px;
 }
 
 @media (max-width: 40rem) {
-    .supportinput{
-        
-    }
+  .supportinput {
+  }
 }
 
-.yourquestion{
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: 500;
-    font-family: 'Lato', sans-serif;
-    margin-bottom: -5px;
+.yourquestion {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Lato", sans-serif;
+  margin-bottom: -5px;
 }
 
-.yourwuesitonex{
-
-    font-weight: 400;
-    opacity: 60%;
-    font-family: 'Lato', sans-serif;
+.yourwuesitonex {
+  font-weight: 400;
+  opacity: 60%;
+  font-family: "Lato", sans-serif;
 }
 
-.yourquestioninput{
-height: 250px;
+.yourquestioninput {
+  height: 250px;
 }
 
-.submitcussupbtn{
-    position: relative;
-    margin-top: 10px;   
-    float: right;
-    width: 120px;
+.submitcussupbtn {
+  position: relative;
+  margin-top: 10px;
+  float: right;
+  width: 120px;
 }
 
 /* second bloack css */
 
 .contactemp2 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-.contactemp-form .supportsinputcontainer2{
-    justify-content:space-between;   
-    margin-bottom: 30px;
+.contactemp-form .supportsinputcontainer2 {
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.empselector-sup2{
-   margin-top: 15px;
-    font-weight: 500;
-    height: 40px;
-    font-size: 16px;
-    display: flex;
-    width: fit-content;
-     border: 1px solid hsla(0, 0%, 0%, 0.397);
+.empselector-sup2 {
+  margin-top: 15px;
+  font-weight: 500;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  width: fit-content;
+  border: 1px solid hsla(0, 0%, 0%, 0.397);
 }
 
 @media (max-width: 990px) {
-    .dateoccured-tag{
-        margin-top: 20px;
-     }
+  .dateoccured-tag {
+    margin-top: 20px;
+  }
 }
 
-.datepricker123{ 
-    padding: 5px;
-  
+.datepricker123 {
+  padding: 5px;
 }
 
-.dateoccured-tag{
-   font-size: 18px;
+.dateoccured-tag {
+  font-size: 18px;
 }
