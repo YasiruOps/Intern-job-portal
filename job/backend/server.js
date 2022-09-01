@@ -34,7 +34,8 @@ app.listen(PORT, ()=>{
 const auth = require('./routes/auth');
 const mcqRoutes = require('./routes/mcq')
 const mcqcategory = require('./routes/mcqcategory')
-const forumQuestion=require("./routes/forumQuestion")
+const forumQuestion = require("./routes/forumQuestion")
+const employerContact = require("./routes/employerContact")
 
 //app midleware
 app.use(bodyParser.json());
@@ -44,3 +45,4 @@ app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);
 app.use("/category", mcqcategory);
 app.use("/forumQuestion",forumQuestion);
+app.use("/employerContact",employerContact);

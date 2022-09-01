@@ -17,7 +17,7 @@ const forumQuestionSchema = new Schema({
     },
 
     date : {
-        type : String,
+        type : Date,
     },
 
     time : {

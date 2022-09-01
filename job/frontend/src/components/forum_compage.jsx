@@ -135,7 +135,7 @@ export default function forum_compage() {
                       className="commenterprofpic"
                     />
                   </div>
-                  <div className="commentboxmid col-10 " style={{backgroundColor:"pink"}}>
+                  <div className="commentboxmid col-10 ">
                     <p className="commentatornametag">Jhone Doe</p>
                     <p className="comment">
                       Just be yourself dont think about it much youll pass

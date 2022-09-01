@@ -11,7 +11,7 @@ import "../CSS/customersupport.css";
 export default function Customersupport() {
   const [message, setMessage] = useState("");
 
- // const [startDate, setStartDate] = useState(new Date());
+ 
   // 
   // const [type, setType] = useState("");
   const [question, setQuestion] = useState("");
@@ -59,6 +59,8 @@ export default function Customersupport() {
   };
 
 console.log("tttttttttt",date);
+
+// myDate.getFullYear(), myDate.getMonth(), myDate.getDate())
 
   return (
     <div className="customer-outer-main">
@@ -187,7 +189,9 @@ console.log("tttttttttt",date);
               <DatePicker
                 className="datepricker123"
                 selected={date}
-                onChange={(date: Date) => setDate(date)}
+                 onChange={                 
+                   date => setDate(date)
+                 } 
               />
             </div>
           </div>

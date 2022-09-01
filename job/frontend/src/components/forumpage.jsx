@@ -69,10 +69,10 @@ export default function Forumpage() {
         </div>
 
         {/*  main center part of page*/}
-        <div className="forum-main row">
+        <div className="forum-main row" >
           <div className="forum-left col-xxl-9">
             {/* question card teal*/}
-            <div className="qraised row">
+            <div className="qraised row" >
               <div className="qupvote col-xl-1">
                 <div className="qupvotebar">
                   <BsArrowUpCircle className="countericons hovupvote" />
