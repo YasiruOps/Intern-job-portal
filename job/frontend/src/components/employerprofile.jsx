@@ -6,8 +6,13 @@ import { BiEdit } from "react-icons/bi";
 import { BsSaveFill } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 export default function Employerprofile() {
+
+    const id = useSelector((state) => state.auth.employerid);
+    console.log("iddd", id)
 
     const [isDisabled, setIsDisabled] = useState(true);
     const [checked, setChecked] = useState(false);
@@ -21,6 +26,30 @@ export default function Employerprofile() {
       return dataSubmit();
     };
     
+    const initialState = {
+        _id: "",
+        email: "",
+        displayname: "",
+        password: "",
+        registrationID: "",
+        compname: "",
+        contact: "",
+        address:"",
+      };
+
+     const [profile, setProfile] = useState(initialState);
+
+    useEffect(() => {  
+        //Customer Details getter
+        axios
+          .get(`http://localhost:8000/employerRegister/${id}`)
+          .then((response) => {
+            console.log("lllllll",response?.data[0]);
+            setProfile(response?.data[0]);
+          })
+          .catch((err) => {
+          });
+      }, []);
 
   return (
     <div>
@@ -39,23 +68,23 @@ export default function Employerprofile() {
                 <div className="row">
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Registation ID</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Registation ID" disabled={isDisabled}/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.address} disabled={isDisabled}></input>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Company Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Company Name" disabled={isDisabled}/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={[profile.compname]}disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Display Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Display Name" disabled={isDisabled}/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.displayname} disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Contact</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Contact" disabled={isDisabled}/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.contact} disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6" >
                         <label for="exampleInputPassword1">Address</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Address" disabled={isDisabled}/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.address} disabled={isDisabled}/>
                     </div>
 
                     <div className="col-lg-6">
@@ -85,7 +114,7 @@ export default function Employerprofile() {
                     <div className="col-lg-6" >
                         <div className="col-12">
                             <label for="exampleInputPassword1">E-mail</label>
-                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="e-mail"/>
+                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.email}/>
                         </div>
                         <div className="col-12">
                             <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}}>

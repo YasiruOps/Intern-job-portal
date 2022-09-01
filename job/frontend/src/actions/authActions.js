@@ -1,4 +1,4 @@
-import {SET_EMPLOYERID} from '../actions/types';
+import {SET_EMPLOYERID,LOGOUT} from '../actions/types';
 
 export const logout=()=>{
     return{

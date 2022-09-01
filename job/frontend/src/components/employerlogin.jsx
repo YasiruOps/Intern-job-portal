@@ -7,10 +7,13 @@ import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import Button from 'react-bootstrap/Button';
 import Footer from "./footer";
 import axios from "axios";
-
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { setemployerid } from "../actions/authActions";
 
 export default function Login() {
+
+  const dispatch = useDispatch();
 
   const initialValues = {
     email: "",
@@ -33,6 +36,7 @@ export default function Login() {
     axios
       .post(`http://localhost:8000/auth/employerLogin`, payload)
       .then((response) => {
+        dispatch(setemployerid(response.data.user._id));
         navigate('/Employer-Dash');
       })
       .catch((err) => {});

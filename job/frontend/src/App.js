@@ -8,6 +8,8 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import {  useSelector } from 'react-redux';
+
 import Home from "./components/home";
 import Rbuilder from "./components/Rbuilder";
 import Login from './components/login';
@@ -35,6 +37,9 @@ import Quizscore from "./components/quizscore-page";
 import Employerprofile from "./components/employerprofile";
 
 function App() {
+
+  const  employerID  = useSelector(state => state.auth.employerid)
+
   return (
     <div>
       <Router>
