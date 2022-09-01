@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dialog, DialogTitle, DialogContent, makeStyles, Typography} from'@material-ui/core';
 import { borderRadius, height } from '@mui/system';
-import "../CSS/popup-remove.css"
+import "../CSS/popup-removejob.css"
 import { MdDeleteOutline } from 'react-icons/md';
 
 
