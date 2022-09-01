@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import "../CSS/employerprofile.css"
 import Header from "./header"
 import Sidebar from './employer-sidebar'
@@ -7,9 +7,21 @@ import { BsSaveFill } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 
+export default function Employerprofile() {
 
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [checked, setChecked] = useState(false);
+    
+    const dataSubmit = () => {
+      return checked ? setIsDisabled(true) : setIsDisabled(false);
+    };
+    
+    const onCheckboxClick = () => {
+      setChecked(!checked);
+      return dataSubmit();
+    };
+    
 
-export default function employerprofile() {
   return (
     <div>
         <Header/>
@@ -27,29 +39,29 @@ export default function employerprofile() {
                 <div className="row">
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Registation ID</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Registation ID"/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Registation ID" disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Company Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Company Name"/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Company Name" disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Display Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Display Name"/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Display Name" disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Contact</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Contact"/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Contact" disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6" >
                         <label for="exampleInputPassword1">Address</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Address"/>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder="Address" disabled={isDisabled}/>
                     </div>
 
                     <div className="col-lg-6">
                         <div className="row">
                             <div className="col-xl-3">
-                                <button type="button" className="btn employerprofbtnset1" style={{backgroundColor:"#FFB800"}}>
+                                <button type="button" className="btn employerprofbtnset1" style={{backgroundColor:"#FFB800"}} onClick={onCheckboxClick}>
                                     <p className="employerprofbtnset1-text">Edit</p>
                                     <BiEdit className="employerprofbtnset1-icon" />
                                 </button>
