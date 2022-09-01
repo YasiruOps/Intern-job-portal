@@ -20,7 +20,11 @@ const employerContactSchema = new Schema({
         type : [String],
     },
 
-    description : {
+    desc : {
+        type : String,
+    },
+
+    date2 : {
         type : String,
     },
 

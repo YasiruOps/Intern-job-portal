@@ -11,12 +11,29 @@ import "../CSS/customersupport.css";
 export default function Customersupport() {
   const [message, setMessage] = useState("");
 
- 
-  // 
+//  employee contact
+
+const[name, setName] =useState("")
+const[email, setEmail] =useState("")
+const[desc, setDesc] =useState("")
+const[date2, setDate2] =useState("")
+
+const options2 =[
+  {value: '', text: '--Select Employer--'},
+  {value: 'awemonk', text: 'Awe monk'},
+  {value: 'teenhug', text: 'Teens Hugs'},
+  {value: 'epiclift', text: 'Epic Lift'},
+];
+
+const[empname, setEmpname] =useState(options2[0].value)
+
+  // forum ekeee part eka
   // const [type, setType] = useState("");
   const [question, setQuestion] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [ddate, setDdate] = useState(new Date());
+  const [date, setDate] = useState("");
+  
   const [time, setTime] = useState("");
   const [reacts, setReacts] = useState("");
 
@@ -32,16 +49,71 @@ export default function Customersupport() {
 
   const [type, setType] = useState(options[0].value);
 
+  const[qtype, setQtype] =useState(options[0].value)
   ////////////////////////////////////////
 
+   function getCurrentDate(separator="/"){
+
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    
+    return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+    }
+
+    function getCurrentTime(separator=":"){
+
+      let newDate = new Date()
+      let hours = newDate.getHours();
+      let minutes = newDate.getMinutes();
+      let seconds = newDate.getSeconds();
+      
+      return `${hours}${separator}${minutes}${separator}${seconds}`
+      }
+
+      function getSelectedDate(ddate){
+
+        let day = ddate.getDate();
+        let month = ddate.getMonth()+1;
+        let year = ddate.getFullYear();
+        
+        return `${day}${"/"}${month<10?`0${month}`:`${month}`}${"/"}${year}`
+        }
+
+    console.log("dateee",getSelectedDate(ddate));
+     console.log("real date",ddate);
+
+//Employee Question yawana eka
+function sendData2() {
+  const newEmpQuestion = {
+    id: "0",
+    empname,
+    name,
+    email,
+    qtype,
+    desc,
+    date2:getCurrentDate(),
+  };
+axios
+.post("http://localhost:8000/employerContact/add", newEmpQuestion)
+.then(() => {
+  window.location.reload(false);
+})
+.catch((err) => {
+  alert(err);
+});
+};  
+
+  //Forum Question yawana eka
   function sendData() {
     const newForumQuestion = {
       id: "0",
       type,
       question,
       description,
-      date,
-      time,
+      date:getSelectedDate(ddate),
+      time:getCurrentTime(),
       reacts,
     };
   axios
@@ -54,11 +126,14 @@ export default function Customersupport() {
   });
 };
 
+
   const handleSubmit = (e) => {
     sendData();
   };
 
-console.log("tttttttttt",date);
+  const handleEmpQuesitionSub = (e) => {
+    sendData2();
+  };
 
 // myDate.getFullYear(), myDate.getMonth(), myDate.getDate())
 
@@ -73,13 +148,23 @@ console.log("tttttttttt",date);
           <p className="contactemp-tag">Contact Employer</p>
 
           <div className="empselector-sup">
-            <select className="minimal3 ">
-              <option>Pick Employer</option>
-              <option>Jhone Deals</option>
-              <option>Saiwar aiyya</option>
-              <option>Kukul kade</option>
+            <select className="minimal3" Value={empname} onChange={(e) => {setEmpname(e.target.value);}}>
+                {options2.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                ))}
             </select>
           </div>
+
+           {/* <select className="minimal3 " Value={type} onChange={(e) => {setType(e.target.value); }}>
+                 {options.map(option => (
+               <option key={option.value} value={option.value}>
+               {option.text}
+               </option>
+               ))}
+                </select> */}
+
 
           <div className="supportsinputcontainer1 row">
             <div className="supportinput-container col-6">
@@ -88,7 +173,7 @@ console.log("tttttttttt",date);
                 id="fname"
                 className="supportinput"
                 autocomplete="off"
-                value={""}
+                Value={name} onChange={(e) => {  setName(e.target.value); }} 
                 aria-labelledby="placeholder-fname"
                
               />
@@ -107,7 +192,7 @@ console.log("tttttttttt",date);
                 id="fname"
                 className="supportinput"
                 autocomplete="off"
-                value=""
+                Value={email} onChange={(e) => {  setEmail(e.target.value); }} 
                 aria-labelledby="placeholder-fname"
               />
               <label
@@ -121,13 +206,14 @@ console.log("tttttttttt",date);
           </div>
 
           <div className="empselector-sup">
-            <select className="minimal3 ">
-              <option>Type of question</option>
-              <option>Texhnical</option>
-              <option>Account</option>
-              <option>Issues</option>
-            </select>
-          </div>
+          <select className="minimal3 " Value={qtype} onChange={(e) => {setQtype(e.target.value); }}>
+                {options.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                ))}
+                </select>
+          </div>   
 
           <p className="yourquestion">Your Question</p>
           <p className="yourwuesitonex">Present your question below</p>
@@ -135,9 +221,10 @@ console.log("tttttttttt",date);
             className="form-control yourquestioninput"
             id="exampleFormControlTextarea1"
             rows="3"
-          ></textarea>
+            Value={desc} onChange={(e) => {  setDesc(e.target.value); }} 
+          />
 
-          <button type="button" className="submitcussupbtn btn btn-primary">
+          <button type="button" className="submitcussupbtn btn btn-primary" onClick={handleEmpQuesitionSub}>
             Submit
           </button>
         </div>
@@ -188,9 +275,10 @@ console.log("tttttttttt",date);
               </label>
               <DatePicker
                 className="datepricker123"
-                selected={date}
-                 onChange={                 
-                   date => setDate(date)
+                selected={ddate}
+                 onChange={  
+                  ddate => setDdate(ddate)               
+                  //  date => setDate(getSelectedDate(date))
                  } 
               />
             </div>

@@ -3,18 +3,20 @@ const eContact = require("../models/employerContact");
 
 function AddEmployerContact(request, response) {
     //ADD
-    const empname = request.body.type;
-    const name = request.body.question;
-    const email = request.body.description;
-    const qtype = request.body.date;
-    const description = request.body.time; 
+    const empname = request.body.empname;
+    const name = request.body.name;
+    const email = request.body.email;
+    const qtype = request.body.qtype;
+    const desc = request.body.desc; 
+    const date2 = request.body.date2; 
   
     const equestion = new eContact({
         empname,
         name,
         email,
-        qtype,
-        description,
+        qtype,  
+        desc,
+        date2,
     });
 
     equestion.save((err) => {
