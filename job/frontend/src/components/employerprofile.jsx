@@ -17,6 +17,12 @@ export default function Employerprofile() {
     const [isDisabled, setIsDisabled] = useState(true);
     const [checked, setChecked] = useState(false);
     
+    const [isActive, setIsActive] = useState(true);
+
+    const handleClick = () => {
+        setIsActive(current => !current);
+      };
+
     const dataSubmit = () => {
       return checked ? setIsDisabled(true) : setIsDisabled(false);
     };
@@ -68,7 +74,7 @@ export default function Employerprofile() {
                 <div className="row">
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Registation ID</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.address} disabled={isDisabled}></input>
+                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.registrationID} disabled={isDisabled}></input>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Company Name</label>
@@ -123,15 +129,17 @@ export default function Employerprofile() {
                             </button>
                         </div>    
                         <div className="col-12">
-                            <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}}>
+                            <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}} onClick={handleClick}>
                                 <p className="employerprofbtnset1-text">Change Password</p>
                                 <RiLockPasswordFill className="employerprofbtnset1-icon" />
                             </button>
                         </div>        
                     </div>
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" style={{display: isActive ? "none" : ''}}>
                    
+                    
+
                             <label for="exampleInputPassword1">Previous Password <span style={{color:"red"}}>*</span> </label>
                             <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
                         
