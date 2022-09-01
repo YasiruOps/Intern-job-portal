@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../CSS/employerReg.css";
 import Header from "../header";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from 'react-router-dom';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useLocation } from "react-router-dom";
 
 export default function Employer() {
 
+const[email, setEmail] =useState("")
+const[displayname, setDisplayname] =useState("")
+const[password, setPassword] =useState("")
+const[password2, setPassword2] =useState("")
+const[msg,setMsg]=useState("")
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   const Redirect=()=>{
-    navigate('/Employer-Reg2');
+    if(password!=password2){
+      setMsg("Password mismatch"); //meka hadanna component ekak
+      return ;
+    } 
+    navigate('/Employer-Reg2',{state:{email,displayname,password}});
   }
 
   return (
@@ -45,7 +58,7 @@ export default function Employer() {
           <div className="inputs1">
             <div className="row1 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required   value={email} onChange={(e) => {  setEmail(e.target.value); }}  />
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -54,7 +67,7 @@ export default function Employer() {
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required  value={displayname} onChange={(e) => {  setDisplayname(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -64,7 +77,7 @@ export default function Employer() {
             </div>
             <div className="row2 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required  value={password} onChange={(e) => {  setPassword(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -73,7 +86,7 @@ export default function Employer() {
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required value={password2} onChange={(e) => {  setPassword2(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">

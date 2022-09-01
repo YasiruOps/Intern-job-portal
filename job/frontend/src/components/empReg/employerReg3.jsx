@@ -4,9 +4,12 @@ import Header from "../header";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function Employer() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
@@ -23,6 +26,20 @@ export default function Employer() {
   const RedirectBack = () => {
     navigate("/Employer-Reg2");
   };
+
+  function sendData() {
+  axios
+  .post("http://localhost:8000/employerRegister/add", location.state)
+  .then(() => {
+    alert("Registerd succesfully")
+    window.location.reload(false);
+  })
+  .catch((err) => {
+    alert(err);
+  });
+  };  
+  
+
 
   return (
     <div>
@@ -113,6 +130,7 @@ export default function Employer() {
             disabled={isDisabled}
             type="button"
             className="btn btn-primary empcontinue"
+            onClick={sendData}
           >
             Create Account
           </button>

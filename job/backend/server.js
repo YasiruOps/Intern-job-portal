@@ -36,6 +36,7 @@ const mcqRoutes = require('./routes/mcq')
 const mcqcategory = require('./routes/mcqcategory')
 const forumQuestion = require("./routes/forumQuestion")
 const employerContact = require("./routes/employerContact")
+const employerRegister =require("./routes/employerauth")
 
 //app midleware
 app.use(bodyParser.json());
@@ -46,3 +47,4 @@ app.use("/auth", auth);
 app.use("/category", mcqcategory);
 app.use("/forumQuestion",forumQuestion);
 app.use("/employerContact",employerContact);
+app.use("/employerRegister",employerRegister);

@@ -6,11 +6,39 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import Button from 'react-bootstrap/Button';
 import Footer from "./footer";
+import axios from "axios";
 
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const [loginForm, setLoginForm] = useState(initialValues);
+
+  const onChange = (e) => {
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+  };
+
+  const submit = () => {
+    const payload = {
+      email: loginForm.email,
+      password: loginForm.password,
+    };
+
+    console.log(payload);
+    axios
+      .post(`http://localhost:8000/auth/employerLogin`, payload)
+      .then((response) => {
+        navigate('/Employer-Dash');
+      })
+      .catch((err) => {});
+  };
+
+  ///////////////////////////////////////////////
   const navigate = useNavigate();
 
   const Redir5=()=>{
@@ -38,7 +66,7 @@ export default function Login() {
               </span>
             </div>
 
-  <input name ="email" type="email" id="form2Example1" className="form-control" placeholder="E-mail (required)" />
+  <input onChange={onChange} name ="email" type="email" id="form2Example1" className="form-control" placeholder="E-mail (required)" />
   
 
           </div>
@@ -49,7 +77,7 @@ export default function Login() {
                 <HttpsOutlinedIcon />
               </span>
             </div>
-            <input name="password" type="password" id="form2Example2" class="form-control" placeholder="Password (required)"/>
+            <input onChange={onChange} name="password" type="password" id="form2Example2" class="form-control" placeholder="Password (required)"/>
   
           </div>
         </div>
@@ -59,7 +87,7 @@ export default function Login() {
         </div>
 
         <div className="fourth_layer">
-          <Button className="btn_login" variant="primary">Login</Button>
+          <Button onClick={submit}  className="btn_login" variant="primary">Login</Button>
           <hr className="hr2" />
           <p className="sign_up">Do not have an account already?</p>
           <Button onClick={Redir5} className="btn_signup">Register now!</Button>

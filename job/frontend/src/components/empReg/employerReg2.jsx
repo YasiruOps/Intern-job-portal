@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../CSS/employerReg2.css";
 import Header from "../header";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Employer() {
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  
+const[registrationID, setRegistrationID] =useState("")
+const[compname, setCompname] =useState("")
+const[contact, setContact] =useState("")
+const[address, setAddress] =useState("")
 
   const RedirectBack=()=>{
     navigate('/Employer-Reg');
   }
 
   const RedirectForward=()=>{
-    navigate('/Employer-Reg3');
+    navigate('/Employer-Reg3',{state:{...location.state,registrationID,compname,contact,address}});
   }
 
   return (
+    
     <div>
+      {console.log("pppp",location.state)}
       <Header />
       <div className="container">
         <p className="empteg-title">Employer Registration</p>
@@ -50,7 +61,7 @@ export default function Employer() {
           <div className="inputs1">
             <div className="row1 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required value={registrationID} onChange={(e) => {  setRegistrationID(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -59,7 +70,7 @@ export default function Employer() {
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required value={compname} onChange={(e) => {  setCompname(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -69,7 +80,7 @@ export default function Employer() {
             </div>
             <div className="row2 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required value={contact} onChange={(e) => {  setContact(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -78,7 +89,7 @@ export default function Employer() {
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required />
+                <input className="empReg-input" type="text" required value={location.state?.address??address} onChange={(e) => {  setAddress(e.target.value); }}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">

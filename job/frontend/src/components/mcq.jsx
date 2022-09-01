@@ -4,22 +4,39 @@ import Header from "../components/header";
 import FlagIcon from "@mui/icons-material/Flag";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const symbols = ["A", "B", "C", "D"];
 
 export default function Mcq() {
+
+
+
+  const navigate = useNavigate();
+
   const [questions, setquestion] = useState([]);
   const [answer, setanswer] = useState({});
   const [number, setnumber] = useState(0);
+  const [time, setTime] = useState(120);
   const location = useLocation();
 
+function countdown(){
+  console.log("hello")  
+  //  setMytime((prevTime) => prevTime + 1);
+}
+
+  console.log("tttttt",time)
   useEffect(() => {
+    console.log("lllllllllllllllll")
     axios
       .get(
         `http://localhost:8000/mcq?type=${location.state.selectType}&name=${location.state.name}`
       )
       .then((res) => {
         setquestion(res.data);
+        const myInterval = setInterval(countdown,5000);
+        // clear out the interval using the id when unmounting the component
+        return () => clearInterval(myInterval);
       })
       .catch((err) => {
         alert(err.message);
@@ -40,6 +57,8 @@ export default function Mcq() {
         correct++;
       }
     });
+
+    navigate("/Quiz-score",{state:{correct,amount:questions.length,name:location.state.name}});
     console.log("correct", correct);
   }
 
@@ -50,36 +69,31 @@ export default function Mcq() {
   function back() {
     if (number >= 1) {
       setnumber(number - 1);
-      console.log(
-        "ssssssssssssssssssssssssssssssssssssssssssssssssssss",
-        number
-      );
     }
   }
 
   function front() {
     if (number < questions.length - 1) {
       setnumber(number + 1);
-      console.log("next", number);
     }
   }
 
   return (
     <div>
       {console.log("number", number, answer)}
-
+      {console.log("kkkkkkkkk")}  
       <Header />
       <div className="outer-container">
         <div className="top-layer">
           <div>
-            <p className="quiz-name">Name of Quiz</p>
+            <p className="quiz-name">{location.state.name}</p>
           </div>
           <div className="time-box">
             <div className="row">
               <p className="time-tag">Time Left</p>
             </div>
             <div className="row">
-              <p className="time">00:13:22 </p>
+              <p className="time">ss</p>
             </div>
           </div>
         </div>

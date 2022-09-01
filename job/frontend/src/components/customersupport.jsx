@@ -31,9 +31,7 @@ const[empname, setEmpname] =useState(options2[0].value)
   // const [type, setType] = useState("");
   const [question, setQuestion] = useState("");
   const [description, setDescription] = useState("");
-  const [ddate, setDdate] = useState(new Date());
-  const [date, setDate] = useState("");
-  
+  const [date, setDate] = useState(new Date());
   const [time, setTime] = useState("");
   const [reacts, setReacts] = useState("");
 
@@ -81,8 +79,8 @@ const[empname, setEmpname] =useState(options2[0].value)
         return `${day}${"/"}${month<10?`0${month}`:`${month}`}${"/"}${year}`
         }
 
-    console.log("dateee",getSelectedDate(ddate));
-     console.log("real date",ddate);
+    console.log("dateee",getSelectedDate(date));
+     console.log("real date",date);
 
 //Employee Question yawana eka
 function sendData2() {
@@ -112,7 +110,7 @@ axios
       type,
       question,
       description,
-      date:getSelectedDate(ddate),
+      date:getSelectedDate(date),
       time:getCurrentTime(),
       reacts,
     };
@@ -275,9 +273,9 @@ axios
               </label>
               <DatePicker
                 className="datepricker123"
-                selected={ddate}
+                selected={date}
                  onChange={  
-                  ddate => setDdate(ddate)               
+                  date => setDate(date)               
                   //  date => setDate(getSelectedDate(date))
                  } 
               />
