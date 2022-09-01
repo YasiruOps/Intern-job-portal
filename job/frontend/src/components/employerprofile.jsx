@@ -128,7 +128,7 @@ export default function Employerprofile() {
                                 <MdEmail className="employerprofbtnset1-icon" />
                             </button>
                         </div>    
-                        <div className="col-12">
+                        <div className="col-12">    
                             <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}} onClick={handleClick}>
                                 <p className="employerprofbtnset1-text">Change Password</p>
                                 <RiLockPasswordFill className="employerprofbtnset1-icon" />
