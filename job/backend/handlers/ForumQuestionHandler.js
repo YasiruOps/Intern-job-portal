@@ -2,6 +2,7 @@ const fQuestion = require("../models/forumQuestion");
 
 function AddForumQuestion(request, response) {
     //ADD
+    const ownerID = request.body.ownerID;
     const type = request.body.type;
     const question = request.body.question;
     const description = request.body.description;
@@ -11,6 +12,7 @@ function AddForumQuestion(request, response) {
     
   
     const fquestion = new fQuestion({
+      ownerID,
       type,
       question,
       description,

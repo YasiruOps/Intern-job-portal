@@ -12,7 +12,6 @@ import axios from "axios";
 export default function Employerprofile() {
 
     const id = useSelector((state) => state.auth.employerid);
-    console.log("iddd", id)
 
     const [isDisabled, setIsDisabled] = useState(true);
     const [checked, setChecked] = useState(false);
@@ -33,10 +32,8 @@ export default function Employerprofile() {
     };
     
     const initialState = {
-        _id: "",
         email: "",
         displayname: "",
-        password: "",
         registrationID: "",
         compname: "",
         contact: "",
@@ -57,6 +54,50 @@ export default function Employerprofile() {
           });
       }, []);
 
+      function ChangeValue(key,value){
+        setProfile({...profile,[key]:value})
+      }
+
+      function EditSubmit(){
+        console.log("pppppppppppppp",profile)
+        axios
+        .put(`http://localhost:8000/employerRegister/update/${id}`,profile)
+        .then(() => {
+            setIsDisabled(true);
+            alert("sucussfully updated")
+           
+        })
+        .catch((err) => {
+        });
+      };
+    
+    //   Value={empname} onChange={(e) => {setEmpname(e.target.value);
+
+//password
+const [password, setPassword] = useState("")
+
+const [newpassword, setnewPassword] = useState("")
+const [newpassword2, setnewPassword2] = useState("")
+
+function changePassword(){
+    if(newpassword!=newpassword2){
+        alert("password missmatch")
+        return;
+    }
+    axios
+    .put(`http://localhost:8000/employerRegister/updatepassword/${id}`,{prevpassword:password, password:newpassword})
+    .then(() => {
+        alert("sucussfully updated")     
+    })
+    .catch((err) => {
+    });
+
+}
+
+function ChangeValue(key,value){
+    setProfile({...profile,[key]:value})
+  }
+
   return (
     <div>
         <Header/>
@@ -74,23 +115,23 @@ export default function Employerprofile() {
                 <div className="row">
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Registation ID</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.registrationID} disabled={isDisabled}></input>
+                        <input name="registrationID" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" onChange={(e)=>ChangeValue(e.target.name, e.target.value)} value={profile.registrationID} disabled={isDisabled}></input>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Company Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={[profile.compname]}disabled={isDisabled}/>
+                        <input name="compname" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" onChange={(e)=>ChangeValue(e.target.name, e.target.value)} value={[profile.compname]}disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Display Name</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.displayname} disabled={isDisabled}/>
+                        <input name="displayname" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" onChange={(e)=>ChangeValue(e.target.name, e.target.value)} value={profile.displayname} disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6">
                         <label for="exampleInputPassword1">Contact</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.contact} disabled={isDisabled}/>
+                        <input name="contact" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" onChange={(e)=>ChangeValue(e.target.name, e.target.value)} value={profile.contact} disabled={isDisabled}/>
                     </div>
                     <div className="col-lg-6" >
                         <label for="exampleInputPassword1">Address</label>
-                        <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.address} disabled={isDisabled}/>
+                        <input name="address" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" onChange={(e)=>ChangeValue(e.target.name, e.target.value)} value={profile.address} disabled={isDisabled}/>
                     </div>
 
                     <div className="col-lg-6">
@@ -102,7 +143,7 @@ export default function Employerprofile() {
                                 </button>
                             </div>
                             <div className="col-xl-3" >
-                                <button type="button" className="btn employerprofbtnset1" style={{backgroundColor:"#0C77F8"}}>
+                                <button type="button" className="btn employerprofbtnset1" onClick={EditSubmit} style={{backgroundColor:"#0C77F8"}}>
                                     <p className="employerprofbtnset1-text">Save</p>
                                     <BsSaveFill className="employerprofbtnset1-icon" />
                                 </button>
@@ -120,14 +161,8 @@ export default function Employerprofile() {
                     <div className="col-lg-6" >
                         <div className="col-12">
                             <label for="exampleInputPassword1">E-mail</label>
-                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" placeholder={profile.email}/>
-                        </div>
-                        <div className="col-12">
-                            <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}}>
-                                <p className="employerprofbtnset1-text">Change Email</p>
-                                <MdEmail className="employerprofbtnset1-icon" />
-                            </button>
-                        </div>    
+                            <input name="email" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1" disabled={true} value={profile.email}/>
+                        </div> 
                         <div className="col-12">    
                             <button type="button" className="btn employerprofbtnset2" style={{backgroundColor:"#0C77F8"}} onClick={handleClick}>
                                 <p className="employerprofbtnset1-text">Change Password</p>
@@ -141,19 +176,19 @@ export default function Employerprofile() {
                     
 
                             <label for="exampleInputPassword1">Previous Password <span style={{color:"red"}}>*</span> </label>
-                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
+                            <input Value={password} onChange={(e) => {setPassword(e.target.value);}} type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
                         
                   
                             <label for="exampleInputPassword1">New Password <span style={{color:"red"}}>*</span> </label>
-                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
+                            <input Value={newpassword} onChange={(e) => {setnewPassword(e.target.value);}} type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
                    
                         
                             <label for="exampleInputPassword1">Confirm New Password <span style={{color:"red"}}>*</span> </label>
-                            <input type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
+                            <input Value={newpassword2} onChange={(e) => {setnewPassword2(e.target.value);}} type="password" className="form-control empprofbaseinfoinputs" id="exampleInputPassword1"/>
                    
                         
-                        <button type="button" className="btn employerprofbtnset1" style={{backgroundColor:"#0C77F8"}}>
-                            <p className="employerprofbtnset1-text">Save</p>
+                        <button onClick={changePassword} type="button" className="btn employerprofbtnset1" style={{backgroundColor:"#0C77F8"}}>
+                            <p className="employerprofbtnset1-text" >Save</p>
                             <BsSaveFill className="employerprofbtnset1-icon" />
                         </button>
                         

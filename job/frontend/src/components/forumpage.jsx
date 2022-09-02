@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/forumpage.css";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 import { GoSearch } from "react-icons/go";
 import { AiOutlineStar } from "react-icons/ai";
 import { BiTrendingUp } from "react-icons/bi";
@@ -22,8 +23,23 @@ export default function Forumpage() {
     navigate("/Forum-comment");
   };
 
+  const [fquestion, setFquestion] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/ForumQuestionFetch/`)
+      .then((res) => {
+        setFquestion(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
+
   return (
     <div>
+      {console.log("gggg", fquestion)}
+
       <Header />
       <div className="jobsearch col-9">
         <p className="searchjobtag2">Forum</p>
@@ -69,89 +85,55 @@ export default function Forumpage() {
         </div>
 
         {/*  main center part of page*/}
-        <div className="forum-main row" >
+        <div className="forum-main row">
           <div className="forum-left col-xxl-9">
             {/* question card teal*/}
-            <div className="qraised row" >
-              <div className="qupvote col-xl-1">
-                <div className="qupvotebar">
-                  <BsArrowUpCircle className="countericons hovupvote" />
-                  <p className="upcountq">12</p>
-                  <BsArrowDownCircle className="countericons hovdownvote" />
-                </div>
-              </div>
 
-              <div className="picarea col-xl-2">
-                <img src={Profpic} className="profilepic" />
-              </div>
-              <div className="qmid col-xl-9">
-                <div className="row">
-                  <p className="qmidtitle">Tips for Jumbo.tec interviews </p>
-                  <p className="qmidq">All help would be appreciated</p>
-                  <p className="qmiddate">
-                    12:09pm <span>8/05/2022</span>
-                  </p>
-                </div>
+            {fquestion.map((question) => {
+              return (
+                <div className="qraised row">
+                  <div className="qupvote col-xl-1">
+                    <div className="qupvotebar">
+                      <BsArrowUpCircle className="countericons hovupvote" />
+                      <p className="upcountq">{question.reacts}</p>
+                      <BsArrowDownCircle className="countericons hovdownvote" />
+                    </div>
+                  </div>
 
-                <div className="row qintractsect">
-                  <div className="col-5 qintractsect-c1" onClick={Redirect}>
-                    <CgComment className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">
-                      <span>2 </span>comments
-                    </p>
+                  <div className="picarea col-xl-2">
+                    <img src={Profpic} className="profilepic" />
                   </div>
-                  <div className="col-3  qintractsect-c1">
-                    <BsBookmark className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">Save</p>
-                  </div>
-                  <div className="col-4 qintractsect-c1">
-                    <FiShare2 className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">Share</p>
-                  </div>
-                </div>
-              </div>
-              </div>
+                  <div className="qmid col-xl-9">
+                    <div className="row">
+                      <p className="qmidtitle">
+                        {question.question}
+                      </p>
+                      <p className="qmidq">{question.description}</p>
+                      <p className="qmiddate">
+                        {question.time} <span>{question.date}</span>
+                      </p>
+                    </div>
 
-              <div className="qraised row">
-              <div className="qupvote col-xl-1">
-                <div className="qupvotebar">
-                  <BsArrowUpCircle className="countericons hovupvote" />
-                  <p className="upcountq">12</p>
-                  <BsArrowDownCircle className="countericons hovdownvote" />
-                </div>
-              </div>
-
-              <div className="picarea col-xl-2">
-                <img src={Profpic} className="profilepic" />
-              </div>
-              <div className="qmid col-xl-9">
-                <div className="row">
-                  <p className="qmidtitle">Tips for Jumbo.tec interviews </p>
-                  <p className="qmidq">All help would be appreciated</p>
-                  <p className="qmiddate">
-                    12:09pm <span>8/05/2022</span>
-                  </p>
-                </div>
-
-                <div className="row qintractsect">
-                  <div className="col-5 qintractsect-c1">
-                    <CgComment className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">
-                      <span>2 </span>comments
-                    </p>
-                  </div>
-                  <div className="col-3  qintractsect-c1">
-                    <BsBookmark className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">Save</p>
-                  </div>
-                  <div className="col-4 qintractsect-c1">
-                    <FiShare2 className="qintractsect-c1-icons" />
-                    <p className="qintractsect-c1-tag">Share</p>
+                    <div className="row qintractsect">
+                      <div className="col-5 qintractsect-c1" onClick={Redirect}>
+                        <CgComment className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">
+                          <span>2 </span>comments
+                        </p>
+                      </div>
+                      <div className="col-3  qintractsect-c1">
+                        <BsBookmark className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">Save</p>
+                      </div>
+                      <div className="col-4 qintractsect-c1">
+                        <FiShare2 className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">Share</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-            </div>
+              );
+            })}
           </div>
 
           {/* right side */}

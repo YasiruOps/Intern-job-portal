@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const forumQuestionSchema = new Schema({
 
+    ownerID : {
+        type : String,
+    },
+
     type : {
         type : [String],
     },

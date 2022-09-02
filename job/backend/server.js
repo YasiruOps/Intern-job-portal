@@ -45,6 +45,6 @@ app.use(cors());
 app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);
 app.use("/category", mcqcategory);
-app.use("/forumQuestion",forumQuestion);
+app.use("/ForumQuestionFetch",forumQuestion);
 app.use("/employerContact",employerContact);
 app.use("/employerRegister",employerRegister);

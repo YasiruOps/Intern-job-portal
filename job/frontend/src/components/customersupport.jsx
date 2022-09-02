@@ -106,7 +106,7 @@ axios
   //Forum Question yawana eka
   function sendData() {
     const newForumQuestion = {
-      id: "0",
+      ownerID:"",
       type,
       question,
       description,
