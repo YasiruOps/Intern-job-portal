@@ -1,9 +1,9 @@
 const Comment = require("../models/comment");
 
 function CommentFetchHandler(request, response){
-        const formID = request.params.forumID;
+        const forumID = request.params.forumID;
 
-        Comment.find({formID}).then((comment)=>{  
+        Comment.find({forumID}).then((comment)=>{  
         console.log(comment);
         return response.status(200).json(comment);            
      }).catch((err) =>{

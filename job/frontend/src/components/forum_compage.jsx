@@ -24,12 +24,12 @@ import { useState } from "react";
 
 export default function Forum_compage() {
   
+  const location = useLocation();
+
 const [comment, setComment] = useState("");
+const [comments, setComments] = useState(location?.state?.comments??[]);
 
   function sendData() {
-    console.log("mmmmmmmmm",location.state)
-    console.log("mmmmmmmmmcomment",location.comment)
-
     const newCommnet = {
       forumID:location.state._id,
       userID:"",
@@ -40,19 +40,39 @@ const [comment, setComment] = useState("");
   axios
   .post("http://localhost:8000/comment", newCommnet)
   .then(() => {
-    alert("comment suceeded")
+    return axios
+          .get(`http://localhost:8000/comment/${location.state._id}`)
+          .then((res) => {
+            setComments(res.data)
+      }) 
   })
   .catch((err) => {
     alert(err);
   });
   };  
 
-  const location = useLocation();
+  function delteComment(commentID, index){
+    axios
+    .delete(`http://localhost:8000/comment/delete/${commentID}`)
+    .then(() => {
+      console.log("indesx",index)
+      const temp = [...comments]
+      temp.splice(index, 1)
+      console.log("temp",temp)
+      setComments(temp);
+      alert("comment removed")
+    })
+    
+    .catch((err) => {
+      alert(err);
+    });
+  }
+
+ 
 
   return (
     <div className="">
-
-    {console.log("jjjjjjjjjjjjjjj",location)}
+      {console.log("comments",comments)}
 
       <Header />
       <div className="jobsearch col-9">
@@ -130,7 +150,7 @@ const [comment, setComment] = useState("");
                   <div className="col-5 qintractsect-c1">
                     <CgComment className="qintractsect-c1-icons" />
                     <p className="qintractsect-c1-tag">
-                      <span>2 </span>comments
+                      <span>{comments?.length??0} </span>comments
                     </p>
                   </div>
                   <div className="col-3  qintractsect-c1">
@@ -162,25 +182,33 @@ const [comment, setComment] = useState("");
               <div className="commentsarea col-10">
                 <p className="commentstag">Comments</p>
                 <hr className="commentstaghr" />
-                <div className="commentbox row" >
-                  <div className="commmentbox-left d-none d-xxl-block col-1">
-                    <img
-                      src={Profpic}
-                      alt="image here"
-                      className="commenterprofpic"
-                    />
-                  </div>
-                  <div className="commentboxmid col-10 ">
-                    <p className="commentatornametag">Jhone Doe</p>
-                    <p className="comment">
-                      Just be yourself dont think about it much youll pass
-                    </p>
-                   
-                  </div>
-                  <div className="commnetboxrgt col-1">
-                    <AiFillDelete className="deleteicon" />
-                  </div>
-                </div>
+
+                
+                {comments.map((comments,i) => {
+                  return (
+                        <div className="commentbox row" style={{marginBottom:"5px"}}>
+                          <div className="commmentbox-left d-none d-xxl-block col-1">
+                            <img
+                              src={Profpic}
+                              alt="image here"
+                              className="commenterprofpic"
+                            />
+                          </div>
+                          <div className="commentboxmid col-10 ">
+                            <p className="commentatornametag">{comments.name}</p>
+                            <p className="comment">
+                              {comments.comment}
+                            </p>
+                          
+                          </div>
+                          <div className="commnetboxrgt col-1">
+                            <AiFillDelete className="deleteicon" onClick={()=>
+                              delteComment(comments._id, i)
+                            }/>
+                          </div>
+                        </div>
+                  )}
+                )}
               </div>
             </div>
           </div>

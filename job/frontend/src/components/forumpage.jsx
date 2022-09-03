@@ -30,12 +30,15 @@ export default function Forumpage() {
   };
 
   const [fquestion, setFquestion] = useState([]);
+  const[flag, setFlag]=useState(false);
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/ForumQuestionFetch/`)
       .then((res) => {
+        const data = res.data;
         setFquestion(res.data);
+        setFlag(true);
       })
       .catch((err) => {
         alert(err.message);
@@ -43,25 +46,26 @@ export default function Forumpage() {
   }, []);
 
   useEffect(() => {
-    if(fquestion.length>0){
-      fquestion.map(question=>{
+    if(fquestion?.length>0){
+      fquestion?.map((question,i)=>{
         axios
           .get(`http://localhost:8000/comment/${question._id}`)
           .then((res) => {
-            setComments({...comments,[question._id]:res.data});
-      
+              const temp = [
+                ...fquestion
+              ]
+              temp[i].comments = res.data;
+              setFquestion(temp)
       })
       .catch((err) => {
         alert(err.message);
       });
       })
     }  
-  }, [fquestion]);
+  }, [flag]);
 
   return (
     <div>
-      {console.log("gggg", fquestion)}
-
       <Header />
       <div className="jobsearch col-9">
         <p className="searchjobtag2">Forum</p>
@@ -140,7 +144,7 @@ export default function Forumpage() {
                       <div className="col-5 qintractsect-c1" onClick={()=>Redirect(i)}>
                         <CgComment className="qintractsect-c1-icons" />
                         <p className="qintractsect-c1-tag">
-                          <span>2 </span>comments
+                          <span>{question?.comments?.length??0} </span>comments
                         </p>
                       </div>
                       <div className="col-3  qintractsect-c1">
