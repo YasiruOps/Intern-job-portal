@@ -19,8 +19,14 @@ import Profpic from "../images/forum_img.png";
 export default function Forumpage() {
   const navigate = useNavigate();
 
-  const Redirect = () => {
-    navigate("/Forum-comment");
+  const[comments, setComments] = useState({});
+
+  const Redirect = (index) => {
+    console.log("index",index)
+    console.log("fquestion id",fquestion[index]._id)
+    console.log("commtnss",fquestion)
+    console.log("fqestion",fquestion)
+    navigate("/Forum-comment",{state:fquestion[index],comments:comments[`${fquestion[index]._id}`]});
   };
 
   const [fquestion, setFquestion] = useState([]);
@@ -35,6 +41,22 @@ export default function Forumpage() {
         alert(err.message);
       });
   }, []);
+
+  useEffect(() => {
+    if(fquestion.length>0){
+      fquestion.map(question=>{
+        axios
+          .get(`http://localhost:8000/comment/${question._id}`)
+          .then((res) => {
+            setComments({...comments,[question._id]:res.data});
+      
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+      })
+    }  
+  }, [fquestion]);
 
   return (
     <div>
@@ -89,7 +111,7 @@ export default function Forumpage() {
           <div className="forum-left col-xxl-9">
             {/* question card teal*/}
 
-            {fquestion.map((question) => {
+            {fquestion.map((question,i) => {
               return (
                 <div className="qraised row">
                   <div className="qupvote col-xl-1">
@@ -115,7 +137,7 @@ export default function Forumpage() {
                     </div>
 
                     <div className="row qintractsect">
-                      <div className="col-5 qintractsect-c1" onClick={Redirect}>
+                      <div className="col-5 qintractsect-c1" onClick={()=>Redirect(i)}>
                         <CgComment className="qintractsect-c1-icons" />
                         <p className="qintractsect-c1-tag">
                           <span>2 </span>comments

@@ -2,6 +2,7 @@ import React from "react";
 import "../CSS/forum_compage.css";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { GoSearch } from "react-icons/go";
 import { AiOutlineStar } from "react-icons/ai";
@@ -15,12 +16,44 @@ import { BsArrowDownCircle } from "react-icons/bs";
 import { FiThumbsDown } from "react-icons/fi";
 import { FiThumbsUp } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
+import { useLocation } from "react-router-dom";
 
 import Profpic from "../images/forum_img.png";
+import { useState } from "react";
 
-export default function forum_compage() {
+
+export default function Forum_compage() {
+  
+const [comment, setComment] = useState("");
+
+  function sendData() {
+    console.log("mmmmmmmmm",location.state)
+    console.log("mmmmmmmmmcomment",location.comment)
+
+    const newCommnet = {
+      forumID:location.state._id,
+      userID:"",
+      name:"",
+      comment,
+    };
+
+  axios
+  .post("http://localhost:8000/comment", newCommnet)
+  .then(() => {
+    alert("comment suceeded")
+  })
+  .catch((err) => {
+    alert(err);
+  });
+  };  
+
+  const location = useLocation();
+
   return (
     <div className="">
+
+    {console.log("jjjjjjjjjjjjjjj",location)}
+
       <Header />
       <div className="jobsearch col-9">
         <p className="searchjobtag2">Forum</p>
@@ -76,7 +109,7 @@ export default function forum_compage() {
               >
                 <div className="qupvotebar">
                   <BsArrowUpCircle className="countericons hovupvote" />
-                  <p className="upcountq">12</p>
+                  <p className="upcountq">{location.state.reacts}</p>
                   <BsArrowDownCircle className="countericons hovdownvote" />
                 </div>
               </div>
@@ -86,10 +119,10 @@ export default function forum_compage() {
               </div>
               <div className="qmid col-xl-9">
                 <div className="row">
-                  <p className="qmidtitle">Tips for Jumbo.tec interviews </p>
-                  <p className="qmidq">All help would be appreciated</p>
+                  <p className="qmidtitle">{location.state.question}</p>
+                  <p className="qmidq">{location.state.description}</p>
                   <p className="qmiddate">
-                    12:09pm <span>8/05/2022</span>
+                    {location.state.time}<span>{location.state.date}</span>
                   </p>
                 </div>
 
@@ -117,9 +150,11 @@ export default function forum_compage() {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Type your comment here"
+                  value={comment} onChange={(e)=>setComment(e.target.value)}
                 />
 
-                <button type="button" class="btn btn-primary addcomtbtn">
+                <button type="button" class="btn btn-primary addcomtbtn"
+                onClick={sendData}>
                   Add comment
                 </button>
               </div>
