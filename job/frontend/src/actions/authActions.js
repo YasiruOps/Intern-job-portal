@@ -1,4 +1,4 @@
-import {SET_EMPLOYERID,LOGOUT} from '../actions/types';
+import {SET_EMPLOYERID,LOGOUT,SET_INTERNID} from '../actions/types';
 
 export const logout=()=>{
     return{
@@ -12,3 +12,11 @@ export const setemployerid=(id)=>{
         payload:id,
     }
 }
+
+export const setinternid=(id)=>{
+    return{
+        type:SET_INTERNID,
+        payload:id,
+    }
+}
+

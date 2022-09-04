@@ -2,13 +2,42 @@ import React from "react";
 import "../CSS/quizscore-page.css";
 import Header from "./header";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 export default function Quizscorepage() {
 
+  const userID = useSelector((state) => state.auth.internID);
   const location = useLocation();
+
+  function submit(){
+
+    const score = Math.round((location.state.correct/location.state.amount)*100)
+
+    const payload={
+      quiz:location.state.name,
+      userID,
+      type:location.state.type,
+      score,
+    }
+
+    console.log("payload eka",payload)
+
+    axios
+    .put("http://localhost:8000/userScore/", payload)
+    .then(() => {
+      alert("sumbitted successfull")
+    })
+    .catch((err) => {
+      alert(err);
+    });
+  }
 
   return (
     <div>
+
+      {console.log("type eka",location.state.type)}
+
       <Header />
       <p className="testnametag">{location.state.name}</p>
       <hr className="testtag-hr" />
@@ -25,7 +54,7 @@ export default function Quizscorepage() {
         </div>
 
         <div className="centeraligner">
-          <button type="button" className="btn btn-primary continuebtnscorep">
+          <button type="button" className="btn btn-primary continuebtnscorep" onClick={submit}>
             Continue
           </button>
         </div>

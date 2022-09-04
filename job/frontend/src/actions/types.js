@@ -1,2 +1,3 @@
 export const SET_EMPLOYERID='SET_EMPLOYERID'
+export const SET_INTERNID='SET_INTERNID'
 export const LOGOUT='LOGOUT';

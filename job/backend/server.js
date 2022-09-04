@@ -38,6 +38,7 @@ const forumQuestion = require("./routes/forumQuestion")
 const employerContact = require("./routes/employerContact")
 const employerRegister =require("./routes/employerauth")
 const comment = require('./routes/comment')
+const userScore = require("./routes/userScore")
 
 //app midleware
 app.use(bodyParser.json());
@@ -49,4 +50,5 @@ app.use("/category", mcqcategory);
 app.use("/ForumQuestionFetch",forumQuestion);
 app.use("/employerContact",employerContact);
 app.use("/employerRegister",employerRegister);
-app.use('/comment',comment)
+app.use('/comment',comment);
+app.use("/userScore",userScore);

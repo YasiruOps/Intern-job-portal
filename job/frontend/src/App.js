@@ -36,6 +36,17 @@ import ForumComm from "./components/forum_compage"
 import Quizscore from "./components/quizscore-page";
 import Employerprofile from "./components/employerprofile";
 
+
+//dilaxy
+import Profile from "./pages/profile";
+import Job from "./pages/job";
+import Education from "./pages/education";
+import User from "./pages/user";
+import Application from "./pages/application";
+import Table from "./pages/tabel";
+
+
+
 function App() {
 
   const  employerID  = useSelector(state => state.auth.employerid)
@@ -44,6 +55,17 @@ function App() {
     <div>
       <Router>
         <Routes >
+
+        {/* dilaxy */}
+        <Route path="/Profile" element={<Profile />} exact />
+        <Route path="/job" element={<Job />} exact />
+        <Route path="/edu" element={<Education />} exact />
+        <Route path="/user" element={<User />} exact />
+        <Route path="/app" element={<Application />} exact />
+        <Route path="/tab" element={<Table />} exact />
+
+
+
         <Route path="/Employer-profile" element={<Employerprofile/>}/>  
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
         <Route path="/Forum-comment" element={<ForumComm/>}/>      

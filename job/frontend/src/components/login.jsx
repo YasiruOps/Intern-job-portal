@@ -7,12 +7,16 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import Button from 'react-bootstrap/Button';
 import Footer from "./footer";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from 'react-router-dom';
+import { setinternid } from "../actions/authActions";
 
 export default function Login() {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const initialValues = {
     email: "",
@@ -31,12 +35,11 @@ export default function Login() {
       password: loginForm.password,
     };
 
-    console.log(payload);
     axios
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
+        dispatch(setinternid(response.data.user._id));
         navigate('/');
-        console.log(response);
       })
       .catch((err) => {});
   };
@@ -88,7 +91,7 @@ export default function Login() {
           <Button onClick={submit} className="btn_login" variant="primary">Login</Button>
           <hr className="hr2" />
           <p className="sign_up">Do not have an account already?</p>
-          <Button className="btn_signup">Register now!</Button>
+          <Link to="/Profile"><Button className="btn_signup">Register now!</Button> </Link>   
         </div>
 
       </div>

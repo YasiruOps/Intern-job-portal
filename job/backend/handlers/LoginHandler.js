@@ -19,7 +19,7 @@ function LoginHandler(request, response){
             }
 
             // const token = jwt.sign({ foo:  }, 'shhhhh');
-
+            console.log(user,"user")
             return response.status(200).json({user});
 
         }).catch((err) =>{

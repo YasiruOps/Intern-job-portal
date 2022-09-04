@@ -31,7 +31,7 @@ const[address, setAddress] =useState("")
     <div>
       {console.log("pppp",location.state)}
       <Header />
-      <div className="container">
+      <div className="container" style={{marginLeft:"auto", marginRight:"auto"}}>
         <p className="empteg-title">Employer Registration</p>
 
         <div className="emp-regform">

@@ -1,7 +1,8 @@
-import {SET_EMPLOYERID,LOGOUT} from '../actions/types';
+import {SET_EMPLOYERID,LOGOUT,SET_INTERNID} from '../actions/types';
 
 const initialState={
     employerid:null,
+    internID:null,
 
 }
 
@@ -11,6 +12,12 @@ export default function(state=initialState,action){
             return{
                 ...state,
                 employerid:action.payload
+            }
+
+        case SET_INTERNID:
+            return{
+                ...state,
+                internID:action.payload
             }
 
         case LOGOUT:

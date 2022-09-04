@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "../CSS/employer-sidebar.css"
 import "../SCSS/employer-sidebar.sass"
+import { logout } from "../actions/authActions";
 
 //import react pro sidebar components
 import {
@@ -24,18 +25,21 @@ import { FiUser } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import {RiQuestionMark} from "react-icons/ri";
 import { Link } from "react-router-dom";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
 
-
-
-
-
-
 const Header = () => {
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function Logout(){
+    dispatch(logout());
+    navigate('/');
+  }
   
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(false)
@@ -78,7 +82,7 @@ const Header = () => {
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+              <MenuItem icon={<FiLogOut />} onClick={Logout}>Logout</MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>

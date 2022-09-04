@@ -34,9 +34,9 @@ function countdown(){
       )
       .then((res) => {
         setquestion(res.data);
-        const myInterval = setInterval(countdown,5000);
-        // clear out the interval using the id when unmounting the component
-        return () => clearInterval(myInterval);
+        // const myInterval = setInterval(countdown,5000);
+        // // clear out the interval using the id when unmounting the component
+        // return () => clearInterval(myInterval);
       })
       .catch((err) => {
         alert(err.message);
@@ -58,7 +58,7 @@ function countdown(){
       }
     });
 
-    navigate("/Quiz-score",{state:{correct,amount:questions.length,name:location.state.name}});
+    navigate("/Quiz-score",{state:{correct,amount:questions.length,name:location.state.name, type:location.state.selectType}});
     console.log("correct", correct);
   }
 

@@ -20,7 +20,7 @@ export default function home() {
     <div className="homepage-outermain">
       <div className="head">
         <Header />
-        <Container>
+        <Container style={{ marginLeft:"auto", marginRight:"auto"}}>
           <Accordion>
             <h2>Find a Job</h2>
             <h3>Search from over 200+ Job Postings</h3>
@@ -42,7 +42,7 @@ export default function home() {
           </Accordion>
         </Container>
       </div>
-      <Container>
+      <Container style={{ marginLeft:"auto", marginRight:"auto"}}>
         <Row className="show-grid text-center">
           <div className="testimonial">
             <h1 className="text-center"> Services offered by Us </h1>

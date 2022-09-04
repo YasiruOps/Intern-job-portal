@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/leaderbord.css";
 import Header from "../components/header";
 import DropdownExampleInlineTwo from "./dropdown";
@@ -7,12 +7,34 @@ import Place2 from "../images/Place2.png";
 import Place3 from "../images/Place3.png";
 import Profile88 from "../images/sample_profile.png";
 import Footer from "./footer";
+import axios from "axios";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+export default function Leaderbord() {
 
-export default function leaderbord() {
+  const options = [
+    {value: 'it', text: 'it'},
+    {value: 'cs', text: 'cs'},
+  ];
+
+  const [type, setType] = useState("it");
+  const [leaderboard, setLeaderboard] = useState([]);
+  const place =[Place1, Place2, Place3];
+  const colors =["#FFB800", "#CCD2E3", "#BD5D05"];
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/userScore/${type}`)
+      .then((res) => {
+        setLeaderboard(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  },[type]);
+
   return (
     <div className="Lout">
       <Header />
@@ -43,10 +65,12 @@ export default function leaderbord() {
         <div className="centermain2 row">
           <div className="leftside2 col-6">
             <div className="score-cat">
-              <select className="minimal minimal2">
-                <option>Select Category</option>
-                <option>CS</option>
-                <option>IT</option>
+              <select className="minimal minimal2" Value={type} onChange={(e) => {setType(e.target.value);}}>
+                {options.map(option => (
+                    <option key={option.value} value={option.value}>
+                      {option.text}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -59,71 +83,28 @@ export default function leaderbord() {
           <hr className="topcenter-hr" />
 
           <div className="scorebord row">
-            <div className="scorebord-left col-xl-8">
+            <div className="scorebord-left col-xl-8" >
               <div className="Lscroll">
+
+              {leaderboard.map((item,i) => {
+              return (
                 <div className="scoreform">
-                  <p style={{ color: "#FFB800" }} className="user_place">
-                    01
+                  <p style={{ color: colors[i]??"black" }} className="user_place">
+                    {i+1}
                   </p>
-                  <img src={Place1} alt="" className="userplace_img" />
+                  {i<3&&<img src={place[i]} alt="" className="userplace_img" />}
                   <div className="vertical-line" />
                   <img src={Profile88} alt="" className="userpic" />
                   <p className="username">Areeba Vang</p>
-                  <p className="userscore">200</p>
+                  <p className="userscore">{item.sum}</p>
                   <p className="userscore_tag">total points</p>
                   <div className="vertical-line" />
                   <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
-                </div>
+                </div>             
+                )}
+              )}
 
-                <div className="scoreform">
-                  <p style={{ color: "#CCD2E3" }} className="user_place">
-                    02
-                  </p>
-                  <img src={Place2} alt="" className="userplace_img" />
-                  <div className="vertical-line" />
-                  <img src={Profile88} alt="" className="userpic" />
-                  <p className="username">Areeba Vang</p>
-                  <p className="userscore">180</p>
-                  <p className="userscore_tag">total points</p>
-                  <div className="vertical-line" />
-                  <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
-                </div>
 
-                <div className="scoreform">
-                  <p style={{ color: "#BD5D05" }} className="user_place">
-                    03
-                  </p>
-                  <img src={Place3} alt="" className="userplace_img" />
-                  <div className="vertical-line" />
-                  <img src={Profile88} alt="" className="userpic" />
-                  <p className="username">Areeba Vang</p>
-                  <p className="userscore">170</p>
-                  <p className="userscore_tag">total points</p>
-                  <div className="vertical-line" />
-                  <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
-                </div>
-
-                <div className="scoreform">
-                  <p className="user_place3">04</p>
-                  <div className="vertical-line" />
-                  <img src={Profile88} alt="" className="userpic" />
-                  <p className="username">Areeba Vang</p>
-                  <p className="userscore">170</p>
-                  <p className="userscore_tag">total points</p>
-                  <div className="vertical-line" />
-                  <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
-                </div>
-
-                <div className="scoreform">
-                  <p className="user_place3">05</p>
-                  <div className="vertical-line" />
-                  <img src={Profile88} alt="" className="userpic" />
-                  <p className="username">Areeba Vang</p>
-                  <p className="userscore">170</p>
-                  <p className="userscore_tag">total points</p>
-                  <div className="vertical-line" />
-                  <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
-                </div>
               </div>
             </div>
 
