@@ -2,10 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../images/logo.png';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {  useSelector } from 'react-redux';
 
 import '../CSS/header.css'
 
-export default function header() {
+export default function Header() {
+
+  const  userID  = useSelector(state => state.auth.internID)
+
   return (
     <div >
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
@@ -43,7 +47,7 @@ export default function header() {
               <Link to="/Forum" className="listed">Forum</Link>
             </li>                
             <li className="item">
-              <Link to="/Login" className="sign">Sign In</Link>
+              <Link to="/Login" className="sign"> {userID?"Profile":"Login"}</Link>
             </li>
             
           </ul>

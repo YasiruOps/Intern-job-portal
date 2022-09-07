@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { store, persistor } from "./store";
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
+import "./index.css";
+import "./styles/icons/icons.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

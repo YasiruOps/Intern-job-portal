@@ -161,13 +161,13 @@ export default function Application() {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>
                   ADD APPLICATION
                 </button>
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">PUBLISH</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>PUBLISH</button>
               </div>
 
               {error && <div className="error_text">{error}</div>}

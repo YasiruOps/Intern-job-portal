@@ -41,7 +41,7 @@ export default function Table() {
                     <td className="td1">Pending</td>
                     <td className="td1">03/05/2022</td>
                     <td className="td1">
-                      <label style={{ backgroundColor: "red", color: "white" }}>
+                      <label style={{ backgroundColor: "red", color: "white",padding:"5px", borderRadius:"5px" }}>
                         Remove
                       </label>
                     </td>
@@ -58,7 +58,7 @@ export default function Table() {
                     <td className="td1">Pending</td>
                     <td className="td1">03/05/2022</td>
                     <td className="td1">
-                      <label style={{ backgroundColor: "red", color: "white" }}>
+                      <label style={{ backgroundColor: "red", color: "white",padding:"5px", borderRadius:"5px" }}>
                         Remove
                       </label>
                     </td>

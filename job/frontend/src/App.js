@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Route,
   Routes ,
-  Redirect,
+  Navigate,
+  Outlet,
 } from "react-router-dom";
 
 import {  useSelector } from 'react-redux';
@@ -50,7 +51,7 @@ import Table from "./pages/tabel";
 function App() {
 
   const  employerID  = useSelector(state => state.auth.employerid)
-
+  const  userID  = useSelector(state => state.auth.internID)
   return (
     <div>
       <Router>
@@ -64,14 +65,16 @@ function App() {
         <Route path="/app" element={<Application />} exact />
         <Route path="/tab" element={<Table />} exact />
 
-
+        {/* <Route path="/user" element = {userID? <Outlet /> : <Navigate to="/Login" />}>
+           <Route exact path='/user' element={<User/>}/>
+        </Route>  */}
 
         <Route path="/Employer-profile" element={<Employerprofile/>}/>  
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
         <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      
         <Route path="/EmpApp2" element={<EmpApp2/>}/> 
-        <Route path="/EmpApp1" element={<EmpApp1/>}/> 
+        {/* <Route path="/app" element={<EmpApp1/>}/>  */}
         <Route path="/ResumeForm" element={<ResumeForm/>}/> 
         <Route path="/Job-Search" element={<Jobsearchpage/>}/> 
         <Route path="/ResumeBuilderForm" element={<ResumeBuilderForm/>}/> 
@@ -89,7 +92,11 @@ function App() {
         <Route path="/McqCat" element={<McqCat/>}/>    
         <Route path="/Mcq" element={<Mcq/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>
-        <Route path="/Login" element={<Login/>}/>
+
+        <Route path="/Login" element = {!userID? <Outlet /> : <Navigate to="/user" />}>
+           <Route exact path='/Login' element={<Login/>}/>
+        </Route> 
+
         <Route path="/" element={<Home/>}/>
         
         </Routes >

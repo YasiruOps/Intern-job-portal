@@ -627,7 +627,8 @@
   font-size: 15px;
 }
 /*-------login-----*/
-.container {
+.container-pbar {
+  margin-top: 20px;
   width: 90%;
   margin-left: 50px;
 }

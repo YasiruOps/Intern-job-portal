@@ -14,7 +14,7 @@ export default function User() {
           <ProfielPictureInfos />
         </div>
         <div className="login">
-          <div class="container">
+          <div class="container-pbar">
             <ol class="progress-meter">
               <li class="progress-point done"></li>
               <li class="progress-point done"></li>

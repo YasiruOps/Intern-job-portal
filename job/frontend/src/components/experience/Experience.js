@@ -103,7 +103,7 @@ export default function Experience({ setVisible }) {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">Save</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>Save</button>
               </div>
 
               {error && <div className="error_text">{error}</div>}

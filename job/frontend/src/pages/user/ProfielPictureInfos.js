@@ -1,4 +1,14 @@
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export default function ProfielPictureInfos() {
+
+  const navigate = useNavigate();
+
+  const Redirect=()=>{
+    navigate('/tab');
+  }
+
   return (
     <div className="profile_img_wrap">
       <div className="profile_w_left">
@@ -33,8 +43,8 @@ export default function ProfielPictureInfos() {
           </div>
           <br />
           <div className="row_line">
-            <button className="post_submit">Contact Info</button>
-            <button className="post_submit">View Application</button>
+            <button className="post_submit">Contact Info</button>   
+            <button className="post_submit" onClick={Redirect}>View Application</button>
           </div>
         </div>
       </div>
