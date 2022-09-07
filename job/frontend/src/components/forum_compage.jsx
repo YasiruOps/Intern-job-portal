@@ -186,7 +186,7 @@ const [comments, setComments] = useState(location?.state?.comments??[]);
                 
                 {comments.map((comments,i) => {
                   return (
-                        <div className="commentbox row" style={{marginBottom:"5px"}}>
+                        <div className="commentbox row" style={{marginBottom:"5px", padding:"5px"}}>
                           <div className="commmentbox-left d-none d-xxl-block col-1">
                             <img
                               src={Profpic}

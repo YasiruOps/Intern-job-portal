@@ -20,7 +20,7 @@ const JobPostSchema = new Schema({
         type : String,
     },
     vacancies :{
-        type : Number,
+        type : String,
     },
     education :{
         type : String,

@@ -115,7 +115,7 @@ export default function () {
             </div>
             <div className="center-right col-6">
               <p className="center_values">5</p>
-              <p className="center_titles">Badges Earned</p>
+              <p className="center_titles">Games Played</p>
             </div>
           </div>
           <img src={Trophypic} className="trophy-img" />

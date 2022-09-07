@@ -7,7 +7,7 @@ function AddJobsHandler(request, response) {
   const contract = request.body.contract;
   const shiftTime = request.body.shiftTime;
   const salary =  request.body.salary;
-  const vacancies = Number(request.body.vacancies);
+  const vacancies = request.body.vacancies;
   const education = request.body.education;
   const experience = request.body.experience;
   const additionalSkills = request.body.additionalSkills;

@@ -5,11 +5,77 @@ import Empapp2img from "../images/empapp2.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Footer from "./footer";
+import axios from "axios";
 
 export default function Employment_app2() {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  const[fname, setFname] =useState("");
+  const[lname, setLname] =useState("");
+  const[bday, setBday] =useState("");
+  const[bday1, setBday1] =useState("");
+  const[bday2, setBday2] =useState("");
+  const[phone, setPhone] =useState("");
+  const[phone1, setPhone1] =useState("");
+  const[email, setEmail] =useState("");
+  const[address, setAddress] =useState("");
+  const[address1, setAddress1] =useState("");
+  const[address2, setAddress2] =useState("");
+  const[address3, setAddress3] =useState("");
+  const[address4, setAddress4] =useState("");
+  const[experience, setExperience] =useState("");
+  const[refname, setRefname] =useState("");
+  const[refname1, setRefname1] =useState("");
+  const[refBday, setRefBday] =useState("");
+  const[refbday1, setRefBday1] =useState("");
+  const[refbday2, setRefBday2] =useState("");
+  const[refPhone, setRefPhone] =useState("");
+  const[refPhone1, setRefPhone1] =useState("");
+  const[refEmail, setRefEmail] =useState("");
+  const[refAddress, setRefAddress] =useState("");
+  const[refAddress1, setRefAddress1] =useState("");
+  const[refAddress2, setRefAddress2] =useState("");
+  const[refAddress3, setRefAddress3] =useState("");
+  const[refAddress4, setRefAddress4] =useState("");
+  const [date, setDate] = useState("");
+
+  function getCurrentDate(separator="/"){
+
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    
+    return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+    }
+
+  function sendApplication() {
+    const payload = {
+      fname,
+      lname,
+      bday:bday+"/"+bday1+"/"+bday2,
+      phone: phone+" "+phone1,
+      email,
+      address: address+" "+address1+" "+address2+" "+address3+" "+address4,
+      experience,
+      refname:refname+" "+refname1,
+      refBday:refbday2+"/"+refbday1+"/"+refbday2,
+      refPhone: refPhone+" "+refPhone1,
+      refAddress:refAddress+" "+refAddress1+" "+refAddress2+" "+refAddress3+" "+refAddress4,
+      refEmail,
+      date:getCurrentDate(),
+    };
+  axios
+  .post("http://localhost:8000/application/", payload)
+  .then(() => {
+    alert("application sent succesfully")
+  })
+  .catch((err) => {
+    alert(err);
+  });
+  };  
 
   return (
     <div className="empapp2outer">
@@ -45,6 +111,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="First Name"
+              value={fname}
+              onChange={(e)=>setFname(e.target.value)}
             />
           </div>
           <div className="col-xl-5">
@@ -52,6 +120,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Last Name"
+              value={lname}
+              onChange={(e)=>setLname(e.target.value)}
             />
           </div>
         </div>
@@ -66,6 +136,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Month"
+              value={bday1}
+              onChange={(e)=>setBday1(e.target.value)}
             />
           </div>
           <div className="col-xl-4">
@@ -73,6 +145,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Day"
+              value={bday}
+              onChange={(e)=>setBday(e.target.value)}
             />
           </div>
           <div className="col-xl-4">
@@ -80,6 +154,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Year"
+              value={bday2}
+              onChange={(e)=>setBday2(e.target.value)}
             />
           </div>
         </div>
@@ -95,6 +171,8 @@ export default function Employment_app2() {
               type="text"
               className=" form-control empapp2inputs"
               placeholder="Area Code"
+              value={phone}
+              onChange={(e)=>setPhone(e.target.value)}
             />
           </div>
           <div className="col-xl-5">
@@ -102,6 +180,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Number"
+              value={phone1}
+              onChange={(e)=>setPhone1(e.target.value)}
             />
           </div>
         </div>
@@ -113,7 +193,9 @@ export default function Employment_app2() {
             </p>
           </div>
           <div className="col-xl-10">
-            <input type="text" className="form-control" placeholder="" />
+            <input type="text" className="form-control" placeholder="E-mail" 
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}/>
           </div>
         </div>
         <div className="row empapp2gapper">
@@ -128,6 +210,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Street Address 1"
+              value={address}
+              onChange={(e)=>setAddress(e.target.value)}
             />
           </div>
           <div className="col-xl-5">
@@ -135,6 +219,8 @@ export default function Employment_app2() {
               type="text"
               className=" form-control empapp2inputs"
               placeholder="Street Address 2"
+              value={address1}
+              onChange={(e)=>setAddress1(e.target.value)}
             />
           </div>
         </div>
@@ -145,6 +231,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="City"
+              value={address2}
+              onChange={(e)=>setAddress2(e.target.value)}
             />
           </div>
           <div className="col-lg-4">
@@ -152,6 +240,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="State/Province"
+              value={address3}
+              onChange={(e)=>setAddress3(e.target.value)}
             />
           </div>
           <div className="col-lg-2">
@@ -159,6 +249,8 @@ export default function Employment_app2() {
               type="text"
               className="form-control empapp2inputs"
               placeholder="Postal code"
+              value={address4}
+              onChange={(e)=>setAddress4(e.target.value)}
             />
           </div>
           <div>
@@ -276,7 +368,9 @@ export default function Employment_app2() {
                   className="form-control empapp2input"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                ></textarea>
+                  value={experience}
+                  onChange={(e)=>setExperience(e.target.value)}
+                />
               </div>
             </div>
 
@@ -298,6 +392,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="First Name"
+                  value={refname}
+                  onChange={(e)=>setRefname(e.target.value)}
                 />
               </div>
               <div className="col-xl-5">
@@ -305,6 +401,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Last Name"
+                  value={refname1}
+                  onChange={(e)=>setRefname1(e.target.value)}
                 />
               </div>
             </div>
@@ -319,6 +417,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Month"
+                  value={refbday1}
+                  onChange={(e)=>setRefBday1(e.target.value)}
                 />
               </div>
               <div className="col-xl-3">
@@ -326,6 +426,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Day"
+                  value={refBday}
+                  onChange={(e)=>setRefBday(e.target.value)}
                 />
               </div>
               <div className="col-xl-4">
@@ -333,6 +435,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Year"
+                  value={refbday2}
+                  onChange={(e)=>setRefBday2(e.target.value)}
                 />
               </div>
             </div>
@@ -347,6 +451,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Area Code"
+                  value={refPhone}
+                  onChange={(e)=>setRefPhone(e.target.value)}
                 />
               </div>
               <div className="col-xl-5">
@@ -354,6 +460,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Number"
+                  value={refPhone1}
+                  onChange={(e)=>setRefPhone1(e.target.value)}
                 />
               </div>
             </div>
@@ -368,6 +476,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder=""
+                  value={refEmail}
+                  onChange={(e)=>setRefEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -382,6 +492,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Street Address 1"
+                  value={refAddress}
+                  onChange={(e)=>setRefAddress(e.target.value)}
                 />
               </div>
               <div className="col-xl-5">
@@ -389,6 +501,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Street Address 2"
+                  value={refAddress1}
+                  onChange={(e)=>setRefAddress1(e.target.value)}
                 />
               </div>
             </div>
@@ -399,6 +513,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="City"
+                  value={refAddress2}
+                  onChange={(e)=>setRefAddress2(e.target.value)}
                 />
               </div>
               <div className="col-xl-4">
@@ -406,6 +522,8 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="State/Province"
+                  value={refAddress3}
+                  onChange={(e)=>setRefAddress3(e.target.value)}
                 />
               </div>
               <div className="col-xl-2">
@@ -413,13 +531,15 @@ export default function Employment_app2() {
                   type="text"
                   className="form-control empapp2inputs"
                   placeholder="Postal code"
+                  value={refAddress4}
+                  onChange={(e)=>setRefAddress4(e.target.value)}
                 />
               </div>
               <div></div>
             </div>
           </div>
         </div>
-        <div className="row"><button type="button" className="btn empapp2savetbn">Save</button></div>
+        <div className="row"><button type="button" className="btn empapp2savetbn" onClick={sendApplication}>Save</button></div>
         
       </div>
       <Footer />

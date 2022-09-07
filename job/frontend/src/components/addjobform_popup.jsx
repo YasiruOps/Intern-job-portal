@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/addjobform_popup.css";
+import axios from "axios";
 
-export default function addjobform_popup() {
+export default function Addjobform_popup() {
+ 
+    const [title,setTitle] = useState("");
+    const [location,setLocation] = useState("");
+    const [contract, setContract] = useState("");
+    const [shiftTime, setShifttime] = useState("");
+    const [salary, setSalary] = useState("");
+    const [vacancies, setVacancies] = useState("");
+    const [education, setEducation] = useState("");
+    const [experience, setExperience] = useState("");
+    const [additionalSkills, setAdditionalskills] = useState("");
+    const [benefits, setBenefits] = useState("");
+    const [other,setOther] = useState("");
+
+    const payload = {
+      title,
+      location,
+      contract,
+      shiftTime,
+      salary,
+      vacancies,
+      education,
+      experience,
+      additionalSkills,
+      benefits,
+      other,
+    }
+
+  function AddPost() {
+    axios
+    .post("http://localhost:8000/jobs/", payload)
+    .then(() => {
+      alert("Job posted succesfully")
+    })
+    .catch((err) => {
+      alert(err);
+    });
+  };  
+
   return (
     <div className="addjobform-comp">
       <p className="personaldetailsviepopup">Personal Details</p>
@@ -12,8 +51,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={title}
             className="form-control addformtextinput"
+            onChange={(e)=>setTitle(e.target.value)}
           />
         </div>
         <div className="col-6">
@@ -21,8 +61,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={location}
             className="form-control addformtextinput"
+            onChange={(e)=>setLocation(e.target.value)} 
           />
         </div>
       </div>
@@ -33,8 +74,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={contract}
             className="form-control addformtextinput"
+            onChange={(e)=>setContract(e.target.value)} 
           />
         </div>
         <div className="col-6">
@@ -42,8 +84,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={shiftTime}
             className="form-control addformtextinput"
+            onChange={(e)=>setShifttime(e.target.value)} 
           />
         </div>
       </div>
@@ -54,8 +97,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={salary}
             className="form-control addformtextinput"
+            onChange={(e)=>setSalary(e.target.value)} 
           />
         </div>
         <div className="col-6">
@@ -63,8 +107,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={vacancies}
             className="form-control addformtextinput"
+            onChange={(e)=>setVacancies(e.target.value)} 
           />
         </div>
       </div>
@@ -77,8 +122,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={education}
             className="form-control addformtextinput"
+            onChange={(e)=>setEducation(e.target.value)} 
           />
         </div>
         <div className="col-6">
@@ -86,8 +132,9 @@ export default function addjobform_popup() {
           <input
             type="text"
             id="fname"
-            name="fname"
+            value={experience}
             className="form-control addformtextinput"
+            onChange={(e)=>setExperience(e.target.value)} 
           />
         </div>
       </div>
@@ -98,7 +145,9 @@ export default function addjobform_popup() {
         style={{ backgroundColor: "#F2F8FE", border: "none" }}
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+        value={additionalSkills}
+        onChange={(e)=>setAdditionalskills(e.target.value)} 
+      />
 
       <hr className="dividerpopupaddform" />
 
@@ -107,19 +156,23 @@ export default function addjobform_popup() {
         className="form-control addjobforminput"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+        value={benefits}
+        onChange={(e)=>setBenefits(e.target.value)} 
+      />
 
       <p className="replyfromdesc">Other</p>
       <textarea
         className="form-control addjobforminput"
         id="exampleFormControlTextarea1"
         rows="3"
-      ></textarea>
+        value={other}
+        onChange={(e)=>setOther(e.target.value)} 
+      />
 
       <hr className="dividerpopupaddform" />
 
       <div className="addfrormpopupbtn-box">
-        <button type="button" class="btn btn-success addfrormpopupbtn">
+        <button type="button" class="btn btn-success addfrormpopupbtn" onClick={AddPost}>
           Submit
         </button>
       </div>

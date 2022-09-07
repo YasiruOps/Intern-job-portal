@@ -93,7 +93,7 @@ function countdown(){
               <p className="time-tag">Time Left</p>
             </div>
             <div className="row">
-              <p className="time">ss</p>
+              <p className="time">00:00:00</p>
             </div>
           </div>
         </div>
