@@ -4,9 +4,11 @@ import Header from "./header";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Quizscorepage() {
-
+  
+  const navigate = useNavigate();
   const userID = useSelector((state) => state.auth.internID);
   const location = useLocation();
 
@@ -27,6 +29,7 @@ export default function Quizscorepage() {
     .put("http://localhost:8000/userScore/", payload)
     .then(() => {
       alert("sumbitted successfull")
+      navigate("/McqCat");
     })
     .catch((err) => {
       alert(err);

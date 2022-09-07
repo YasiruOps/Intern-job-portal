@@ -21,99 +21,49 @@ export default function Table() {
                 Application sent
               </h2>
               <div style={{ margin: 20 }}>
-                <table>
-                  <tr>
-                    <th>Job title</th>
-                    <th>Employer</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                <table className="tabel1">
+                  <tr className="tr1">
+                    <th className="th1">Job title</th>
+                    <th className="th1">Employer</th>
+                    <th className="th1">Status</th>
+                    <th className="th1">Date</th>
+                    <th className="th1">Actions</th>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr className="tr1">
+                    <td className="td1">
                       <label>Juniour Developer</label>
                       <br />
                       <label style={{ fontSize: 10 }}>
                         Kaluthara, Panadura
                       </label>
                     </td>
-                    <td>Rocket sci.tech</td>
-                    <td>Pending</td>
-                    <td>03/05/2022</td>
-                    <td>
+                    <td className="td1"> Rocket sci.tech</td>
+                    <td className="td1">Pending</td>
+                    <td className="td1">03/05/2022</td>
+                    <td className="td1">
                       <label style={{ backgroundColor: "red", color: "white" }}>
                         Remove
                       </label>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+                  <tr className="tr1">
+                    <td className="td1">
                       <label>Juniour Developer</label>
                       <br />
                       <label style={{ fontSize: 10 }}>
                         Kaluthara, Panadura
                       </label>
                     </td>
-                    <td>Rocket sci.tech</td>
-                    <td>Pending</td>
-                    <td>03/05/2022</td>
-                    <td>
+                    <td className="td1">Rocket sci.tech</td>
+                    <td className="td1">Pending</td>
+                    <td className="td1">03/05/2022</td>
+                    <td className="td1">
                       <label style={{ backgroundColor: "red", color: "white" }}>
                         Remove
                       </label>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <label>Juniour Developer</label>
-                      <br />
-                      <label style={{ fontSize: 10 }}>
-                        Kaluthara, Panadura
-                      </label>
-                    </td>
-                    <td>Rocket sci.tech</td>
-                    <td>Pending</td>
-                    <td>03/05/2022</td>
-                    <td>
-                      <label style={{ backgroundColor: "red", color: "white" }}>
-                        Remove
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Juniour Developer</label>
-                      <br />
-                      <label style={{ fontSize: 10 }}>
-                        Kaluthara, Panadura
-                      </label>
-                    </td>
-                    <td>Rocket sci.tech</td>
-                    <td>Pending</td>
-                    <td>03/05/2022</td>
-                    <td>
-                      <label style={{ backgroundColor: "red", color: "white" }}>
-                        Remove
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label>Juniour Developer</label>
-                      <br />
-                      <label style={{ fontSize: 10 }}>
-                        Kaluthara, Panadura
-                      </label>
-                    </td>
-                    <td>Rocket sci.tech</td>
-                    <td>Pending</td>
-                    <td>03/05/2022</td>
-                    <td>
-                      <label style={{ backgroundColor: "red", color: "white" }}>
-                        Remove
-                      </label>
-                    </td>
-                  </tr>
+
                 </table>
               </div>
             </div>

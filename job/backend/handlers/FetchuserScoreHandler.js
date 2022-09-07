@@ -26,6 +26,7 @@ function getScore(request, response){
 
                 const obj = item?.toObject({ flattenMaps: true });
                 console.log("obj", obj) ;   
+                console.log("iteeeee", item.userName) ; 
                 if(obj.score[type]){
                     const obj1 = JSON.parse(obj.score[type]);
                     let sum =0;
@@ -33,7 +34,8 @@ function getScore(request, response){
                     for (const [key, value] of Object.entries(obj1)) {
                         sum += value;
                       }
-                      scoreObj.push({userID:item.userID,sum});
+                      scoreObj.push({userID:item.userID,userName:item.userName,sum});
+                      console.log("scoreobject",scoreObj)
                 }
             });
 

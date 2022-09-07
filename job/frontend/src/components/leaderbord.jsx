@@ -87,6 +87,7 @@ export default function Leaderbord() {
               <div className="Lscroll">
 
               {leaderboard.map((item,i) => {
+                console.log("item2",item)
               return (
                 <div className="scoreform">
                   <p style={{ color: colors[i]??"black" }} className="user_place">
@@ -95,7 +96,7 @@ export default function Leaderbord() {
                   {i<3&&<img src={place[i]} alt="" className="userplace_img" />}
                   <div className="vertical-line" />
                   <img src={Profile88} alt="" className="userpic" />
-                  <p className="username">Areeba Vang</p>
+                  <p className="username">{item.userName}</p>
                   <p className="userscore">{item.sum}</p>
                   <p className="userscore_tag">total points</p>
                   <div className="vertical-line" />

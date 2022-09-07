@@ -698,19 +698,19 @@ ol.progress-meter li.todo:before {
 }
 
 /*----Media queries--------------*/
-table {
+.tabel1 {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-td,
-th {
+.tabel1, .td1,
+.th1 {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.tr1:nth-child(even) {
   background-color: #dddddd;
 }

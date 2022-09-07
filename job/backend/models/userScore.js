@@ -8,6 +8,10 @@ const userScoreSchema = new Schema({
         type:String,
     },
 
+    userName:{
+        type:String,
+    },
+
     score : {
         type : Map,
     }

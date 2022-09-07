@@ -39,6 +39,7 @@ const employerContact = require("./routes/employerContact")
 const employerRegister =require("./routes/employerauth")
 const comment = require('./routes/comment')
 const userScore = require("./routes/userScore")
+const jobs = require("./routes/jobs")
 
 //app midleware
 app.use(bodyParser.json());
@@ -52,3 +53,4 @@ app.use("/employerContact",employerContact);
 app.use("/employerRegister",employerRegister);
 app.use('/comment',comment);
 app.use("/userScore",userScore);
+app.use("/jobs",jobs);
