@@ -62,7 +62,7 @@ function App() {
         <Route path="/job" element={<Job />} exact />
         <Route path="/edu" element={<Education />} exact />
         <Route path="/user" element={<User />} exact />
-        <Route path="/app" element={<Application />} exact />
+        {/* <Route path="/app" element={<Application />} exact /> */}
         <Route path="/tab" element={<Table />} exact />
 
         {/* <Route path="/user" element = {userID? <Outlet /> : <Navigate to="/Login" />}>
@@ -74,7 +74,7 @@ function App() {
         <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      
         <Route path="/EmpApp2" element={<EmpApp2/>}/> 
-        {/* <Route path="/app" element={<EmpApp1/>}/>  */}
+        <Route path="/app" element={<EmpApp1/>}/> 
         <Route path="/ResumeForm" element={<ResumeForm/>}/> 
         <Route path="/Job-Search" element={<Jobsearchpage/>}/> 
         <Route path="/ResumeBuilderForm" element={<ResumeBuilderForm/>}/> 
@@ -88,7 +88,7 @@ function App() {
         <Route path="/Employer-Reg2" element={<EmployerReg2/>}/> 
         <Route path="/Employer-Reg" element={<EmployerReg/>}/> 
         <Route path="/EmployerLogin" element={<EmployerLogin/>}/> 
-        <Route path="/Leader-bord" element={<Leaderbord/>}/> 
+        <Route path="/Leader-bord" element={<Leaderbord/>}/>  
         <Route path="/McqCat" element={<McqCat/>}/>    
         <Route path="/Mcq" element={<Mcq/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>

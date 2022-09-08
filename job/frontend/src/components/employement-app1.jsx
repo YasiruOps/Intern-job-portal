@@ -2,8 +2,16 @@ import React from "react";
 import "../CSS/employement-app1.css";
 import Header from "./header";
 import Footer from "./footer";
+import { useNavigate } from 'react-router-dom';
 
-export default function employement_app1() {
+export default function Employement_app1() {
+
+  const navigate = useNavigate();
+
+  const Redirect=()=>{
+    navigate('/EmpApp2');
+  }
+
   return (
     <div className="row">
       <Header />
@@ -27,7 +35,7 @@ export default function employement_app1() {
              </div>
 
             <div className="empform1btnline">
-                <button type="button" class="btn addapplicaiton1btn">Add applicaiton</button>
+                <button type="button" class="btn addapplicaiton1btn" onClick={Redirect}>Add applicaiton</button>
                 <button type="button" class="btn publishbtn">Publish</button>
              </div>
         </div>

@@ -115,9 +115,9 @@ axios
       reacts,
     };
   axios
-  .post("http://localhost:8000/forumQuestion/add", newForumQuestion)
+  .post("http://localhost:8000/forumQuestionFetch/add", newForumQuestion)
   .then(() => {
-    window.location.reload(false);
+    alert("successfully submitted")
   })
   .catch((err) => {
     alert(err);
