@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-.Rbuilder-form{
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Lato', sans-serif;
-}
-
 .resumebuil-header{
     font-size: 22px;
     font-weight: bold;
+    font-family: lato, sans-serif;
+    margin-left: 240px;
+    margin-top: 20px;
 }
 
 .resumebuilhr{
+    margin-left: 240px;
+    margin-bottom:0;
     width: 70px;
     height: 3px !important;
     stroke: 5px;
@@ -19,141 +18,4 @@
     margin-top: -15px;
     opacity: 80%;
     color: #FFB800;
-}
-.lightheader{
-    display: flex;
-    color:#001A72;
-}
-
-
-.R1{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.R1icon{
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 18px;
-}
-
-.reumeformdata{
-    padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-}
-
-.persodeta-tag{
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: -8px;
-}
-
-.persodeta-tad-smal{
-    opacity: 70%;
-    font-size: 14px;
-}
-
-.persodetajtit-tag{
-    font-weight: bold;
-
-}
-
-.Rformleft{
-
-}
-
-.Rforminputs{
-    width: 70%;
-}
-
-.titlestagpops2{
-    opacity: 70%;
-}
-
-.uploadpicicon{
-    font-size: 52px;
-    margin-top:auto;
-    margin-bottom: auto;
-    margin-right: 10px;
-    color:#001A72 ;
-   
-}
-
-.uphoto-tag{
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #0275B1;
-    text-decoration: underline;
-}
-
-.uphoto-tag:hover{
-    color: #0239b1 ;
-    cursor: pointer;
-}
-
-.Rformright{
-  
-}
-
-.codedetacover{
-    margin-top: 10px;
-    display: flex;
-
-}
-
-.addetailhidebtn{
-    margin-right: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #0C77F8;
-}
-
-.addetailhidebtnicon{
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #001A72;
-}
-
-.smallcoverRform{
-    border-radius: 5px;
-    border: 1px solid #0c76f88f;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    width: 99%;
-}
-
-.Rdatepicker{
-    padding: 5px;
-    width: 100px;
-    outline: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.admoreicon{
-    margin-right: 10px;
-    color: #001A72;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.admoreicon:hover{
-    cursor: pointer;
-}
-
-.addmore-tag{
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #0C77F8;
-}
-
-.addmore-tag:hover{
-    opacity:80%;
-    cursor: pointer;
 }

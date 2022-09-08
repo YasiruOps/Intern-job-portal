@@ -4,6 +4,8 @@
   align-items: center;
   gap: 30px;
   padding-top: 0;
+  margin-top: -45px;
+  margin-bottom: -45px;
 }
 
 .heading {
@@ -34,7 +36,7 @@
   align-items: center;
   cursor: pointer;
   transition: 200ms;
-  transform: translate(600px, -72px);
+  transform: translate(580px, -52px);
 }
 
 .toolbar button svg {

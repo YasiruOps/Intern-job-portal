@@ -17,6 +17,8 @@ export default function Resumebuilderform() {
     <div className="row">
       <Header />
       <div className="builder">
+      <p className="resumebuil-header">Resume Builder</p>
+        <hr className="resumebuilhr" />
       <RBuilderInterface />
     </div>
     <Footer />
