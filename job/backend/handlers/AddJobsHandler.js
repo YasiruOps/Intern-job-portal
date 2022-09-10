@@ -2,6 +2,7 @@ const Job = require("../models/jobPost")
 
 function AddJobsHandler(request, response) {
   //ADD
+  const empID = request.body.empID;
   const title = request.body.title;
   const location = request.body.location;
   const contract = request.body.contract;
@@ -13,9 +14,11 @@ function AddJobsHandler(request, response) {
   const additionalSkills = request.body.additionalSkills;
   const benefits = request.body.benefits;
   const other = request.body.other;
+  const date = request.body.date;
 
 
   const payload = new Job({
+    empID,
     title,
     location,
     contract,
@@ -27,6 +30,7 @@ function AddJobsHandler(request, response) {
     additionalSkills,
     benefits,
     other,
+    date,
   });
 
   payload.save((err) => {

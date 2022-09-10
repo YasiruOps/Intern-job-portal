@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const JobPostSchema = new Schema({
-
+    empID:{
+        type:String,
+    },
     title:{
         type:String,
     },
@@ -35,6 +37,9 @@ const JobPostSchema = new Schema({
         type : String,
     },
     other :{
+        type : String,
+    },
+    date :{
         type : String,
     },
 

@@ -73,7 +73,9 @@ function App() {
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
         <Route path="/Forum-comment" element={<ForumComm/>}/>      
         <Route path="/Forum" element={<Forum/>}/>      
-        <Route path="/EmpApp2" element={<EmpApp2/>}/> 
+     
+        <Route path="/EmpApp2" element = {!userID? <Login /> : <EmpApp2/>}/>
+          
         <Route path="/app" element={<EmpApp1/>}/> 
         <Route path="/ResumeForm" element={<ResumeForm/>}/> 
         <Route path="/Job-Search" element={<Jobsearchpage/>}/> 
@@ -93,9 +95,7 @@ function App() {
         <Route path="/Mcq" element={<Mcq/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>
 
-        <Route path="/Login" element = {!userID? <Outlet /> : <Navigate to="/user" />}>
-           <Route exact path='/Login' element={<Login/>}/>
-        </Route> 
+        <Route path="/Login" element = {!userID? <Login /> : <Navigate to="/user" />}/>
 
         <Route path="/" element={<Home/>}/>
         

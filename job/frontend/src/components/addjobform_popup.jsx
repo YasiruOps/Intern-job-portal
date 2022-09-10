@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "../CSS/addjobform_popup.css";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Addjobform_popup() {
  
+   const userID = useSelector((state) => state.auth.employerid);
+
     const [title,setTitle] = useState("");
     const [location,setLocation] = useState("");
     const [contract, setContract] = useState("");
@@ -15,8 +18,22 @@ export default function Addjobform_popup() {
     const [additionalSkills, setAdditionalskills] = useState("");
     const [benefits, setBenefits] = useState("");
     const [other,setOther] = useState("");
+    const [date, setDate] = useState(new Date());
+
+    function getCurrentDate(separator="/"){
+
+      let newDate = new Date()
+      let date = newDate.getDate();
+      let month = newDate.getMonth() + 1;
+      let year = newDate.getFullYear();
+      
+      return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+      }
+
+  function AddPost() {
 
     const payload = {
+      empID:userID,
       title,
       location,
       contract,
@@ -28,9 +45,11 @@ export default function Addjobform_popup() {
       additionalSkills,
       benefits,
       other,
+      date:getCurrentDate(),
     }
 
-  function AddPost() {
+    console.log("pppppppppppp",payload)
+
     axios
     .post("http://localhost:8000/jobs/", payload)
     .then(() => {

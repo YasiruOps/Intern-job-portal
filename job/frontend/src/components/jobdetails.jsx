@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Header from "./header";
 import "../CSS/jobdetails.css";
 import { GoSearch } from "react-icons/go";
@@ -16,8 +16,30 @@ import { AiOutlineGift } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { FiCheckCircle } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setjob } from "../actions/jobActions";
+import { useLocation } from "react-router-dom";
 
-export default function jobdetails() {
+export default function Jobdetails() {
+
+  const dispatch = useDispatch();
+
+  const job = useSelector((state)=>state.job.selectjob)
+  console.log("joooob",job)
+ 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const Redirect=()=>{
+    navigate('/EmpApp2');
+  };
+
+  useEffect(() => {  
+    console.log("llllllllll",location?.state)
+    dispatch(setjob(location?.state))
+  }, []);
+
   return (
     <div className="">
       <Header />
@@ -40,15 +62,15 @@ export default function jobdetails() {
 
         <div className="midsectorjob">
           <div className="jobtitle-line">
-            <p className="jobtitle">Junior Software developer</p>
+            <p className="jobtitle">{job.title}</p>
             <MdVerified className="verifiedsign" />
           </div>
 
           <div className="jobtitle-line2">
             <p className="postedon">Posted on</p>
-            <p className="postdate">May 1, 2022</p>
+            <p className="postdate">{job.date}</p>
             <p className="postedon">by</p>
-            <p className="company">Rocket science .tec</p>
+            <p className="company">Rocket science .tec</p> 
             <AiOutlineLink className="linkicon" />
           </div>
         </div>
@@ -62,21 +84,21 @@ export default function jobdetails() {
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <MdLocationOn className="detailicon" />
-                <p className="detaillevel">Malabe</p>
+                <p className="detaillevel">{job.location}</p>
               </div>
             </div>
 
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <AiOutlineClockCircle className="detailicon" />
-                <p className="detaillevel">9am to 4pm</p>
+                <p className="detaillevel">{job.shiftTime}</p>
               </div>
             </div>
 
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <MdPeopleAlt className="detailicon" />
-                <p className="detaillevel">7 vacancies</p>
+                <p className="detaillevel">{job.vacancies} vacancies</p>
               </div>
             </div>
           </div>
@@ -85,7 +107,7 @@ export default function jobdetails() {
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <BsCurrencyDollar className="detailicon" />
-                <p className="detaillevel">Negotiable</p>
+                <p className="detaillevel">{job.salary}</p>
               </div>
             </div>
 
@@ -108,14 +130,14 @@ export default function jobdetails() {
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <AiOutlineFileText className="detailicon" />
-                <p className="detaillevel">Full time or part time</p>
+                <p className="detaillevel">{job.contract}</p>
               </div>
             </div>
 
             <div className="jobinfoboxinterior col-lg-4">
               <div className="detailitem">
                 <AiOutlineGift className="detailicon" />
-                <p className="detaillevel">Benefits available</p>
+                <p className="detaillevel">{job.benefits}</p>
               </div>
             </div>
           </div>
@@ -129,14 +151,13 @@ export default function jobdetails() {
               <div className="detadetails">
                 <p className="headerlightjob">Education</p>
                 <p className="reqdetails">
-                  Secondary (high) school graduation certificate or equivalent
-                  experience
+                  {job.education}
                 </p>
               </div>
 
               <div className="detadetails">
                 <p className="headerlightjob">Experience</p>
-                <p className="reqdetails">5 years or more</p>
+                <p className="reqdetails">{job.experience}</p>
               </div>
 
               <div className="detadetails">
@@ -149,19 +170,19 @@ export default function jobdetails() {
               <div className="detadetails">
                 <p className="headerlightjob">Additional Skills</p>
                 <p className="reqdetails">
-                  Clean and maintain work space; Record production information
+                  {job.additionalSkills}
                 </p>
               </div>
 
               <div className="detadetails">
                 <p className="headerlightjob">Experience</p>
-                <p className="reqdetails">5 years or more</p>
+                <p className="reqdetails">{job.experience}</p>
               </div>
 
               <div className="detadetails">
                 <p className="headerlightjob2">Benefits</p>
                 <p className="headerlightjob">Health benefits</p>
-                <p className="reqdetails">Health care plan; Dental plan</p>
+                <p className="reqdetails">{job.benefits}</p>
               </div>
 
               <div className="detadetails">
@@ -173,7 +194,7 @@ export default function jobdetails() {
                 <p className="headerlightjob2">Other</p>
                 <p className="headerlightjob">Work Setting</p>
                 <p className="reqdetails">
-                  Paints and varnish processing plant
+                  {job.other}
                 </p>
               </div>
 
@@ -181,7 +202,7 @@ export default function jobdetails() {
                 <button type="button" class="jobdetailsbtns4 btn btn-primary">
                   Learn More
                 </button>
-                <button type="button" class="jobdetailsbtns4 btn btn-success">
+                <button type="button" class="jobdetailsbtns4 btn btn-success" onClick={Redirect}>
                   Apply
                 </button>
               </div>

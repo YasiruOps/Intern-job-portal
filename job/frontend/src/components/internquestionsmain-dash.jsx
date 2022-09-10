@@ -1,24 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import "../CSS/internquestionsmain.css"
 import CalCok from "../images/calendar-clock-icon.png"
 import TodayIcon from '@mui/icons-material/Today';
 import { GoSearch } from "react-icons/go";
 import ReplyIcon from '@mui/icons-material/Reply';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { useState } from "react"
 import Replyform from "./replyform"
 import Removeform from "./removepopup-internq-from";
 import Popup from "./popup"
 import Popup2 from "./popup-remove"
+import axios from "axios";
 
 export default function Internquestionsmain() {
 
+  const [iquestion, setIquestion] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/employerContact/`)
+      .then((res) => {
+        const data = res.data;
+        setIquestion(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
+
 	const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
-
-  const openInPopup2 = () => {
-    setOpenPopup2(true);
-  };
 
   return (
     <div className="Iqouter-main">
@@ -60,34 +70,34 @@ export default function Internquestionsmain() {
           </tr>
         </thead>
         <tbody>
-  
-            <tr >
-              <th scope="row">1</th>
-              <td>e2</td>
-              <td>22</td>
-              <td>employ2</td>
-              <td>employ2</td>
-              <td>employ2</td>
+        {iquestion.map((question,i) => {
+              return (
+                        <tr >
+                          <th scope="row">{i+1}</th>
+                          <td>{question.qtitle}</td>
+                          <td>{question.qtype[0]}</td>
+                          <td>{question.desc}</td>
+                          <td>{question.date2}</td>
+                          <td>{question.name}</td>
+
+                          <td>
+                            <button type="button" onClick={() => setOpenPopup(true)} class="btn btn-primary">
+                              Reply
+                              <ReplyIcon className='btniconsiq'/>                 
+                            </button>
+                            &nbsp; &nbsp;
               
-              
-              
-              <td>
-                <button type="button" onClick={() => setOpenPopup(true)} class="btn btn-primary">
-                  Reply
-                  <ReplyIcon className='btniconsiq'/>                 
-                </button>
-                &nbsp; &nbsp;
-  
-                <button
-                  className="btn btn-danger"
-                  onClick={() => openInPopup2(true)}
-                  href="/add">
-                  Remove
-                  <DeleteOutlineIcon className='btniconsiq'/>                 
-                </button>
-              </td>
-            </tr>
-  
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => setOpenPopup2(true)}
+                              href="/add">
+                              Remove
+                              <DeleteOutlineIcon className='btniconsiq'/>                 
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
         </tbody>     
       </table>
 

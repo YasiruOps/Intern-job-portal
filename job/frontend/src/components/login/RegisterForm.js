@@ -162,7 +162,7 @@ export default function RegisterForm({ setVisible }) {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">Create</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>Create</button>
               </div>
 
               {error && <div className="error_text">{error}</div>}

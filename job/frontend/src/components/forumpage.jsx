@@ -22,10 +22,6 @@ export default function Forumpage() {
   const[comments, setComments] = useState({});
 
   const Redirect = (index) => {
-    console.log("index",index)
-    console.log("fquestion id",fquestion[index]._id)
-    console.log("commtnss",fquestion)
-    console.log("fqestion",fquestion)
     navigate("/Forum-comment",{state:fquestion[index],comments:comments[`${fquestion[index]._id}`]});
   };
 

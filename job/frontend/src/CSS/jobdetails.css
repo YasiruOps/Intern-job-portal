@@ -285,3 +285,8 @@
     font-size: 20px;
 
 }
+
+.rightsidejob:hover{
+  cursor: pointer;
+  color: #0C77F8;
+}

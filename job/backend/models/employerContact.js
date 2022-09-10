@@ -7,7 +7,9 @@ const employerContactSchema = new Schema({
     empname : {
         type : [String],
     },
-
+    qtitle : {
+        type : String,
+    },
     name : {
         type : String,
     },

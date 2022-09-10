@@ -2,11 +2,17 @@ const Application = require("../models/application")
 
 function AddApplicationHandler(request, response) {
   //ADD
-  const fname = request.body.fname;
-  const lname = request.body.lname;
-  const bday = request.body.bday;
-  const phone = request.body.phone;
-  const email = request.body.email;
+  // const fname = request.body.fname;
+  // const lname = request.body.lname;
+  // const bday = request.body.bday;
+  // const phone = request.body.phone;
+  // const email = request.body.email;
+  const offerTitle = request.body.offerTitle;
+  const internID = request.body.internID;
+  const employerID = request.body.employerID;
+  const applicationStatus = request.body.applicationStatus;
+  const pdfID = request.body.pdfID;
+
   const address = request.body.address;
   const experience = request.body.experience;
   const refname = request.body.refname;
@@ -17,12 +23,18 @@ function AddApplicationHandler(request, response) {
   const date = request.body.date;
 
   const payload = new Application({
-    fname,
-    lname,
-    bday,
-    phone,
-    email,
-    address,
+    // fname,
+    // lname,
+    // bday,
+    // phone,
+    // email,
+    // address,
+    offerTitle,
+    internID,
+    employerID,
+    pdfID,
+    applicationStatus,
+
     experience,
     refname,
     refBday,

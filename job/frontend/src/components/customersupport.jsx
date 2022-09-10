@@ -14,6 +14,7 @@ export default function Customersupport() {
 //  employee contact
 
 const[name, setName] =useState("")
+const[qtitle, setQtitle] =useState("")
 const[email, setEmail] =useState("")
 const[desc, setDesc] =useState("")
 const[date2, setDate2] =useState("")
@@ -85,7 +86,7 @@ const[empname, setEmpname] =useState(options2[0].value)
 //Employee Question yawana eka
 function sendData2() {
   const newEmpQuestion = {
-    id: "0",
+    qtitle,
     empname,
     name,
     email,
@@ -96,7 +97,7 @@ function sendData2() {
 axios
 .post("http://localhost:8000/employerContact/add", newEmpQuestion)
 .then(() => {
-  window.location.reload(false);
+  alert("Message sent successfully")
 })
 .catch((err) => {
   alert(err);
@@ -172,8 +173,7 @@ axios
                 className="supportinput"
                 autocomplete="off"
                 Value={name} onChange={(e) => {  setName(e.target.value); }} 
-                aria-labelledby="placeholder-fname"
-               
+                aria-labelledby="placeholder-fname"               
               />
               <label
                 className="placeholder-text"
@@ -212,6 +212,24 @@ axios
                 ))}
                 </select>
           </div>   
+
+          <div className="supportinput-container col-6" style={{marginLeft:"0", marginTop:"30px"}}>
+              <input
+                type="text"
+                id="fname"
+                className="supportinput"
+                autocomplete="off"
+                Value={qtitle} onChange={(e) => {  setQtitle(e.target.value); }} 
+                aria-labelledby="placeholder-fname"               
+              />
+              <label
+                className="placeholder-text"
+                for="fname"
+                id="placeholder-fname"
+              >
+                <div className="supporttext">Question Subject</div>
+              </label>
+            </div>
 
           <p className="yourquestion">Your Question</p>
           <p className="yourwuesitonex">Present your question below</p>

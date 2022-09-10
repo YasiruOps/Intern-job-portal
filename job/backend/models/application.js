@@ -4,27 +4,44 @@ const Schema = mongoose.Schema;
 
 const ApplicationSchema = new Schema({
 
-    fname:{
-        type:String,
-    },
+    // fname:{
+    //     type:String,
+    // },
     
-    lname:{
-        type:String,
+    // lname:{
+    //     type:String,
+    // },
+
+    // bday:{
+    //     type:String,
+    // },
+
+    // phone : {
+    //     type : String,
+    // },
+    // email : {
+    //     type : String,
+    // },
+    // address : {
+    //     type : String,
+    // },
+    offerTitle : {
+        type : String,
+    },
+    internID : {
+        type : String,
+    },
+    employerID : {
+        type : String,
+    },
+    pdfID : {
+        type : String,
+    },
+    applicationStatus : {
+        type : String,
     },
 
-    bday:{
-        type:String,
-    },
 
-    phone : {
-        type : String,
-    },
-    email : {
-        type : String,
-    },
-    address : {
-        type : String,
-    },
     experience : {
         type : String,
     },

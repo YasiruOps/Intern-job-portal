@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+//file upload ekata sambandai
+const fileupload = require("express-fileupload") ;
+
 const app = express();
 
 const fs = require('fs');
@@ -41,10 +44,17 @@ const comment = require('./routes/comment')
 const userScore = require("./routes/userScore")
 const jobs = require("./routes/jobs")
 const application = require("./routes/application")
+const uploadpdf = require("./routes/uploadpdf")
 
 //app midleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(
+    fileupload({
+        createParentPath: true,
+    }),
+);
+
 
 app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);
@@ -56,3 +66,4 @@ app.use('/comment',comment);
 app.use("/userScore",userScore);
 app.use("/jobs",jobs);
 app.use("/application",application);
+app.use("/uploadpdf",uploadpdf);

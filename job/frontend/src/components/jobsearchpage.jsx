@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/jobsearchpage.css";
 import Header1 from "./header";
 import { Link } from "react-router-dom";
@@ -9,16 +9,33 @@ import { BsFilter } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GrAdd } from "react-icons/gr";
 
+import axios from "axios";
 import Dropdown from "./dropdown";
 import Multiselect from "multiselect-react-dropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { setjobbas } from "../actions/jobActions";
 
 export default function Jobsearchpage() {
 
+  const [jobs, setJobs] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/jobs/`)
+      .then((res) => {
+        setJobs(res.data);
+        dispatch(setjobbas(res.data));
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
   
   const navigate = useNavigate();
 
-  const Redirect=()=>{
-    navigate('/Job-details');
+  const Redirect=(id)=>{
+    navigate('/Job-details',{state:id});
   }
 
   return (
@@ -106,27 +123,30 @@ export default function Jobsearchpage() {
 
           <div className="serachmidrgtside col-9">
           
-            <div className="job-detaboxouter row" onClick={Redirect} >
-              <div className="job-detaboxouter-left col-lg-8">
-                <p className="posname">Junior software developer</p>
-                <p className="compname">Rocket science .tec</p>
-                <p className="location">Kaluthara, Panadura</p>
-                <div style={{ display: "flex" }}>
-                  <p className="sal">Salary : </p>
-                  <p className="sal">Negotiable</p>
-                </div>
-              </div>
-              <div className="job-detaboxouter-right col-lg-4">
-                <p className="date col-4">Date Posted</p>
-                <p className="date2 col-4">05/01/2022</p>
+          {jobs.map((job,i) => {
+              return (
+                    <div className="job-detaboxouter row" onClick={()=>Redirect(job._id)} style={{marginBottom:"10px "}}>
+                      <div className="job-detaboxouter-left col-lg-8">
+                        <p className="posname">{job.title}</p>
+                        <p className="compname">Rocket science .tec</p>
+                        <p className="location">{job.location}</p>
+                        <div style={{ display: "flex" }}>
+                          <p className="sal">Salary : </p>
+                          <p className="sal">{job.salary}</p>
+                        </div>
+                      </div>
+                      <div className="job-detaboxouter-right col-lg-4">
+                        <p className="date col-4">Date Posted</p>
+                        <p className="date2 col-4">{job.date}</p>
 
-                <button type="button" className="btn addwishbtn">
-                  <p className="wishbtntext">Add to wishlist</p>
-                  <AiOutlineHeart className="wishbtnicon" />
-                </button>
-              </div>
-            </div>
-            
+                        <button type="button" className="btn addwishbtn">
+                          <p className="wishbtntext">Add to wishlist</p>
+                          <AiOutlineHeart className="wishbtnicon" />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </div>
