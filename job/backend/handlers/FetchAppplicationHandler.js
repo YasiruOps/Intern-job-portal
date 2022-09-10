@@ -1,7 +1,10 @@
 const Application = require("../models/application");
 
 function FetchAppplicationHandler(request, response){
-        Application.find().then((applicaiton)=>{  
+
+        const empID = request.params.id;
+
+        Application.find({employerID:empID}).then((applicaiton)=>{  
         console.log(applicaiton);
         return response.status(200).json(applicaiton);            
      }).catch((err) =>{

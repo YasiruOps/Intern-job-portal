@@ -8,6 +8,6 @@ const FetchAppplicationHandler = require("../handlers/FetchAppplicationHandler")
 router.route('/').post((request, response) => {AddApplicationHandler(request, response); });
 
 //fetch
-router.route('/').get((request, response) => {FetchAppplicationHandler(request, response); });
+router.route('/:id').get((request, response) => {FetchAppplicationHandler(request, response); });
 
 module.exports = router;
