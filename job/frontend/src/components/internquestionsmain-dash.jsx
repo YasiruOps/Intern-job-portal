@@ -30,6 +30,14 @@ export default function Internquestionsmain() {
 	const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
 
+  const Mailto = ({ email, subject = '', body = '', children }) => {
+    let params = subject || body ? '?' : '';
+    if (subject) params += `subject=${encodeURIComponent(subject)}`;
+    if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+  
+    return <a href={`mailto:${email}${params}`}>{children}</a>;
+  };
+
   return (
     <div className="Iqouter-main">
 
@@ -81,10 +89,16 @@ export default function Internquestionsmain() {
                           <td>{question.name}</td>
 
                           <td>
-                            <button type="button" onClick={() => setOpenPopup(true)} class="btn btn-primary">
+                            {/* <button type="button" onClick={() => setOpenPopup(true)} class="btn btn-primary">
                               Reply
                               <ReplyIcon className='btniconsiq'/>                 
-                            </button>
+                            </button> */}
+                              <Mailto email={question.email} subject={question.qtitle} body="Dear Intern,">
+                                <button type="button" class="btn btn-primary">
+                                  Reply
+                                  <ReplyIcon className='btniconsiq'/>                 
+                                </button> 
+                              </Mailto>  
                             &nbsp; &nbsp;
               
                             <button
