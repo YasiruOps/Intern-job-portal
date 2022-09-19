@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/jobpostingmain.css";
 
 import CalCok from "../images/calendar-clock-icon.png";
@@ -6,7 +6,6 @@ import TodayIcon from "@mui/icons-material/Today";
 import { GoSearch } from "react-icons/go";
 import ReplyIcon from "@mui/icons-material/Reply";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { useState } from "react";
 import Replyform from "./replyform";
 import Popup from "./popup";
 import Popup2 from "./popup-addnewjob";
@@ -19,7 +18,8 @@ import Addjobform from "./addjobform_popup";
 import Editjobform from "./editjobform_popup";
 import Jobviewform from "./jobformview_popup";
 import Removeform from "./removepopup-job-form";
-
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 export default function Jobpostingmain() {
   const [openPopup, setOpenPopup] = useState(false);
@@ -27,19 +27,30 @@ export default function Jobpostingmain() {
   const [openPopup3, setOpenPopup3] = useState(false);
   const [openPopup4, setOpenPopup4] = useState(false);
 
-  const openInPopup = () => {
+  const id = useSelector((state) => state.auth.employerid);
+  const [jobs, setJobs] = useState([]);
+
+  const [recordForEdit, setRecordForEdit] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/jobs/${id}`)
+      .then((res) => {
+        const data = res.data;
+        setJobs(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, []);
+
+  const openInPopup = (jobs) => {
+    setRecordForEdit(jobs);
     setOpenPopup(true);
   };
 
-  const openInPopup2 = () => {
-    setOpenPopup2(true);
-  };
-
-  const openInPopup3 = () => {
-    setOpenPopup3(true);
-  };
-
-  const openInPopup4 = () => {
+  const openRemovePopup = (jobs) =>{
+    setRecordForEdit(jobs);
     setOpenPopup4(true);
   };
 
@@ -69,7 +80,7 @@ export default function Jobpostingmain() {
       </div>
 
       <div className="addjobpostbtn-layer">
-        <button type="button" className="btn btn-success addjobpostbtn" onClick={() => openInPopup2(true)}>
+        <button type="button" className="btn btn-success addjobpostbtn" onClick={() => setOpenPopup2(true)}>
           <MdLibraryAdd className="addjobpostbtnicon"/>
           Add Offer
         </button>
@@ -79,57 +90,61 @@ export default function Jobpostingmain() {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Application Count</th>
-            <th scope="col">Offer Status</th>
+            <th scope="col">Position</th>
+            <th scope="col">Vacancies</th>
+            <th scope="col">Contract</th>
+            <th scope="col">Location</th>
             <th scope="col">Post Date</th>
-            <th scope="col">Expiration Date</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Juniour Developer</td>
-            <td>7</td>
-            <td>open</td>
-            <td>03/05/2022</td>
-            <td>03/05/2022</td>
+        {jobs.map((job, i) => {
+              return (
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{job?.title}</td>
+                    <td>{job.vacancies}</td>
+                    <td>{job.contract}</td>
+                    <td>{job.location}</td>
+                    <td>{job.date}</td>
 
-            <td>
-              <button
-                type="button"
-                onClick={() => openInPopup()}
-                class="btn btn-primary"
-              >
-                View Post
-                <MdLaunch className="btniconsiq2" />
-              </button>
-              &nbsp; &nbsp;
-              <button
-                className="btn btn-warning"
-                onClick={() => openInPopup3()}
-                style={{ color: "white" }}
-              >
-                Edit
-                <AiFillEdit className="btniconsiq2" />
-              </button>
-              &nbsp; &nbsp;
-              <button className="btn btn-danger" href="/add" onClick={() => openInPopup4()}>
-                Remove               
-                <DeleteOutlineIcon className="btniconsiq2" />
-              </button>
-            </td>
-          </tr>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => openInPopup(job)}
+                        class="btn btn-primary"
+                      >
+                        View Post
+                        <MdLaunch className="btniconsiq2" />
+                      </button>
+                      &nbsp; &nbsp;
+                      <button
+                        className="btn btn-warning"
+                        onClick={() => setOpenPopup3(true)}
+                        style={{ color: "white" }}
+                      >
+                        Edit
+                        <AiFillEdit className="btniconsiq2" />
+                      </button>
+                      &nbsp; &nbsp;
+                      <button className="btn btn-danger" href="/add" onClick={() => openRemovePopup(job)}>
+                        Remove               
+                        <DeleteOutlineIcon className="btniconsiq2" />
+                      </button>
+                    </td>
+                  </tr>
+                  );
+                })}
         </tbody>
       </table>
 
       <Popup
-        title="Junior developer 1"
+        title={recordForEdit?.title}
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <Jobviewform />
+        <Jobviewform recordForEdit={recordForEdit}/>
       </Popup>
 
       <Popup2      
@@ -149,11 +164,11 @@ export default function Jobpostingmain() {
       </Popup3>
 
       <Popup4     
-        title="Junior developer 1"
+        title={recordForEdit?.title}
         openPopup={openPopup4}
         setOpenPopup={setOpenPopup4}
       >
-        <Removeform/>
+        <Removeform recordForEdit={recordForEdit?._id}/>
       </Popup4>
     </div>
   );

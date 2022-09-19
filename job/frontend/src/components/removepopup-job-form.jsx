@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../CSS/removepopup-form.css";
+import axios from "axios";
 
-export default function Removepopup_form() {
+export default function Removepopup_form(props) {
+
+  const { recordForEdit } = props;
+  console.log("recordForEdit, id only ", recordForEdit);
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
 
@@ -13,6 +18,23 @@ export default function Removepopup_form() {
     setChecked(!checked);
     return dataSubmit();
   };
+
+  function DeleteJob(recordForEdit){
+    // axios
+    // .delete(`http://localhost:8000/comment/delete/${commentID}`)
+    // .then(() => {
+    //   console.log("indesx",index)
+    //   const temp = [...comments]
+    //   temp.splice(index, 1)
+    //   console.log("temp",temp)
+    //   setComments(temp);
+    //   alert("comment removed")
+    // })
+    
+    // .catch((err) => {
+    //   alert(err);
+    // });
+  }
 
   return (
     <div className="removepopup-form">
@@ -48,6 +70,7 @@ export default function Removepopup_form() {
         disabled={isDisabled}
         type="button"
         className="btn btn-danger removepopup-btn"
+        onClick={DeleteJob}
       >
         Remove
       </button>

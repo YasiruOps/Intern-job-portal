@@ -12,7 +12,6 @@ import axios from "axios";
 
 export default function Applicationsmain_dash() {
   const [applications, setApplications] = useState([]);
-  const [flag, setFlag] = useState(false);
 
   const id = useSelector((state) => state.auth.employerid);
 
@@ -24,7 +23,6 @@ export default function Applicationsmain_dash() {
       .then((res) => {
         const data = res.data;
         setApplications(res.data);
-        setFlag(true);
       })
       .catch((err) => {
         alert(err.message);
