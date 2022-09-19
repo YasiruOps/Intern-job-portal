@@ -1,0 +1,28 @@
+.poppy-frame{
+    height: 350px;
+    width: 350px;
+
+}
+
+.warning-icon{
+    margin-left: auto;
+    margin-right: auto;
+
+    color: red;
+    margin-top: 5%;
+    font-size: 130px;
+}
+
+.poppy-mid{
+    margin-top: 20px;
+}
+
+.red{
+    width: 70%;
+    height: 3px !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    opacity: .7;
+    color: red;
+}

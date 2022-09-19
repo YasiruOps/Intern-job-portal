@@ -715,3 +715,17 @@ ol.progress-meter li.todo:before {
 .tr1:nth-child(even) {
   background-color: #dddddd;
 }
+
+.rmvBtn-applications{
+  background-color: red;
+   color: white;
+   padding:5px 15px;
+   border-radius:5px;
+   opacity: 1;
+   transition: .2s;
+   border: 0px;
+}
+
+.rmvBtn-applications :hover{
+  cursor: pointer;
+}
