@@ -26,7 +26,6 @@ export default function Jobdetails() {
   const dispatch = useDispatch();
 
   const job = useSelector((state)=>state.job.selectjob)
-  console.log("joooob",job)
  
   const navigate = useNavigate();
   const location = useLocation();
