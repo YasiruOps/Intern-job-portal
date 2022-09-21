@@ -14,6 +14,31 @@ const AuthSchema = new Schema({
         required : true
     },
 
+    fName:{
+        type:String,
+        required:true
+    },
+
+    lName:{
+        type:String,
+        required:true
+    },
+
+    dob : {
+        type : String,
+        required : true
+    },
+
+    phone : {
+        type : Number,
+        required : true
+    },
+    address :{
+        type: String,
+        required : true
+    }
+
+
 });
 
 

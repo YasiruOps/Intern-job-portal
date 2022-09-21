@@ -27,8 +27,15 @@ export default function Internquestionsmain() {
       });
   }, []);
 
+  const [recordForEdit, setRecordForEdit] = useState(null);
+
 	const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
+
+  const openRemovePopup = (ques) =>{
+    setRecordForEdit(ques);
+    setOpenPopup2(true);
+  };
 
   const Mailto = ({ email, subject = '', body = '', children }) => {
     let params = subject || body ? '?' : '';
@@ -103,7 +110,7 @@ export default function Internquestionsmain() {
               
                             <button
                               className="btn btn-danger"
-                              onClick={() => setOpenPopup2(true)}
+                              onClick={() => openRemovePopup(question)}
                               href="/add">
                               Remove
                               <DeleteOutlineIcon className='btniconsiq'/>                 
@@ -128,7 +135,7 @@ export default function Internquestionsmain() {
         openPopup={openPopup2}
         setOpenPopup={setOpenPopup2}
       >
-        <Removeform/>
+        <Removeform recordForEdit={recordForEdit?._id}/>
       </Popup2>
 
     </div>

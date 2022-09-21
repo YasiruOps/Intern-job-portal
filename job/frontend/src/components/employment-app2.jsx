@@ -8,9 +8,11 @@ import Footer from "./footer";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function Employment_app2() {
 
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
@@ -95,6 +97,7 @@ export default function Employment_app2() {
       .post("http://localhost:8000/application/", payload)
       .then(() => {
         alert("application sent succesfully");
+        navigate("/Job-Search");
       })
       .catch((err) => {
         alert(err);

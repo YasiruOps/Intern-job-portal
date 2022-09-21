@@ -1,7 +1,12 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../CSS/removepopup-form.css";
+import { useNavigate } from 'react-router-dom';
 
-export default function Removepopup_form() {
+export default function Removepopup_form(props) {
+
+  const { recordForEdit } = props;
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
 
@@ -13,6 +18,21 @@ export default function Removepopup_form() {
     setChecked(!checked);
     return dataSubmit();
   };
+
+  const navigate = useNavigate();
+
+  function removeQuestion(id){
+    axios
+    .delete(`http://localhost:8000/employerContact/${id}`)
+    .then(() => {
+      alert("question removed");
+      window.location.reload();
+    })
+
+    .catch((err) => {
+      alert(err);
+    });
+  }
 
   return (
     <div className="removepopup-form">
@@ -35,6 +55,7 @@ export default function Removepopup_form() {
         disabled={isDisabled}
         type="button"
         className="btn btn-danger removepopup-btn"
+        onClick={() => removeQuestion(recordForEdit)}
       >
         Remove
       </button>
