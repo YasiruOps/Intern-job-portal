@@ -3,12 +3,11 @@ const userScore = require('../models/userScore')
 async function AdduserScoreHandler(request, response){
     
 
-    //search for usernme and pword
-
         const userID = request.body.userID;
         let score = request.body.score;
         const type = request.body.type;
         const quiz = request.body.quiz;
+        const user= request.body.userName;
 
         let values = {}
 
@@ -36,10 +35,11 @@ async function AdduserScoreHandler(request, response){
             {
                 $set: {
                 [`score.${type}`]: score,
+                userName:user,
                 }
             },{new: true, upsert: true}
             ).then((score)=>{  
-            console.log(score);
+            console.log("gellloo",score);
             return response.status(200).json(score);            
          }).catch((err) =>{
             console.log(err, "errrrr")
