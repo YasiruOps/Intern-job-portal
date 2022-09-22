@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/forum_compage.css";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
@@ -17,23 +17,39 @@ import { FiThumbsDown } from "react-icons/fi";
 import { FiThumbsUp } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Profpic from "../images/forum_img.png";
-import { useState } from "react";
 
 
 export default function Forum_compage() {
   
   const location = useLocation();
 
-const [comment, setComment] = useState("");
-const [comments, setComments] = useState(location?.state?.comments??[]);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState(location?.state?.comments??[]);
+
+  const userID = useSelector((state) => state.auth.internID);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    axios
+    .get(`http://localhost:8000/auth/intern/${userID}`)
+    .then((res) => {
+      setUsername(res.data[0].fName);  
+    })
+    .catch((err) => {
+      alert(err);
+    });
+
+}, []);
 
   function sendData() {
+
     const newCommnet = {
       forumID:location.state._id,
       userID:"",
-      name:"",
+      name:username,
       comment,
     };
 
