@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../CSS/editjobform_popup.css";
 
-export default function editjobform_popup() {
+export default function Editjobform_popup(props) {
+
+  const {recordForEdit} = props;
+
+  
+
+  const initialState = {
+    title: recordForEdit.title,
+    location: recordForEdit.location,
+    contract: recordForEdit.contract,
+    shiftTime: recordForEdit.shiftTime,
+    salary: recordForEdit.salary,
+    vacancies:recordForEdit.vacancies,
+    education:recordForEdit.education,
+    experience:recordForEdit.experience,
+    additionalSkills:recordForEdit.additionalSkills,
+    benefits:recordForEdit.benefits,
+    other:recordForEdit.other,
+  };
+
+  const [job, setJob] = useState(initialState);
+
+  function ChangeValue(key,value){
+    setJob({...job,[key]:value})
+  }
+
+  function EditSubmit(){
+    axios
+    .put(`http://localhost:8000/jobs/update/${recordForEdit._id}`,job)
+    .then(() => {
+        alert("sucussfully updated");  
+        window.location.reload(); 
+    })
+    .catch((err) => {
+    });
+  };
+
+
+
   return (
     <div className="addjobform-comp">
       <p className="personaldetailsviepopup">Personal Details</p>
@@ -11,9 +50,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Title</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="Junior Developer"
+            name="title"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.title}
             className="form-control addformtextinput"
           />
         </div>
@@ -21,9 +60,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Location</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="Malabe"
+            name="location"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.location}
             className="form-control addformtextinput"
           />
         </div>
@@ -34,9 +73,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Contract</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="Full time or part time"
+            name="contract"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.contract}
             className="form-control addformtextinput"
           />
         </div>
@@ -44,9 +83,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Shift time </p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="9 to 4"
+            name="shiftTime"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.shiftTime}
             className="form-control addformtextinput"
           />
         </div>
@@ -57,9 +96,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Salary</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="Negotiable"
+            name="salary"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.salary}
             className="form-control addformtextinput"
           />
         </div>
@@ -67,9 +106,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Vacancies</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="7"
+            name="vacancies"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.vacancies}
             className="form-control addformtextinput"
           />
         </div>
@@ -82,9 +121,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Education</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="High School Diploma or Equivalent"
+            name="education"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)} 
+            value={job.education}
             className="form-control addformtextinput"
           />
         </div>
@@ -92,9 +131,9 @@ export default function editjobform_popup() {
           <p className="titlestagpops addformtextlabel">Experience</p>
           <input
             type="text"
-            id="fname"
-            name="fname"
-            defaultValue="2 years of field experience"
+            name="experience"
+            onChange={(e)=>ChangeValue(e.target.name, e.target.value)}
+            value={job.experience}
             className="form-control addformtextinput"
           />
         </div>
@@ -106,8 +145,10 @@ export default function editjobform_popup() {
         style={{ backgroundColor: "#F2F8FE", border: "none" }}
         id="exampleFormControlTextarea1"
         rows="3"
-        defaultValue="Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      ></textarea>
+        name="additionalSkills"
+        onChange={(e)=>ChangeValue(e.target.name, e.target.value)}
+        value={job.additionalSkills}
+      />
 
       <hr className="dividerpopupaddform2" />
 
@@ -116,16 +157,20 @@ export default function editjobform_popup() {
         className="form-control addjobforminput"
         id="exampleFormControlTextarea1"
         rows="3"
-        defaultValue="Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      ></textarea>
+        name="benefits"
+        onChange={(e)=>ChangeValue(e.target.name, e.target.value)}
+        defaultValue={job.benefits}
+      />
 
       <p className="replyfromdesc">Other</p>
       <textarea
         className="form-control addjobforminput"
         id="exampleFormControlTextarea1"
         rows="3"
-        defaultValue="Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      ></textarea>
+        name="other"
+        onChange={(e)=>ChangeValue(e.target.name, e.target.value)}
+        defaultValue={job.other}
+      />
 
       <hr className="dividerpopupaddform2" />
 
@@ -134,6 +179,7 @@ export default function editjobform_popup() {
           type="button"
           className="btn btn-warning "
           style={{ color: "white", width: "150px" }}
+          onClick={EditSubmit}
         >
           Submit
         </button>

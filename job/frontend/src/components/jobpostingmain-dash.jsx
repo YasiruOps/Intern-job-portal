@@ -49,6 +49,11 @@ export default function Jobpostingmain() {
     setOpenPopup(true);
   };
 
+  const openEditPopup = (jobs)=>{
+    setRecordForEdit(jobs)
+    setOpenPopup3(true);
+  }
+
   const openRemovePopup = (jobs) =>{
     setRecordForEdit(jobs);
     setOpenPopup4(true);
@@ -121,8 +126,8 @@ export default function Jobpostingmain() {
                       &nbsp; &nbsp;
                       <button
                         className="btn btn-warning"
-                        onClick={() => setOpenPopup3(true)}
                         style={{ color: "white" }}
+                        onClick={() => openEditPopup(job)}
                       >
                         Edit
                         <AiFillEdit className="btniconsiq2" />
@@ -156,11 +161,11 @@ export default function Jobpostingmain() {
       </Popup2>
 
       <Popup3     
-        title="Junior developer 1"
+        title={recordForEdit?.title}
         openPopup={openPopup3}
         setOpenPopup={setOpenPopup3}
       >
-        <Editjobform />
+        <Editjobform recordForEdit={recordForEdit}/>
       </Popup3>
 
       <Popup4     

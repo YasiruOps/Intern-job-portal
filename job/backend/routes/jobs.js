@@ -5,6 +5,7 @@ const AddJobsHandler = require('../handlers/AddJobsHandler');
 const JobFetchHandler = require('../handlers/JobFetchHandler');
 const JobFetchAllHandler = require('../handlers/JobFetchAllHandler');
 const DeleteJobHandler = require('../handlers/DeleteJobHandler');
+const EditJobOfferHandler = require("../handlers/EditJobOfferHandler")
 const { response } = require('express');
 
 //create
@@ -19,6 +20,7 @@ router.route('/:id').get((request, response) => {JobFetchHandler(request, respon
 //remove job
 router.route('/:id').delete((request,reponse) => {DeleteJobHandler(request, response); });
 
-
+//update
+router.route('/update/:id').put((request, response)=>{EditJobOfferHandler(request,response);});
 
 module.exports = router;

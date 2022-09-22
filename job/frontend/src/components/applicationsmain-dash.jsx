@@ -8,6 +8,7 @@ import Applicationform from "./application_popup";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "./popup";
 
+
 import axios from "axios";
 
 export default function Applicationsmain_dash() {
@@ -16,6 +17,9 @@ export default function Applicationsmain_dash() {
   const id = useSelector((state) => state.auth.employerid);
 
   const [intern, setIntern] = useState([]);
+
+  const [recordForEdit, setRecordForEdit] = useState(null);
+  
 
   useEffect(() => {
     axios
@@ -31,7 +35,8 @@ export default function Applicationsmain_dash() {
 
   const [openPopup, setOpenPopup] = useState(false);
 
-  const openInPopup = () => {
+  const openInPopup = (app) => {
+    setRecordForEdit(app);
     setOpenPopup(true);
   };
 
@@ -64,25 +69,25 @@ export default function Applicationsmain_dash() {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Job Title</th>
-              <th scope="col">Applicant</th>
+              <th scope="col">Applicant ID</th>
               <th scope="col">Application Status</th>
               <th scope="col">Date Applied</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {applications.map((applications, i) => {
+            {applications.map((application, i) => {
               return (
                 <tr>
                   <th scope="row">{i + 1}</th>
-                  <td>{applications.offerTitle}</td>
-                  <td>Jhone Doe</td>
-                  <td>{applications.applicationStatus}</td>
-                  <td>{applications.date}</td>
+                  <td>{application.offerTitle}</td>
+                  <td>{application.internID}</td>
+                  <td>{application.applicationStatus}</td>
+                  <td>{application.date}</td>
 
                   <td>
                     <button
-                      onClick={() => setOpenPopup(true)}
+                      onClick={() => openInPopup(application)}
                       className="btn btn-primary"
                     >
                       View Application
@@ -101,7 +106,7 @@ export default function Applicationsmain_dash() {
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
-          <Applicationform />
+          <Applicationform recordForEdit={recordForEdit}/>
         </Popup>
       </div>
     </div>
