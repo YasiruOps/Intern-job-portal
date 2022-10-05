@@ -32,6 +32,8 @@ export default function Forum_compage() {
   const userID = useSelector((state) => state.auth.internID);
   const [username, setUsername] = useState("");
 
+  console.log("location state", location.state)
+
   useEffect(() => {
     axios
     .get(`http://localhost:8000/auth/intern/${userID}`)

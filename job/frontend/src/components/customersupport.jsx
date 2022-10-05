@@ -4,11 +4,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
 import Footer from "./footer";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../CSS/customersupport.css";
 
 export default function Customersupport() {
+  const userID = useSelector((state) => state.auth.internID);
+
   const [message, setMessage] = useState("");
 
 //  employee contact
@@ -107,7 +110,7 @@ axios
   //Forum Question yawana eka
   function sendData() {
     const newForumQuestion = {
-      ownerID:"",
+      ownerID:userID,
       type,
       question,
       description,

@@ -1,9 +1,10 @@
-import {SET_JOBS,SET_JOB,} from '../actions/types';
+import {SET_JOBS,SET_JOB,SET_FILTER_JOBS,SEARCH_OFF} from '../actions/types';
 
 const initialState={
     jobs:[],
     selectjob:null,
-
+    fiterdjobs:[],
+    searchoff:true
 }
 
 export default function(state=initialState,action){
@@ -22,7 +23,18 @@ export default function(state=initialState,action){
                 
             }
 
-            
+        case SET_FILTER_JOBS:
+            return{
+                ...state,
+                fiterdjobs:action.payload
+            }
+
+        case SEARCH_OFF:
+            return{
+                ...state,
+                searchoff:action.payload
+            }     
+
         default:
             return state
     }
