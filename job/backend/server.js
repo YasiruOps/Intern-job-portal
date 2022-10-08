@@ -13,7 +13,7 @@ const fs = require('fs');
 let rawdata = fs.readFileSync('env.json');
 let env = JSON.parse(rawdata);
 
-const PORT = 8000;
+const PORT = 8001;
 // const DB_URL = 'mongodb+srv://user:user@busapp.1dmsk.mongodb.net/bus?retryWrites=true&w=majority';
 const DB_URL = env.url;
 

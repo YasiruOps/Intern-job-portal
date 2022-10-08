@@ -9,7 +9,7 @@ import Close from "../images/closed.png";
 import Reviewd from "../images/reviewdash.png";
 import Rejected from "../images/rejecteddash.png";
 import New from "../images/newdash.ico";
-import Chart from "./employerdashchart"
+import Graph from "./Graph"
 
 export default function employer_main() {
   return (
@@ -118,7 +118,7 @@ export default function employer_main() {
           </div>
           
           <div className="lowsecondsec col-xl-8">
-            {/* graph here */}
+            <Graph/>
           </div>
 
         </div>

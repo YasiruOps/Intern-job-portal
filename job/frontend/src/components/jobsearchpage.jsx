@@ -14,6 +14,7 @@ import Dropdown from "./dropdown";
 import Multiselect from "multiselect-react-dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { setfilterjobs, setjobbas, setsearchoff } from "../actions/jobActions";
+import { setSearch } from "../actions/searchAction";
 
 import { StyledEngineProvider } from "@mui/material/styles";
 import Filter from "./filter_dropdown";
@@ -23,6 +24,19 @@ import moment from 'moment';
 export default function Jobsearchpage() {
   // const searchdata = useSelector((state) => state.search.data);
   // console.log("dddd",searchdata)
+  const searchoption = useSelector((state) => state.search.searchoption);
+
+  //search eka
+  function onChange(key, value) {
+
+    console.log("sssssss", searchoption)
+
+      const data = {...searchoption,[key]:value.toLowerCase()}
+      dispatch(setSearch(data));
+      // console.log("key value", key, value)
+      
+    }
+    
 
   const searchdata = {
     location: ["Colombo", "Negambo", "Panadura", "Malabe"],
@@ -59,7 +73,6 @@ export default function Jobsearchpage() {
   const [jobs, setJobs] = useState([]);
   const dispatch = useDispatch();
 
-  const searchoption = useSelector((state) => state.search.searchoption);
   const filterdjobs = useSelector((state) => state.job.fiterdjobs);
 
   let flag = useSelector((state) => state.job.searchoff);
@@ -165,7 +178,8 @@ export default function Jobsearchpage() {
       searchoption["Date Posted"].length==0 &&
       searchoption.Salary.length==0 &&
       searchoption["Work Hours"] == 0 &&
-      searchoption.Experience.length == 0 
+      searchoption.Experience.length == 0 &&
+      searchoption.searchkey.length == 0
       ){
       dispatch(setsearchoff(true));
       return;
@@ -187,7 +201,9 @@ export default function Jobsearchpage() {
       Shift:searchoption["Work Hours"]?.length,
       shifttrue:false,
       Experience:searchoption.Experience?.length,
-      experiencetrue:false
+      experiencetrue:false,
+      Searchkey:searchoption.searchkey?.length,
+      searchkeytrue:false
     }
 
     console.log("logic",logic)
@@ -215,11 +231,16 @@ export default function Jobsearchpage() {
         logic.experiencetrue = true;
       }
 
+      if(item.title.toLowerCase().indexOf(searchoption.searchkey) > -1 ){
+        logic.searchkeytrue = true;
+      }
+
       if((logic.Location == 0 || logic.locationtrue) 
       && (logic.Timer == 0 || logic.timertrue) 
       && (logic.Salary == 0 || logic.salarytrue)
       && (logic.Shift == 0 || logic.shifttrue)
       && (logic.Experience == 0 || logic.experiencetrue)
+      && (logic.Searchkey == 0 || logic.searchkeytrue)
       ){
         return item;
       }
@@ -257,7 +278,9 @@ export default function Jobsearchpage() {
         <div className="col-12">
           <div className="searchboxjob2">
             <GoSearch className="searchiconjob" />
-            <input type="text" className="searchinjob" placeholder="Search" />
+            <input type="text" className="searchinjob" placeholder="Search" 
+                onChange={(e)=>onChange("searchkey", e.target.value)}
+            />
             <button type="button" class="btn btn-light advancedsearhjob">
               Advanced
             </button>
