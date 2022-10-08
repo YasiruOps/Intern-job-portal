@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { GoSearch } from "react-icons/go";
-import { BsFilter } from "react-icons/bs";
+import { BsFilter, BsTerminal } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { GrAdd } from "react-icons/gr";
 
@@ -21,7 +21,8 @@ import Filter from "./filter_dropdown";
 import moment from 'moment';
 
 export default function Jobsearchpage() {
-  //const searchdata = useSelector((state) => state.search.data);
+  // const searchdata = useSelector((state) => state.search.data);
+  // console.log("dddd",searchdata)
 
   const searchdata = {
     location: ["Colombo", "Negambo", "Panadura", "Malabe"],
@@ -34,14 +35,26 @@ export default function Jobsearchpage() {
       "All time",
     ],
     salary: [
-      "10,000",
-      "10,000 - 50,000",
+      "Negotiable",
+      "0 - 50,000",
       "50,000 - 100,000",
       "100,000 - 200,000",
       "200,000 - 500,000",
       "500,000+",
     ],
+    wrkhours:[
+      "Morning shift",
+      "Evening shift",
+      "On call"
+    ],
+    experience:[
+      "<1 year",
+      "1 - 2 years",
+      "2 - 4 years",
+      "4+ years"
+    ]
   };
+
 
   const [jobs, setJobs] = useState([]);
   const dispatch = useDispatch();
@@ -59,7 +72,6 @@ export default function Jobsearchpage() {
     }
     const date1 = moment(date).format("YYYY/MM/DD") 
 
-    console.log("date",date, "date1", date1, "filterdate",filterdate)
     
       for (let i = 0; i < filterdate.length; i++) {
         if(filterdate=="Today"){
@@ -84,23 +96,101 @@ export default function Jobsearchpage() {
       return false;
   }
 
+  //function to convert the salary string to number
+  function convertToNum(sal){
+    let value = sal.trim();
+    return value.replace(/[,+]/gm,'');
+  }
+
+  function salary(salary, jobsal){
+    if( jobsal != "Negotiable"){
+      jobsal = parseInt(jobsal);
+    }
+
+    for (let i = 0; i < salary.length; i++) {
+      if(jobsal == "Negotiable" && salary[i] == "Negotiable"){
+        return true;
+      }
+      const values = salary[i].split(" - ").map(convertToNum)
+      console.log("values",values);
+      if(values.length == 2 && (jobsal >= values[0] && jobsal <= values[1])){
+        return true
+      }
+      if(jobsal >= values[0]){
+          return true
+      }
+    }
+      return false;
+    }
+    
+    function shiftTimes(shifts, jobshift)
+    {
+      
+      for (let i = 0; i < shifts.length; i++) {
+        if(jobshift.toLowerCase()  == shifts[i].toLowerCase()){
+          console.log("shift",shifts, "jobshifts",jobshift)
+          return true;
+        }
+      } 
+      return false;
+    }
+
+    function experience(exp, jobexp)
+    {
+      jobexp = jobexp.replace(/[a-z|A-z|<+-\s]/gm,'');
+      console.log("job value",jobexp);
+      let value;
+      for (let i = 0; i < exp.length; i++) {
+        value = exp[i].replace(/[a-z|A-z|<+-\s]/gm,''); 
+        console.log("array val",value,value.length)
+        if ( value.length == 1 && value == 1 && (value == jobexp || !jobexp )){
+        console.log(1);
+          return true;
+        }
+        if ( value.length == 1 && value == 4 && value <= jobexp){
+          console.log(2)
+          return true;
+        }
+        if( value.length == 2 && value[0] <= jobexp && value[1]>=jobexp){
+            console.log(3)
+            return true;
+        }
+    }
+        return false;
+    }
+  
+
   useEffect(() => {
     if(searchoption.Location.length==0 &&
-      searchoption["Date Posted"].length==0
+      searchoption["Date Posted"].length==0 &&
+      searchoption.Salary.length==0 &&
+      searchoption["Work Hours"] == 0 &&
+      searchoption.Experience.length == 0 
       ){
       dispatch(setsearchoff(true));
       return;
     }
-    console.log("ssssss",searchoption)
     dispatch(setsearchoff(false));
 
+    //filter eka
     const data = jobs.filter((item) => {
+
+    console.log("pppppppppppppp", item.shiftTime, shiftTimes(searchoption["Work Hours"] ,item.shiftTime))
+
     const logic = {
-      Location:searchoption.Location.length,
+      Location:searchoption?.Location?.length,
       locationtrue: false,
-      Timer:searchoption["Date Posted"].length,
-      timertrue:false
+      Timer:searchoption["Date Posted"]?.length,
+      timertrue:false,
+      Salary:searchoption?.Salary?.length,
+      salarytrue:false,
+      Shift:searchoption["Work Hours"]?.length,
+      shifttrue:false,
+      Experience:searchoption.Experience?.length,
+      experiencetrue:false
     }
+
+    console.log("logic",logic)
 
       if (
         searchoption.Location &&
@@ -108,18 +198,39 @@ export default function Jobsearchpage() {
       ) {
         logic.locationtrue = true;
       }
+
       if(timer(item.date, searchoption["Date Posted"])){
         logic.timertrue = true;
       }
-      if((logic.Location == 0 || logic.locationtrue) && (logic.Timer == 0 || logic.timertrue)){
+
+      if(salary(searchoption.Salary ,item.salary)){
+        logic.salarytrue = true;
+      }
+
+      if(shiftTimes(searchoption["Work Hours"] ,item.shiftTime)){
+        logic.shifttrue = true;
+      }
+
+      if(experience(searchoption.Experience ,item.experience)){
+        logic.experiencetrue = true;
+      }
+
+      if((logic.Location == 0 || logic.locationtrue) 
+      && (logic.Timer == 0 || logic.timertrue) 
+      && (logic.Salary == 0 || logic.salarytrue)
+      && (logic.Shift == 0 || logic.shifttrue)
+      && (logic.Experience == 0 || logic.experiencetrue)
+      ){
         return item;
       }
     });
+
 
     dispatch(setfilterjobs(data));
   }, [searchoption]);
 
   useEffect(() => {
+    salary(searchdata.salary);
     axios
       .get(`http://localhost:8000/jobs/`)
       .then((res) => {
@@ -183,40 +294,33 @@ export default function Jobsearchpage() {
             </div>
 
             <div className="seltest">
-              <Filter data={searchdata.location} title={"Location"} />
+              <Filter data={searchdata?.location} title={"Location"} />
             </div>
 
             <div className="seltest">
-              <Filter data={searchdata.date_posted} title={"Date Posted"} />
+              <Filter data={searchdata?.date_posted} title={"Date Posted"} />
             </div>
             <div className="seltest">
-              <Filter data={searchdata.salary} title={"Salary"} />
+              <Filter data={searchdata?.salary} title={"Salary"} />
             </div>
             <div className="seltest">
               <Filter
-                data={["Morning shifts", "Evening Shifts", "On call"]}
+                data={searchdata?.wrkhours}
                 title={"Work Hours"}
               />
             </div>
             <div className="seltest">
-              <Filter data={[]} title={"Job Type"} />
+              <Filter data={searchdata?.experience} title={"Experience"} />
             </div>
-            <div className="seltest">
-              <Filter data={[]} title={"Level of Education & training"} />
-            </div>
-            <div className="seltest">
-              <Filter data={[]} title={"Years of experience"} />
-            </div>
-            <div className="seltest">
+            {/* <div className="seltest">
               <Filter data={[]} title={"Benefits"} />
-            </div>
+            </div> */}
           </div>
 
           <div className="serachmidrgtside col-9">
-            {console.log("flass", flag)}
 
             {flag
-              ? jobs.map((job, i) => {
+              ?(jobs?.map((job, i) => {
                   return (
                     <div
                       className="job-detaboxouter row"
@@ -243,8 +347,9 @@ export default function Jobsearchpage() {
                       </div>
                     </div>
                   );
-                })
-              : filterdjobs.map((job, i) => {
+                }))
+                
+              : filterdjobs?.map((job, i) => {
                   return (
                     <div
                       className="job-detaboxouter row"
@@ -272,6 +377,10 @@ export default function Jobsearchpage() {
                     </div>
                   );
                 })}
+
+                {
+                  !flag && filterdjobs.length == 0? <h1>No jobs available</h1>:<div></div>
+                }
           </div>
         </div>
       </div>

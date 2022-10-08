@@ -43,7 +43,7 @@ export default function MultipleSelectChip(props) {
 
       const data = {...searchoption,[key]:value}
       dispatch(setSearch(data));
-      console.log("key value", key, value)
+      // console.log("key value", key, value)
       
     }
     
@@ -61,7 +61,7 @@ export default function MultipleSelectChip(props) {
 
   const handleChange = (event) => {
 
-  };
+  };  
 
   return (
     <div>
@@ -84,7 +84,7 @@ export default function MultipleSelectChip(props) {
           )}
           MenuProps={MenuProps}
         >
-          {names.map((name, i) => (
+          {names?.map((name, i) => (
             <MenuItem
               key={i}
               value={name}
