@@ -18,7 +18,7 @@ router.route('/').get((request, response) => {JobFetchAllHandler(request, respon
 router.route('/:id').get((request, response) => {JobFetchHandler(request, response); });
 
 //remove job
-router.route('/:id').delete((request,reponse) => {DeleteJobHandler(request, response); });
+router.route('/delete/:id').delete((request,reponse) => {DeleteJobHandler(request, response); });
 
 //update
 router.route('/update/:id').put((request, response)=>{EditJobOfferHandler(request,response);});

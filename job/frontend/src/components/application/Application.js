@@ -1,6 +1,8 @@
 import { Form, Formik } from "formik";
 import "./style.css";
 import { useState } from "react";
+import React from "react";
+
 import RegisterInput from "../inputs/registerInput";
 import * as Yup from "yup";
 
@@ -161,13 +163,13 @@ export default function Application() {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>
+                <button className="light_blue_btn open_signup">
                   ADD APPLICATION
                 </button>
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>PUBLISH</button>
+                <button className="light_blue_btn open_signup">PUBLISH</button>
               </div>
 
               {error && <div className="error_text">{error}</div>}

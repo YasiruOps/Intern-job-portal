@@ -5,7 +5,6 @@ import axios from "axios";
 export default function Removepopup_form(props) {
 
   const { recordForEdit } = props;
-  
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
@@ -20,20 +19,15 @@ export default function Removepopup_form(props) {
   };
 
   function DeleteJob(recordForEdit){
-    // axios
-    // .delete(`http://localhost:8000/comment/delete/${commentID}`)
-    // .then(() => {
-    //   console.log("indesx",index)
-    //   const temp = [...comments]
-    //   temp.splice(index, 1)
-    //   console.log("temp",temp)
-    //   setComments(temp);
-    //   alert("comment removed")
-    // })
+    axios
+    .delete(`http://localhost:8000/jobs/delete/${recordForEdit}`)
+    .then(() => {
+      alert("job post removed")
+    })
     
-    // .catch((err) => {
-    //   alert(err);
-    // });
+    .catch((err) => {
+      alert(err);
+    });
   }
 
   return (

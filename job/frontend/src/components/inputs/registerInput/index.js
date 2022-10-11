@@ -1,4 +1,6 @@
 import "./style.css";
+import React from "react";
+
 import { useField, ErrorMessage } from "formik";
 import { useMediaQuery } from "react-responsive";
 export default function RegisterInput({
@@ -30,7 +32,7 @@ export default function RegisterInput({
           <input
             className={meta.touched && meta.error ? "input_error_border" : ""}
             style={{
-              width: wd ? 800 : 400,
+              width: wd ? 900 : 500,
               height: 40,
               borderRadius: 4,
               borderColor: "#000000",
@@ -73,7 +75,7 @@ export default function RegisterInput({
       ) : (
         <div
           style={{
-            width: 400,
+            width: 500,
             height: 40,
           }}
         />

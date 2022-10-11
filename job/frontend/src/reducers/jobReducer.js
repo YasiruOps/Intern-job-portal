@@ -1,4 +1,4 @@
-import {SET_JOBS,SET_JOB,SET_FILTER_JOBS,SEARCH_OFF} from '../actions/types';
+import {SET_JOBS,SET_JOB,SET_FILTER_JOBS,SEARCH_OFF, LOGOUT} from '../actions/types';
 
 const initialState={
     jobs:[],
@@ -33,8 +33,11 @@ export default function(state=initialState,action){
             return{
                 ...state,
                 searchoff:action.payload
-            }     
+            }   
 
+        case LOGOUT:
+            return initialState
+            
         default:
             return state
     }

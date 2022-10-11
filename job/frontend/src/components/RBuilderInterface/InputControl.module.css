@@ -10,7 +10,7 @@ label {
   margin: 2px;
 }
 
-input {
+.rbuilderinput {
   outline: none;
   padding: 6px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -18,10 +18,10 @@ input {
   font-size: 1rem;
 }
 
-input:hover {
+.rbuilderinput:hover {
   border: 1px solid #adadad;
 }
 
-input:focus {
+.rbuilderinput:focus {
   border: 1px solid #239ce2;
 }

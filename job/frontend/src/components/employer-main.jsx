@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/employer-main.css";
 import CalCok from "../images/calendar-clock-icon.png";
 import SearchIcon from "@mui/icons-material/Search";
@@ -10,8 +10,61 @@ import Reviewd from "../images/reviewdash.png";
 import Rejected from "../images/rejecteddash.png";
 import New from "../images/newdash.ico";
 import Graph from "./Graph"
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
-export default function employer_main() {
+export default function Employer_main() {
+
+  const id = useSelector((state) => state.auth.employerid);
+  const [jobs, setJobs] = useState([]);
+  const [accept, setAccepted] = useState(0);
+  const [reject, setReject] = useState(0);
+  const [neww, setNew] = useState(0);
+
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/jobs/${id}`)
+      .then((res) => {
+        const data = res.data;
+        setJobs(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+
+    axios.get(`http://localhost:8000/application/${id}`)
+    .then((res) => {
+
+      let reject = 0;
+      let accept = 0;
+      let neww = 0 ; 
+    
+      res.data.forEach((app) => {
+ 
+        if (app.applicationStatus == "Rejected") {
+          reject++;
+        }
+        else if(app.applicationStatus == "Accepted"){
+          accept++;
+        }
+        else{
+          neww++;
+        }
+      });
+      setAccepted(accept);
+      setReject (reject);
+      setNew(neww);
+      
+    })
+    .catch((err) => {
+      alert(err.message);
+    });
+  }, []);
+
+  console.log("accept",accept,"reject",reject)
+  
+
   return (
     <div className="dashmainouter row">
       <div className="dashtopcontainer ">
@@ -43,7 +96,7 @@ export default function employer_main() {
           <div className="detailcomponenthead col-3">
             <div className="detailscomponent row">
               <div className="col-xxl-8">
-                <p className="jobcount">8</p>
+                <p className="jobcount">{jobs.length}</p>
                 <p className="jobsposted">Jobs Posted</p>
               </div>
               <div className="col-xxl-4 deatilcomponentimg-cover">
@@ -55,7 +108,7 @@ export default function employer_main() {
           <div className="detailcomponenthead col-3">
             <div className="detailscomponent row">
               <div className="col-xxl-8">
-                <p className="jobcount">4</p>
+                <p className="jobcount">0</p>
                 <p className="jobsposted">Paused</p>
               </div>
               <div className="col-xxl-4 deatilcomponentimg-cover">
@@ -67,7 +120,7 @@ export default function employer_main() {
           <div className="detailcomponenthead col-3">
             <div className="detailscomponent row">
               <div className="col-xxl-8">
-                <p className="jobcount">9</p>
+                <p className="jobcount">0</p>
                 <p className="jobsposted">Closed</p>
               </div>
               <div className="col-xxl-4 deatilcomponentimg-cover">
@@ -86,7 +139,7 @@ export default function employer_main() {
 
             <div className="blockdetails row">
               <div className="blockfirsthalf col-lg-8">
-              <p className="applicaitonsconter">15</p>
+              <p className="applicaitonsconter">{neww}</p>
               <p className="applicationsname-tag">New</p>
               </div>
               <div className="blocksecondhlaf col-lg-4">
@@ -96,8 +149,8 @@ export default function employer_main() {
 
             <div className="blockdetails row">
               <div className="blockfirsthalf col-lg-8">
-              <p className="applicaitonsconter">15</p>
-              <p className="applicationsname-tag">New</p>
+              <p className="applicaitonsconter">{accept}</p>
+              <p className="applicationsname-tag">Accpted</p>
               </div>
               <div className="blocksecondhlaf col-lg-4">
               <img src={Reviewd} alt="" className="applcationsicon" />                
@@ -107,8 +160,8 @@ export default function employer_main() {
             
             <div className="blockdetails row">
               <div className="blockfirsthalf col-lg-8">
-              <p className="applicaitonsconter">15</p>
-              <p className="applicationsname-tag">New</p>
+              <p className="applicaitonsconter">{reject}</p>
+              <p className="applicationsname-tag">Rejected</p>
               </div>
               <div className="blocksecondhlaf col-lg-4">
               <img src={Rejected} alt="" className="applcationsicon" />                

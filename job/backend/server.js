@@ -2,11 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require("dotenv");
+dotenv.config();
 
 //file upload ekata sambandai
 const fileupload = require("express-fileupload") ;
 
 const app = express();
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'uploads')))
+
 
 const fs = require('fs');
 
@@ -46,12 +51,17 @@ const jobs = require("./routes/jobs")
 const application = require("./routes/application")
 const uploadpdf = require("./routes/uploadpdf")
 
+//dilaa routes
+const userRoute = require("./routes/user");
+const uploadPhoto = require("./routes/upload");
+
 //app midleware
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
     fileupload({
         createParentPath: true,
+        useTempFiles: true,
     }),
 );
 
@@ -67,3 +77,15 @@ app.use("/userScore",userScore);
 app.use("/jobs",jobs);
 app.use("/application",application);
 app.use("/uploadpdf",uploadpdf);
+
+
+//dilaa
+
+//routes
+// readdirSnc("./routes").map((r) => app.use("/", require("./routes/" + r)));
+app.use("/api/users", userRoute);
+// app.use("/api/post", uploadPost);
+app.use("/api/photoupload", uploadPhoto);
+// app.use("/api/react", postReact);
+
+//database

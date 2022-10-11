@@ -46,8 +46,16 @@ import Education from "./pages/education";
 import User from "./pages/user";
 import Application from "./pages/application";
 import Table from "./pages/tabel";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import Search from "./pages/search";
 
+import EditUser from "./pages/user/edit";
+import EducationEdit from "./pages/user/edu";
+import ExperienceEdit from "./pages/user/exp";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 
@@ -55,6 +63,18 @@ function App() {
   const  userID  = useSelector(state => state.auth.internID)
   return (
     <div>
+
+<ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Router>
         <Routes >
 

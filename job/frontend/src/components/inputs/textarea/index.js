@@ -1,4 +1,5 @@
 import "./style.css";
+import React from "react";
 import { useField, ErrorMessage } from "formik";
 import { useMediaQuery } from "react-responsive";
 export default function RegisterInput({
@@ -29,7 +30,7 @@ export default function RegisterInput({
           <textarea
             className={meta.touched && meta.error ? "input_error_border" : ""}
             style={{
-              width: wd ? 800 : 600,
+              width: wd ? 900 : 700,
               height: 300,
               borderRadius: 4,
               borderColor: "#000000",

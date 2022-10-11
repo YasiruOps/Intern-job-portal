@@ -107,7 +107,7 @@ export default function Employment_app2() {
     const submitPDF = async (data) => {
 
       const formData = new FormData();
-      formData.append("file", data.file[0],`${internID}-${jobID}` );
+      formData.append("file", data.file[0],`${internID}-${jobID}.pdf` );
 
       const res = await fetch("http://localhost:8000/uploadpdf/", {
           method: "POST",

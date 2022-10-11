@@ -8,10 +8,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Application_popup(props) {
-
+  
   const { recordForEdit } = props;
 
   const [user, setUser] = useState(null)
+
+  console.log("props", props.recordForEdit.applicationStatus)
 
   useEffect(() => {
     axios
@@ -33,14 +35,25 @@ export default function Application_popup(props) {
     return <a href={`mailto:${email}${params}`}>{children}</a>;
   };
 
+  function setStatus(stat){
+    axios
+    .put(`http://localhost:8000/application/updatestatus/${props.recordForEdit._id}`,{applicationStatus:stat})
+    .then(() => {
+        alert("sucussfully updated")     
+    })
+    .catch((err) => {
+    });
+  }
+
 
   return (
     <div className="application_popup_outerframe">
-      <button className="btn btn-primary btnviewresume">
-        View Resume
-        <BsFillFileEarmarkTextFill className="viewbtniconresume" />
-      </button>
-
+      <a href={`http://localhost:8000/static/${props.recordForEdit.pdfID}.pdf`}>
+        <button className="btn btn-primary btnviewresume" >
+          View Resume
+          <BsFillFileEarmarkTextFill className="viewbtniconresume" />
+        </button>
+      </a>
       <p className="personaldetailsviepopup">Personal Details</p>
 
       <div className="row">
@@ -116,10 +129,10 @@ export default function Application_popup(props) {
             Contact <RiSendPlaneFill className="btnapplicationpopupview" />
           </button>
         </Mailto>  
-        <button className="btn btn-warning" style={{ color: "#FFFFFF" }}>
+        <button className="btn btn-warning" style={{ color: "#FFFFFF" }} onClick={()=>setStatus("Accepted")}>
           Accept <CheckCircleIcon className="btnapplicationpopupview" />
         </button>
-        <button className="btn btn-danger">
+        <button className="btn btn-danger"  onClick={()=>setStatus("Rejected")}>
           Reject <CancelIcon className="btnapplicationpopupview" />
         </button>
       </div>

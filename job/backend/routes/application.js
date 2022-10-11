@@ -5,6 +5,7 @@ const AddApplicationHandler = require("../handlers/AddApplicationHandler")
 const FetchAppplicationHandler = require("../handlers/FetchAppplicationHandler")
 const FetchInternAppplicationHandler = require("../handlers/FetchInternApplicaitonHandler")
 const DeleteApplicationHandler = require("../handlers/DeleteApplicationHandler")
+const EditApplicationStatus = require("../handlers/EditApplicationStatus")
 
 //create
 router.route('/').post((request, response) => {AddApplicationHandler(request, response); });
@@ -17,5 +18,9 @@ router.route('/intern/:id').get((request, response) => {FetchInternAppplicationH
 
 //remove
 router.route('/:id').delete((request, response) => {DeleteApplicationHandler(request, response); });
+
+//editstatus
+router.route('/updatestatus/:id').put((request, response)=>{EditApplicationStatus(request,response)});
+
 
 module.exports = router;
