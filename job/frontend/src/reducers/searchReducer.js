@@ -1,4 +1,4 @@
-import {SET_SEARCH} from '../actions/types';
+import {SET_SEARCH, LOGOUT} from '../actions/types';
 
 const data = {
     location:["colombo","negambo", "panadura","malabe"],
@@ -11,8 +11,6 @@ const initialState={
     searchoption:null
 }
 
-console.log("initial state", initialState)
-
 export default function(state=initialState,action){
     switch(action.type){
         case SET_SEARCH:
@@ -20,6 +18,9 @@ export default function(state=initialState,action){
                 ...state,
                 searchoption:action.payload
             }
+        case LOGOUT:
+            return initialState
+ 
             
         default:
             return state

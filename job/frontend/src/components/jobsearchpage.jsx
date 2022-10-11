@@ -27,13 +27,9 @@ export default function Jobsearchpage() {
 
   //search eka
   function onChange(key, value) {
-
-
-
       const data = {...searchoption,[key]:value.toLowerCase()}
       dispatch(setSearch(data));
      
-      
     }
     
 
@@ -74,18 +70,20 @@ export default function Jobsearchpage() {
 
   const filterdjobs = useSelector((state) => state.job.fiterdjobs);
 
-  let flag = useSelector((state) => state.job.searchoff);
+  console.log("filterd jobs", filterdjobs)
 
+  let flag = useSelector((state) => state.job.searchoff);
+  
   //date
   function timer(date, filterdate){
 
-    if(filterdate.length===0){
+    if(filterdate?.length===0){
       return false;
     }
     const date1 = moment(date).format("YYYY/MM/DD") 
 
     
-      for (let i = 0; i < filterdate.length; i++) {
+      for (let i = 0; i < filterdate?.length; i++) {
         if(filterdate=="Today"){
           return moment().isSame(date1,"day")
         }
@@ -119,7 +117,7 @@ export default function Jobsearchpage() {
       jobsal = parseInt(jobsal);
     }
 
-    for (let i = 0; i < salary.length; i++) {
+    for (let i = 0; i < salary?.length; i++) {
       if(jobsal == "Negotiable" && salary[i] == "Negotiable"){
         return true;
       }
@@ -138,7 +136,7 @@ export default function Jobsearchpage() {
     function shiftTimes(shifts, jobshift)
     {
       
-      for (let i = 0; i < shifts.length; i++) {
+      for (let i = 0; i < shifts?.length; i++) {
         if(jobshift.toLowerCase()  == shifts[i].toLowerCase()){
         
           return true;
@@ -152,7 +150,7 @@ export default function Jobsearchpage() {
       jobexp = jobexp.replace(/[a-z|A-z|<+-\s]/gm,'');
      
       let value;
-      for (let i = 0; i < exp.length; i++) {
+      for (let i = 0; i < exp?.length; i++) {
         value = exp[i].replace(/[a-z|A-z|<+-\s]/gm,''); 
        
         if ( value.length == 1 && value == 1 && (value == jobexp || !jobexp )){
@@ -173,17 +171,26 @@ export default function Jobsearchpage() {
   
 
   useEffect(() => {
-    if(searchoption.Location.length==0 &&
-      searchoption["Date Posted"].length==0 &&
-      searchoption.Salary.length==0 &&
-      searchoption["Work Hours"] == 0 &&
-      searchoption.Experience.length == 0 &&
-      searchoption.searchkey.length == 0
+    console.log("sss",searchoption)
+    if(
+      searchoption &&
+      (
+      searchoption?.Location?.length ||
+      searchoption["Date Posted"]?.length ||
+      searchoption?.Salary?.length ||
+      searchoption["Work Hours"]?.length  ||
+      searchoption?.Experience?.length ||
+      searchoption?.searchkey?.length 
+      )
       ){
+        console.log("hiiiii ")
+      dispatch(setsearchoff(false));
+    }else
+    {
       dispatch(setsearchoff(true));
-      return;
     }
-    dispatch(setsearchoff(false));
+    
+    
 
     //filter eka
     const data = jobs.filter((item) => {
@@ -205,12 +212,11 @@ export default function Jobsearchpage() {
       searchkeytrue:false
     }
 
-    
-
       if (
-        searchoption.Location &&
-        searchoption.Location.includes(item.location)
+        searchoption?.Location &&
+        searchoption?.Location?.includes(item.location)
       ) {
+        console.log("if ekee")
         logic.locationtrue = true;
       }
 
@@ -234,12 +240,14 @@ export default function Jobsearchpage() {
         logic.searchkeytrue = true;
       }
 
-      if((logic.Location == 0 || logic.locationtrue) 
-      && (logic.Timer == 0 || logic.timertrue) 
-      && (logic.Salary == 0 || logic.salarytrue)
-      && (logic.Shift == 0 || logic.shifttrue)
-      && (logic.Experience == 0 || logic.experiencetrue)
-      && (logic.Searchkey == 0 || logic.searchkeytrue)
+      console.log("logic", logic)
+
+      if((!logic?.Location || logic?.locationtrue) 
+      && (!logic?.Timer || logic?.timertrue) 
+      && (!logic?.Salary || logic?.salarytrue)
+      && (!logic?.Shift  || logic?.shifttrue)
+      && (!logic?.Experience   || logic?.experiencetrue)
+      && (!logic?.Searchkey || logic?.searchkeytrue)
       ){
         return item;
       }
@@ -254,7 +262,7 @@ export default function Jobsearchpage() {
     axios
       .get(`http://localhost:8000/jobs/`)
       .then((res) => {
-        setJobs(res.data);
+        setJobs(res?.data);
         dispatch(setjobbas(res.data));
       })
       .catch((err) => {
@@ -343,6 +351,7 @@ export default function Jobsearchpage() {
 
             {flag
               ?(jobs?.map((job, i) => {
+                
                   return (
                     <div
                       className="job-detaboxouter row"

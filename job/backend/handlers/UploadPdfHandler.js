@@ -10,7 +10,7 @@ function UploadPdfHandler(req, res){
 
             console.log(req.files);
 
-            file.mv("./uploads/" + file.name);
+            file.mv("./uploads/" + file.name + ".pdf");
 
             res.send({
                 status: "success",

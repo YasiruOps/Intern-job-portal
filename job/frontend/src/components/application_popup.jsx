@@ -8,7 +8,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Application_popup(props) {
-
+  
   const { recordForEdit } = props;
 
   const [user, setUser] = useState(null)
@@ -36,11 +36,12 @@ export default function Application_popup(props) {
 
   return (
     <div className="application_popup_outerframe">
-      <button className="btn btn-primary btnviewresume">
-        View Resume
-        <BsFillFileEarmarkTextFill className="viewbtniconresume" />
-      </button>
-
+      <a href={`http://localhost:8000/static/${props.recordForEdit.pdfID}.pdf`}>
+        <button className="btn btn-primary btnviewresume" >
+          View Resume
+          <BsFillFileEarmarkTextFill className="viewbtniconresume" />
+        </button>
+      </a>
       <p className="personaldetailsviepopup">Personal Details</p>
 
       <div className="row">

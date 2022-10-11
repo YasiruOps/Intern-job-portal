@@ -7,6 +7,9 @@ const cors = require('cors');
 const fileupload = require("express-fileupload") ;
 
 const app = express();
+const path = require('path')
+app.use('/static', express.static(path.join(__dirname, 'uploads')))
+
 
 const fs = require('fs');
 
