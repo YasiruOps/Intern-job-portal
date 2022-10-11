@@ -87,7 +87,7 @@ export default function Leaderbord() {
               <div className="Lscroll">
 
               {leaderboard.map((item,i) => {
-                console.log("item2",item)
+            
               return (
                 <div className="scoreform">
                   <p style={{ color: colors[i]??"black" }} className="user_place">

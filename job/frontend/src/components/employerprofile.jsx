@@ -47,7 +47,7 @@ export default function Employerprofile() {
         axios
           .get(`http://localhost:8000/employerRegister/${id}`)
           .then((response) => {
-            console.log("lllllll",response?.data[0]);
+       
             setProfile(response?.data[0]);
           })
           .catch((err) => {
@@ -59,7 +59,7 @@ export default function Employerprofile() {
       }
 
       function EditSubmit(){
-        console.log("pppppppppppppp",profile)
+      
         axios
         .put(`http://localhost:8000/employerRegister/update/${id}`,profile)
         .then(() => {

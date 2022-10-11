@@ -32,7 +32,7 @@ export default function Forum_compage() {
   const userID = useSelector((state) => state.auth.internID);
   const [username, setUsername] = useState("");
 
-  console.log("location state", location.state)
+
 
   useEffect(() => {
     axios
@@ -73,10 +73,10 @@ export default function Forum_compage() {
     axios
     .delete(`http://localhost:8000/comment/delete/${commentID}`)
     .then(() => {
-      console.log("indesx",index)
+   
       const temp = [...comments]
       temp.splice(index, 1)
-      console.log("temp",temp)
+     
       setComments(temp);
       alert("comment removed")
     })
@@ -90,7 +90,6 @@ export default function Forum_compage() {
 
   return (
     <div className="">
-      {console.log("comments",comments)}
 
       <Header />
       <div className="jobsearch col-9">

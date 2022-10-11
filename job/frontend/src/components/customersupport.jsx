@@ -83,8 +83,7 @@ const[empname, setEmpname] =useState(options2[0].value)
         return `${day}${"/"}${month<10?`0${month}`:`${month}`}${"/"}${year}`
         }
 
-    console.log("dateee",getSelectedDate(date));
-     console.log("real date",date);
+
 
 //Employee Question yawana eka
 function sendData2() {

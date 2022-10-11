@@ -34,7 +34,7 @@ export default function MultipleSelectChip(props) {
 
     function onChange(key, value) {
 
-    console.log("searchoptions", searchoption)
+
 
       setPersonName(
         // On autofill we get a stringified value.
@@ -43,7 +43,7 @@ export default function MultipleSelectChip(props) {
 
       const data = {...searchoption,[key]:value}
       dispatch(setSearch(data));
-      // console.log("key value", key, value)
+      
       
     }
     

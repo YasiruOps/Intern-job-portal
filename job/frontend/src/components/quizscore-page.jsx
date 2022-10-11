@@ -10,8 +10,12 @@ export default function Quizscorepage() {
   
   const navigate = useNavigate();
   const userID = useSelector((state) => state.auth.internID);
+  const answer = useSelector((state) => state.mcq.answer);
+  const questions = useSelector((state)=> state.mcq.questions);
   const location = useLocation();
   const [username, setUsername] = useState("");
+
+  const [corrans, setCorrans] = useState(0)
 
   useEffect(() => {
       axios
@@ -23,14 +27,25 @@ export default function Quizscorepage() {
         alert(err);
       });
 
+      let correct = 0;
+
+      questions.forEach((question) => {
+        const id = question._id;
+        const ans = question.answer;
+        if (answer[id] && answer[id] === ans) {
+          correct++;
+        }
+      } );
+      setCorrans(correct)
   }, []);
 
   function submit(){
 
-    const score = Math.round((location.state.correct/location.state.amount)*100)
+    
+
+    const score = Math.round((corrans/location.state.amount)*100)
 
 
-    console.log("username", username)
 
     const payload={
       quiz:location.state.name,
@@ -39,7 +54,7 @@ export default function Quizscorepage() {
       score,
       userName:username,
     }
-    console.log("payload", payload)
+    
 
     axios
     .put("http://localhost:8000/userScore/", payload)
@@ -65,7 +80,7 @@ export default function Quizscorepage() {
       <div className="scorebord-frame">
         <p className="scoretag">Your Score</p>
         <div className="d-flex justify-content-center">
-          <p className="scorelines">{location.state.correct}</p>
+          <p className="scorelines">{corrans}</p>
           <p className="scorelines">/</p>
           <p className="scorelines">{location.state.amount}</p>
         </div>

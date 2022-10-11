@@ -5,7 +5,7 @@ import axios from "axios";
 export default function Removepopup_form(props) {
 
   const { recordForEdit } = props;
-  console.log("recordForEdit, id only ", recordForEdit);
+  
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);

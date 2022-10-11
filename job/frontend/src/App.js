@@ -36,6 +36,7 @@ import Forum from "./components/forumpage"
 import ForumComm from "./components/forum_compage"
 import Quizscore from "./components/quizscore-page";
 import Employerprofile from "./components/employerprofile";
+import McqTimerPage from "./components/mcq-timer-page";
 
 
 //dilaxy
@@ -92,7 +93,7 @@ function App() {
         <Route path="/EmployerLogin" element={<EmployerLogin/>}/> 
         <Route path="/Leader-bord" element={<Leaderbord/>}/>  
         <Route path="/McqCat" element={<McqCat/>}/>    
-        <Route path="/Mcq" element={<Mcq/>}/>
+        <Route path="/Mcq" element={<McqTimerPage/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>
 
         <Route path="/Login" element = {!userID? <Login /> : <Navigate to="/user" />}/>

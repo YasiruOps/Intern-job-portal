@@ -48,8 +48,6 @@ export default function Addjobform_popup() {
       date:getCurrentDate(),
     }
 
-    console.log("pppppppppppp",payload)
-
     axios
     .post("http://localhost:8000/jobs/", payload)
     .then(() => {

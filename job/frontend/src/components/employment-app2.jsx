@@ -105,7 +105,7 @@ export default function Employment_app2() {
   }
 
     const submitPDF = async (data) => {
-      console.log("submittt")
+
       const formData = new FormData();
       formData.append("file", data.file[0],`${internID}-${jobID}` );
 

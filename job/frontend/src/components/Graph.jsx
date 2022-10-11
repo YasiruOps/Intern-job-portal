@@ -27,12 +27,12 @@ export default function Graph() {
 
             })
             // setData(values);
-            console.log("values", values);
+         
             let maxvalue = 0;
             
             
             for (const key in values) {
-                console.log("for runs")
+               
                 const jobs = values[key]
 
                 if(jobs>maxvalue){
@@ -45,7 +45,7 @@ export default function Graph() {
                 temp.push({name:key, Applications:jobs, count:maxvalue})
               }
               setData(temp)
-              console.log("temp", temp)
+            
           })
           .catch((err) => {
             alert(err.message);

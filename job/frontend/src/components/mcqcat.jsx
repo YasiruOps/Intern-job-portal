@@ -13,13 +13,13 @@ export default function () {
   const navigate = useNavigate();
 
   const startQuiz = (name) => {
-    console.log("kkkkkkkkk", selectType,name)
+  
     navigate("/Mcq",{state:{selectType,name}});
   };
 
   const [type, setType] = useState([]);
   const [quiz, setQuiz] = useState([]);
-  const [selectType, setSelectType] = useState("");
+  const [selectType, setSelectType] = useState("cs");
 
   useEffect(() => {
     axios
@@ -65,7 +65,7 @@ export default function () {
                 onClick={(e) => setSelectType(e.target.value)}
                 className="minimal "
               >
-                <option value={""}>Select Category</option>
+                {/* <option value={""}>Select Category</option> */}
                 {type.map((type) => (
                   <option value={type}>{type}</option>
                 ))}

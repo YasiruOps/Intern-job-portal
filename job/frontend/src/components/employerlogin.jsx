@@ -32,7 +32,7 @@ export default function Login() {
       password: loginForm.password,
     };
 
-    console.log(payload);
+   
     axios
       .post(`http://localhost:8000/auth/employerLogin`, payload)
       .then((response) => {

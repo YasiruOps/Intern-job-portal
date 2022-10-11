@@ -29,7 +29,7 @@ const[address, setAddress] =useState("")
   return (
     
     <div>
-      {console.log("pppp",location.state)}
+   
       <Header />
       <div className="container" style={{marginLeft:"auto", marginRight:"auto"}}>
         <p className="empteg-title">Employer Registration</p>

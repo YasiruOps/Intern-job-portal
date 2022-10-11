@@ -22,18 +22,17 @@ import Filter from "./filter_dropdown";
 import moment from 'moment';
 
 export default function Jobsearchpage() {
-  // const searchdata = useSelector((state) => state.search.data);
-  // console.log("dddd",searchdata)
+
   const searchoption = useSelector((state) => state.search.searchoption);
 
   //search eka
   function onChange(key, value) {
 
-    console.log("sssssss", searchoption)
+
 
       const data = {...searchoption,[key]:value.toLowerCase()}
       dispatch(setSearch(data));
-      // console.log("key value", key, value)
+     
       
     }
     
@@ -125,7 +124,7 @@ export default function Jobsearchpage() {
         return true;
       }
       const values = salary[i].split(" - ").map(convertToNum)
-      console.log("values",values);
+    
       if(values.length == 2 && (jobsal >= values[0] && jobsal <= values[1])){
         return true
       }
@@ -141,7 +140,7 @@ export default function Jobsearchpage() {
       
       for (let i = 0; i < shifts.length; i++) {
         if(jobshift.toLowerCase()  == shifts[i].toLowerCase()){
-          console.log("shift",shifts, "jobshifts",jobshift)
+        
           return true;
         }
       } 
@@ -151,21 +150,21 @@ export default function Jobsearchpage() {
     function experience(exp, jobexp)
     {
       jobexp = jobexp.replace(/[a-z|A-z|<+-\s]/gm,'');
-      console.log("job value",jobexp);
+     
       let value;
       for (let i = 0; i < exp.length; i++) {
         value = exp[i].replace(/[a-z|A-z|<+-\s]/gm,''); 
-        console.log("array val",value,value.length)
+       
         if ( value.length == 1 && value == 1 && (value == jobexp || !jobexp )){
-        console.log(1);
+   
           return true;
         }
         if ( value.length == 1 && value == 4 && value <= jobexp){
-          console.log(2)
+          
           return true;
         }
         if( value.length == 2 && value[0] <= jobexp && value[1]>=jobexp){
-            console.log(3)
+           
             return true;
         }
     }
@@ -189,7 +188,7 @@ export default function Jobsearchpage() {
     //filter eka
     const data = jobs.filter((item) => {
 
-    console.log("pppppppppppppp", item.shiftTime, shiftTimes(searchoption["Work Hours"] ,item.shiftTime))
+    
 
     const logic = {
       Location:searchoption?.Location?.length,
@@ -206,7 +205,7 @@ export default function Jobsearchpage() {
       searchkeytrue:false
     }
 
-    console.log("logic",logic)
+    
 
       if (
         searchoption.Location &&

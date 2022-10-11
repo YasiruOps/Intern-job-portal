@@ -35,7 +35,7 @@ export default function Jobdetails() {
   };
 
   useEffect(() => {  
-    console.log("llllllllll",location?.state)
+    
     dispatch(setjob(location?.state))
   }, []);
 

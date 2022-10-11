@@ -22,7 +22,8 @@
     font-size: 32px;
     margin-left: -10%;
     color: #1A5276;
-    font-weight: bolder
+    font-weight: bolder;
+    background-color: red !important;
   }
 
   .time-box .time{
@@ -166,4 +167,7 @@ margin-right: 5px;
 .leftside{
 }
 
+.statusss{
+  background-color: red;
+}
 
