@@ -67,7 +67,7 @@ export default function Cover({
           return img;
         }
       } catch (error) {
-        console.log(error);
+       
       }
     },
     [croppedAreaPixels]
@@ -149,7 +149,7 @@ export default function Cover({
       // }
     } catch (error) {
       setLoading(false);
-      console.log(error);
+     
       //setError(error.response.data.message);
     }
   };

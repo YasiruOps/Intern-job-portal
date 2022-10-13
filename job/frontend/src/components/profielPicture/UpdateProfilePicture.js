@@ -44,7 +44,7 @@ export default function UpdateProfilePicture({
           return img;
         }
       } catch (error) {
-        console.log(error);
+        
       }
     },
     [croppedAreaPixels]
@@ -67,7 +67,7 @@ export default function UpdateProfilePicture({
         setLoading(false);
         setShow(false);
         setImage("");
-        console.log(res);
+        
       }
     } catch (error) {
       setLoading(false);

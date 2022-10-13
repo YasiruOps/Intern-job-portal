@@ -5,16 +5,15 @@ import InternImg1 from "../images/intern_login_img1.png";
 import Header from "../components/header";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { setinternid } from "../actions/authActions";
 
 export default function Login() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ export default function Login() {
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
         dispatch(setinternid(response.data.user._id));
-        navigate('/user');
+        navigate("/user");
       })
       .catch((err) => {});
   };
@@ -47,6 +46,7 @@ export default function Login() {
   return (
     <div>
       <Header />
+      <form>
       <div className="outer_container">
         <div className="first_layer row">
           <div className="col-2">
@@ -60,6 +60,7 @@ export default function Login() {
 
         <div className="second_layer">
           <p className="sign_tag"> Sign in to continue</p>
+          
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">
@@ -67,9 +68,15 @@ export default function Login() {
               </span>
             </div>
 
-  <input onChange={onChange} name ="email" type="email" id="form2Example1" className="form-control" placeholder="E-mail (required)" />
-  
-
+            <input
+              onChange={onChange}
+             
+              name="email"
+              type="email"
+              id="form2Example1"
+              className="form-control"
+              placeholder="E-mail (required)"
+            />
           </div>
 
           <div class="input-group mb-3">
@@ -78,8 +85,14 @@ export default function Login() {
                 <HttpsOutlinedIcon />
               </span>
             </div>
-            <input onChange={onChange} name="password" type="password" id="form2Example2" class="form-control" placeholder="Password (required)"/>
-  
+            <input
+              onChange={onChange}
+              name="password"
+              type="password"
+              id="form2Example2"
+              class="form-control"
+              placeholder="Password (required)"
+            />
           </div>
         </div>
 
@@ -88,14 +101,19 @@ export default function Login() {
         </div>
 
         <div className="fourth_layer">
-          <Button onClick={submit} className="btn_login" variant="primary">Login</Button>
+          <input type="submit" onClick={submit} className="btn btn-primary btn_login" value="Login"/>
+           
           <hr className="hr2" />
           <p className="sign_up">Do not have an account already?</p>
-          <Link to="/Profile"><Button className="btn_signup">Register now!</Button> </Link>   
+          <Link to="/Profile">
+            <Button className="btn_signup">Register now!</Button>{" "}
+          </Link>
         </div>
-
+        
       </div>
-      <Footer/>
+     
+      </form>
+      <Footer />
     </div>
   );
 }

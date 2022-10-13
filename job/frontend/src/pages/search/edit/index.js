@@ -81,7 +81,7 @@ export default function EditUser() {
   };
   return (
     <div>
-      {console.log(state)}
+     
       <div>
         <Formik
           enableReinitialize

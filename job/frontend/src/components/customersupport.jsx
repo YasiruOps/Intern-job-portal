@@ -148,7 +148,7 @@ axios
         <div className="contactemp-form">
           <p className="contactemp-tag">Contact Employer</p>
 
-          <div className="empselector-sup">
+          {/* <div className="empselector-sup">
             <select className="minimal3" Value={empname} onChange={(e) => {setEmpname(e.target.value);}}>
                 {options2.map(option => (
                   <option key={option.value} value={option.value}>
@@ -156,7 +156,7 @@ axios
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
 
            {/* <select className="minimal3 " Value={type} onChange={(e) => {setType(e.target.value); }}>
                  {options.map(option => (

@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "../../components/popup";
 import RemoveApplciation from "./removeApplcation-popup";
+import Footer from "../../components/footer";
 
 export default function Table() {
 
@@ -98,6 +99,7 @@ export default function Table() {
       >
         <RemoveApplciation recordForEdit={recordForEdit?._id}/>
       </Popup>
+      <Footer/>
     </div>
   );
 }

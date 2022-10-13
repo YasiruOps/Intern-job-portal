@@ -72,7 +72,7 @@ export default function Experience({ setVisible, Id }) {
   };
   return (
     <div>
-      {console.log(Id._id)}
+      
       <div>
         <Formik
           enableReinitialize
@@ -110,7 +110,7 @@ export default function Experience({ setVisible, Id }) {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">Save</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>Save</button>
               </div>
 
               <DotLoader color="#1876f2" loading={loading} size={30} />

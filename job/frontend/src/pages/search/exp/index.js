@@ -65,7 +65,7 @@ export default function ExperienceEdit({ setVisible, Id }) {
   };
   return (
     <div>
-      {console.log(Id)}
+      
       <div>
         <Formik
           enableReinitialize

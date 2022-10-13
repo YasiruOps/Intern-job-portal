@@ -61,8 +61,6 @@ export default function Employer_main() {
       alert(err.message);
     });
   }, []);
-
-  console.log("accept",accept,"reject",reject)
   
 
   return (

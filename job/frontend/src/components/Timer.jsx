@@ -29,7 +29,7 @@ export default function Timer() {
       <div className="top-layer col-5">
         <div>
           <p className="quiz-name">{count[0]?.name}</p>
-          {console.log("count", count.length)}
+          
         </div>
         {/* <Timer data={questions.length}/> */}
       </div>

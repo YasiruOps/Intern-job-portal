@@ -59,7 +59,7 @@ export default function Cover({ setCover, visitor, photos }) {
           return img;
         }
       } catch (error) {
-        console.log(error);
+        
       }
     },
     [croppedAreaPixels]
@@ -88,7 +88,7 @@ export default function Cover({ setCover, visitor, photos }) {
         setCover(res[0].url);
         setDisplayImage(res[0].url);
         // const[displayImage,
-        console.log(res);
+        
       }
 
       // const updated_picture = await updateCover(res[0].url, user.token);
@@ -117,7 +117,7 @@ export default function Cover({ setCover, visitor, photos }) {
       // }
     } catch (error) {
       setLoading(false);
-      console.log(error);
+      
       //setError(error.response.data.message);
     }
   };

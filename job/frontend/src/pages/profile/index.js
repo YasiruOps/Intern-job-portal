@@ -4,6 +4,7 @@ import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
 import RegisterForm from "../../components/login/RegisterForm";
 import Header from "../../components/header"
+import Footer from "../../components/footer";
 
 export default function Profile() {
   const [cover, setCover] = useState("");
@@ -22,6 +23,7 @@ export default function Profile() {
           <RegisterForm setVisible={true} cover={cover} profile={profile} />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

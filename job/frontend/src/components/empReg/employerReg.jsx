@@ -17,17 +17,45 @@ const[msg,setMsg]=useState("")
   const navigate = useNavigate();
   const location = useLocation();
 
+  const[valierror,setValierror] = useState({
+    email:"",
+    password:"",
+  })
+
   const Redirect=()=>{
     if(password!=password2){
       setMsg("Password mismatch"); //meka hadanna component ekak
       return ;
     } 
-    navigate('/Employer-Reg2',{state:{email,displayname,password}});
+
+    let sucess=true;
+    if (!email?.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/)){
+      setValierror({...valierror,email:"incorrect email format"})
+      console.log(valierror)
+      sucess=false;
+    }   
+    if(!password?.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}/)){
+      setValierror({...valierror,password:"incorrect password format must include at least one number"})
+      sucess=false;
+    }
+    setTimeout(()=>{
+      setValierror({   
+      email:"",
+      password:""
+      })
+    },3000);
+
+    if(sucess){
+     navigate('/Employer-Reg2',{state:{email,displayname,password}});
+    }
   }
+
+
 
   return (
     <div>
       <Header />
+      <p>{valierror.password}</p>
       <div className="container" style={{marginLeft:"auto", marginRight:"auto"}}>
         <p className="empteg-title">Employer Registration</p>
 

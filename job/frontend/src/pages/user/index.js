@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import SearchMenu from "../../components/search/SearchMenu";
 
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function User() {
   const navigate = useNavigate();
@@ -418,6 +419,7 @@ export default function User() {
           </>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }

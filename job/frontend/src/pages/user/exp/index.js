@@ -8,6 +8,7 @@ import RegisterInput from "../../../components/inputs/registerInput";
 import TextArea from "../../../components/inputs/textarea";
 import { toast } from "react-toastify";
 
+
 import * as Yup from "yup";
 
 import { useNavigate, useLocation } from "react-router-dom";
@@ -65,7 +66,7 @@ export default function ExperienceEdit({ setVisible, Id }) {
   };
   return (
     <div>
-      {console.log(Id)}
+    
       <div>
         <Formik
           enableReinitialize
@@ -103,7 +104,7 @@ export default function ExperienceEdit({ setVisible, Id }) {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">Update</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>Update</button>
               </div>
 
               <DotLoader color="#1876f2" loading={loading} size={30} />

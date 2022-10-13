@@ -70,7 +70,6 @@ export default function Jobsearchpage() {
 
   const filterdjobs = useSelector((state) => state.job.fiterdjobs);
 
-  console.log("filterd jobs", filterdjobs)
 
   let flag = useSelector((state) => state.job.searchoff);
   
@@ -171,7 +170,7 @@ export default function Jobsearchpage() {
   
 
   useEffect(() => {
-    console.log("sss",searchoption)
+    
     if(
       searchoption &&
       (
@@ -183,7 +182,7 @@ export default function Jobsearchpage() {
       searchoption?.searchkey?.length 
       )
       ){
-        console.log("hiiiii ")
+    
       dispatch(setsearchoff(false));
     }else
     {
@@ -216,7 +215,7 @@ export default function Jobsearchpage() {
         searchoption?.Location &&
         searchoption?.Location?.includes(item.location)
       ) {
-        console.log("if ekee")
+     
         logic.locationtrue = true;
       }
 
@@ -240,7 +239,7 @@ export default function Jobsearchpage() {
         logic.searchkeytrue = true;
       }
 
-      console.log("logic", logic)
+  
 
       if((!logic?.Location || logic?.locationtrue) 
       && (!logic?.Timer || logic?.timertrue) 

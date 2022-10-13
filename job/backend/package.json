@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parse": "^0.1.0",
     "cloudinary": "^1.32.0",
     "cors": "^2.8.5",
@@ -19,6 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.5",
     "node": "^18.4.0",
-    "nodemon": "^2.0.16"
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.16",
+    "otp-generator": "^4.0.0"
   }
 }

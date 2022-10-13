@@ -96,7 +96,7 @@ export default function EducationEdit({ setVisible, Id }) {
   };
   return (
     <div>
-      {console.log(state)}
+      
       <div>
         <Formik
           enableReinitialize

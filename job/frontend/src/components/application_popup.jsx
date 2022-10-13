@@ -13,8 +13,6 @@ export default function Application_popup(props) {
 
   const [user, setUser] = useState(null)
 
-  console.log("props", props.recordForEdit.applicationStatus)
-
   useEffect(() => {
     axios
       .get(`http://localhost:8000/auth/intern/${recordForEdit.internID}`)

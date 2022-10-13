@@ -4,6 +4,8 @@ import { useState } from "react";
 import Experience from "../../components/experience/Experience";
 import PopUp from "../../components/Popup/index";
 import { useLocation } from "react-router-dom";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function Job() {
   const [visible, setVisible] = useState(true);
@@ -11,7 +13,8 @@ export default function Job() {
 
   return (
     <div className="profile">
-      {console.log(state)}
+      <Header/>
+      
       {visible && <PopUp setVisible={setVisible} Id={state} />}
       <div className="profile_top">
         <div className="profile_container">
@@ -22,6 +25,7 @@ export default function Job() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
