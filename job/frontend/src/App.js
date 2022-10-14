@@ -92,7 +92,7 @@ function App() {
 
         <Route path="/Employer-profile" element={<Employerprofile/>}/>  
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
-        <Route path="/Forum-comment" element={<ForumComm/>}/>      
+        <Route path="/Forum-comment" element={!userID? <Login /> : <ForumComm/>}/>    
         <Route path="/Forum" element={<Forum/>}/>      
      
         <Route path="/EmpApp2" element = {!userID? <Login /> : <EmpApp2/>}/>
@@ -110,10 +110,10 @@ function App() {
         <Route path="/Employer-Reg3" element={<EmployerReg3/>}/>   
         <Route path="/Employer-Reg2" element={<EmployerReg2/>}/> 
         <Route path="/Employer-Reg" element={<EmployerReg/>}/> 
-        <Route path="/EmployerLogin" element={<EmployerLogin/>}/> 
+        <Route path="/EmployerLogin" element= {!employerID? <EmployerLogin /> : <Navigate to="/Employer-Dash" />}/> 
         <Route path="/Leader-bord" element={<Leaderbord/>}/>  
-        <Route path="/McqCat" element={<McqCat/>}/>    
-        <Route path="/Mcq" element={<McqTimerPage/>}/>
+        <Route path="/McqCat" element={!userID? <Login /> :<McqCat/>}/>    
+        <Route path="/Mcq" element= {<McqTimerPage/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>
 
         <Route path="/Login" element = {!userID? <Login /> : <Navigate to="/user" />}/>

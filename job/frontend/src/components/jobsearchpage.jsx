@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../CSS/jobsearchpage.css";
 import Header1 from "./header";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { GoSearch } from "react-icons/go";
 import { BsFilter, BsTerminal } from "react-icons/bs";
@@ -22,6 +22,8 @@ import Filter from "./filter_dropdown";
 import moment from 'moment';
 
 export default function Jobsearchpage() {
+
+  const location = useLocation();
 
   const searchoption = useSelector((state) => state.search.searchoption);
 
@@ -73,6 +75,27 @@ export default function Jobsearchpage() {
 
   let flag = useSelector((state) => state.job.searchoff);
   
+
+
+  useEffect(()=>{
+  console.log("jobs",jobs) 
+    if(
+      searchoption && ( searchoption?.searchkey?.length )
+      ){
+        
+      dispatch(setsearchoff(false));
+      const data = jobs.filter((item) => {
+        console.log("item tile",item.title.toLowerCase(),searchoption.searchkey)
+        if(item.title.toLowerCase().indexOf(searchoption.searchkey) > -1 ){
+         return true
+        }
+        return false;
+      })
+      console.log("ddddff", data)
+        dispatch(setfilterjobs(data));
+    }
+  },[jobs])
+
   //date
   function timer(date, filterdate){
 
@@ -117,15 +140,16 @@ export default function Jobsearchpage() {
     }
 
     for (let i = 0; i < salary?.length; i++) {
+      const values = salary[i].split(" - ").map(convertToNum) 
       if(jobsal == "Negotiable" && salary[i] == "Negotiable"){
         return true;
       }
-      const values = salary[i].split(" - ").map(convertToNum)
-    
-      if(values.length == 2 && (jobsal >= values[0] && jobsal <= values[1])){
+      else if(values.length == 2 && (jobsal >= values[0] && jobsal <= values[1])){
+        console.log("values",values)
+        console.log("jobsal",jobsal)
         return true
       }
-      if(jobsal >= values[0]){
+      else if(values.length == 1 && jobsal >= values[0]){
           return true
       }
     }
@@ -170,6 +194,7 @@ export default function Jobsearchpage() {
   
 
   useEffect(() => {
+    console.log('userdd',searchoption)
     
     if(
       searchoption &&
@@ -234,7 +259,7 @@ export default function Jobsearchpage() {
       if(experience(searchoption.Experience ,item.experience)){
         logic.experiencetrue = true;
       }
-
+  
       if(item.title.toLowerCase().indexOf(searchoption.searchkey) > -1 ){
         logic.searchkeytrue = true;
       }

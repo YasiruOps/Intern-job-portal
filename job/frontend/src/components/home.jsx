@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
@@ -14,8 +14,29 @@ import bd3 from "../images/bd3.png";
 import bd4 from "../images/bd4.png";
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { useDispatch, useSelector } from "react-redux";
+import { setfilterjobs, setjobbas, setsearchoff } from "../actions/jobActions";
+import { setSearch } from "../actions/searchAction";
 
-export default function home() {
+import { useNavigate } from "react-router-dom";
+
+export default function Home() {
+  const dispatch = useDispatch();
+  const [searchval, setSearchval] = useState("")
+
+  const navigate = useNavigate();
+
+  const searchoption = useSelector((state) => state.search.searchoption);
+
+  function Redirect(){
+    dispatch(setSearch({...searchoption,searchkey:searchval.toLowerCase()}));
+    navigate("/Job-Search");
+  };
+
+  function Browse(){
+    navigate("/Job-Search")
+  }
+
   return (
     <div className="homepage-outermain">
       <div className="head">
@@ -26,17 +47,17 @@ export default function home() {
             <h3>Search from over 200+ Job Postings</h3>
             <div className="searchboxjobs">
               <GoSearch className="searchiconjobs" />
-              <input type="text" className="searchinjobs" />
+              <input type="text" className="searchinjobs" value={searchval} onChange={(e) => {  setSearchval(e.target.value); }}/>
               <button type="button" class="btn btn-light advancedsearhjobs">
                 Advanced
               </button>
-              <button type="button" class="btn btn-light advancedsearhjobs">
+              <button type="button" class="btn btn-light advancedsearhjobs" onClick={Browse}>
                 Browse
               </button>
             </div>
-            <Link to="/">
-              <Button className="homepagebtn1">SEARCH</Button>
-            </Link>
+           
+              <Button className="homepagebtn1" onClick={Redirect}>SEARCH</Button>
+          
 
 
           </Accordion>

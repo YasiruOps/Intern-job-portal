@@ -37,6 +37,7 @@ export default function Login() {
     axios
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
+        console.log("response", response?.data)
         dispatch(setinternid(response.data.user._id));
         navigate("/user");
       })

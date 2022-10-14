@@ -77,7 +77,7 @@ export default function Table() {
                             <td className="td1">{application.applicationStatus}</td>
                             <td className="td1">{application.date}</td>
                             <td className="td1">
-                              <button type="button" className="rmvBtn-applications" onClick={() => openInPopup(application)}>
+                              <button type="button" className="rmvBtn-applications" style={{padding:"10px", borderRadius:"5px", color:"white", backgroundColor:"red", border:"0px"}} onClick={() => openInPopup(application)}>
                                 Remove
                               </button>
                             </td>

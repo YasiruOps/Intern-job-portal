@@ -21,7 +21,8 @@ export default function Quizscorepage() {
       axios
       .get(`http://localhost:8000/auth/intern/${userID}`)
       .then((res) => {
-        setUsername(res.data[0].fName);  
+        console.log("data",res)
+        // setUsername(res.data.first_name);  
       })
       .catch((err) => {
         alert(err);

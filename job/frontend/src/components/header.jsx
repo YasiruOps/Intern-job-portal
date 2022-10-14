@@ -9,7 +9,7 @@ import '../CSS/header.css'
 export default function Header() {
 
   const  userID  = useSelector(state => state.auth.internID)
-
+  const  employerID  = useSelector(state => state.auth.employerid)
   return (
     <div >
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
@@ -31,25 +31,28 @@ export default function Header() {
             <li className="item">
               <Link to="/Leader-bord" className="listed">Leaderboard</Link>
             </li>      
-            <li className="item">
-              <Link to="/Cus-sup" className="listed">Customer Support</Link>
-            </li>
+            
             <li className="item">
               <Link to="/Job-Search"  className="listed">Search Page</Link>
             </li>
-            <li className="item">     
+            {/* <li className="item">     
               <Link to="/Employer-Dash" className="listed">Employer Dashboard</Link>
-            </li>
-            <li className="item">
-              <Link to="/EmployerLogin" className="listed">Employer Login</Link>
-            </li>
+            </li> */}
+            
             <li className="item">
               <Link to="/Forum" className="listed">Forum</Link>
             </li>                
             <li className="item">
+              <Link to="/Cus-sup" className="listed">Customer Support</Link>
+            </li>
+            <li className="item">
+              <Link to="/EmployerLogin" className="sign">{employerID?"Dashboard":"Employer Login"}</Link>
+            </li>
+      
+              <li className="item">
               <Link to="/Login" className="sign"> {userID?"Profile":"Login"}</Link>
             </li>
-            
+         
           </ul>
         </div>
       </nav>

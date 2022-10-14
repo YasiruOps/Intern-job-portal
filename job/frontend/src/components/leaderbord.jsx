@@ -9,7 +9,7 @@ import Profile88 from "../images/sample_profile.png";
 import Footer from "./footer";
 import axios from "axios";
 
-
+import { BiMailSend } from "react-icons/bi";
 import MenuIcon from "@mui/icons-material/Menu";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -24,6 +24,30 @@ export default function Leaderbord() {
   const [leaderboard, setLeaderboard] = useState([]);
   const place =[Place1, Place2, Place3];
   const colors =["#FFB800", "#CCD2E3", "#BD5D05"];
+
+  const [user, setUser] = useState(null)
+
+  const Mailto = ({ email, subject = '', body = '', children }) => {
+    let params = subject || body ? '?' : '';
+    if (subject) params += `subject=${encodeURIComponent(subject)}`;
+    if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+  
+    return <a href={`mailto:${email}${params}`}>{children}</a>;
+  }
+
+  function SendMail(item){
+      axios
+        .get(`http://localhost:8000/api/users/getProfile/${item.userID}`)
+        .then((res) => {
+          const data = res.data;
+          setUser(res?.data[0]);
+          console.log(user)
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+  
+        }
 
   useEffect(() => {
     axios
@@ -88,6 +112,7 @@ export default function Leaderbord() {
               <div className="Lscroll">
 
               {leaderboard.map((item,i) => {
+                
             
               return (
                 <div className="scoreform">
@@ -101,7 +126,9 @@ export default function Leaderbord() {
                   <p className="userscore">{item.sum}</p>
                   <p className="userscore_tag">total points</p>
                   <div className="vertical-line" />
-                  <MenuIcon style={{ fontSize: 38 }} className="burger_icon" />
+                  <Mailto email={item.email} subject="" body="">
+                      <BiMailSend style={{ fontSize: 38 }} className="burger_icon" onClick={()=>SendMail(item)}/>
+                  </Mailto>  
                 </div>             
                 )}
               )}

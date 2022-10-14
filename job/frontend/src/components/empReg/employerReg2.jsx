@@ -2,36 +2,80 @@ import React, { useState } from "react";
 import "../../CSS/employerReg2.css";
 import Header from "../header";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function Employer() {
-
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [registrationID, setRegistrationID] = useState("");
+  const [compname, setCompname] = useState("");
+  const [contact, setContact] = useState("");
+  const [address, setAddress] = useState("");
 
-  
-const[registrationID, setRegistrationID] =useState("")
-const[compname, setCompname] =useState("")
-const[contact, setContact] =useState("")
-const[address, setAddress] =useState("")
+  const RedirectBack = () => {
+    navigate("/Employer-Reg");
+  };
 
-  const RedirectBack=()=>{
-    navigate('/Employer-Reg');
-  }
+  const [valierror, setValierror] = useState({
+    registrationID,
+    compname,
+    contact,
+    address,
+  });
 
-  const RedirectForward=()=>{
-    navigate('/Employer-Reg3',{state:{...location.state,registrationID,compname,contact,address}});
-  }
+  const RedirectForward = () => {
+    let sucess = true;
 
+    if (!registrationID?.match(/^[A-Za-z]{3}/)) {
+      setValierror({ ...valierror, registrationID: "Enter valid Registration ID" });
+      sucess = false;
+    }
+    if (!compname?.match(/^[A-Za-z]{3}/)) {
+      setValierror({ ...valierror, compname: "Entern valid Company name" });
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!contact?.match(/^[0-9]{1,10}/)) {
+      setValierror({ ...valierror, contact: "Entern valid Phone number" });
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!address?.match(/^[A-Za-z]{5}/)) {
+      setValierror({ ...valierror, address: "Entern valid Address" });
+      console.log(valierror);
+      sucess = false;
+    }
+    setTimeout(() => {
+      setValierror({
+        registrationID: "",
+        compname: "",
+        contact: "",
+        address: "",
+      });
+    }, 3000);
+    if (sucess) {
+      navigate("/Employer-Reg3", {
+        state: {
+          ...location.state,
+          registrationID,
+          compname,
+          contact,
+          address,
+        },
+      });
+    }
+  };
+  console.log(valierror);
   return (
-    
     <div>
-   
       <Header />
-      <div className="container" style={{marginLeft:"auto", marginRight:"auto"}}>
+      <div
+        className="container"
+        style={{ marginLeft: "auto", marginRight: "auto" }}
+      >
         <p className="empteg-title">Employer Registration</p>
 
         <div className="emp-regform">
@@ -61,7 +105,15 @@ const[address, setAddress] =useState("")
           <div className="inputs1">
             <div className="row1 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required value={registrationID} onChange={(e) => {  setRegistrationID(e.target.value); }}/>
+                <input
+                  className="empReg-input"
+                  type="text"
+                  required
+                  value={registrationID}
+                  onChange={(e) => {
+                    setRegistrationID(e.target.value);
+                  }}
+                />
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -70,7 +122,15 @@ const[address, setAddress] =useState("")
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required value={compname} onChange={(e) => {  setCompname(e.target.value); }}/>
+                <input
+                  className="empReg-input"
+                  type="text"
+                  required
+                  value={compname}
+                  onChange={(e) => {
+                    setCompname(e.target.value);
+                  }}
+                />
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -80,7 +140,15 @@ const[address, setAddress] =useState("")
             </div>
             <div className="row2 row">
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required value={contact} onChange={(e) => {  setContact(e.target.value); }}/>
+                <input
+                  className="empReg-input"
+                  type="text"
+                  required
+                  value={contact}
+                  onChange={(e) => {
+                    setContact(e.target.value);
+                  }}
+                />
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -89,7 +157,15 @@ const[address, setAddress] =useState("")
               </div>
 
               <div className="group100 col-xl-6 ">
-                <input className="empReg-input" type="text" required value={location.state?.address??address} onChange={(e) => {  setAddress(e.target.value); }}/>
+                <input
+                  className="empReg-input"
+                  type="text"
+                  required
+                  value={location.state?.address ?? address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className="empReg-label">
@@ -98,19 +174,37 @@ const[address, setAddress] =useState("")
               </div>
             </div>
           </div>
-          <button onClick={RedirectForward} type="button" className="btn btn-primary empcontinue">
+          <button
+            onClick={RedirectForward}
+            type="button"
+            className="btn btn-primary empcontinue"
+          >
             Continue
             <ArrowForwardIosIcon className="arrowicon" />
           </button>
 
-          <button onClick={RedirectBack} type="button" className="btn btn-primary empback">
-           <ArrowBackIosNewIcon className="arrowbackicon" />
-            Back        
+          <button
+            onClick={RedirectBack}
+            type="button"
+            className="btn btn-primary empback"
+          >
+            <ArrowBackIosNewIcon className="arrowbackicon" />
+            Back
           </button>
-
-
         </div>
       </div>
+      <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+        {valierror.registrationID}
+      </p>
+      <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+        {valierror.compname}
+      </p>
+      <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+        {valierror.contact}
+      </p>
+      <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+        {valierror.address}
+      </p>
     </div>
   );
 }

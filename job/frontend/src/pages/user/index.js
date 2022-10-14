@@ -6,6 +6,7 @@ import PopUp from "../../components/Popup/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Search } from "../../svg";
+import { useSelector, useDispatch } from "react-redux";
 
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
@@ -16,6 +17,8 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 
 export default function User() {
+  const userID = useSelector((state) => state.auth.internID);
+
   const navigate = useNavigate();
   const color = "#65676b";
 
@@ -31,12 +34,17 @@ export default function User() {
   const [showSearchMenu, setShowSearchMenu] = useState(false);
   const [searchuser, setSearchuser] = useState("");
 
+
+
   async function featchData() {
+  
+
     try {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:8000/api/users/getProfile/${state}`
+        `http://localhost:8000/api/users/getProfile/${userID}`,
+        console.log("data",data)
       );
       setError("");
       setSuccess(data.message);
@@ -54,6 +62,7 @@ export default function User() {
   }
 
   useEffect(() => {
+    console.log("userID",userID)
     featchData();
   }, []);
 
@@ -80,6 +89,11 @@ export default function User() {
       toast(error);
     }
   };
+
+  const Redirect=()=>{
+    navigate('/McqCat');
+  }
+
 
   return (
     <div className="profile">
@@ -406,7 +420,9 @@ export default function User() {
                             alignItems: "center",
                             alignContent: "center",
                             borderRadius: 25,
+                           
                           }}
+                          onClick= {Redirect}
                         >
                           <p style={{ marginTop: 6 }}>Start</p>
                         </button>

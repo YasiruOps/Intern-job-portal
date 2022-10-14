@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export default function Employment_app2() {
-
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
@@ -37,9 +36,8 @@ export default function Employment_app2() {
   const employerID = useSelector((state) => state.job?.selectjob?.empID);
   const offerTitle = useSelector((state) => state.job?.selectjob?.title);
   const jobID = useSelector((state) => state.job?.selectjob?._id);
-  
-  const applicationStatus = "pending"
 
+  const applicationStatus = "pending";
 
   const [experience, setExperience] = useState("");
   const [refname, setRefname] = useState("");
@@ -68,8 +66,15 @@ export default function Employment_app2() {
     }${separator}${date}`;
   }
 
-  function sendApplication() {
+  const [valierror, setValierror] = useState({
+    refPhone1,
+    refbday1,
+    refbday2,
+    refBday,
+    refEmail,
+  });
 
+  function sendApplication() {
     handleSubmit(submitPDF)();
 
     const payload = {
@@ -83,37 +88,85 @@ export default function Employment_app2() {
       internID,
       employerID,
       applicationStatus,
-      pdfID:`${internID}-${jobID}`,
+      pdfID: `${internID}-${jobID}`,
 
       experience,
       refname: refname + " " + refname1,
       refBday: refbday2 + "/" + refbday1 + "/" + refbday2,
       refPhone: refPhone + " " + refPhone1,
-      refAddress: refAddress + " " + refAddress1 + " " +refAddress2 + " " +refAddress3 + " " +refAddress4,
+      refAddress:
+        refAddress +
+        " " +
+        refAddress1 +
+        " " +
+        refAddress2 +
+        " " +
+        refAddress3 +
+        " " +
+        refAddress4,
       refEmail,
       date: getCurrentDate(),
     };
-    axios
-      .post("http://localhost:8000/application/", payload)
-      .then(() => {
-        alert("application sent succesfully");
-        navigate("/Job-Search");
-      })
-      .catch((err) => {
-        alert(err);
+    let sucess = true;
+
+    if (
+      !refEmail?.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+      )
+    ) {
+      setValierror({ ...valierror, refEmail: "Enter valid Email" })
+      sucess = false;
+    }
+    if (!refPhone1?.match(/^[0-9]{1,10}/)) {
+      setValierror({ ...valierror, refPhone1: "Entern valid Phone number" })
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!refbday1?.match(/^[0-9]*$/)) {
+      setValierror({ ...valierror, refbday2: "Entern valid Date" })
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!refbday2?.match(/^[0-9]*$/)) {
+      setValierror({ ...valierror, refbday2: "Entern valid Date" });
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!refbday2?.match(/^[0-9]*$/)) {
+      setValierror({ ...valierror, refbday2: "Entern valid Date" });
+      console.log(valierror);
+      sucess = false;
+    }
+    setTimeout(() => {
+      setValierror({
+        email: "",
+        phone: "",
+        password: "",
       });
+    }, 3000);
+
+    if (sucess) {
+      axios
+        .post("http://localhost:8000/application/", payload)
+        .then(() => {
+          alert("application sent succesfully");
+          navigate("/Job-Search");
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
   }
 
-    const submitPDF = async (data) => {
+  const submitPDF = async (data) => {
+    const formData = new FormData();
+    formData.append("file", data.file[0], `${internID}-${jobID}.pdf`);
 
-      const formData = new FormData();
-      formData.append("file", data.file[0],`${internID}-${jobID}.pdf` );
-
-      const res = await fetch("http://localhost:8000/uploadpdf/", {
-          method: "POST",
-          body: formData,
-      }).then((res) => res.json());
-      // alert(JSON.stringify(`${res.message}, status: ${res.status}`));
+    const res = await fetch("http://localhost:8000/uploadpdf/", {
+      method: "POST",
+      body: formData,
+    }).then((res) => res.json());
+    // alert(JSON.stringify(`${res.message}, status: ${res.status}`));
   };
 
   return (
@@ -379,14 +432,12 @@ export default function Employment_app2() {
               </div>
             </div> */}
 
-            <div className="row empapp2gapper" style={{ marginTop: "30px" }}>
-              <div className="col-xl-2 labeltagempformheader">
-                Upload Resume
-              </div>
-              <div className="col-xl-12">
-                <input type="file" {...register("file")} />
-              </div>
-              {/* <div className="col-xl-8">
+        <div className="row empapp2gapper" style={{ marginTop: "30px" }}>
+          <div className="col-xl-2 labeltagempformheader">Upload Resume</div>
+          <div className="col-xl-12">
+            <input type="file" {...register("file")} />
+          </div>
+          {/* <div className="col-xl-8">
                 <button
                   type="button"
                   class="btn btn btn-success"
@@ -395,7 +446,7 @@ export default function Employment_app2() {
                   Upload
                 </button>{" "}
               </div> */}
-              {/* <div className="col-xl-2">
+          {/* <div className="col-xl-2">
                 <p
                   className=" labeltagempform"
                   style={{ color: "#0C4EF8", textDecoration: "underline" }}
@@ -412,188 +463,202 @@ export default function Employment_app2() {
                   Upload
                 </button>{" "}
               </div> */}
-            </div>
+        </div>
 
-            <div className="row empapp2gapper">
-              <p className="labeltagempformheader">Jobs skills & Training</p>
-            </div>
-            <div className="row">
-              <div className="col-xl-12">
-                <textarea
-                  className="form-control empapp2input"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  value={experience}
-                  onChange={(e) => setExperience(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="row empapp2gapper">
-              <p className="labeltagempformheader">
-                References Please list one (1) references that are familiar with
-                your work life.
-              </p>
-            </div>
-
-            <div className="row empapp2gapper">
-              <div className="col-xl-2">
-                <p className="labeltagempform">
-                  <span style={{ color: "red" }}>*</span>Name
-                </p>
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="First Name"
-                  value={refname}
-                  onChange={(e) => setRefname(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Last Name"
-                  value={refname1}
-                  onChange={(e) => setRefname1(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row empapp2gapper">
-              <div className="col-xl-2">
-                <p className="labeltagempform">
-                  <span style={{ color: "red" }}>*</span>Birth Day
-                </p>
-              </div>
-              <div className="col-xl-3">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Month"
-                  value={refbday1}
-                  onChange={(e) => setRefBday1(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-3">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Day"
-                  value={refBday}
-                  onChange={(e) => setRefBday(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-4">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Year"
-                  value={refbday2}
-                  onChange={(e) => setRefBday2(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row empapp2gapper">
-              <div className="col-xl-2">
-                <p className="labeltagempform">
-                  <span style={{ color: "red" }}>*</span>Phone Number
-                </p>
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Area Code"
-                  value={refPhone}
-                  onChange={(e) => setRefPhone(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Number"
-                  value={refPhone1}
-                  onChange={(e) => setRefPhone1(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row empapp2gapper">
-              <div className="col-xl-2">
-                <p className="labeltagempform">
-                  <span style={{ color: "red" }}>*</span>E-mail Address
-                </p>
-              </div>
-              <div className="col-xl-10">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder=""
-                  value={refEmail}
-                  onChange={(e) => setRefEmail(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row empapp2gapper">
-              <div className="col-xl-2">
-                <p className="labeltagempform">
-                  <span style={{ color: "red" }}>*</span>Address
-                </p>
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Street Address 1"
-                  value={refAddress}
-                  onChange={(e) => setRefAddress(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-5">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Street Address 2"
-                  value={refAddress1}
-                  onChange={(e) => setRefAddress1(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="row empapp2gapper">
-              <div className="col-xl-2"></div>
-              <div className="col-xl-4">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="City"
-                  value={refAddress2}
-                  onChange={(e) => setRefAddress2(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-4">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="State/Province"
-                  value={refAddress3}
-                  onChange={(e) => setRefAddress3(e.target.value)}
-                />
-              </div>
-              <div className="col-xl-2">
-                <input
-                  type="text"
-                  className="form-control empapp2inputs"
-                  placeholder="Postal code"
-                  value={refAddress4}
-                  onChange={(e) => setRefAddress4(e.target.value)}
-                />
-              </div>
-              <div>
-            </div>
+        <div className="row empapp2gapper">
+          <p className="labeltagempformheader">Jobs skills & Training</p>
+        </div>
+        <div className="row">
+          <div className="col-xl-12">
+            <textarea
+              className="form-control empapp2input"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              value={experience}
+              onChange={(e) => setExperience(e.target.value)}
+            />
           </div>
-        
+        </div>
+
+        <div className="row empapp2gapper">
+          <p className="labeltagempformheader">
+            References Please list one (1) references that are familiar with
+            your work life.
+          </p>
+        </div>
+
+        <div className="row empapp2gapper">
+          <div className="col-xl-2">
+            <p className="labeltagempform">
+              <span style={{ color: "red" }}>*</span>Name
+            </p>
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="First Name"
+              value={refname}
+              onChange={(e) => setRefname(e.target.value)}
+            />
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Last Name"
+              value={refname1}
+              onChange={(e) => setRefname1(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="row empapp2gapper">
+          <div className="col-xl-2">
+            <p className="labeltagempform">
+              <span style={{ color: "red" }}>*</span>Birth Day
+            </p>
+          </div>
+          <div className="col-xl-3">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Month"
+              value={refbday1}
+              onChange={(e) => setRefBday1(e.target.value)}
+            />
+            <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+              {valierror.refbday1}
+            </p>
+            
+          </div>
+          <div className="col-xl-3">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Day"
+              value={refBday}
+              onChange={(e) => setRefBday(e.target.value)}
+            />
+            <p style={{ textAlign: "center", color: "red", fontSize: "20px" }}>
+              {valierror.refBday}
+            </p>
+            
+          </div>
+          <div className="col-xl-4">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Year"
+              value={refbday2}
+              onChange={(e) => setRefBday2(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="row empapp2gapper">
+          <div className="col-xl-2">
+            <p className="labeltagempform">
+              <span style={{ color: "red" }}>*</span>Phone Number
+            </p>
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Area Code"
+              value={refPhone}
+              onChange={(e) => setRefPhone(e.target.value)}
+            />
+            <p style={{ textAlign: "center", color: "red", fontSize: "18px", marginRight:"100px" }}>
+              {valierror.refPhone1}
+            </p>
+            
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Number"
+              value={refPhone1}
+              onChange={(e) => setRefPhone1(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="row empapp2gapper">
+          <div className="col-xl-2">
+            <p className="labeltagempform">
+              <span style={{ color: "red" }}>*</span>E-mail Address
+            </p>
+          </div>
+          <div className="col-xl-10">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder=""
+              value={refEmail}
+              onChange={(e) => setRefEmail(e.target.value)}
+            />
+          </div>
+          <p style={{ textAlign: "center", color: "red", fontSize: "18px", marginTop:"-10px" }}>
+            {valierror.refEmail}
+          </p>
+        </div>
+        <div className="row empapp2gapper">
+          <div className="col-xl-2">
+            <p className="labeltagempform">
+              <span style={{ color: "red" }}>*</span>Address
+            </p>
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Street Address 1"
+              value={refAddress}
+              onChange={(e) => setRefAddress(e.target.value)}
+            />
+          </div>
+          <div className="col-xl-5">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Street Address 2"
+              value={refAddress1}
+              onChange={(e) => setRefAddress1(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="row empapp2gapper">
+          <div className="col-xl-2"></div>
+          <div className="col-xl-4">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="City"
+              value={refAddress2}
+              onChange={(e) => setRefAddress2(e.target.value)}
+            />
+          </div>
+          <div className="col-xl-4">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="State/Province"
+              value={refAddress3}
+              onChange={(e) => setRefAddress3(e.target.value)}
+            />
+          </div>
+          <div className="col-xl-2">
+            <input
+              type="text"
+              className="form-control empapp2inputs"
+              placeholder="Postal code"
+              value={refAddress4}
+              onChange={(e) => setRefAddress4(e.target.value)}
+            />
+          </div>
+          <div></div>
+        </div>
+
         <div className="row">
           <button
             type="button"

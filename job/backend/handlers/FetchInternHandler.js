@@ -1,4 +1,4 @@
-const internAuth = require("../models/internAuth");
+const internAuth = require("../models/User");
 
 function FetchInternHandler(request, response){
 

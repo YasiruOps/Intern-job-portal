@@ -1,4 +1,4 @@
-const Auth = require('../models/internAuth')
+const User = require('../models/User')
 var jwt = require('jsonwebtoken');
 
 function LoginHandler(request, response){
@@ -9,12 +9,12 @@ function LoginHandler(request, response){
         const email = request.body.email;
         const password = request.body.password;
 
-        Auth.findOne({Email:email}).then((user)=>{  
+        User.findOne({email}).then((user)=>{  
             if(!user){
                 return response.status(400).json({msg:"Email does not exist"});
             }
            
-            if(user.Password != password){
+            if(user.password != password){
                 return response.status(400).json({msg:"Incorrect password"})
             }
 

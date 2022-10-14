@@ -22,6 +22,7 @@ function AddMcqHandler(request, res){
     
         
     mcq.save((err) => {
+        
             if(err){
                 return res.status(400).json({
                     error:err
