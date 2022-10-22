@@ -20,6 +20,7 @@ export default function Forumpage() {
   const navigate = useNavigate();
 
   const[comments, setComments] = useState({});
+  const [search, setSearch] = useState("");
 
   const Redirect = (index) => {
     navigate("/Forum-comment",{state:fquestion[index],comments:comments[`${fquestion[index]._id}`]});
@@ -27,6 +28,22 @@ export default function Forumpage() {
 
   const [fquestion, setFquestion] = useState([]);
   const[flag, setFlag]=useState(false);
+
+  const[filterflag, setFilterflag]=useState(false);
+
+  const [filterval, setFilterval] = useState([])
+
+  useEffect(()=>{
+    if(search.length){
+      const data = fquestion.filter(item=>{
+        return item?.question.toLowerCase().indexOf(search) > -1
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[search])
 
   useEffect(() => {
     axios
@@ -69,7 +86,8 @@ export default function Forumpage() {
         <div className="col-12">
           <div className="searchboxjob2">
             <GoSearch className="searchiconjob" />
-            <input type="text" className="searchinjob" placeholder="Search" />
+            <input type="text" className="searchinjob" placeholder="Search" 
+             onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
             <button type="button" class="btn btn-light advancedsearhjob">
               Advanced
             </button>
@@ -111,7 +129,10 @@ export default function Forumpage() {
           <div className="forum-left col-xxl-9">
             {/* question card teal*/}
 
-            {fquestion.map((question,i) => {
+            
+        
+             {!filterflag?
+              (fquestion.map((question,i) => {
               return (
                 <div className="qraised row">
                   <div className="qupvote col-xl-1">
@@ -155,7 +176,55 @@ export default function Forumpage() {
                   </div>
                 </div>
               );
-            })}
+            })):
+            (filterval.map((question,i) => {
+              return (
+                <div className="qraised row">
+                  <div className="qupvote col-xl-1">
+                    <div className="qupvotebar">
+                      <BsArrowUpCircle className="countericons hovupvote" />
+                      <p className="upcountq">{question.reacts}</p>
+                      <BsArrowDownCircle className="countericons hovdownvote" />
+                    </div>
+                  </div>
+
+                  <div className="picarea col-xl-2">
+                    <img src={Profpic} className="profilepic" />
+                  </div>
+                  <div className="qmid col-xl-9">
+                    <div className="row">
+                      <p className="qmidtitle">
+                        {question.question}
+                      </p>
+                      <p className="qmidq">{question.description}</p>
+                      <p className="qmiddate">
+                        {question.time} <span>{question.date}</span>
+                      </p>
+                    </div>
+
+                    <div className="row qintractsect">
+                      <div className="col-5 qintractsect-c1" onClick={()=>Redirect(i)}>
+                        <CgComment className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">
+                          <span>{question?.comments?.length??0} </span>comments
+                        </p>
+                      </div>
+                      <div className="col-3  qintractsect-c1">
+                        <BsBookmark className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">Save</p>
+                      </div>
+                      <div className="col-4 qintractsect-c1">
+                        <FiShare2 className="qintractsect-c1-icons" />
+                        <p className="qintractsect-c1-tag">Share</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }))
+            }
+          
+          
           </div>
 
           {/* right side */}

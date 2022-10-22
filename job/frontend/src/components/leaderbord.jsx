@@ -13,11 +13,17 @@ import { BiMailSend } from "react-icons/bi";
 import MenuIcon from "@mui/icons-material/Menu";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { useSelector, useDispatch } from "react-redux";
+
+
 export default function Leaderbord() {
+
+  
 
   const options = [
     {value: 'it', text: 'it'},
     {value: 'cs', text: 'cs'},
+    {value: 'science', text: 'science'},
   ];
 
   const [type, setType] = useState("it");
@@ -148,7 +154,7 @@ export default function Leaderbord() {
               </div>
               <div className="Lpoints">
                 <StarIcon className="Lstar" />
-                <p>New season in 21 days</p>
+                <p>New season every month</p>
               </div>
               <div className="Lpoints">
                 <StarIcon className="Lstar" />

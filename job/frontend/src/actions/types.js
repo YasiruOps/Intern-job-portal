@@ -10,3 +10,5 @@ export const SET_MCQ_ANSWER='SET_MCQ_ANSWER'
 export const SET_MQC_STATUS='SET_MQC_STATUS'
 export const RESET_MCQ="RESET_MCQ"
 export const SET_MCQ="SET_MCQ"
+export const SET_MEDAL="SET_MEDAL"
+export const SET_GPLAYED = "SET_GPLAYED"

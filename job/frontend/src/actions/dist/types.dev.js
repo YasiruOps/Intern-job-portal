@@ -1,0 +1,34 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SET_GPLAYED = exports.SET_MEDAL = exports.SET_MCQ = exports.RESET_MCQ = exports.SET_MQC_STATUS = exports.SET_MCQ_ANSWER = exports.SEARCH_OFF = exports.SET_JOB = exports.SET_JOBS = exports.SET_FILTER_JOBS = exports.SET_SEARCH = exports.LOGOUT = exports.SET_INTERNID = exports.SET_EMPLOYERID = void 0;
+var SET_EMPLOYERID = 'SET_EMPLOYERID';
+exports.SET_EMPLOYERID = SET_EMPLOYERID;
+var SET_INTERNID = 'SET_INTERNID';
+exports.SET_INTERNID = SET_INTERNID;
+var LOGOUT = 'LOGOUT';
+exports.LOGOUT = LOGOUT;
+var SET_SEARCH = 'SET_SEARCH';
+exports.SET_SEARCH = SET_SEARCH;
+var SET_FILTER_JOBS = 'SET_FILTER_JOBS';
+exports.SET_FILTER_JOBS = SET_FILTER_JOBS;
+var SET_JOBS = 'SET_JOBS';
+exports.SET_JOBS = SET_JOBS;
+var SET_JOB = 'SET_JOB';
+exports.SET_JOB = SET_JOB;
+var SEARCH_OFF = 'SEARCH_OFF';
+exports.SEARCH_OFF = SEARCH_OFF;
+var SET_MCQ_ANSWER = 'SET_MCQ_ANSWER';
+exports.SET_MCQ_ANSWER = SET_MCQ_ANSWER;
+var SET_MQC_STATUS = 'SET_MQC_STATUS';
+exports.SET_MQC_STATUS = SET_MQC_STATUS;
+var RESET_MCQ = "RESET_MCQ";
+exports.RESET_MCQ = RESET_MCQ;
+var SET_MCQ = "SET_MCQ";
+exports.SET_MCQ = SET_MCQ;
+var SET_MEDAL = "SET_MEDAL";
+exports.SET_MEDAL = SET_MEDAL;
+var SET_GPLAYED = "SET_GPLAYED";
+exports.SET_GPLAYED = SET_GPLAYED;

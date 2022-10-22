@@ -18,20 +18,6 @@ export default function Employment_app2() {
     Aos.init({ duration: 2000 });
   }, []);
 
-  // const [fname, setFname] = useState("");
-  // const [lname, setLname] = useState("");
-  // const [bday, setBday] = useState("");
-  // const [bday1, setBday1] = useState("");
-  // const [bday2, setBday2] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [phone1, setPhone1] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [address1, setAddress1] = useState("");
-  // const [address2, setAddress2] = useState("");
-  // const [address3, setAddress3] = useState("");
-  // const [address4, setAddress4] = useState("");
-
   const internID = useSelector((state) => state.auth.internID);
   const employerID = useSelector((state) => state.job?.selectjob?.empID);
   const offerTitle = useSelector((state) => state.job?.selectjob?.title);
@@ -79,11 +65,7 @@ export default function Employment_app2() {
 
     const payload = {
       // fname,
-      // lname,
-      // bday: bday + "/" + bday1 + "/" + bday2,
-      // phone: phone + " " + phone1,
-      // email,
-      // address: address + " " +address1 +" " + address2 + " " + address3 +" " +address4,
+  
       offerTitle,
       internID,
       employerID,
@@ -114,26 +96,26 @@ export default function Employment_app2() {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
       )
     ) {
-      setValierror({ ...valierror, refEmail: "Enter valid Email" })
+      setValierror((prev)=>({ ...prev, refEmail: "Enter valid Email" }))
       sucess = false;
     }
-    if (!refPhone1?.match(/^[0-9]{1,10}/)) {
-      setValierror({ ...valierror, refPhone1: "Entern valid Phone number" })
+    if (!refPhone1?.match(/[0-9]{1,10}/)) {
+      setValierror((prev)=>({ ...prev, refPhone1: "Entern valid Phone number" }))
       console.log(valierror);
       sucess = false;
     }
-    if (!refbday1?.match(/^[0-9]*$/)) {
-      setValierror({ ...valierror, refbday2: "Entern valid Date" })
+    if (!refbday1?.match(/[1-9][0-9]/)) {
+      setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }))
+      console.log(valierror);
+      sucess = false;
+    }
+    if (!refbday2?.match(/[1-9][0-9]/)) {
+      setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }));
       console.log(valierror);
       sucess = false;
     }
     if (!refbday2?.match(/^[0-9]*$/)) {
-      setValierror({ ...valierror, refbday2: "Entern valid Date" });
-      console.log(valierror);
-      sucess = false;
-    }
-    if (!refbday2?.match(/^[0-9]*$/)) {
-      setValierror({ ...valierror, refbday2: "Entern valid Date" });
+      setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }));
       console.log(valierror);
       sucess = false;
     }
@@ -188,281 +170,13 @@ export default function Employment_app2() {
       </div>
 
       <div className="empapp2formfill col-6">
-        {/* <div className="row empapp2gapper" >
-          <p className="labeltagempformheader">Personal Details</p>
-        </div> */}
-
-        {/* <div className="row empapp2gapper">
-          <div className="col-xl-2">
-            <p className="labeltagempform">
-              <span style={{ color: "red" }}>*</span>Name
-            </p>
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="First Name"
-              value={fname}
-              onChange={(e)=>setFname(e.target.value)}
-            />
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Last Name"
-              value={lname}
-              onChange={(e)=>setLname(e.target.value)}
-            />
-          </div>
-        </div> 
-         <div className="row empapp2gapper">
-          <div className="col-xl-2">
-            <p className="labeltagempform">
-              <span style={{ color: "red" }}>*</span>Birth Day
-            </p>
-          </div>
-          <div className="col-xl-2">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Month"
-              value={bday1}
-              onChange={(e)=>setBday1(e.target.value)}
-            />
-          </div>
-          <div className="col-xl-4">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Day"
-              value={bday}
-              onChange={(e)=>setBday(e.target.value)}
-            />
-          </div>
-          <div className="col-xl-4">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Year"
-              value={bday2}
-              onChange={(e)=>setBday2(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="row empapp2gapper">
-          <div className="col-xl-2">
-            <p className="labeltagempform">
-              {" "}
-              <span style={{ color: "red" }}>*</span>Phone Number{" "}
-            </p>
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className=" form-control empapp2inputs"
-              placeholder="Area Code"
-              value={phone}
-              onChange={(e)=>setPhone(e.target.value)}
-            />
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Number"
-              value={phone1}
-              onChange={(e)=>setPhone1(e.target.value)}
-            />
-          </div>
-        </div> 
-        <div className="row empapp2gapper">
-          <div className="col-xl-2">
-            <p className="labeltagempform">
-              {" "}
-              <span style={{ color: "red" }}>*</span>E-mail Address{" "}
-            </p>
-          </div>
-          <div className="col-xl-10">
-            <input type="text" className="form-control" placeholder="E-mail" 
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}/>
-          </div>
-        </div>
-        
-
-        <div className="row empapp2gapper">
-          <div className="col-xl-2">
-            <p className="labeltagempform">
-              {" "}
-              <span style={{ color: "red" }}>*</span>Address
-            </p>
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Street Address 1"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </div>
-          <div className="col-xl-5">
-            <input
-              type="text"
-              className=" form-control empapp2inputs"
-              placeholder="Street Address 2"
-              value={address1}
-              onChange={(e) => setAddress1(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <div className="row empapp2gapper">
-          <div className="col-xl-2"></div>
-          <div className="col-xl-4">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="City"
-              value={address2}
-              onChange={(e) => setAddress2(e.target.value)}
-            />
-          </div>
-          <div className="col-lg-4">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="State/Province"
-              value={address3}
-              onChange={(e) => setAddress3(e.target.value)}
-            />
-          </div>
-          <div className="col-lg-2">
-            <input
-              type="text"
-              className="form-control empapp2inputs"
-              placeholder="Postal code"
-              value={address4}
-              onChange={(e) => setAddress4(e.target.value)}
-            />
-          </div>
-        </div>
-        
-        <div className="row empapp2gapper">
-              <p className="labeltagempformheader">
-                How were you referd to us?
-              </p>
-            </div> 
-            
-            <div className="row empapp2gapper">
-              <div className="col-lg-3">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Twitter
-                </label>
-              </div>
-              <div className="col-lg-5">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Employee
-                </label>
-              </div>
-            </div> 
-            
-            <div className="row empapp2gapper">
-              <div className="col-lg-3">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  {" "}
-                  Facebook{" "}
-                </label>
-              </div>
-              <div className="col-lg-5">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  News Paper
-                </label>
-              </div>
-            </div> 
-            
-            <div className="row empapp2gapper">
-              <div className="col-lg-3">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Linkdin
-                </label>
-              </div>
-              <div className="col-lg-5">
-                <input
-                  class="form-check-input checkboxstyleempapp"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Other
-                </label>
-              </div>
-            </div> */}
 
         <div className="row empapp2gapper" style={{ marginTop: "30px" }}>
           <div className="col-xl-2 labeltagempformheader">Upload Resume</div>
           <div className="col-xl-12">
             <input type="file" {...register("file")} />
           </div>
-          {/* <div className="col-xl-8">
-                <button
-                  type="button"
-                  class="btn btn btn-success"
-                  style={{ borderRadius: "25px", padding: "5px 20px" }}
-                >
-                  Upload
-                </button>{" "}
-              </div> */}
-          {/* <div className="col-xl-2">
-                <p
-                  className=" labeltagempform"
-                  style={{ color: "#0C4EF8", textDecoration: "underline" }}
-                >
-                  No file Choosen
-                </p>
-              </div>
-              <div className="col-xl-8">
-                <button
-                  type="button"
-                  class="btn btn btn-success"
-                  style={{ borderRadius: "25px", padding: "5px 20px" }}
-                >
-                  Upload
-                </button>{" "}
-              </div> */}
+        
         </div>
 
         <div className="row empapp2gapper">

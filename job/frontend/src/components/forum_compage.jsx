@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Profpic from "../images/forum_img.png";
-
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function Forum_compage() {
   
@@ -30,27 +30,31 @@ export default function Forum_compage() {
   const [comments, setComments] = useState(location?.state?.comments??[]);
 
   const userID = useSelector((state) => state.auth.internID);
+  
   const [username, setUsername] = useState("");
 
 
 
   useEffect(() => {
+    console.log("userID", location.state._id)
     axios
     .get(`http://localhost:8000/auth/intern/${userID}`)
     .then((res) => {
-      setUsername(res.data.first_name);  
+      setUsername(res?.data[0]?.first_name); 
     })
     .catch((err) => {
       alert(err);
     });
-
+    
 }, []);
+
+
 
   function sendData() {
 
     const newCommnet = {
       forumID:location.state._id,
-      userID:"",
+      userID,
       name:username,
       comment,
     };
@@ -92,13 +96,14 @@ export default function Forum_compage() {
     <div className="">
 
       <Header />
-      <div className="jobsearch col-9">
+      <div className="jobsearch col-9" >
         <p className="searchjobtag2">Forum</p>
 
         <div className="col-12">
           <div className="searchboxjob2">
             <GoSearch className="searchiconjob" />
-            <input type="text" className="searchinjob" placeholder="Search" />
+            <input type="text" className="searchinjob" placeholder="Search"
+            />
             <button type="button" class="btn btn-light advancedsearhjob">
               Advanced
             </button>
@@ -144,24 +149,30 @@ export default function Forum_compage() {
                 className="qupvote col-xl-1"
                 style={{ backgroundColor: "white" }}
               >
-                <div className="qupvotebar">
+                <div className="qupvotebar" >
                   <BsArrowUpCircle className="countericons hovupvote" />
                   <p className="upcountq">{location.state.reacts}</p>
                   <BsArrowDownCircle className="countericons hovdownvote" />
                 </div>
               </div>
 
-              <div className="picarea col-xl-2">
+              <div className="picarea col-xl-2" >
                 <img src={Profpic} className="profilepic" />
               </div>
-              <div className="qmid col-xl-9">
+              <div className="qmid col-xl-9" >
                 <div className="row">
                   <p className="qmidtitle">{location.state.question}</p>
                   <p className="qmidq">{location.state.description}</p>
                   <p className="qmiddate">
-                    {location.state.time}<span>{location.state.date}</span>
+                    {location.state.time} <span>{location.state.date}</span>
                   </p>
                 </div>
+                {console.log("lol",location.state.ownerID,"userid", userID)}
+                {location.state.ownerID == userID?
+                <div className="editbtnsfx">
+                  Edit <EditIcon style={{fontSize:"18px", marginTop:"-5px"}}/>
+                </div>:<div/>
+                }
 
                 <div className="row qintractsect">
                   <div className="col-5 qintractsect-c1">
@@ -180,6 +191,7 @@ export default function Forum_compage() {
                   </div>
                 </div>
               </div>
+             
 
               <div className="commentinputarea col-10">
                 <textarea
@@ -200,7 +212,7 @@ export default function Forum_compage() {
                 <p className="commentstag">Comments</p>
                 <hr className="commentstaghr" />
 
-                
+        
                 {comments.map((comments,i) => {
                   return (
                         <div className="commentbox row" style={{marginBottom:"5px", padding:"5px"}}>
@@ -218,11 +230,15 @@ export default function Forum_compage() {
                             </p>
                           
                           </div>
+                        
+                          {comments?.userID == userID?
                           <div className="commnetboxrgt col-1">
                             <AiFillDelete className="deleteicon" onClick={()=>
                               delteComment(comments._id, i)
                             }/>
-                          </div>
+                          </div>:<div/>
+                          }
+                          
                         </div>
                   )}
                 )}

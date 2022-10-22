@@ -92,6 +92,7 @@ function App() {
 
         <Route path="/Employer-profile" element={<Employerprofile/>}/>  
         <Route path="/Quiz-score" element={<Quizscore/>}/>  
+
         <Route path="/Forum-comment" element={!userID? <Login /> : <ForumComm/>}/>    
         <Route path="/Forum" element={<Forum/>}/>      
      
@@ -112,6 +113,8 @@ function App() {
         <Route path="/Employer-Reg" element={<EmployerReg/>}/> 
         <Route path="/EmployerLogin" element= {!employerID? <EmployerLogin /> : <Navigate to="/Employer-Dash" />}/> 
         <Route path="/Leader-bord" element={<Leaderbord/>}/>  
+
+     
         <Route path="/McqCat" element={!userID? <Login /> :<McqCat/>}/>    
         <Route path="/Mcq" element= {<McqTimerPage/>}/>
         <Route path="/Rbuilder" element={<Rbuilder />}/>

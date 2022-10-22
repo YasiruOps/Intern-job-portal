@@ -8,9 +8,12 @@ import Trophypic from "../images/trophy.jpg";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function () {
   const navigate = useNavigate();
+  const medalcount = useSelector((state) => state.medals.medal);
+  const gplayed = useSelector((state) => state.medals.gplayed);
 
   const startQuiz = (name) => {
   
@@ -110,11 +113,11 @@ export default function () {
 
           <div className="center-piece1 row">
             <div className="center-left col-6">
-              <p className="center_values">1</p>
+              <p className="center_values">{medalcount.length}</p>
               <p className="center_titles">Badges Earned</p>
             </div>
             <div className="center-right col-6">
-              <p className="center_values">5</p>
+              <p className="center_values">{gplayed}</p>
               <p className="center_titles">Games Played</p>
             </div>
           </div>

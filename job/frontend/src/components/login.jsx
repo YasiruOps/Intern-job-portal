@@ -37,17 +37,18 @@ export default function Login() {
     axios
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
-        console.log("response", response?.data)
         dispatch(setinternid(response.data.user._id));
         navigate("/user");
+        
       })
-      .catch((err) => {});
+      .catch((err) => {
+      });
   };
 
   return (
     <div>
       <Header />
-      <form>
+ 
       <div className="outer_container">
         <div className="first_layer row">
           <div className="col-2">
@@ -113,7 +114,7 @@ export default function Login() {
         
       </div>
      
-      </form>
+  
       <Footer />
     </div>
   );

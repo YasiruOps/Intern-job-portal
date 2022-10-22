@@ -109,3 +109,12 @@
     }
     
 }  
+.editbtnsfx{
+    margin-top: -110px;
+    float:right;
+}
+
+.editbtnsfx :hover{
+    cursor: pointer;
+    color: lightskyblue;
+}

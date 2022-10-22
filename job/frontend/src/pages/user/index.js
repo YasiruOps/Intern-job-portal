@@ -16,9 +16,19 @@ import SearchMenu from "../../components/search/SearchMenu";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
+import Place1 from "../../images/Place1.png";
+import Place2 from "../../images/Place2.png";
+import Place3 from "../../images/Place3.png";
+
+import { setmedals, setgamesplayed } from "../../actions/medalActions";
+
 export default function User() {
   const userID = useSelector((state) => state.auth.internID);
+  const badges = useSelector((state) => state.medals.medal);
 
+  const place =[Place1, Place2, Place3];
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const color = "#65676b";
 
@@ -34,35 +44,38 @@ export default function User() {
   const [showSearchMenu, setShowSearchMenu] = useState(false);
   const [searchuser, setSearchuser] = useState("");
 
-
-
   async function featchData() {
-  
-
+    console.log("neeksksj");
     try {
       setLoading(true);
 
       const { data } = await axios.get(
-        `http://localhost:8000/api/users/getProfile/${userID}`,
-        console.log("data",data)
+        `http://localhost:8000/api/users/getProfile/${userID}`
       );
+      if (data?.medals) {
+        dispatch(setmedals(data.medals));
+      }
+      if (data?.gamesplayed) {
+        dispatch(setgamesplayed(data.gamesplayed));
+      }
+      console.log("data", data);
       setError("");
-      setSuccess(data.message);
+      setSuccess(data?.message);
       setTimeout(() => {
         setUsers(data);
-        setExp(data.experience);
-        setEdu(data.education);
+        setExp(data?.experience);
+        setEdu(data?.education);
         setLoading(false);
       }, 4000);
     } catch (error) {
       setLoading(false);
       setSuccess("");
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
     }
   }
 
   useEffect(() => {
-    console.log("userID",userID)
+    console.log("sssss");
     featchData();
   }, []);
 
@@ -90,14 +103,13 @@ export default function User() {
     }
   };
 
-  const Redirect=()=>{
-    navigate('/McqCat');
-  }
-
+  const Redirect = () => {
+    navigate("/McqCat");
+  };
 
   return (
     <div className="profile">
-      <Header/>
+      <Header />
       <ToastContainer
         position="top-left"
         autoClose={5000}
@@ -420,9 +432,8 @@ export default function User() {
                             alignItems: "center",
                             alignContent: "center",
                             borderRadius: 25,
-                           
                           }}
-                          onClick= {Redirect}
+                          onClick={Redirect}
                         >
                           <p style={{ marginTop: 6 }}>Start</p>
                         </button>
@@ -431,11 +442,37 @@ export default function User() {
                   </div>
                 </div>
               </div>
+
+              {/* {badge part ekata add a div} */}
+              
+           {badges?.length?(<h1>Badges earned</h1>):<div></div>}
+
+              {badges.map((item) => {
+                let data;
+                try {
+                    data = JSON.parse(item)
+                    console.log("dara", data)
+                } catch (error) {
+                  
+                }
+                return <div>
+                  
+                  <img src={place[data.rank-1]} alt="" className="userplace_img" />
+                  {data.type}/{data.date}
+                  
+                  </div>;
+              })}
+
+              
+        
+
+
             </div>
+
           </>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
