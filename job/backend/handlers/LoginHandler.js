@@ -1,7 +1,8 @@
 const User = require('../models/User')
 var jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
 
-function LoginHandler(request, response){
+ function LoginHandler(request, response){
     
 
     //search for usernme and pword
@@ -9,12 +10,12 @@ function LoginHandler(request, response){
         const email = request.body.email;
         const password = request.body.password;
 
-        User.findOne({email}).then((user)=>{  
+        User.findOne({email}).then(async(user)=>{  
             if(!user){
                 return response.status(400).json({msg:"Email does not exist"});
             }
-           
-            if(user.password != password){
+            const cryptedPassword = await bcrypt.hash(password, 12);
+            if(user.password != cryptedPassword){
                 return response.status(400).json({msg:"Incorrect password"})
             }
 

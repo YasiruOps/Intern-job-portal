@@ -94,6 +94,7 @@ exports.register = async (req, res) => {
 };
 
 module.exports.verifyEmail = async (req, res) => {
+  console.log("call unah email")
   try {
     const { email, otp } = req.body;
     const user = await User.findOne({
