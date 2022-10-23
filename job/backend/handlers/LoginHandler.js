@@ -11,16 +11,19 @@ const bcrypt = require("bcrypt");
         const password = request.body.password;
 
         User.findOne({email}).then(async(user)=>{  
+            
             if(!user){
+                console.log("login eka wada");
                 return response.status(400).json({msg:"Email does not exist"});
             }
-            const cryptedPassword = await bcrypt.hash(password, 12);
-            if(user.password != cryptedPassword){
+            const cryptedPassword = await bcrypt.compare(password, user.password);
+            if(!cryptedPassword){
+                console.log("userpass",user.password, "crypted pass", cryptedPassword);
                 return response.status(400).json({msg:"Incorrect password"})
             }
 
             // const token = jwt.sign({ foo:  }, 'shhhhh');
-            console.log(user,"user")
+            console.log(user,"user");
             return response.status(200).json({user});
 
         }).catch((err) =>{

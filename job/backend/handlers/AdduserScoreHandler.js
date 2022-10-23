@@ -1,4 +1,5 @@
 const userScore = require('../models/userScore')
+const User = require("../models/User")
 
 async function AdduserScoreHandler(request, response){
     
@@ -12,6 +13,12 @@ async function AdduserScoreHandler(request, response){
         let values = {}
 
         try {
+        
+            const profile = await User.findOne({ _id: userID });
+            const count = profile?.gamesplayed??0;
+
+            await User.findByIdAndUpdate(userID, { gamesplayed: count+1 });
+
             const user = await userScore.findOne({userID});     
 
             const obj = user?.toObject({ flattenMaps: true });

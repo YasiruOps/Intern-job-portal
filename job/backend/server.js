@@ -5,6 +5,8 @@ const cors = require('cors');
 const dotenv = require("dotenv");
 dotenv.config();
 
+const DeleteLeaderbordHandler = require("./handlers/clearLeaderboardHandler")
+
 //file upload ekata sambandai
 const fileupload = require("express-fileupload") ;
 
@@ -37,6 +39,12 @@ app.listen(PORT, ()=>{
     console.log(`App is running on port ${PORT}`)
 });
 
+//cron to reset leaderboard each month
+var cron = require('node-cron');
+
+cron.schedule('* * 1 * * ', () => {
+    DeleteLeaderbordHandler();
+});
 
 //import Routes
 const auth = require('./routes/auth');

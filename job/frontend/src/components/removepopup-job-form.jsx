@@ -4,8 +4,6 @@ import axios from "axios";
 
 export default function Removepopup_form(props) {
 
-  const { recordForEdit } = props;
-
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
 
@@ -18,9 +16,10 @@ export default function Removepopup_form(props) {
     return dataSubmit();
   };
 
-  function DeleteJob(recordForEdit){
+  function DeleteJob(){
+
     axios
-    .delete(`http://localhost:8000/jobs/delete/${recordForEdit}`)
+    .delete(`http://localhost:8000/jobs/delete/${props.recordForEdit}`)
     .then(() => {
       alert("job post removed")
     })

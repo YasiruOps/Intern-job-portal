@@ -72,6 +72,16 @@ const userSchema = mongoose.Schema(
         ref: "Experience",
       },
     ],
+    medals:[
+      {
+        type : [String]
+      },
+    ],
+    gamesplayed:
+      {
+        type : Number
+      }
+    
   },
 
   {

@@ -18,12 +18,14 @@ import { FiThumbsUp } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Popup from "./popup";
 
 import Profpic from "../images/forum_img.png";
 import EditIcon from '@mui/icons-material/Edit';
 
 export default function Forum_compage() {
   
+  const [openPopup, setOpenPopup] = useState(false);
   const location = useLocation();
 
   const [comment, setComment] = useState("");
@@ -32,8 +34,14 @@ export default function Forum_compage() {
   const userID = useSelector((state) => state.auth.internID);
   
   const [username, setUsername] = useState("");
+  const [recordForEdit, setRecordForEdit] = useState(null);
 
+  console.log("locstate", location.state)
 
+  const openInPopup = () => {
+    // setRecordForEdit();
+    setOpenPopup(true);
+  };
 
   useEffect(() => {
     console.log("userID", location.state._id)
@@ -169,9 +177,12 @@ export default function Forum_compage() {
                 </div>
                 {console.log("lol",location.state.ownerID,"userid", userID)}
                 {location.state.ownerID == userID?
-                <div className="editbtnsfx">
-                  Edit <EditIcon style={{fontSize:"18px", marginTop:"-5px"}}/>
-                </div>:<div/>
+                <div type="button" className="editbtnsfx" onClick={openInPopup}>
+                  Edit 
+                  <EditIcon style={{fontSize:"18px", marginTop:"-5px", marginLeft:"5px"}}/>
+                </div>
+               
+                :<div/>
                 }
 
                 <div className="row qintractsect">
@@ -247,6 +258,13 @@ export default function Forum_compage() {
           </div>
         </div>
       </div>
+      <Popup
+        title={location?.state?.question}
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      >
+        {/* <Jobviewform recordForEdit={recordForEdit}/> */}
+      </Popup>
     </div>
   );
 }

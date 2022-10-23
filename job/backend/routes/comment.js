@@ -11,6 +11,9 @@ router.route('/').post((request, response) => {AddCommentHandler(request, respon
 //fetch
 router.route('/:forumID').get((request, response) => {GetCommentHandler(request, response); });
 
+//update
+router.route('/update/:id').put((request, response)=>{EditJobOfferHandler(request,response);});
+
 //remove
 router.route('/delete/:id').delete((request, response) => {DeleteCommentHandler(request, response); });
 
