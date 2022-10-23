@@ -19,6 +19,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "./popup";
+import Editpop from "./editforumquestion_popup"
 
 import Profpic from "../images/forum_img.png";
 import EditIcon from '@mui/icons-material/Edit';
@@ -39,7 +40,7 @@ export default function Forum_compage() {
   console.log("locstate", location.state)
 
   const openInPopup = () => {
-    // setRecordForEdit();
+    setRecordForEdit(location.state);
     setOpenPopup(true);
   };
 
@@ -263,7 +264,7 @@ export default function Forum_compage() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        {/* <Jobviewform recordForEdit={recordForEdit}/> */}
+         <Editpop recordForEdit={recordForEdit}/> 
       </Popup>
     </div>
   );

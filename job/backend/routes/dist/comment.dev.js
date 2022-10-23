@@ -17,10 +17,6 @@ router.route('/').post(function (request, response) {
 
 router.route('/:forumID').get(function (request, response) {
   GetCommentHandler(request, response);
-}); //update
-
-router.route('/update/:id').put(function (request, response) {
-  EditJobOfferHandler(request, response);
 }); //remove
 
 router.route('/delete/:id')["delete"](function (request, response) {

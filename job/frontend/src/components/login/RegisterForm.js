@@ -11,6 +11,11 @@ import TextArea from "../inputs/textarea";
 import * as Yup from "yup";
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setinternid } from "../../actions/authActions";
+
+
 export default function RegisterForm({
   setVisible,
   setUserDate,
@@ -27,6 +32,7 @@ export default function RegisterForm({
     bio: "",
     password: "",
   };
+  const dispatch = useDispatch();
   const [user, setUser] = useState(userInfos);
   const { first_name, last_name, email, mobile, location, bio, password } =
     user;
@@ -66,6 +72,7 @@ export default function RegisterForm({
   const [loading, setLoading] = useState(false);
 
   const registerSubmit = async () => {
+    
     try {
       setLoading(true);
       const { data } = await axios.post(
@@ -85,6 +92,7 @@ export default function RegisterForm({
       setError("");
       setSuccess(data.message);
       setUserDate(data);
+      dispatch(setinternid(data._id));
       setTimeout(() => {
         setVisible(true);
         // navigate("/edu", { state: data });
