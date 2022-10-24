@@ -21,6 +21,7 @@ exports.register = async (req, res) => {
       location,
       mobile,
       bio,
+      dob,
       picture,
       cover,
     } = req.body;
@@ -68,6 +69,7 @@ exports.register = async (req, res) => {
       mobile,
       bio,
       picture,
+      dob,
       cover,
       upProfile,
     }).save();
@@ -84,6 +86,7 @@ exports.register = async (req, res) => {
       first_name: user.first_name,
       last_name: user.last_name,
       upProfile: user.upProfile,
+      dob: user.dob,
       picture: user.picture,
       cover: user.cover,
       message: "Register Success !",
@@ -123,7 +126,7 @@ module.exports.verifyEmail = async (req, res) => {
 
 exports.updateuser = async (req, res) => {
   try {
-    const { first_name, last_name, email, location, mobile, bio, upProfile } =
+    const { first_name, last_name, email, location, mobile, bio, dob, upProfile } =
       req.body;
     //const updated = await User.findById(req.params.id);
 
@@ -135,6 +138,7 @@ exports.updateuser = async (req, res) => {
         email: email,
         location: location,
         mobile: mobile,
+        dob : dob,
         bio: bio,
         upProfile: upProfile,
       },

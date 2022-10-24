@@ -4,6 +4,8 @@ import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
 import RegisterForm from "../../components/login/RegisterForm";
 import PopUp from "../../components/Popup/index";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function Profile() {
   const [cover, setCover] = useState("");
@@ -13,6 +15,7 @@ export default function Profile() {
 
   return (
     <div className="profile">
+      <Header/>
       <div className="profile_top">
         {visible && <PopUp setVisible={setVisible} ver={true} Id={userDate} />}
         <div className="profile_container">
@@ -29,6 +32,7 @@ export default function Profile() {
           />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

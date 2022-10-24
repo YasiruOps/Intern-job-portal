@@ -70,6 +70,9 @@ var userSchema = mongoose.Schema({
   }],
   gamesplayed: {
     type: Number
+  },
+  dob: {
+    type: String
   }
 }, {
   timestamps: true

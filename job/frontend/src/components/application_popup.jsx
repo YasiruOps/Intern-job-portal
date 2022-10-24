@@ -71,8 +71,7 @@ export default function Application_popup(props) {
       <div className="row">
         <div className="col-6">
           <p className="titlestagpops">Date of birth</p>
-          <p className="answerl2">12/05/1997</p>
-          {/* <p className="answerl2">{user?.dob}</p> */}
+           <p className="answerl2">{user?.dob}</p> 
         </div>
         <div className="col-6">
           <p className="titlestagpops">Phone</p>

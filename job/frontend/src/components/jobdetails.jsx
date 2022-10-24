@@ -26,12 +26,13 @@ export default function Jobdetails() {
   const dispatch = useDispatch();
 
   const job = useSelector((state)=>state?.job?.selectjob)
- 
+ console.log("job",job)
+
   const navigate = useNavigate();
   const location = useLocation();
 
-  const Redirect=()=>{
-    navigate('/EmpApp2');
+  const Redirect=(job)=>{
+    navigate('/EmpApp2', { state: job });
   };
 
   useEffect(() => {  
@@ -201,7 +202,8 @@ export default function Jobdetails() {
                 <button type="button" class="jobdetailsbtns4 btn btn-primary">
                   Learn More
                 </button>
-                <button type="button" class="jobdetailsbtns4 btn btn-success" onClick={Redirect}>
+                <button type="button" class="jobdetailsbtns4 btn btn-success" onClick={() => Redirect(job)} >
+                
                   Apply
                 </button>
               </div>

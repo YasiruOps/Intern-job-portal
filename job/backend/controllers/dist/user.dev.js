@@ -26,14 +26,14 @@ var Education = require("../models/Educations");
 var Experience = require("../models/Experience");
 
 exports.register = function _callee(req, res) {
-  var _res$send, _req$body, first_name, last_name, password, email, location, mobile, bio, picture, cover, upProfile, check, cryptedPassword, otpGenerated, user;
+  var _res$send, _req$body, first_name, last_name, password, email, location, mobile, bio, dob, picture, cover, upProfile, check, cryptedPassword, otpGenerated, user;
 
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, password = _req$body.password, email = _req$body.email, location = _req$body.location, mobile = _req$body.mobile, bio = _req$body.bio, picture = _req$body.picture, cover = _req$body.cover;
+          _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, password = _req$body.password, email = _req$body.email, location = _req$body.location, mobile = _req$body.mobile, bio = _req$body.bio, dob = _req$body.dob, picture = _req$body.picture, cover = _req$body.cover;
           upProfile = 0;
 
           if (validateEmail(email)) {
@@ -109,6 +109,7 @@ exports.register = function _callee(req, res) {
             mobile: mobile,
             bio: bio,
             picture: picture,
+            dob: dob,
             cover: cover,
             upProfile: upProfile
           }).save());
@@ -129,7 +130,8 @@ exports.register = function _callee(req, res) {
             email: user.email,
             first_name: user.first_name,
             last_name: user.last_name,
-            upProfile: user.upProfile
+            upProfile: user.upProfile,
+            dob: user.dob
           }, _defineProperty(_res$send, "picture", user.picture), _defineProperty(_res$send, "cover", user.cover), _defineProperty(_res$send, "message", "Register Success !"), _res$send));
           _context.next = 31;
           break;
@@ -212,14 +214,14 @@ module.exports.verifyEmail = function _callee2(req, res) {
 };
 
 exports.updateuser = function _callee3(req, res) {
-  var _req$body3, first_name, last_name, email, location, mobile, bio, upProfile, updated;
+  var _req$body3, first_name, last_name, email, location, mobile, bio, dob, upProfile, updated;
 
   return regeneratorRuntime.async(function _callee3$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
-          _req$body3 = req.body, first_name = _req$body3.first_name, last_name = _req$body3.last_name, email = _req$body3.email, location = _req$body3.location, mobile = _req$body3.mobile, bio = _req$body3.bio, upProfile = _req$body3.upProfile; //const updated = await User.findById(req.params.id);
+          _req$body3 = req.body, first_name = _req$body3.first_name, last_name = _req$body3.last_name, email = _req$body3.email, location = _req$body3.location, mobile = _req$body3.mobile, bio = _req$body3.bio, dob = _req$body3.dob, upProfile = _req$body3.upProfile; //const updated = await User.findById(req.params.id);
 
           _context3.next = 4;
           return regeneratorRuntime.awrap(User.findByIdAndUpdate(req.params.id, {
@@ -228,6 +230,7 @@ exports.updateuser = function _callee3(req, res) {
             email: email,
             location: location,
             mobile: mobile,
+            dob: dob,
             bio: bio,
             upProfile: upProfile
           }, {

@@ -31,10 +31,11 @@ export default function RegisterForm({
     location: "",
     bio: "",
     password: "",
+    dob: "",
   };
   const dispatch = useDispatch();
   const [user, setUser] = useState(userInfos);
-  const { first_name, last_name, email, mobile, location, bio, password } =
+  const { first_name, last_name, email, mobile, location, bio, dob, password } =
     user;
   const yearTemp = new Date().getFullYear();
   const handleRegisterChange = (e) => {
@@ -83,9 +84,10 @@ export default function RegisterForm({
           email,
           location,
           mobile,
-          bio,
+          bio:"lolololololol",
           picture: profile,
           cover,
+          dob,
           password,
         }
       );
@@ -114,6 +116,7 @@ export default function RegisterForm({
             email,
             mobile,
             location,
+            dob,
             password,
             bio,
           }}
@@ -170,6 +173,16 @@ export default function RegisterForm({
                   name="password"
                   onChange={handleRegisterChange}
                   view={false}
+                />
+              </div>
+              <div >
+                <RegisterInput
+                  type="text"
+                  placeholder="Date of birth"
+                  name="dob"
+                  onChange={handleRegisterChange}
+                  view={false}
+
                 />
               </div>
               <div className="reg_line">

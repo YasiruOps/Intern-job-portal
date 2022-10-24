@@ -9,10 +9,15 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Employment_app2() {
+  const location = useLocation();
+
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+
+  const [job, setjob] = useState(location?.state);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -65,7 +70,7 @@ export default function Employment_app2() {
 
     const payload = {
       // fname,
-  
+      jobID: job._id,
       offerTitle,
       internID,
       employerID,

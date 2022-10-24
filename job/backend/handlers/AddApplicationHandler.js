@@ -12,7 +12,7 @@ function AddApplicationHandler(request, response) {
   const employerID = request.body.employerID;
   const applicationStatus = request.body.applicationStatus;
   const pdfID = request.body.pdfID;
-
+  const jobID = request.body.jobID;
   const address = request.body.address;
   const experience = request.body.experience;
   const refname = request.body.refname;
@@ -34,7 +34,7 @@ function AddApplicationHandler(request, response) {
     employerID,
     pdfID,
     applicationStatus,
-
+    jobID,
     experience,
     refname,
     refBday,

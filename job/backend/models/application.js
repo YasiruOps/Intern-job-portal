@@ -62,6 +62,9 @@ const ApplicationSchema = new Schema({
     },
     date:{
         type:String,
+    },
+    jobID:{
+        type:String,
     }
 
 });
