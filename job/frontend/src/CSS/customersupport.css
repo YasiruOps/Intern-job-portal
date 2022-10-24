@@ -56,10 +56,15 @@
 
 /* input text */
 
-.supportinput-container {
+.supportinput-container-outer{
   margin-left: 12px;
   margin-right: auto;
   width: 350px;
+ 
+  
+}
+
+.supportinput-container {
   margin-top: 20px;
   position: relative;
   font-family: "Lato", sans-serif;

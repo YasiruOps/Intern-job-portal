@@ -25,7 +25,7 @@ export default function Internquestionsmain() {
       .catch((err) => {
         alert(err.message);
       });
-  }, []);
+  }, [iquestion]);
 
   const [recordForEdit, setRecordForEdit] = useState(null);
 

@@ -82,7 +82,7 @@ export default function Customersupport() {
   }
 
   const [valierror, setValierror] = useState({
-    email: "",
+ 
   });
 
   //Employee Question yawana eka
@@ -104,9 +104,25 @@ export default function Customersupport() {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
       )
     ) {
-      setValierror({ ...valierror, email: "Incorrect email format" });
+      setValierror((prev)=>({ ...prev, ...valierror, email: "Incorrect email format" }));
       sucess = false;
-    }    
+    }   
+    if (!name?.match(/^(?!\s*$).+/)) {
+      setValierror((prev)=>({ ...prev, name: "Name cannot be empty" }))
+      console.log(valierror);
+      sucess = false;
+    } 
+    if (!qtitle?.match(/^(?!\s*$).+/)) {
+      setValierror((prev)=>({ ...prev, qtitle: "Question Cannot be empty" }))
+      console.log(valierror);
+      sucess = false;
+    } 
+    if (!desc?.match(/^(?!\s*$).+/)) {
+      setValierror((prev)=>({ ...prev, desc: "Description cannot be empty" }))
+      console.log(valierror);
+      sucess = false;
+    } 
+
       setTimeout(()=>{
       setValierror({   
       email:"",
@@ -136,6 +152,26 @@ export default function Customersupport() {
       reacts,
     };
 
+    let sucess = true;
+
+    if (!question?.match(/^(?!\s*$).+/)) {
+      setValierror((prev)=>({ ...prev, question: "Question cannot be empty" }))
+      console.log(valierror);
+      sucess = false;
+    } 
+    if (!description?.match(/^(?!\s*$).+/)) {
+      setValierror((prev)=>({ ...prev, description: "Description Cannot be empty" }))
+      console.log(valierror);
+      sucess = false;
+    } 
+
+      setTimeout(()=>{
+      setValierror({   
+      email:"",
+      })
+    },3000);
+
+    if(sucess){
     axios
       .post("http://localhost:8000/forumQuestionFetch/add", newForumQuestion)
       .then(() => {
@@ -143,7 +179,7 @@ export default function Customersupport() {
       })
       .catch((err) => {
         alert(err);
-      });
+      });}
   }
 
   const handleSubmit = (e) => {
@@ -185,49 +221,55 @@ export default function Customersupport() {
                 </select> */}
 
           <div className="supportsinputcontainer1 row">
-            <div className="supportinput-container col-6">
-              <input
-                type="text"
-                id="fname"
-                className="supportinput"
-                autocomplete="off"
-                Value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                aria-labelledby="placeholder-fname"
-              />
-              <label
-                className="placeholder-text"
-                for="fname"
-                id="placeholder-fname"
-              >
-                <div className="supporttext">Name</div>
-              </label>
+            <div className="supportinput-container-outer col-6">
+              <div className="supportinput-container">
+                <input
+                  type="text"
+                  id="fname"
+                  className="supportinput"
+                  autocomplete="off"
+                  Value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  aria-labelledby="placeholder-fname"
+                />
+                <label
+                  className="placeholder-text"
+                  for="fname"
+                  id="placeholder-fname"
+                >
+                  <div className="supporttext">Name</div>
+                </label>
+              </div>
+              <p style={{marginLeft:"15px", color:"red", fontSize:"20px"}}>{valierror.name}</p>
             </div>
+           
 
-            <div className="supportinput-container col-6">
-              <input
-                type="text"
-                id="fname"
-                className="supportinput"
-                autocomplete="off"
-                Value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                aria-labelledby="placeholder-fname"
-              />
-              
-              <label
-                className="placeholder-text"
-                for="fname"
-                id="placeholder-fname"
-              >
-                <div className="supporttext">Email</div>
-              </label>
+            <div className="supportinput-container-outer col-6">
+              <div className="supportinput-container">
+                <input
+                  type="text"
+                  id="fname"
+                  className="supportinput"
+                  autocomplete="off"
+                  Value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  aria-labelledby="placeholder-fname"
+                />
+                
+                <label
+                  className="placeholder-text"
+                  for="fname"
+                  id="placeholder-fname"
+                >
+                  <div className="supporttext">Email</div>
+                </label>
+              </div>
+              <p style={{marginLeft:"15px", color:"red", fontSize:"20px"}}>{valierror.email}</p>
             </div>
-            <p style={{textAlign:"center", marginLeft:"20%", color:"red", fontSize:"20px"}}>{valierror.email}</p>
           </div>
 
           <div className="empselector-sup">
@@ -267,8 +309,9 @@ export default function Customersupport() {
               id="placeholder-fname"
             >
               <div className="supporttext">Question Subject</div>
-            </label>
+            </label>   
           </div>
+          <p style={{textAlign:"left", color:"red", fontSize:"20px"}}>{valierror.qtitle}</p>
 
           <p className="yourquestion">Your Question</p>
           <p className="yourwuesitonex">Present your question below</p>
@@ -281,6 +324,7 @@ export default function Customersupport() {
               setDesc(e.target.value);
             }}
           />
+          <p style={{textAlign:"center", color:"red", fontSize:"20px"}}>{valierror.desc}</p>
 
           <button
             type="button"
@@ -297,25 +341,28 @@ export default function Customersupport() {
           <p className="contactemp-tag">Create Forum</p>
 
           <div className="supportsinputcontainer2 row">
-            <div className="supportinput-container col-6">
-              <input
-                type="text"
-                id="fname"
-                className="supportinput"
-                autocomplete="off"
-                aria-labelledby="placeholder-fname"
-                Value={question}
-                onChange={(e) => {
-                  setQuestion(e.target.value);
-                }}
-              />
-              <label
-                className="placeholder-text"
-                for="fname"
-                id="placeholder-fname"
-              >
-                <div className="supporttext">Question</div>
-              </label>
+          <div className="supportinput-container-outer col-6">
+              <div className="supportinput-container">
+                <input
+                  type="text"
+                  id="fname"
+                  className="supportinput"
+                  autocomplete="off"
+                  aria-labelledby="placeholder-fname"
+                  Value={question}
+                  onChange={(e) => {
+                    setQuestion(e.target.value);
+                  }}
+                />
+                <label
+                  className="placeholder-text"
+                  for="fname"
+                  id="placeholder-fname"
+                >
+                  <div className="supporttext">Question</div>
+                </label>
+              </div>
+              <p style={{marginLeft:"15px", color:"red", fontSize:"20px"}}>{valierror.question}</p>
             </div>
 
             <div className="col-lg-6">
@@ -366,6 +413,7 @@ export default function Customersupport() {
               setDescription(e.target.value);
             }}
           />
+          <p style={{textAlign:"center", marginLeft:"15px", color:"red", fontSize:"20px"}}>{valierror.description}</p>
 
           <button
             type="button"
