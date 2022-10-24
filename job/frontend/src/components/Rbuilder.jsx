@@ -179,7 +179,7 @@ export default function Rbuilder() {
       <Card.Body>
         <Card.Text>
         <img src={Step4} className="card-img" alt="image" style={{ width: '6rem', marginRight: '5rem'}}/>
-          <Link to="/ResumeForm"> 
+          <Link to="/Uploads"> 
           <button type="button" className="builder_btn1  btn btn-primary" style={{ width: '20rem' }}>
             Upload a video Resume <BsArrowUpCircle size={'20px'} marginleft="10rem"/>
           </button>

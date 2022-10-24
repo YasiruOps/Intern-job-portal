@@ -59,6 +59,8 @@ const jobs = require("./routes/jobs")
 const application = require("./routes/application")
 const uploadpdf = require("./routes/uploadpdf")
 
+const mediaRoutes = require("./routes/media");
+
 //dilaa routes
 const userRoute = require("./routes/user");
 const uploadPhoto = require("./routes/upload");
@@ -85,6 +87,10 @@ app.use("/userScore",userScore);
 app.use("/jobs",jobs);
 app.use("/application",application);
 app.use("/uploadpdf",uploadpdf);
+
+
+app.use("/api/v1/media", mediaRoutes);
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 
 //dilaa
