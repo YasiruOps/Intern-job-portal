@@ -5,6 +5,8 @@ import DotLoader from "react-spinners/DotLoader";
 import PopUp from "../../components/Popup/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
@@ -79,6 +81,7 @@ export default function User() {
 
   return (
     <div className="profile">
+      <Header/>
       <ToastContainer
         position="top-left"
         autoClose={5000}
@@ -353,6 +356,7 @@ export default function User() {
           </>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }
