@@ -31,7 +31,7 @@ export default function Applicationsmain_dash() {
       .catch((err) => {
         alert(err.message);
       });
-  }, []);
+  }, [applications]);
 
   const [openPopup, setOpenPopup] = useState(false);
 

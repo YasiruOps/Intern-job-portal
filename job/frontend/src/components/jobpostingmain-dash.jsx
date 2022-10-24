@@ -42,7 +42,7 @@ export default function Jobpostingmain() {
       .catch((err) => {
         alert(err.message);
       });
-  }, []);
+  }, [jobs]);
 
   const openInPopup = (jobs) => {
     setRecordForEdit(jobs);

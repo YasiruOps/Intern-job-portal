@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 export default function Application_popup(props) {
   
   const { recordForEdit } = props;
+  
 
   const [user, setUser] = useState(null)
 
@@ -18,7 +19,9 @@ export default function Application_popup(props) {
       .get(`http://localhost:8000/auth/intern/${recordForEdit.internID}`)
       .then((res) => {
         const data = res.data;
+        
         setUser(res?.data[0]);
+        console.log("ssada", user)
       })
       .catch((err) => {
         alert(err.message);
@@ -57,33 +60,34 @@ export default function Application_popup(props) {
       <div className="row">
         <div className="col-6">
           <p className="titlestagpops">First Name</p>
-          <p className="answerl2">{user?.fName}</p>
+          <p className="answerl2">{user?.first_name}</p>
         </div>
         <div className="col-6">
           <p className="titlestagpops">Last Name</p>
-          <p className="answerl2">{user?.lName}</p>
+          <p className="answerl2">{user?.last_name}</p>
         </div>
       </div>
 
       <div className="row">
         <div className="col-6">
           <p className="titlestagpops">Date of birth</p>
-          <p className="answerl2">{user?.dob}</p>
+          <p className="answerl2">12/05/1997</p>
+          {/* <p className="answerl2">{user?.dob}</p> */}
         </div>
         <div className="col-6">
           <p className="titlestagpops">Phone</p>
-          <p className="answerl2">{user?.phone}</p>
+          <p className="answerl2">{user?.mobile}</p>
         </div>
       </div>
 
       <div className="row">
         <div className="col-6">
           <p className="titlestagpops">E-mail </p>
-          <p className="answerl2">{user?.Email}</p>
+          <p className="answerl2">{user?.email}</p>
         </div>
         <div className="col-6">
           <p className="titlestagpops">Address </p>
-          <p className="answerl2">{user?.address}</p>
+          <p className="answerl2">{user?.location}</p>
         </div>
       </div>
 
@@ -122,7 +126,7 @@ export default function Application_popup(props) {
       <hr className="popupseparator" />
 
       <div className="applicaitonbtnsetviewpopup">
-        <Mailto email={user?.Email} subject={recordForEdit.offerTitle} body="Dear Intern,">
+        <Mailto email={user?.email} subject={recordForEdit.offerTitle} body="Dear Intern,">
           <button className="btn btn-success">
             Contact <RiSendPlaneFill className="btnapplicationpopupview" />
           </button>

@@ -28,6 +28,7 @@ export default function popup(props) {
                                 
                                 if(title == "Delete Profile form"){
                                     setOpenPopup(false);
+
                                 }else{
                                     setOpenPopup(false);
                                     refreshpage();
