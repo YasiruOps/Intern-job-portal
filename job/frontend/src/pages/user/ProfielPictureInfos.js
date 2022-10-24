@@ -7,10 +7,14 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./style.css";
 
 export default function ProfielPictureInfos({ Users, setVisible, featchData }) {
+
+  const userID = useSelector((state) => state.auth.internID);
+
   const navigate = useNavigate();
 
   const Redirect = () => {
@@ -145,9 +149,12 @@ export default function ProfielPictureInfos({ Users, setVisible, featchData }) {
               >
                 Contact Info
               </button>
-              <button className="post_submit" onClick={Redirect}>
-                View Application
-              </button>
+              {userID? 
+                  <button className="post_submit" onClick={Redirect}>
+                  View Application
+                  </button>:<div/>
+              }
+             
             </div>
             <br />
           </div>

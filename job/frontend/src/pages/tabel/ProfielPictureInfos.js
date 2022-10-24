@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function ProfielPictureInfos() {
-
+  const userID = useSelector((state) => state.auth.internID);
   const navigate = useNavigate()
 
   const Redirect=()=>{
@@ -44,7 +45,10 @@ export default function ProfielPictureInfos() {
           <br />
           <div className="row_line">
             <button className="post_submit">Contact Info</button>
-            <button className="post_submit" onClick={Redirect}>View Application</button>
+            {userID? 
+                 <button className="post_submit" onClick={Redirect}>View Application</button>:<div/>
+              }
+            
           </div>
         </div>
       </div>

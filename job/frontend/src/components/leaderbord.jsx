@@ -14,11 +14,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import StarIcon from "@mui/icons-material/Star";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { useSelector, useDispatch } from "react-redux";
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Leaderbord() {
 
-  
+  const navigate = useNavigate();
 
   const options = [
     {value: 'it', text: 'it'},
@@ -52,8 +52,11 @@ export default function Leaderbord() {
         .catch((err) => {
           alert(err.message);
         });
-  
-        }
+      }
+
+  function UserProfView(id){
+    navigate(`/search/${id}`);
+  }
 
   useEffect(() => {
     axios
@@ -119,7 +122,7 @@ export default function Leaderbord() {
 
               {leaderboard.map((item,i) => {
                 
-            
+            {console.log("item", item)}
               return (
                 <div className="scoreform">
                   <p style={{ color: colors[i]??"black" }} className="user_place">
@@ -135,6 +138,7 @@ export default function Leaderbord() {
                   <Mailto email={item.email} subject="" body="">
                       <BiMailSend style={{ fontSize: 38 }} className="burger_icon" onClick={()=>SendMail(item)}/>
                   </Mailto>  
+                  <BiMailSend style={{ fontSize: 38 }} className="burger_icon" onClick={()=>UserProfView(item.userID)}/>
                 </div>             
                 )}
               )}
