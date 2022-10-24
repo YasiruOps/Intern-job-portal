@@ -89,9 +89,9 @@ app.use("/application",application);
 app.use("/uploadpdf",uploadpdf);
 
 
+
 app.use("/api/v1/media", mediaRoutes);
 app.use("/public", express.static(path.join(__dirname, "public")));
-
 
 //dilaa
 

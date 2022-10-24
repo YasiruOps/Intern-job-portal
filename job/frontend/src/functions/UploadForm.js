@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND_URI } from "../../config/constants";
 
 const UploadForm = ({ getAllMedias }) => {
   const [name, setName] = useState("");
   const [videos, setVideos] = useState([]);
 
-  const hadleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let formdata = new FormData();
@@ -17,20 +16,29 @@ const UploadForm = ({ getAllMedias }) => {
     formdata.append("name", name);
 
     axios
-      .post(`http://localhost:8000/api/v1/media/create`, formdata)
+      .post(`http://localhost:8000/api/v1/media/create`, formdata,
+      {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
       .then((success) => {
         getAllMedias();
         alert("Submitted successfully");
       })
       .catch((error) => {
         console.log(error);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
         alert("Error 222 happened!");
       });
+      
   };
 
   return (
     <>
-      <form onSubmit={hadleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input

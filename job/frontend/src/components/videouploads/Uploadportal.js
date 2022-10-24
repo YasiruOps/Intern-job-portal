@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UploadForm from "../videouploads/UploadForm";
 import UploadsList from "../videouploads/UploadsList";
-import { BACKEND_URI } from "../../config/constants";
-
-const App = () => {
+const Uploadportal = () => {
   const [medias, setMedias] = useState([]);
 
   useEffect(() => {
@@ -13,7 +11,7 @@ const App = () => {
 
   const getAllMedias = () => {
     axios
-      .get(`${BACKEND_URI}/api/v1/media/all`)
+      .get(`http://localhost:8000/api/v1/media/all`)
       .then((result) => {
         setMedias(result.data);
       })
@@ -62,4 +60,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Uploadportal;
