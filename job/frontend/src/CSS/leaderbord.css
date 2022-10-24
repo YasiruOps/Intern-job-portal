@@ -251,6 +251,10 @@ select.minimal2:focus {
   margin-bottom: auto;
   margin-right: 10px;
 }
+.burger_icon :hover{
+  cursor: pointer;
+}
+
 
 @media only screen and (max-width: 800px) {
 
@@ -378,3 +382,47 @@ select.minimal2:focus {
     margin-right: 5px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  float: left;
+}
+
+.img__description {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  margin-top: 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  color: #fff;
+  visibility: hidden;
+  opacity: 1;
+  z-index: 99;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+}
+
+.flexy_wrapper{
+  display: flexbox;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: auto;
+}
