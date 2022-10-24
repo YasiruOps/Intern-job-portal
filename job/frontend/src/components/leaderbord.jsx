@@ -81,7 +81,7 @@ export default function Leaderbord() {
             <hr className="header-hr" />
           </div>
           <div className="topbar2-rgt">
-            <div className="score2-cat">
+            {/* <div className="score2-cat">
               <TrendingUpIcon className="activityimg" />
               <div className="vertical-line2" />
               <select className="minimal2 ">
@@ -90,7 +90,7 @@ export default function Leaderbord() {
                 <option>2 weeks</option>
                 <option>This month</option>
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
 

@@ -327,7 +327,7 @@ export default function Jobsearchpage() {
             <p className="pres">results </p>
           </div>
 
-          <div className="activity-selector">
+          {/* <div className="activity-selector">
             <p className="activitytag">Sort by</p>
             <div className="vertical-line3" />
             <select className="minimal3 ">
@@ -335,7 +335,7 @@ export default function Jobsearchpage() {
               <option>Newest first</option>
               <option>Oldest first</option>
             </select>
-          </div>
+          </div>  */}
         </div>
 
         <hr className="jobdetailshr" />
