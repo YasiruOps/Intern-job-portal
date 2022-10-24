@@ -67,7 +67,7 @@ console.log("Recedit",recordForEdit)
         <button
           type="button"
           className="btn btn-warning "
-          style={{ color: "white", width: "150px" }}
+          style={{ color: "white", width: "150px", marginTop:"20px" }}
           onClick={EditSubmit}
         >
           Submit

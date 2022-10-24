@@ -19,25 +19,24 @@ import { AiFillDelete } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "./popup";
-import Editpop from "./editforumquestion_popup"
+import Editpop from "./editforumquestion_popup";
 
 import Profpic from "../images/forum_img.png";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 
 export default function Forum_compage() {
-  
   const [openPopup, setOpenPopup] = useState(false);
   const location = useLocation();
 
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState(location?.state?.comments??[]);
+  const [comments, setComments] = useState(location?.state?.comments ?? []);
 
   const userID = useSelector((state) => state.auth.internID);
-  
+
   const [username, setUsername] = useState("");
   const [recordForEdit, setRecordForEdit] = useState(null);
 
-  console.log("locstate", location.state)
+  console.log("locstate", location.state);
 
   const openInPopup = () => {
     setRecordForEdit(location.state);
@@ -45,74 +44,84 @@ export default function Forum_compage() {
   };
 
   useEffect(() => {
-    console.log("userID", location.state._id)
+    console.log("userID", location.state._id);
     axios
-    .get(`http://localhost:8000/auth/intern/${userID}`)
-    .then((res) => {
-      setUsername(res?.data[0]?.first_name); 
-    })
-    .catch((err) => {
-      alert(err);
-    });
-    
-}, []);
+      .get(`http://localhost:8000/auth/intern/${userID}`)
+      .then((res) => {
+        setUsername(res?.data[0]?.first_name);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
 
-
+  const [valierror, setValierror] = useState({
+    comment: "",
+  });
 
   function sendData() {
-
     const newCommnet = {
-      forumID:location.state._id,
+      forumID: location.state._id,
       userID,
-      name:username,
+      name: username,
       comment,
     };
 
-  axios
-  .post("http://localhost:8000/comment", newCommnet)
-  .then(() => {
-    return axios
-          .get(`http://localhost:8000/comment/${location.state._id}`)
-          .then((res) => {
-            setComments(res.data)
-      }) 
-  })
-  .catch((err) => {
-    alert(err);
-  });
-  };  
+    let sucess = true;
 
-  function delteComment(commentID, index){
-    axios
-    .delete(`http://localhost:8000/comment/delete/${commentID}`)
-    .then(() => {
-   
-      const temp = [...comments]
-      temp.splice(index, 1)
-     
-      setComments(temp);
-      alert("comment removed")
-    })
-    
-    .catch((err) => {
-      alert(err);
-    });
+    if (!comment?.match(/^(?!\s*$).+/)) {
+      setValierror({ ...valierror, comment: "Add something to comment" });
+      sucess = false;
+    }
+
+    setTimeout(() => {
+      setValierror({
+        email: "",
+      });
+    }, 3000);
+
+    if (sucess) {
+      axios
+        .post("http://localhost:8000/comment", newCommnet)
+        .then(() => {
+          return axios
+            .get(`http://localhost:8000/comment/${location.state._id}`)
+            .then((res) => {
+              setComments(res.data);
+            });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
   }
 
- 
+  function delteComment(commentID, index) {
+    axios
+      .delete(`http://localhost:8000/comment/delete/${commentID}`)
+      .then(() => {
+        const temp = [...comments];
+        temp.splice(index, 1);
+
+        setComments(temp);
+        alert("comment removed");
+      })
+
+      .catch((err) => {
+        alert(err);
+      });
+  }
 
   return (
     <div className="">
-
       <Header />
-      <div className="jobsearch col-9" >
+      <div className="jobsearch col-9">
         <p className="searchjobtag2">Forum</p>
 
         <div className="col-12">
           <div className="searchboxjob2">
             <GoSearch className="searchiconjob" />
-            <input type="text" className="searchinjob" placeholder="Search"
-            />
+            <input type="text" className="searchinjob" placeholder="Search" />
             <button type="button" class="btn btn-light advancedsearhjob">
               Advanced
             </button>
@@ -158,17 +167,17 @@ export default function Forum_compage() {
                 className="qupvote col-xl-1"
                 style={{ backgroundColor: "white" }}
               >
-                <div className="qupvotebar" >
+                <div className="qupvotebar">
                   <BsArrowUpCircle className="countericons hovupvote" />
                   <p className="upcountq">{location.state.reacts}</p>
                   <BsArrowDownCircle className="countericons hovdownvote" />
                 </div>
               </div>
 
-              <div className="picarea col-xl-2" >
+              <div className="picarea col-xl-2">
                 <img src={Profpic} className="profilepic" />
               </div>
-              <div className="qmid col-xl-9" >
+              <div className="qmid col-xl-9">
                 <div className="row">
                   <p className="qmidtitle">{location.state.question}</p>
                   <p className="qmidq">{location.state.description}</p>
@@ -176,21 +185,31 @@ export default function Forum_compage() {
                     {location.state.time} <span>{location.state.date}</span>
                   </p>
                 </div>
-                {console.log("lol",location.state.ownerID,"userid", userID)}
-                {location.state.ownerID == userID?
-                <div type="button" className="editbtnsfx" onClick={openInPopup}>
-                  Edit 
-                  <EditIcon style={{fontSize:"18px", marginTop:"-5px", marginLeft:"5px"}}/>
-                </div>
-               
-                :<div/>
-                }
+                {console.log("lol", location.state.ownerID, "userid", userID)}
+                {location.state.ownerID == userID ? (
+                  <div
+                    type="button"
+                    className="editbtnsfx"
+                    onClick={openInPopup}
+                  >
+                    Edit
+                    <EditIcon
+                      style={{
+                        fontSize: "18px",
+                        marginTop: "-5px",
+                        marginLeft: "5px",
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div />
+                )}
 
                 <div className="row qintractsect">
                   <div className="col-5 qintractsect-c1">
                     <CgComment className="qintractsect-c1-icons" />
                     <p className="qintractsect-c1-tag">
-                      <span>{comments?.length??0} </span>comments
+                      <span>{comments?.length ?? 0} </span>comments
                     </p>
                   </div>
                   <div className="col-3  qintractsect-c1">
@@ -203,7 +222,6 @@ export default function Forum_compage() {
                   </div>
                 </div>
               </div>
-             
 
               <div className="commentinputarea col-10">
                 <textarea
@@ -211,11 +229,15 @@ export default function Forum_compage() {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   placeholder="Type your comment here"
-                  value={comment} onChange={(e)=>setComment(e.target.value)}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                 />
-
-                <button type="button" class="btn btn-primary addcomtbtn"
-                onClick={sendData}>
+              <p style={{textAlign:"center", marginLeft:"auto", marginRight:"auto", color:"red", fontSize:"20px"}}>{valierror.comment}</p>
+                <button
+                  type="button"
+                  class="btn btn-primary addcomtbtn"
+                  onClick={sendData}
+                >
                   Add comment
                 </button>
               </div>
@@ -224,36 +246,37 @@ export default function Forum_compage() {
                 <p className="commentstag">Comments</p>
                 <hr className="commentstaghr" />
 
-        
-                {comments.map((comments,i) => {
+                {comments.map((comments, i) => {
                   return (
-                        <div className="commentbox row" style={{marginBottom:"5px", padding:"5px"}}>
-                          <div className="commmentbox-left d-none d-xxl-block col-1">
-                            <img
-                              src={Profpic}
-                              alt="image here"
-                              className="commenterprofpic"
-                            />
-                          </div>
-                          <div className="commentboxmid col-10 ">
-                            <p className="commentatornametag">{comments.name}</p>
-                            <p className="comment">
-                              {comments.comment}
-                            </p>
-                          
-                          </div>
-                        
-                          {comments?.userID == userID?
-                          <div className="commnetboxrgt col-1">
-                            <AiFillDelete className="deleteicon" onClick={()=>
-                              delteComment(comments._id, i)
-                            }/>
-                          </div>:<div/>
-                          }
-                          
+                    <div
+                      className="commentbox row"
+                      style={{ marginBottom: "5px", padding: "5px" }}
+                    >
+                      <div className="commmentbox-left d-none d-xxl-block col-1">
+                        <img
+                          src={Profpic}
+                          alt="image here"
+                          className="commenterprofpic"
+                        />
+                      </div>
+                      <div className="commentboxmid col-10 ">
+                        <p className="commentatornametag">{comments.name}</p>
+                        <p className="comment">{comments.comment}</p>
+                      </div>
+
+                      {comments?.userID == userID ? (
+                        <div className="commnetboxrgt col-1">
+                          <AiFillDelete
+                            className="deleteicon"
+                            onClick={() => delteComment(comments._id, i)}
+                          />
                         </div>
-                  )}
-                )}
+                      ) : (
+                        <div />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -264,7 +287,7 @@ export default function Forum_compage() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-         <Editpop recordForEdit={recordForEdit}/> 
+        <Editpop recordForEdit={recordForEdit} />
       </Popup>
     </div>
   );
