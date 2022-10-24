@@ -8,8 +8,13 @@ import Cloud from "../images/cloud.jpg";
 import Step1 from "../images/Rbuilder_step1.jpg"
 import Step2 from "../images/Rbuilder_step2.webp"
 import Step3 from "../images/Rbuilder_step3.jpg"
+import Step4 from "../images/news.png";
 import { Link } from "react-router-dom"; 
 import Footer from "./footer";
+import { Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { BsArrowUpCircle } from "react-icons/bs";
+import  ScrollButton from "../components/ScrollButton";
 
 
 export default function Rbuilder() {
@@ -31,7 +36,10 @@ export default function Rbuilder() {
           <button type="button" className="builder_btn1  btn btn-primary">
             Create Resume
           </button>
-        </Link>     
+        </Link> 
+        <ScrollButton/>
+
+            
 
         <img
           src={Resume_img1}
@@ -165,8 +173,21 @@ export default function Rbuilder() {
               </div>
             </div>
           </div>
-
+          
         </div>
+        <Card className="mx-auto text-center"  style={{ height:'9rem' , width: '40rem', backgroundColor: '#0F1B2D' , color: 'white'}}>
+      <Card.Body>
+        <Card.Text>
+        <img src={Step4} className="card-img" alt="image" style={{ width: '6rem', marginRight: '5rem'}}/>
+          <Link to="/ResumeForm"> 
+          <button type="button" className="builder_btn1  btn btn-primary" style={{ width: '20rem' }}>
+            Upload a video Resume <BsArrowUpCircle size={'20px'} marginleft="10rem"/>
+          </button>
+        </Link> 
+        </Card.Text>
+       
+      </Card.Body>
+    </Card>
 
       </div>
       <Footer />
