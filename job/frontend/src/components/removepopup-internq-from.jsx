@@ -26,6 +26,7 @@ export default function Removepopup_form(props) {
     .delete(`http://localhost:8000/employerContact/${id}`)
     .then(() => {
       alert("question removed");
+      window.location.reload();
     })
 
     .catch((err) => {

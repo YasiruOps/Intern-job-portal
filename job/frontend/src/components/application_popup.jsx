@@ -41,6 +41,7 @@ export default function Application_popup(props) {
     .put(`http://localhost:8000/application/updatestatus/${props.recordForEdit._id}`,{applicationStatus:stat})
     .then(() => {
         alert("sucussfully updated")     
+        window.location.reload();
     })
     .catch((err) => {
     });

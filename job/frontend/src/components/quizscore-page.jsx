@@ -14,14 +14,15 @@ export default function Quizscorepage() {
   const questions = useSelector((state)=> state.mcq.questions);
   const location = useLocation();
   const [username, setUsername] = useState("");
-
+  const [email, setEmail] = useState("");
   const [corrans, setCorrans] = useState(0)
 
   useEffect(() => {
       axios
       .get(`http://localhost:8000/auth/intern/${userID}`)
       .then((res) => {
-        setUsername(res?.data[0]?.first_name);  
+        setUsername(res?.data[0]?.first_name); 
+        setEmail(res?.data[0]?.email);   
       })
       .catch((err) => {
         alert(err);
@@ -52,6 +53,7 @@ export default function Quizscorepage() {
       userID,
       type:location.state.type,
       score,
+      email:email,
       userName:username,
     }
     

@@ -78,20 +78,20 @@ export default function Jobsearchpage() {
 
 
   useEffect(()=>{
-  console.log("jobs",jobs) 
+ 
     if(
       searchoption && ( searchoption?.searchkey?.length )
       ){
         
       dispatch(setsearchoff(false));
       const data = jobs.filter((item) => {
-        console.log("item tile",item.title.toLowerCase(),searchoption.searchkey)
+      
         if(item.title.toLowerCase().indexOf(searchoption.searchkey) > -1 ){
          return true
         }
         return false;
       })
-      console.log("ddddff", data)
+
         dispatch(setfilterjobs(data));
     }
   },[jobs])
@@ -145,8 +145,7 @@ export default function Jobsearchpage() {
         return true;
       }
       else if(values.length == 2 && (jobsal >= values[0] && jobsal <= values[1])){
-        console.log("values",values)
-        console.log("jobsal",jobsal)
+
         return true
       }
       else if(values.length == 1 && jobsal >= values[0]){
@@ -194,9 +193,7 @@ export default function Jobsearchpage() {
   
 
   useEffect(() => {
-    console.log('userdd',searchoption)
-    
-    if(
+     if(
       searchoption &&
       (
       searchoption?.Location?.length ||

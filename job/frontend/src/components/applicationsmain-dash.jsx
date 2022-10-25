@@ -40,6 +40,7 @@ export default function Applicationsmain_dash() {
   },[search])
 
   useEffect(() => {
+    console.log("ammo yakoo")
     axios
       .get(`http://localhost:8000/application/${id}`)
       .then((res) => {
@@ -49,7 +50,7 @@ export default function Applicationsmain_dash() {
       .catch((err) => {
         alert(err.message);
       });
-  }, [applications]);
+  }, []);
 
   const [openPopup, setOpenPopup] = useState(false);
 

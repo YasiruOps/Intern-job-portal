@@ -14,7 +14,11 @@ const userScoreSchema = new Schema({
 
     score : {
         type : Map,
+    },
+    email : {
+        type : String
     }
+
 
 
 });

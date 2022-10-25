@@ -44,7 +44,7 @@ export default function Internquestionsmain() {
       .catch((err) => {
         alert(err.message);
       });
-  }, [iquestion]);
+  }, []); 
 
   const [recordForEdit, setRecordForEdit] = useState(null);
 
@@ -108,6 +108,7 @@ export default function Internquestionsmain() {
 
   return (
     <div className="Iqouter-main">
+      
     <div className="Inquestionstop">
       <p className="internq-tag">Intern Questions</p>
    
@@ -164,6 +165,7 @@ export default function Internquestionsmain() {
                               <ReplyIcon className='btniconsiq'/>                 
                             </button> */}
                               <Mailto email={question.email} subject={question.qtitle} body="Dear Intern,">
+                      
                                 <button type="button" class="btn btn-primary">
                                   Reply
                                   <ReplyIcon className='btniconsiq'/>                 

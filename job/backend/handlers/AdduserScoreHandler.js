@@ -9,6 +9,7 @@ async function AdduserScoreHandler(request, response){
         const type = request.body.type;
         const quiz = request.body.quiz;
         const user= request.body.userName;
+        const email = request.body.email;
 
         let values = {}
 
@@ -43,6 +44,7 @@ async function AdduserScoreHandler(request, response){
                 $set: {
                 [`score.${type}`]: score,
                 userName:user,
+                email:email,
                 }
             },{new: true, upsert: true}
             ).then((score)=>{  

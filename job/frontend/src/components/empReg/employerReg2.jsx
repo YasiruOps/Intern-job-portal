@@ -35,17 +35,17 @@ export default function Employer() {
     }
     if (!compname?.match(/^[A-Za-z]{3}/)) {
       setValierror({ ...valierror, compname: "Entern valid Company name" });
-      console.log(valierror);
+    
       sucess = false;
     }
     if (!contact?.match(/^[0-9]{1,10}/)) {
       setValierror({ ...valierror, contact: "Entern valid Phone number" });
-      console.log(valierror);
+      
       sucess = false;
     }
     if (!address?.match(/^[A-Za-z]{5}/)) {
       setValierror({ ...valierror, address: "Entern valid Address" });
-      console.log(valierror);
+      
       sucess = false;
     }
     setTimeout(() => {
@@ -68,7 +68,7 @@ export default function Employer() {
       });
     }
   };
-  console.log(valierror);
+  
   return (
     <div>
       <Header />

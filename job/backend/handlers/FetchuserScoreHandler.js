@@ -34,7 +34,7 @@ function getScore(request, response){
                     for (const [key, value] of Object.entries(obj1)) {
                         sum += value;
                       }
-                      scoreObj.push({userID:item.userID,userName:item.userName,sum});
+                      scoreObj.push({userID:item.userID,userName:item.userName,sum,email:item.email});
                       console.log("scoreobject",scoreObj)
                 }
             });

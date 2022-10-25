@@ -33,28 +33,15 @@ export default function Leaderbord() {
   const place = [Place1, Place2, Place3];
   const colors = ["#FFB800", "#CCD2E3", "#BD5D05"];
 
-  const [user, setUser] = useState(null);
 
-  const Mailto = ({ email= {}, subject = "Subject here", body = "Hello intern,", children }) => {
+  const Mailto = ({ email= "", subject = "Subject here", body = "Hello intern,", children }) => {
     let params = subject || body ? "?" : "";
     if (subject) params += `subject=${encodeURIComponent(subject)}`;
-    if (body) params += `${subject ? "&" : ""}body=${encodeURIComponent(body)}`;
-
-    return <a href={`mailto:${email}${params}`}>{children}</a>;
+    if (body) params += `${subject ? "&" : ""}body=${encodeURIComponent(body)}`;  
+    return <a  id="kicker" href={`mailto:${email}${params}`}>{children}</a>;   
   };
+  
 
-  function SendMail(item) {
-    axios
-      .get(`http://localhost:8000/api/users/getProfile/${item.userID}`)
-      .then((res) => {
-        const data = res.data;
-        setUser(res?.data[0]);
-        console.log("sssss",user);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }
 
   function UserProfView(id) {
     navigate(`/search/${id}`);
@@ -125,7 +112,7 @@ export default function Leaderbord() {
               <div className="Lscroll">
                 {leaderboard.map((item, i) => {
                   {
-                    console.log("item", item);
+             
                   }
                   return (
                     <div className="scoreform">
@@ -143,16 +130,17 @@ export default function Leaderbord() {
                       <p className="username">{item.userName}</p>
                       <p className="userscore">{item.sum}</p>
                       <p className="userscore_tag">total points</p>                      
-                      
+                     
                       {employerID?
+                     
                       <div className="flexy_wrapper">
                         <div className="vertical-line" />
-                        <div class="img__wrap">
-                          <Mailto email={item.email} subject="" body="">
+                      
+                        <div class="img__wrap">                     
+                          <Mailto email={item.email}>
                             <BiMailSend
                               style={{ fontSize: 38 }}
-                              className="burger_icon"
-                              onClick={() => SendMail(item)}
+                              className="burger_icon"                             
                             />
                             <p class="img__description">Contact intern</p>
                           </Mailto>

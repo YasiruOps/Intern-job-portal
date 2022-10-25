@@ -56,6 +56,7 @@ export default function Jobpostingmain() {
   },[search])
 
   useEffect(() => {
+
     axios
       .get(`http://localhost:8000/jobs/${id}`)
       .then((res) => {
@@ -65,7 +66,7 @@ export default function Jobpostingmain() {
       .catch((err) => {
         alert(err.message);
       });
-  }, [jobs]);
+  }, []);
 
   const openInPopup = (jobs) => {
     setRecordForEdit(jobs);

@@ -22,6 +22,7 @@ export default function Removepopup_form(props) {
     .delete(`http://localhost:8000/jobs/delete/${props.recordForEdit}`)
     .then(() => {
       alert("job post removed")
+      window.location.reload()
     })
     
     .catch((err) => {

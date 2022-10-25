@@ -36,7 +36,7 @@ export default function Employer() {
     }
     if (!password?.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/)) {
       setValierror({ ...valierror, password: "Password should contain minimum 8 characters 1 letter and a number" });
-      console.log(valierror)
+      
       sucess = false;
     }
     setTimeout(()=>{
@@ -46,7 +46,7 @@ export default function Employer() {
       password:""
       })
     },3000);
-    console.log("val",valierror)
+   
     if (sucess) {
       navigate("/Employer-Reg2", { state: { email, displayname, password } });
     }

@@ -51,7 +51,8 @@ export default function Addjobform_popup() {
     axios
     .post("http://localhost:8000/jobs/", payload)
     .then(() => {
-      alert("Job posted succesfully")
+      alert("Job posted succesfully");
+      window.location.reload();
     })
     .catch((err) => {
       alert(err);
