@@ -17,20 +17,21 @@ const UploadForm = ({ getAllMedias }) => {
     formdata.append("name", name);
 
     axios
-      .post(`http://localhost:8000/api/v1/media/create`, formdata)
+      .post(`${BACKEND_URI}/api/v1/media/create`, formdata
+      )  
       .then((success) => {
         getAllMedias();
         alert("Submitted successfully");
       })
       .catch((error) => {
         console.log(error);
-        alert("Error 222 happened!");
+        alert("Post Error happened!");
       });
   };
 
   return (
     <>
-      <form onSubmit={hadleSubmit}>
+      <form enctype="multipart/form-data" onSubmit={hadleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
