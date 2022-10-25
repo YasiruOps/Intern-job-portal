@@ -7,7 +7,7 @@ import { MdLaunch } from "react-icons/md";
 import Applicationform from "./application_popup";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "./popup";
-
+import moment from "moment";
 
 import axios from "axios";
 
@@ -23,8 +23,10 @@ export default function Applicationsmain_dash() {
   const [intern, setIntern] = useState([]);
 
   const [recordForEdit, setRecordForEdit] = useState(null);
-  
+  const[activity, setActivity] = useState("");
+
   useEffect(()=>{
+    
     if(search.length){
       const data = applications.filter(item=>{
       let values = item?.offerTitle?.toLowerCase().indexOf(search) > -1 || item?.internID?.toLowerCase().indexOf(search) > -1
@@ -56,6 +58,48 @@ export default function Applicationsmain_dash() {
     setOpenPopup(true);
   };
 
+  //filter dates
+  function timer(date, filterdate){
+
+    if(filterdate?.length===0){
+      return false;
+    }
+    const date1 = moment(date).format("YYYY/MM/DD") 
+
+    
+      for (let i = 0; i < filterdate?.length; i++) {
+        if(filterdate=="Today"){
+          return moment().isSame(date1,"day")
+        }
+        if(filterdate == "1 week"){
+          return moment().diff(date1,"days") <= 7
+        }
+        if(filterdate == "2 weeks"){
+          return moment().diff(date1,"days") <= 14
+        }
+        if(filterdate == "This month"){
+          return moment().diff(date1,"months") <= 0
+        }
+        if(filterdate == "All"){
+          return true;
+        }
+      }
+      return false;
+  }
+
+  useEffect(()=>{
+    if(activity.length){
+      const data = applications.filter(item=>{
+        let values = timer(item.date, activity)
+        return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[activity])
+
   return (
     <div>
       <div className="Iqouter-main">
@@ -66,7 +110,8 @@ export default function Applicationsmain_dash() {
             <TodayIcon className="activityiq" />
             <p className="activitytag">Activity</p>
             <div className="vertical-line3" />
-            <select className="minimal3 ">
+            <select className="minimal3 " value={activity} onChange={(e) => {setActivity(e.target.value);}}>
+              <option>All</option>
               <option>Today</option>
               <option>1 week</option>
               <option>2 weeks</option>

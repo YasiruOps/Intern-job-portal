@@ -20,6 +20,7 @@ import Jobviewform from "./jobformview_popup";
 import Removeform from "./removepopup-job-form";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import moment from "moment";
 
 export default function Jobpostingmain() {
   const [search, setSearch] = useState("");
@@ -37,6 +38,10 @@ export default function Jobpostingmain() {
   const[filterflag, setFilterflag]=useState(false);
   const [filterval, setFilterval] = useState([])
 
+  const[activity, setActivity] = useState("");
+
+  
+
   useEffect(()=>{
     if(search.length){
       const data = jobs.filter(item=>{
@@ -44,7 +49,7 @@ export default function Jobpostingmain() {
         return values
       })
       setFilterval(data);
-      setFilterflag(true)
+      setFilterflag(true);
     }else{
       setFilterflag(false)
     }
@@ -77,6 +82,49 @@ export default function Jobpostingmain() {
     setOpenPopup4(true);
   };
 
+  //filter dates
+  function timer(date, filterdate){
+
+    if(filterdate?.length===0){
+      return false;
+    }
+    const date1 = moment(date).format("YYYY/MM/DD") 
+
+    
+      for (let i = 0; i < filterdate?.length; i++) {
+        if(filterdate=="Today"){
+          return moment().isSame(date1,"day")
+        }
+        if(filterdate == "1 week"){
+          return moment().diff(date1,"days") <= 7
+        }
+        if(filterdate == "2 weeks"){
+          return moment().diff(date1,"days") <= 14
+        }
+        if(filterdate == "This month"){
+          return moment().diff(date1,"months") <= 0
+        }
+        if(filterdate == "All"){
+          return true;
+        }
+      }
+      return false;
+  }
+
+  useEffect(()=>{
+    if(activity.length){
+      const data = jobs.filter(item=>{
+        let values = timer(item.date, activity)
+        return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[activity])
+
+
   return (
     <div className="Iqouter-main">
       <div className="Inquestionstop">
@@ -86,11 +134,12 @@ export default function Jobpostingmain() {
           <TodayIcon className="activityiq" />
           <p className="activitytag">Activity</p>
           <div className="vertical-line3" />
-          <select className="minimal3 ">
+          <select className="minimal3" value={activity} onChange={(e) => {setActivity(e.target.value);}}>
+            <option>All</option>
             <option>Today</option>
             <option>1 week</option>
             <option>2 weeks</option>
-            <option>This month</option>
+            <option>This month</option>           
           </select>
         </div>
 

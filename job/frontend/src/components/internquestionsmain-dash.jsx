@@ -10,6 +10,7 @@ import Removeform from "./removepopup-internq-from";
 import Popup from "./popup"
 import Popup2 from "./popup-remove"
 import axios from "axios";
+import moment from "moment";
 
 export default function Internquestionsmain() {
   const [search, setSearch] = useState("");
@@ -17,8 +18,10 @@ export default function Internquestionsmain() {
   const [filterval, setFilterval] = useState([])
 
   const [iquestion, setIquestion] = useState([]);
+  const[activity, setActivity] = useState("");
 
   useEffect(()=>{
+    
     if(search.length){
       const data = iquestion.filter(item=>{
       let values = item?.qtitle?.toLowerCase().indexOf(search) > -1 || item?.desc?.toLowerCase().indexOf(search) > -1 || item?.qtype[0]?.toLowerCase().indexOf(search) > -1
@@ -61,9 +64,50 @@ export default function Internquestionsmain() {
     return <a href={`mailto:${email}${params}`}>{children}</a>;
   };
 
+  //filter dates
+  function timer(date, filterdate){
+
+    if(filterdate?.length===0){
+      return false;
+    }
+    const date1 = moment(date).format("YYYY/MM/DD") 
+
+    
+      for (let i = 0; i < filterdate?.length; i++) {
+        if(filterdate=="Today"){
+          return moment().isSame(date1,"day")
+        }
+        if(filterdate == "1 week"){
+          return moment().diff(date1,"days") <= 7
+        }
+        if(filterdate == "2 weeks"){
+          return moment().diff(date1,"days") <= 14
+        }
+        if(filterdate == "This month"){
+          return moment().diff(date1,"months") <= 0
+        }
+        if(filterdate == "All"){
+          return true;
+        }
+      }
+      return false;
+  }
+
+  useEffect(()=>{
+    if(activity.length){
+      const data = iquestion.filter(item=>{
+        let values = timer(item.date2, activity)
+        return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[activity])
+
   return (
     <div className="Iqouter-main">
-
     <div className="Inquestionstop">
       <p className="internq-tag">Intern Questions</p>
    
@@ -71,7 +115,8 @@ export default function Internquestionsmain() {
               <TodayIcon className='activityiq'/>
               <p className="activitytag">Activity</p>
               <div className="vertical-line3" />
-              <select className="minimal3 ">
+              <select className="minimal3 "value={activity} onChange={(e) => {setActivity(e.target.value);}}>
+                <option>All</option>
                 <option>Today</option>
                 <option>1 week</option>
                 <option>2 weeks</option>
