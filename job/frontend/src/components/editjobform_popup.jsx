@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/editjobform_popup.css";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Editjobform_popup(props) {
 
-  const {recordForEdit} = props;
+  const {recordForEdit} = props;  
+  const id = useSelector((state) => state.auth.employerid);
 
   const initialState = {
     title: recordForEdit.title,
@@ -29,17 +31,21 @@ export default function Editjobform_popup(props) {
   function EditSubmit(){
     axios
     .put(`http://localhost:8000/jobs/update/${recordForEdit._id}`,job)
-    .then(() => {
-        alert("sucussfully updated"); 
-        // props.setOpenPopup3(false)
-        window.location.reload();
-        // console.log("before splice", props.jobs)
-        // props.jobs.splice(job,1)
-        // console.log("pops.job", props.jobs)
-        // props.setJobs([...props.jobs,job])
+    .then((response) => {
+        // alert("sucussfully updated"); 
+         axios
+        .get(`http://localhost:8000/jobs/${id}`)
+        .then((res) => {
+          const data = res.data;
+          props.setJobs(res.data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
     })
     .catch((err) => {
     });
+    props.setOpenPopup3(false)
   };
 
 

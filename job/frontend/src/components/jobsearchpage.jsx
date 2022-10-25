@@ -54,8 +54,8 @@ export default function Jobsearchpage() {
       "500,000+",
     ],
     wrkhours:[
-      "Morning shift",
-      "Evening shift",
+      "Morning",
+      "Evening",
       "On call"
     ],
     experience:[

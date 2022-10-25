@@ -174,15 +174,15 @@ export default function Jobpostingmain() {
         </thead>
         <tbody>
         {!filterflag?
-        (jobs.map((job, i) => {
+        (jobs?.map((job, i) => {
               return (
                   <tr>
                     <th scope="row">1</th>
                     <td>{job?.title}</td>
-                    <td>{job.vacancies}</td>
-                    <td>{job.contract}</td>
-                    <td>{job.location}</td>
-                    <td>{job.date}</td>
+                    <td>{job?.vacancies}</td>
+                    <td>{job?.contract}</td>
+                    <td>{job?.location}</td>
+                    <td>{job?.date}</td>
 
                     <td>
                       <button
