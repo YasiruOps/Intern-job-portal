@@ -12,8 +12,24 @@ import Popup2 from "./popup-remove"
 import axios from "axios";
 
 export default function Internquestionsmain() {
+  const [search, setSearch] = useState("");
+  const[filterflag, setFilterflag]=useState(false);
+  const [filterval, setFilterval] = useState([])
 
   const [iquestion, setIquestion] = useState([]);
+
+  useEffect(()=>{
+    if(search.length){
+      const data = iquestion.filter(item=>{
+      let values = item?.qtitle?.toLowerCase().indexOf(search) > -1 || item?.desc?.toLowerCase().indexOf(search) > -1 || item?.qtype[0]?.toLowerCase().indexOf(search) > -1
+      return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[search])
 
   useEffect(() => {
     axios
@@ -66,7 +82,8 @@ export default function Internquestionsmain() {
 
       <div className="searchbox test657 ">
           <GoSearch className="searchicon" />
-          <input type="text" className="searchin" placeholder="search" />
+          <input type="text" className="searchin" placeholder="search" 
+           onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
         </div>
 
 
@@ -85,7 +102,8 @@ export default function Internquestionsmain() {
           </tr>
         </thead>
         <tbody>
-        {iquestion.map((question,i) => {
+          {!filterflag?
+          (iquestion.map((question,i) => {
               return (
                         <tr >
                           <th scope="row">{i+1}</th>
@@ -118,7 +136,42 @@ export default function Internquestionsmain() {
                           </td>
                         </tr>
                       );
-                    })}
+                    })):(
+                      filterval.map((question,i) => {
+                        return (
+                                  <tr >
+                                    <th scope="row">{i+1}</th>
+                                    <td>{question.qtitle}</td>
+                                    <td>{question.qtype[0]}</td>
+                                    <td>{question.desc}</td>
+                                    <td>{question.date2}</td>
+                                    <td>{question.name}</td>
+          
+                                    <td>
+                                      {/* <button type="button" onClick={() => setOpenPopup(true)} class="btn btn-primary">
+                                        Reply
+                                        <ReplyIcon className='btniconsiq'/>                 
+                                      </button> */}
+                                        <Mailto email={question.email} subject={question.qtitle} body="Dear Intern,">
+                                          <button type="button" class="btn btn-primary">
+                                            Reply
+                                            <ReplyIcon className='btniconsiq'/>                 
+                                          </button> 
+                                        </Mailto>  
+                                      &nbsp; &nbsp;
+                        
+                                      <button
+                                        className="btn btn-danger"
+                                        onClick={() => openRemovePopup(question)}
+                                        href="/add">
+                                        Remove
+                                        <DeleteOutlineIcon className='btniconsiq'/>                 
+                                      </button>
+                                    </td>
+                                  </tr>
+                      );
+                    }))
+                    }
         </tbody>     
       </table>
 

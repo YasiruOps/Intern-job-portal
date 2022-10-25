@@ -12,6 +12,10 @@ import Popup from "./popup";
 import axios from "axios";
 
 export default function Applicationsmain_dash() {
+  const [search, setSearch] = useState("");
+  const[filterflag, setFilterflag]=useState(false);
+  const [filterval, setFilterval] = useState([])
+
   const [applications, setApplications] = useState([]);
 
   const id = useSelector((state) => state.auth.employerid);
@@ -20,6 +24,18 @@ export default function Applicationsmain_dash() {
 
   const [recordForEdit, setRecordForEdit] = useState(null);
   
+  useEffect(()=>{
+    if(search.length){
+      const data = applications.filter(item=>{
+      let values = item?.offerTitle?.toLowerCase().indexOf(search) > -1 || item?.internID?.toLowerCase().indexOf(search) > -1
+      return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[search])
 
   useEffect(() => {
     axios
@@ -60,7 +76,8 @@ export default function Applicationsmain_dash() {
 
           <div className="searchbox test657">
             <GoSearch className="searchicon" />
-            <input type="text" className="searchin" placeholder="search" />
+            <input type="text" className="searchin" placeholder="search" 
+             onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
           </div>
         </div>
 
@@ -76,7 +93,8 @@ export default function Applicationsmain_dash() {
             </tr>
           </thead>
           <tbody>
-            {applications.map((application, i) => {
+          {!filterflag?
+          (applications.map((application, i) => {
               return (
                 <tr>
                   <th scope="row">{i + 1}</th>
@@ -96,7 +114,30 @@ export default function Applicationsmain_dash() {
                   </td>
                 </tr>
               );
-            })}
+            })):(
+              filterval.map((application, i) => {
+              return (
+                <tr>
+                  <th scope="row">{i + 1}</th>
+                  <td>{application.offerTitle}</td>
+                  <td>{application.internID}</td>
+                  <td>{application.applicationStatus}</td>
+                  <td>{application.date}</td>
+
+                  <td>
+                    <button
+                      onClick={() => openInPopup(application)}
+                      className="btn btn-primary"
+                    >
+                      View Application
+                      <MdLaunch className="viewicon" />
+                    </button>
+                  </td>
+                </tr>
+              );
+            }))
+            }
+
           </tbody>
         </table>
 

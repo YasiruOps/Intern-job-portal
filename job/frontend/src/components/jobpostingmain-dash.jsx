@@ -22,6 +22,8 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 export default function Jobpostingmain() {
+  const [search, setSearch] = useState("");
+
   const [openPopup, setOpenPopup] = useState(false);
   const [openPopup2, setOpenPopup2] = useState(false);
   const [openPopup3, setOpenPopup3] = useState(false);
@@ -31,6 +33,22 @@ export default function Jobpostingmain() {
   const [jobs, setJobs] = useState([]);
 
   const [recordForEdit, setRecordForEdit] = useState(null);
+
+  const[filterflag, setFilterflag]=useState(false);
+  const [filterval, setFilterval] = useState([])
+
+  useEffect(()=>{
+    if(search.length){
+      const data = jobs.filter(item=>{
+        let values = item?.title?.toLowerCase().indexOf(search) > -1 || item?.location?.toLowerCase().indexOf(search) > -1
+        return values
+      })
+      setFilterval(data);
+      setFilterflag(true)
+    }else{
+      setFilterflag(false)
+    }
+  },[search])
 
   useEffect(() => {
     axios
@@ -79,7 +97,8 @@ export default function Jobpostingmain() {
         <div className="searchbox-layer">
           <div className="searchbox test657">
             <GoSearch className="searchicon" />
-            <input type="text" className="searchin" placeholder="search" />
+            <input type="text" className="searchin" placeholder="search" 
+            onChange={(e)=>setSearch(e.target.value.toLowerCase())}/>
           </div>
         </div>
       </div>
@@ -104,7 +123,8 @@ export default function Jobpostingmain() {
           </tr>
         </thead>
         <tbody>
-        {jobs.map((job, i) => {
+        {!filterflag?
+        (jobs.map((job, i) => {
               return (
                   <tr>
                     <th scope="row">1</th>
@@ -140,7 +160,45 @@ export default function Jobpostingmain() {
                     </td>
                   </tr>
                   );
-                })}
+                })):(
+                  filterval.map((job, i) => {
+                    return (
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{job?.title}</td>
+                          <td>{job.vacancies}</td>
+                          <td>{job.contract}</td>
+                          <td>{job.location}</td>
+                          <td>{job.date}</td>
+      
+                          <td>
+                            <button
+                              type="button"
+                              onClick={() => openInPopup(job)}
+                              class="btn btn-primary"
+                            >
+                              View Post
+                              <MdLaunch className="btniconsiq2" />
+                            </button>
+                            &nbsp; &nbsp;
+                            <button
+                              className="btn btn-warning"
+                              style={{ color: "white" }}
+                              onClick={() => openEditPopup(job)}
+                            >
+                              Edit
+                              <AiFillEdit className="btniconsiq2" />
+                            </button>
+                            &nbsp; &nbsp;
+                            <button className="btn btn-danger" href="/add" onClick={() => openRemovePopup(job)}>
+                              Remove               
+                              <DeleteOutlineIcon className="btniconsiq2" />
+                            </button>
+                          </td>
+                        </tr>
+                );
+              }))
+                }
         </tbody>
       </table>
 
