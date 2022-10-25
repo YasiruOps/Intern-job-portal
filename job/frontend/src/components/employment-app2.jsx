@@ -106,22 +106,22 @@ export default function Employment_app2() {
     }
     if (!refPhone1?.match(/[0-9]{1,10}/)) {
       setValierror((prev)=>({ ...prev, refPhone1: "Entern valid Phone number" }))
-      console.log(valierror);
+   
       sucess = false;
     }
     if (!refbday1?.match(/[1-9][0-9]/)) {
       setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }))
-      console.log(valierror);
+  
       sucess = false;
     }
     if (!refbday2?.match(/[1-9][0-9]/)) {
       setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }));
-      console.log(valierror);
+      
       sucess = false;
     }
     if (!refbday2?.match(/^[0-9]*$/)) {
       setValierror((prev)=>({ ...prev, refbday2: "Entern valid Date" }));
-      console.log(valierror);
+
       sucess = false;
     }
     setTimeout(() => {

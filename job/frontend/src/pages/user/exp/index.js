@@ -7,7 +7,8 @@ import { useState } from "react";
 import RegisterInput from "../../../components/inputs/registerInput";
 import TextArea from "../../../components/inputs/textarea";
 import { toast } from "react-toastify";
-
+import Header from "../../../components/header";
+import Footer from "../../../components/footer";
 
 import * as Yup from "yup";
 
@@ -66,7 +67,7 @@ export default function ExperienceEdit({ setVisible, Id }) {
   };
   return (
     <div>
-    
+      <Header/>
       <div>
         <Formik
           enableReinitialize
@@ -114,6 +115,7 @@ export default function ExperienceEdit({ setVisible, Id }) {
           )}
         </Formik>
       </div>
+      <Footer/>
     </div>
   );
 }

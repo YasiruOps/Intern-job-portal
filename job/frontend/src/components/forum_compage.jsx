@@ -36,7 +36,7 @@ export default function Forum_compage() {
   const [username, setUsername] = useState("");
   const [recordForEdit, setRecordForEdit] = useState(null);
 
-  console.log("locstate", location.state);
+
 
   const openInPopup = () => {
     setRecordForEdit(location.state);
@@ -44,7 +44,7 @@ export default function Forum_compage() {
   };
 
   useEffect(() => {
-    console.log("userID", location.state._id);
+ 
     axios
       .get(`http://localhost:8000/auth/intern/${userID}`)
       .then((res) => {
@@ -111,6 +111,18 @@ export default function Forum_compage() {
         alert(err);
       });
   }
+  function counterReact(reacts){
+    let count = 0;
+    reacts?.forEach(element => {
+      const temp = JSON.parse(element)
+      if(temp.action == "+"){
+        count++
+      }else if(temp.action == "-"){
+        count--
+      }    
+    });
+    return count
+  }
 
   return (
     <div className="">
@@ -169,7 +181,7 @@ export default function Forum_compage() {
               >
                 <div className="qupvotebar">
                   <BsArrowUpCircle className="countericons hovupvote" />
-                  <p className="upcountq">{location.state.reacts}</p>
+                  <p className="upcountq">{counterReact(location.state.reacts)}</p>
                   <BsArrowDownCircle className="countericons hovdownvote" />
                 </div>
               </div>
@@ -185,7 +197,7 @@ export default function Forum_compage() {
                     {location.state.time} <span>{location.state.date}</span>
                   </p>
                 </div>
-                {console.log("lol", location.state.ownerID, "userid", userID)}
+             
                 {location.state.ownerID == userID ? (
                   <div
                     type="button"

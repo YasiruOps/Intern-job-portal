@@ -86,6 +86,8 @@ function App() {
         <Route path="/user" element={<User />} exact />
         <Route path="/search/:id" element={<Search />} exact />
         {/* <Route path="/app" element={<Application />} exact /> */}
+        <Route path="/eduEdit" element={<EducationEdit />} exact />
+        <Route path="/expEdit" element={<ExperienceEdit />} exact />
         <Route path="/tab" element={<Table />} exact />
 
         {/* <Route path="/user" element = {userID? <Outlet /> : <Navigate to="/Login" />}>

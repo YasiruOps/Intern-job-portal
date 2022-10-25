@@ -13,10 +13,13 @@ import { FiShare2 } from "react-icons/fi";
 import { BsBookmark } from "react-icons/bs";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { BsArrowDownCircle } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 import Profpic from "../images/forum_img.png";
 
 export default function Forumpage() {
+  const userID = useSelector((state) => state.auth.internID);
+
   const navigate = useNavigate();
 
   const[comments, setComments] = useState({});
@@ -77,6 +80,34 @@ export default function Forumpage() {
     }  
   }, [flag]);
 
+  function Reacts(id,sign){
+
+    const payload = {
+      id,
+      userID,
+      action:sign,
+    }
+    axios
+    .put(`http://localhost:8000/ForumQuestionFetch/reacts`,payload)
+    .then((res) => {
+      console.log("sucess")
+      window.location.reload();
+    })
+  }
+
+  function counterReact(reacts){
+    let count = 0;
+    reacts?.forEach(element => {
+      const temp = JSON.parse(element)
+      if(temp.action == "+"){
+        count++
+      }else if(temp.action == "-"){
+        count--
+      }    
+    });
+    return count
+  }
+
   return (
     <div>
       <Header />
@@ -133,13 +164,13 @@ export default function Forumpage() {
         
              {!filterflag?
               (fquestion.map((question,i) => {
-              return (
+              return ( 
                 <div className="qraised row">
                   <div className="qupvote col-xl-1">
                     <div className="qupvotebar">
-                      <BsArrowUpCircle className="countericons hovupvote" />
-                      <p className="upcountq">{question.reacts}</p>
-                      <BsArrowDownCircle className="countericons hovdownvote" />
+                      <BsArrowUpCircle className="countericons hovupvote"  onClick={()=>Reacts(question._id, "+")}/>
+                      <p className="upcountq">{counterReact(question?.reacts)}</p>
+                      <BsArrowDownCircle className="countericons hovdownvote" onClick={()=>Reacts(question._id, "-")}/>
                     </div>
                   </div>
 

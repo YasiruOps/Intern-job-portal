@@ -8,7 +8,9 @@ var ForumQuestionHandler = require("../handlers/ForumQuestionHandler");
 
 var ForumQuestionFetch = require("../handlers/ForumQuestionFetchHandler");
 
-var EditForumQuestionHandler = require("../handlers/EditForumQuestionHandler"); //create
+var EditForumQuestionHandler = require("../handlers/EditForumQuestionHandler");
+
+var ForumReactHandler = require("../handlers/ForumReactHandler"); //create
 
 
 router.route('/add').post(function (request, response) {
@@ -21,5 +23,9 @@ router.route('/update/:id').put(function (request, response) {
 
 router.route('/').get(function (request, response) {
   ForumQuestionFetch(request, response);
+}); //update reacts
+
+router.route('/reacts').put(function (request, response) {
+  ForumReactHandler(request, response);
 });
 module.exports = router;

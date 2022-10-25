@@ -21,7 +21,6 @@ export default function Application_popup(props) {
         const data = res.data;
         
         setUser(res?.data[0]);
-        console.log("ssada", user)
       })
       .catch((err) => {
         alert(err.message);
@@ -37,11 +36,47 @@ export default function Application_popup(props) {
   };
 
   function setStatus(stat){
+
+    const updated = props?.applications?.map((item)=>{
+      if(item?._id == props?.recordForEdit._id){
+        item.applicationStatus = stat
+      }
+      return item;
+    })
+    props.setApplications(updated)
+
+    if(stat == "Rejected"){
+      console.log("reject wasda")
+      const timer = setTimeout(() => {
+
+        axios
+        .delete(`http://localhost:8000/application/${props.recordForEdit._id}`)
+        .then(() => {
+          const updated = props?.applications?.filter((item)=>{
+            if (item?._id != props?.recordForEdit._id){
+              return item;
+            }           
+          })
+          props.setApplications(updated)
+        })
+        .catch((err) => {
+          console.log("failer")
+        });
+
+      },5000);
+
+      props.setTimerout({...props.timerout, [props.recordForEdit._id]: timer})
+    }else if(stat == "Accepted"){
+      if(props.timerout[props.recordForEdit._id]){
+          clearTimeout(props.timerout[props.recordForEdit._id]);
+      }
+    }
+
+
     axios
     .put(`http://localhost:8000/application/updatestatus/${props.recordForEdit._id}`,{applicationStatus:stat})
     .then(() => {
         alert("sucussfully updated")     
-        window.location.reload();
     })
     .catch((err) => {
     });

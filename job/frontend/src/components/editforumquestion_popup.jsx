@@ -8,7 +8,7 @@ export default function Editjobform_popup(props) {
     const navigate = useNavigate();
 
   const {recordForEdit} = props;
-console.log("Recedit",recordForEdit)
+
   
 
   const initialState = {

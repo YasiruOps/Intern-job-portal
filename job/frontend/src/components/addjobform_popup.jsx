@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import "../CSS/addjobform_popup.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import { setjobbas } from "../actions/jobActions";
 
-export default function Addjobform_popup() {
+export default function Addjobform_popup(props) {
  
+
+
    const userID = useSelector((state) => state.auth.employerid);
 
     const [title,setTitle] = useState("");
@@ -51,8 +54,10 @@ export default function Addjobform_popup() {
     axios
     .post("http://localhost:8000/jobs/", payload)
     .then(() => {
+      console.log("jobs",props)
       alert("Job posted succesfully");
-      window.location.reload();
+      props.setJobs([...props.jobs,payload])
+      // window.location.reload();
     })
     .catch((err) => {
       alert(err);

@@ -29,8 +29,9 @@ const forumQuestionSchema = new Schema({
     },
 
     reacts : {
-        type : Number,
+        type : [String],
     }
+
 
 
 });

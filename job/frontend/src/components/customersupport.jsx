@@ -109,17 +109,15 @@ export default function Customersupport() {
     }   
     if (!name?.match(/^(?!\s*$).+/)) {
       setValierror((prev)=>({ ...prev, name: "Name cannot be empty" }))
-      console.log(valierror);
       sucess = false;
     } 
     if (!qtitle?.match(/^(?!\s*$).+/)) {
       setValierror((prev)=>({ ...prev, qtitle: "Question Cannot be empty" }))
-      console.log(valierror);
+
       sucess = false;
     } 
     if (!desc?.match(/^(?!\s*$).+/)) {
       setValierror((prev)=>({ ...prev, desc: "Description cannot be empty" }))
-      console.log(valierror);
       sucess = false;
     } 
 
@@ -156,12 +154,10 @@ export default function Customersupport() {
 
     if (!question?.match(/^(?!\s*$).+/)) {
       setValierror((prev)=>({ ...prev, question: "Question cannot be empty" }))
-      console.log(valierror);
       sucess = false;
     } 
     if (!description?.match(/^(?!\s*$).+/)) {
       setValierror((prev)=>({ ...prev, description: "Description Cannot be empty" }))
-      console.log(valierror);
       sucess = false;
     } 
 

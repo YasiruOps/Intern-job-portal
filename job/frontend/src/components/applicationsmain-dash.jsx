@@ -15,6 +15,7 @@ export default function Applicationsmain_dash() {
   const [search, setSearch] = useState("");
   const[filterflag, setFilterflag]=useState(false);
   const [filterval, setFilterval] = useState([])
+  const [timerout, setTimerout] = useState({})
 
   const [applications, setApplications] = useState([]);
 
@@ -40,7 +41,7 @@ export default function Applicationsmain_dash() {
   },[search])
 
   useEffect(() => {
-    console.log("ammo yakoo")
+
     axios
       .get(`http://localhost:8000/application/${id}`)
       .then((res) => {
@@ -103,6 +104,7 @@ export default function Applicationsmain_dash() {
 
   return (
     <div>
+      {console.log("ssdasdsa",applications)}
       <div className="Iqouter-main">
         <div className="Inquestionstop">
           <p className="internq-tag">Applications</p>
@@ -193,7 +195,7 @@ export default function Applicationsmain_dash() {
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
-          <Applicationform recordForEdit={recordForEdit}/>
+          <Applicationform recordForEdit={recordForEdit} setTimerout={setTimerout} timerout={timerout} setApplications={setApplications} applications={applications}/>
         </Popup>
       </div>
     </div>
