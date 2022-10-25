@@ -25,8 +25,15 @@ export default function Removepopup_form(props) {
     axios
     .delete(`http://localhost:8000/employerContact/${id}`)
     .then(() => {
-      alert("question removed");
-      window.location.reload();
+      const updated = props?.iquestion?.filter((item)=>{
+        console.log("reced", item)
+        if (item?._id != props?.recordForEdit){
+          return item;
+        }           
+      })
+      props.setIquestion(updated)
+      props.setOpenPopup2(false)
+     
     })
 
     .catch((err) => {

@@ -75,11 +75,12 @@ export default function Application_popup(props) {
 
     axios
     .put(`http://localhost:8000/application/updatestatus/${props.recordForEdit._id}`,{applicationStatus:stat})
-    .then(() => {
-        alert("sucussfully updated")     
+    .then(() => {   
     })
     .catch((err) => {
     });
+
+    props.setOpenPopup(false)
   }
 
 

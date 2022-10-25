@@ -21,8 +21,15 @@ export default function Removepopup_form(props) {
     axios
     .delete(`http://localhost:8000/jobs/delete/${props.recordForEdit}`)
     .then(() => {
-      alert("job post removed")
-      window.location.reload()
+     
+      const updated = props?.jobs?.filter((item)=>{
+        console.log("reced", item)
+        if (item?._id != props?.recordForEdit){
+          return item;
+        }           
+      })
+      props.setJobs(updated)
+      props.setOpenPopup4(false)
     })
     
     .catch((err) => {

@@ -265,7 +265,7 @@ export default function Jobpostingmain() {
         openPopup={openPopup2}
         setOpenPopup={setOpenPopup2}
       >
-        <Addjobform setJobs={setJobs} jobs={jobs} />
+        <Addjobform setJobs={setJobs} jobs={jobs} setOpenPopup2={setOpenPopup2}/>
       </Popup2>
 
       <Popup3     
@@ -273,7 +273,7 @@ export default function Jobpostingmain() {
         openPopup={openPopup3}
         setOpenPopup={setOpenPopup3}
       >
-        <Editjobform recordForEdit={recordForEdit}/>
+        <Editjobform recordForEdit={recordForEdit} setJobs={setJobs} jobs={jobs} setOpenPopup3={setOpenPopup3}/>
       </Popup3>
 
       <Popup4     
@@ -281,7 +281,7 @@ export default function Jobpostingmain() {
         openPopup={openPopup4}
         setOpenPopup={setOpenPopup4}
       >
-        <Removeform recordForEdit={recordForEdit?._id}/>
+        <Removeform recordForEdit={recordForEdit?._id} setJobs={setJobs} jobs={jobs} setOpenPopup4={setOpenPopup4}/>
       </Popup4>
     </div>
   );

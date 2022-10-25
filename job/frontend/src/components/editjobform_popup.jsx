@@ -6,8 +6,6 @@ export default function Editjobform_popup(props) {
 
   const {recordForEdit} = props;
 
-  
-
   const initialState = {
     title: recordForEdit.title,
     location: recordForEdit.location,
@@ -32,8 +30,13 @@ export default function Editjobform_popup(props) {
     axios
     .put(`http://localhost:8000/jobs/update/${recordForEdit._id}`,job)
     .then(() => {
-        alert("sucussfully updated");  
-        window.location.reload(); 
+        alert("sucussfully updated"); 
+        // props.setOpenPopup3(false)
+        window.location.reload();
+        // console.log("before splice", props.jobs)
+        // props.jobs.splice(job,1)
+        // console.log("pops.job", props.jobs)
+        // props.setJobs([...props.jobs,job])
     })
     .catch((err) => {
     });

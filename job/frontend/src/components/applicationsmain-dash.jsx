@@ -195,7 +195,7 @@ export default function Applicationsmain_dash() {
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
         >
-          <Applicationform recordForEdit={recordForEdit} setTimerout={setTimerout} timerout={timerout} setApplications={setApplications} applications={applications}/>
+          <Applicationform recordForEdit={recordForEdit} setTimerout={setTimerout} timerout={timerout} setApplications={setApplications} applications={applications} setOpenPopup={setOpenPopup}/>
         </Popup>
       </div>
     </div>

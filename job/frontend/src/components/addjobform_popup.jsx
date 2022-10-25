@@ -57,6 +57,7 @@ export default function Addjobform_popup(props) {
       console.log("jobs",props)
       alert("Job posted succesfully");
       props.setJobs([...props.jobs,payload])
+      props.setOpenPopup2(false)
       // window.location.reload();
     })
     .catch((err) => {

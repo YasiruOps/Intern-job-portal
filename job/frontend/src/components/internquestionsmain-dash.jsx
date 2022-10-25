@@ -149,7 +149,7 @@ export default function Internquestionsmain() {
         </thead>
         <tbody>
           {!filterflag?
-          (iquestion.map((question,i) => {
+          (iquestion?.map((question,i) => {
               return (
                         <tr >
                           <th scope="row">{i+1}</th>
@@ -184,7 +184,7 @@ export default function Internquestionsmain() {
                         </tr>
                       );
                     })):(
-                      filterval.map((question,i) => {
+                      filterval?.map((question,i) => {
                         return (
                                   <tr >
                                     <th scope="row">{i+1}</th>
@@ -235,7 +235,7 @@ export default function Internquestionsmain() {
         openPopup={openPopup2}
         setOpenPopup={setOpenPopup2}
       >
-        <Removeform recordForEdit={recordForEdit?._id}/>
+        <Removeform recordForEdit={recordForEdit?._id} setIquestion={setIquestion} iquestion={iquestion} setOpenPopup2={setOpenPopup2}/>
       </Popup2>
 
     </div>
