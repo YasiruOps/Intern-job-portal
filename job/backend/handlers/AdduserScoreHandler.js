@@ -10,6 +10,7 @@ async function AdduserScoreHandler(request, response){
         const quiz = request.body.quiz;
         const user= request.body.userName;
         const email = request.body.email;
+        const image = request.body.image;
 
         let values = {}
 
@@ -45,6 +46,7 @@ async function AdduserScoreHandler(request, response){
                 [`score.${type}`]: score,
                 userName:user,
                 email:email,
+                image:image,
                 }
             },{new: true, upsert: true}
             ).then((score)=>{  

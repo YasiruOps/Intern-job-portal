@@ -24,6 +24,9 @@ var forumQuestionSchema = new Schema({
   },
   reacts: {
     type: [String]
+  },
+  image: {
+    type: String
   }
 });
 var forumQuestion = mongoose.model("forumQuestion", forumQuestionSchema);

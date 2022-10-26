@@ -51,6 +51,7 @@ export default function Leaderbord() {
     axios
       .get(`http://localhost:8000/userScore/${type}`)
       .then((res) => {
+        console.log("resdata",res)
         setLeaderboard(res.data);
       })
       .catch((err) => {
@@ -126,7 +127,8 @@ export default function Leaderbord() {
                         <img src={place[i]} alt="" className="userplace_img" />
                       )}
                       <div className="vertical-line" />
-                      <img src={Profile88} alt="" className="userpic" />
+                      {console.log("item", item)}
+                      <img src={item.image} alt="failed to load" className="userpic" style={{borderRadius:"100%"}}/>
                       <p className="username">{item.userName}</p>
                       <p className="userscore">{item.sum}</p>
                       <p className="userscore_tag">total points</p>                      

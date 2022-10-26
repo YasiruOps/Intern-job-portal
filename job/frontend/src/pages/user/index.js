@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Search } from "../../svg";
 import { useSelector, useDispatch } from "react-redux";
+import { BiLogOut } from "react-icons/bi";
+import { logout } from "../../actions/authActions";
 
 import Cover from "./Cover";
 import ProfielPictureInfos from "./ProfielPictureInfos";
@@ -107,9 +109,15 @@ export default function User() {
     navigate("/McqCat");
   };
 
+  function Logout(){
+    dispatch(logout());
+    navigate('/');
+  }
+
   return (
     <div className="profile">
       <Header />
+      <BiLogOut style={{fontSize:"30px",fontWeight:"bold", float:"right", marginRight:"50px", marginTop:"5px"}} onClick={Logout}/>
       <ToastContainer
         position="top-left"
         autoClose={5000}

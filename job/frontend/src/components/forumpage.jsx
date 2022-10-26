@@ -175,7 +175,7 @@ export default function Forumpage() {
                   </div>
 
                   <div className="picarea col-xl-2">
-                    <img src={Profpic} className="profilepic" />
+                    <img src={question.image} className="profilepic" alt="Failed to load"/>
                   </div>
                   <div className="qmid col-xl-9">
                     <div className="row">

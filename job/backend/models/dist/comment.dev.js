@@ -3,22 +3,22 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-var userScoreSchema = new Schema({
+var CommentSchema = new Schema({
+  forumID: {
+    type: String
+  },
   userID: {
     type: String
   },
-  userName: {
+  name: {
     type: String
   },
-  score: {
-    type: Map
-  },
-  email: {
+  comment: {
     type: String
   },
   image: {
     type: String
   }
 });
-var userScore = mongoose.model("userScore", userScoreSchema);
-module.exports = userScore;
+var Comment = mongoose.model("Comment", CommentSchema);
+module.exports = Comment;

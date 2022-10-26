@@ -15,14 +15,16 @@ export default function Quizscorepage() {
   const location = useLocation();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
   const [corrans, setCorrans] = useState(0)
 
   useEffect(() => {
       axios
-      .get(`http://localhost:8000/auth/intern/${userID}`)
+      .get(`http://localhost:8000/api/users/getProfile/${userID}`)
       .then((res) => {
-        setUsername(res?.data[0]?.first_name); 
-        setEmail(res?.data[0]?.email);   
+        setUsername(res?.data?.first_name); 
+        setEmail(res?.data?.email);   
+        setImage(res?.data?.picture)
       })
       .catch((err) => {
         alert(err);
@@ -55,6 +57,7 @@ export default function Quizscorepage() {
       score,
       email:email,
       userName:username,
+      image,
     }
     
 

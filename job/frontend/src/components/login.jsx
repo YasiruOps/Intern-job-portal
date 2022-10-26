@@ -38,10 +38,12 @@ export default function Login() {
       .post(`http://localhost:8000/auth/login`, payload)
       .then((response) => {
         dispatch(setinternid(response.data.user._id));
+        
         navigate("/user");
         
       })
       .catch((err) => {
+        alert("Email or password incorrect")
       });
   };
 

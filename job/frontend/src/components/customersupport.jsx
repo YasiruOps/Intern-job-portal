@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./header";
 import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
@@ -38,6 +38,7 @@ export default function Customersupport() {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState("");
   const [reacts, setReacts] = useState("");
+  const [image, setImage] = useState("");
 
   //selector eka//////////////
 
@@ -138,6 +139,19 @@ export default function Customersupport() {
       });}
   }
 
+  useEffect(() => {
+    axios
+    .get(`http://localhost:8000/api/users/getProfile/${userID}`)
+    .then((res) => {
+      const data = res.data;
+      setImage(data?.picture)
+    })
+    .catch((err) => {
+      alert(err.message);
+    });
+
+  }, []);
+
   //Forum Question yawana eka
   function sendData() {
     const newForumQuestion = {
@@ -147,6 +161,7 @@ export default function Customersupport() {
       description,
       date: getSelectedDate(date),
       time: getCurrentTime(),
+      image,
       reacts,
     };
 

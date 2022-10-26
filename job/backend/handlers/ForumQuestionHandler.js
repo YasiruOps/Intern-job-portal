@@ -8,6 +8,7 @@ function AddForumQuestion(request, response) {
     const description = request.body.description;
     const date = request.body.date;
     const time = request.body.time;
+    const image = request.body.image;
     const reacts = Number(request.body.reacts);
     
   
@@ -18,6 +19,7 @@ function AddForumQuestion(request, response) {
       description,
       date,
       time,
+      image,
       reacts,
     });
   

@@ -19,6 +19,9 @@ const CommentSchema = new Schema({
     comment : {
         type : String,
     },
+    image : {
+        type : String,
+    },
 
 });
 

@@ -9,19 +9,51 @@ import { useSelector, useDispatch } from "react-redux";
 import Popup from "../../components/popup";
 import RemoveApplciation from "./removeApplcation-popup";
 import Footer from "../../components/footer";
+import PopUp from "../../components/Popup/index";
 
 export default function Table() {
 
+  const [visible, setVisible] = useState(false);
   const id = useSelector((state) => state.auth.internID);
   const [applications, setApplcations] = useState([])
-
+  const [users, setUsers] = useState("");
   const [openPopup, setOpenPopup] = useState(false); 
   const [recordForEdit, setRecordForEdit] = useState(null);
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const openInPopup = (app) => {
     setRecordForEdit(app);
     setOpenPopup(true);
   };
+
+  async function featchData() {
+    try {
+      setLoading(true);
+
+      const { data } = await axios.get(
+        `http://localhost:8000/api/users/getProfile/${id}`
+      );
+      console.log("data", data);
+      setError("");
+      setSuccess(data?.message);
+      setTimeout(() => {
+        setUsers(data);
+        setLoading(false);
+      }, 4000);
+    } catch (error) {
+      setLoading(false);
+      setSuccess("");
+      setError(error?.response?.data?.message);
+    }
+  }
+
+  useEffect(() => {
+    console.log("sssss");
+    featchData();
+  }, []);
 
   useEffect(() => {
     axios
@@ -38,10 +70,15 @@ export default function Table() {
   return (
     <div className="profile">
       <Header/>
+      {visible && <PopUp setVisible={setVisible} profile={users} prof={true} />}
       <div className="profile_top" >
         <div className="profile_container">
-          <Cover />
-          <ProfielPictureInfos />
+        <Cover Users={users} featchData={featchData} />
+              <ProfielPictureInfos
+                Users={users}
+                setVisible={setVisible}
+                featchData={featchData}
+              />
           
         </div>{" "}
         <br />

@@ -38,6 +38,7 @@ export default function Forum_compage() {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [openPopup1, setOpenPopup1] =useState(false)
 
+  const[image, setImage] = useState("")
 
 
   const openInPopup = () => {
@@ -53,9 +54,10 @@ export default function Forum_compage() {
   useEffect(() => {
  
     axios
-      .get(`http://localhost:8000/auth/intern/${userID}`)
+      .get(`http://localhost:8000/api/users/getProfile/${userID}`)
       .then((res) => {
-        setUsername(res?.data[0]?.first_name);
+        setUsername(res?.data?.first_name);
+        setImage(res?.data?.picture);
       })
       .catch((err) => {
         alert(err);
@@ -67,11 +69,13 @@ export default function Forum_compage() {
   });
 
   function sendData() {
+
     const newCommnet = {
       forumID: location.state._id,
       userID,
       name: username,
       comment,
+      image,
     };
 
     let sucess = true;
@@ -194,7 +198,7 @@ export default function Forum_compage() {
               </div>
 
               <div className="picarea col-xl-2">
-                <img src={Profpic} className="profilepic" />
+                <img src={location.state.image} className="profilepic" />
               </div>
               <div className="qmid col-xl-9">
                 <div className="row">
@@ -287,7 +291,7 @@ export default function Forum_compage() {
                     >
                       <div className="commmentbox-left d-none d-xxl-block col-1">
                         <img
-                          src={Profpic}
+                          src={comments.image}
                           alt="image here"
                           className="commenterprofpic"
                         />

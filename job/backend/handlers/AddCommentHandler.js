@@ -6,12 +6,14 @@ function AddCommentHandler(request, response) {
   const userID = request.body.userID;
   const name = request.body.name;
   const comment = request.body.comment;
+  const image = request.body.image;
 
   const newComment = new Comment({
     forumID,
     userID,
     name,
     comment,
+    image,
   });
 
   newComment.save((err) => {

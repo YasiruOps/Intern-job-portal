@@ -17,7 +17,11 @@ const userScoreSchema = new Schema({
     },
     email : {
         type : String
+    },
+    image : {
+        type : String
     }
+
 
 
 

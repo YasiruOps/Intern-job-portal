@@ -30,6 +30,10 @@ const forumQuestionSchema = new Schema({
 
     reacts : {
         type : [String],
+    },
+
+    image : {
+        type : String,
     }
 
 

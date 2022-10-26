@@ -39,7 +39,9 @@ export default function Login() {
         dispatch(setemployerid(response.data.user._id));
         navigate('/Employer-Dash');
       })
-      .catch((err) => {});
+      .catch((err) => {
+        alert("wrong email or password")
+      });
   };
 
   ///////////////////////////////////////////////
