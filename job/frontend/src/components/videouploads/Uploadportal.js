@@ -1,3 +1,7 @@
+import Footer from "../footer";
+import Header from "../header";
+import "../videouploads/Uploadportal.css";
+import ups from "../../images/uploads.jpg";
 
 function Uploadportal() {
 
@@ -19,10 +23,40 @@ function Uploadportal() {
   }
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <input type="file" accept="video/*" id="customFile" onChange={(e) => guardarArchivo(e)} />
-      </div>
+    <div >
+      <Header />
+        <div className="guide">
+          <h3>
+            How to upload a video resume ?
+          </h3>
+
+          <h5>Please Follow these steps</h5>
+                  <ol type="1">
+                    <li>
+                      Click the Upload Button
+                    </li>
+                    <li>
+                      Select Your Video Resume
+                    </li>
+                    <li>
+                      Submit the Video in the follwing format "NAME_VIDEO_RESUME.MP4"
+                    </li>
+                    <li>
+                    PLEASE ALLOW 30 SECONDS FOR THE VIDEO TO SUBMIT 
+                    </li>
+                  </ol>
+                  <label class="custom-file-upload">
+    <input type="file" accept="video/*" id="customFile" onChange={(e) => guardarArchivo(e)} />
+        Upload Video Resume
+        </label>
+          <img src={ups} className="guide2" alt="image" style={{ width: '50rem', marginLeft: '60rem' , marginTop: '-18rem' }}/>
+
+
+            
+     
+
+        </div>
+      <Footer />
     </div>
   );
 }
