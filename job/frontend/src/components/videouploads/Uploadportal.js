@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import UploadForm from "../videouploads/UploadForm";
-import UploadsList from "../videouploads/UploadsList";
+import UploadForm from "./UploadForm";
+import UploadsList from "./UploadsList";
 const Uploadportal = () => {
   const [medias, setMedias] = useState([]);
 
