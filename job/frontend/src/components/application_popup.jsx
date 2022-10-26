@@ -86,6 +86,7 @@ export default function Application_popup(props) {
 
   return (
     <div className="application_popup_outerframe">
+      {console.log("hello",props.recordForEdit.pdfID)}
       <a href={`http://localhost:8000/static/${props.recordForEdit.pdfID}.pdf`}>
         <button className="btn btn-primary btnviewresume" >
           View Resume

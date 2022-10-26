@@ -144,7 +144,7 @@ export default function EditUser() {
               </div>
 
               <div className="reg_btn_wrapper">
-                <button className="light_blue_btn open_signup">Update</button>
+                <button className="light_blue_btn open_signup" style={{backgroundColor:"black"}}>Update</button>
               </div>
 
               <DotLoader color="#1876f2" loading={loading} size={30} />

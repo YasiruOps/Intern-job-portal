@@ -5,10 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Removepopup_form(props) {
 
-
-
   const { recordForEdit } = props;
-console.log("sasas", recordForEdit._id)
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [checked, setChecked] = useState(false);
@@ -26,10 +23,17 @@ console.log("sasas", recordForEdit._id)
 
   function removeQuestion(id){
     axios
-    .delete(`http://localhost:8001/ForumQuestionFetch/${id}`)
+    .delete(`http://localhost:8000/employerContact/${id}`)
     .then(() => {
-      alert("Question deleted") 
-      navigate('/Forum');
+      const updated = props?.iquestion?.filter((item)=>{
+        console.log("reced", item)
+        if (item?._id != props?.recordForEdit){
+          return item;
+        }           
+      })
+      props.setIquestion(updated)
+      props.setOpenPopup2(false)
+     
     })
 
     .catch((err) => {
@@ -58,7 +62,7 @@ console.log("sasas", recordForEdit._id)
         disabled={isDisabled}
         type="button"
         className="btn btn-danger removepopup-btn"
-        onClick={() => removeQuestion(recordForEdit._id)}
+        onClick={() => removeQuestion(recordForEdit)}
       >
         Remove
       </button>

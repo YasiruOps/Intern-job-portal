@@ -68,7 +68,9 @@ var jobs = require("./routes/jobs");
 
 var application = require("./routes/application");
 
-var uploadpdf = require("./routes/uploadpdf"); //dilaa routes
+var uploadpdf = require("./routes/uploadpdf");
+
+var mediaRoutes = require("./routes/media"); //dilaa routes
 
 
 var userRoute = require("./routes/user");
@@ -92,7 +94,9 @@ app.use('/comment', comment);
 app.use("/userScore", userScore);
 app.use("/jobs", jobs);
 app.use("/application", application);
-app.use("/uploadpdf", uploadpdf); //dilaa
+app.use("/uploadpdf", uploadpdf);
+app.use("/api/v1/media", mediaRoutes);
+app.use("/public", express["static"](path.join(__dirname, "public"))); //dilaa
 //routes
 // readdirSnc("./routes").map((r) => app.use("/", require("./routes/" + r)));
 

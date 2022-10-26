@@ -73,7 +73,7 @@ export default function Graph() {
           <YAxis dataKey="count"/>
           <Tooltip />
           <Legend />
-          <Bar dataKey="Applications" fill="#8884d8" />
+          <Bar dataKey="Applications" fill="#D68910" />
           
         </BarChart>
       </ResponsiveContainer>

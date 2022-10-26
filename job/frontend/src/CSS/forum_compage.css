@@ -118,8 +118,6 @@
 }
 
 .editbtnsfx :hover{
-    font-size: 20px;
     cursor: pointer;
     color: #3366CC ; 
-    text-decoration: underline;
 }

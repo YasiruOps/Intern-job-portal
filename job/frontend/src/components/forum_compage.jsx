@@ -19,6 +19,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "./popup";
+import RemovePopup from "./removepopup-internq-from"
 import Editpop from "./editforumquestion_popup";
 
 import Profpic from "../images/forum_img.png";
@@ -35,12 +36,18 @@ export default function Forum_compage() {
 
   const [username, setUsername] = useState("");
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [openPopup1, setOpenPopup1] =useState(false)
 
 
 
   const openInPopup = () => {
     setRecordForEdit(location.state);
     setOpenPopup(true);
+  };
+
+  const openInPopup1 = () => {
+    setRecordForEdit(location.state);
+    setOpenPopup1(true);
   };
 
   useEffect(() => {
@@ -201,18 +208,32 @@ export default function Forum_compage() {
                 {location.state.ownerID == userID ? (
                   <div
                     type="button"
-                    className="editbtnsfx"
-                    onClick={openInPopup}
-                  >
-                    Edit
-                    <EditIcon
-                      style={{
-                        fontSize: "18px",
-                        marginTop: "-5px",
-                        marginLeft: "5px",
-                      }}
-                    />
+                    className="editbtnsfx">
+
+                    <div onClick={openInPopup}>
+                      Edit
+                      <EditIcon
+                        style={{
+                          fontSize: "18px",
+                          marginTop: "-5px",
+                          marginLeft: "5px",
+                        }}/>
+                    </div>
+
+                    <div
+                      onClick={openInPopup1}
+                      style={{ marginTop:"0px"}}>
+                      Remove
+                      <AiFillDelete
+                        style={{
+                          fontSize: "18px",
+                          marginTop: "-5px",
+                          marginLeft: "5px",
+                        }}/>
+
                   </div>
+                  </div>
+
                 ) : (
                   <div />
                 )}
@@ -300,6 +321,14 @@ export default function Forum_compage() {
         setOpenPopup={setOpenPopup}
       >
         <Editpop recordForEdit={recordForEdit} />
+      </Popup>
+
+      <Popup
+        title={location?.state?.question}
+        openPopup={openPopup1}
+        setOpenPopup={setOpenPopup1}
+      >
+        <RemovePopup recordForEdit={recordForEdit} />
       </Popup>
     </div>
   );

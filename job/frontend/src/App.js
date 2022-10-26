@@ -83,6 +83,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} exact />
         <Route path="/job" element={<Job />} exact />
         <Route path="/edu" element={<Education />} exact />
+        <Route path="/userEdit" element={<EditUser />} exact />
         <Route path="/user" element={<User />} exact />
         <Route path="/search/:id" element={<Search />} exact />
         {/* <Route path="/app" element={<Application />} exact /> */}

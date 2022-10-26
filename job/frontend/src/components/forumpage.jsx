@@ -214,7 +214,7 @@ export default function Forumpage() {
                   <div className="qupvote col-xl-1">
                     <div className="qupvotebar">
                       <BsArrowUpCircle className="countericons hovupvote" />
-                      <p className="upcountq">{question.reacts}</p>
+                      <p className="upcountq">{counterReact(question?.reacts)}</p>
                       <BsArrowDownCircle className="countericons hovdownvote" />
                     </div>
                   </div>
