@@ -15,6 +15,7 @@ const path = require('path')
 app.use('/static', express.static(path.join(__dirname, 'uploads')))
 
 
+
 const fs = require('fs');
 
 let rawdata = fs.readFileSync('env.json');
@@ -59,7 +60,6 @@ const jobs = require("./routes/jobs")
 const application = require("./routes/application")
 const uploadpdf = require("./routes/uploadpdf")
 
-const mediaRoutes = require("./routes/media");
 
 //dilaa routes
 const userRoute = require("./routes/user");
@@ -76,6 +76,7 @@ app.use(
 );
 
 
+
 app.use("/mcq", mcqRoutes)
 app.use("/auth", auth);
 app.use("/category", mcqcategory);
@@ -88,10 +89,7 @@ app.use("/jobs",jobs);
 app.use("/application",application);
 app.use("/uploadpdf",uploadpdf);
 
-
-
-app.use("/api/v1/media", mediaRoutes);
-app.use("/public", express.static(path.join(__dirname, "public")));
+    
 
 //dilaa
 
