@@ -119,8 +119,11 @@ export default function Applicationsmain_dash() {
               <option>1 week</option>
               <option>2 weeks</option>
               <option>This month</option>
-            </select>
+            </select> 
           </div>
+          <a href="https://drive.google.com/drive/folders/1pdHZyAy0529vSmDrzr9qoH0m94sk8D4N?usp=sharing" target="_blank" rel="noreferrer">
+          <button type="button" className="resume_btn1  btn btn-primary">Video Resume Library</button>
+        </a>
 
           <div className="searchbox test657">
             <GoSearch className="searchicon" />

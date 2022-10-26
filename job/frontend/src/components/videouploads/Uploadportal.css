@@ -1,0 +1,29 @@
+.custom-file-upload {
+    border: 1px solid rgb(0, 4, 63);
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-left:15%;
+    margin-top:5%;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    background-color: #0083FC;
+}
+input[type="file"] {
+    display: none;
+}
+
+.guide{ 
+    margin: 20px;
+    margin-bottom: 135px;
+    padding: 20px;
+    padding-bottom: 0; 
+}
+
+.guide2{
+    margin-left: 235px;
+    border: 1px solid rgb(0, 4, 63);
+}
