@@ -12,7 +12,8 @@
     font-family: 'Lato', sans-serif;
     background-color: #0083FC;
 }
-input[type="file"] {
+
+.puts input[type="file"] {
     display: none;
 }
 
@@ -24,6 +25,7 @@ input[type="file"] {
 }
 
 .guide2{
-    margin-left: 235px;
+    margin-top: -155px !important;
+    margin-left: 295px !important;
     border: 1px solid rgb(0, 4, 63);
 }

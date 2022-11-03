@@ -452,8 +452,8 @@ export default function User() {
               </div>
 
               {/* {badge part ekata add a div} */}
-              
-           {badges?.length?(<h1>Badges earned</h1>):<div></div>}
+              <div className="box-medals col-10">
+                {badges?.length?(<h2>Badges earned</h2>):<div></div>}
 
               {badges.map((item) => {
                 let data;
@@ -464,13 +464,14 @@ export default function User() {
                   
                 }
                 return <div>
-                  
-                  <img src={place[data.rank-1]} alt="" className="userplace_img" />
-                  {data.type}/{data.date}
-                  
+                  <div className="box-medals-inner">
+                    <img src={place[data.rank-1]} alt="" className="userplace_img" />
+                    <p className="pttt"> category:{data.type}</p>
+                    <p className="pttt"> date: {data.date}</p>
+                  </div>
                   </div>;
               })}
-
+</div>
               
         
 
@@ -484,3 +485,6 @@ export default function User() {
     </div>
   );
 }
+
+              
+                          

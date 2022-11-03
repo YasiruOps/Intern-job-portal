@@ -46,7 +46,8 @@ function Uploadportal() {
                     </li>
                   </ol>
                   <label class="custom-file-upload">
-    <input type="file" accept="video/*" id="customFile" onChange={(e) => guardarArchivo(e)} />
+                    <div className="puts">
+    <input type="file" accept="video/*" id="customFile" onChange={(e) => guardarArchivo(e)} /> </div>
         Upload Video Resume
         </label>
           <img src={ups} className="guide2" alt="image" style={{ width: '50rem', marginLeft: '60rem' , marginTop: '-18rem' }}/>

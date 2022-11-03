@@ -8,6 +8,9 @@ import "./style.css";
 import { useState } from "react";
 import RegisterInput from "../../../components/inputs/registerInput";
 import TextArea from "../../../components/inputs/textarea";
+import Header from "../../../components/header";
+import Footer from "../../../components/footer";
+
 
 import * as Yup from "yup";
 
@@ -81,7 +84,7 @@ export default function EditUser() {
   };
   return (
     <div>
-      
+      <Header/>
       <div>
         <Formik
           enableReinitialize
@@ -154,6 +157,7 @@ export default function EditUser() {
           )}
         </Formik>
       </div>
+      <Footer/>
     </div>
   );
 }

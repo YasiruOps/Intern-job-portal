@@ -705,3 +705,27 @@ ol.progress-meter li.todo:before {
 }
 
 /*----Media queries--------------*/
+
+.box-medals{
+  border-radius: 5px;
+  padding: 10px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.box-medals-inner{
+
+  margin-top: 20px;
+  display: block;
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+ 
+}
+
+.pttt{
+  margin-top: -10px;
+}

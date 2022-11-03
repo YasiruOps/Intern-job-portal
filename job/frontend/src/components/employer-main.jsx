@@ -12,6 +12,7 @@ import New from "../images/newdash.ico";
 import Graph from "./Graph"
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import Job1 from "../images/jobs.png"
 
 export default function Employer_main() {
 
@@ -103,28 +104,8 @@ export default function Employer_main() {
             </div>
           </div>
 
-          <div className="detailcomponenthead col-3">
-            <div className="detailscomponent row">
-              <div className="col-xxl-8">
-                <p className="jobcount">0</p>
-                <p className="jobsposted">Paused</p>
-              </div>
-              <div className="col-xxl-4 deatilcomponentimg-cover">
-                <img src={Pause} alt="#" className="deatilcomponentimg" />
-              </div>
-            </div>
-          </div>
-
-          <div className="detailcomponenthead col-3">
-            <div className="detailscomponent row">
-              <div className="col-xxl-8">
-                <p className="jobcount">0</p>
-                <p className="jobsposted">Closed</p>
-              </div>
-              <div className="col-xxl-4 deatilcomponentimg-cover">
-                <img src={Close} alt="#" className="deatilcomponentimg" />
-              </div>
-            </div>
+          <div className="col-9" style={{marginTop:"-70px", marginRight:"-250px", overflow:"hidden"}}>
+            <img src={Job1} style={{height:"200px"}}/>
           </div>
         </div>
       </div>
